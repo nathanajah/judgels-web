@@ -142,6 +142,7 @@ webpackConfig.module.loaders.push({
     'style',
     BASE_CSS_LOADER,
     'postcss',
+    'resolve-url',
     'sass?sourceMap'
   ]
 })

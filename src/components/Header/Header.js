@@ -1,18 +1,30 @@
 import React from 'react'
-import { IndexLink, Link } from 'react-router'
 import './Header.scss'
+import Logo from '../../assets/images/logo.png'
 
 export const Header = () => (
-  <div>
-    <h1>React Redux Starter Kit</h1>
-    <IndexLink to='/' activeClassName='route--active'>
-      Home
-    </IndexLink>
-    {' · '}
-    <Link to='/counter' activeClassName='route--active'>
-      Counter
-    </Link>
-  </div>
+  <header>
+    <div className='container'>
+      <div className='row'>
+        <div className='col-md-12'>
+          <div className='pull-left'>
+            <img className='logo' src={Logo} alt='Logo' />
+          </div>
+          <div className='title pull-left'>
+            <h1>Single Sign-On</h1>
+          </div>
+          <nav className='right-info pull-right'>
+            <div className='languages'>
+              <select id='languages' className='form-control selectpicker'>
+                <option value='en-US'>EN-US</option>
+                <option value='en-GB'>en-GB</option>
+              </select>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
 )
 
 export default Header
