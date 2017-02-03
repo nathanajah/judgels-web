@@ -3,6 +3,7 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Breadcrumbs from '../../components/Breadcrumbs'
 import TwoColumnLayout from '../TwoColumnLayout'
+import UserProfileWidget from '../../components/UserProfileWidget'
 import './CoreLayout.scss'
 import '../../styles/core.scss'
 
@@ -11,7 +12,7 @@ export const CoreLayout = ({ children }) => (
     <Header />
     <main className='container'>
       <Breadcrumbs />
-      <TwoColumnLayout>
+      <TwoColumnLayout upperWidgets={[ <UserProfileWidget username='nathanajah' realName='Nathan Azaria' /> ]}>
         {children}
       </TwoColumnLayout>
     </main>
