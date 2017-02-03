@@ -13,7 +13,11 @@ export const CoreLayout = ({ children }) => (
     <Header />
     <main className='container'>
       <Breadcrumbs />
-      <TwoColumnLayout upperWidgets={[ <UserProfileWidget username='nathanajah' realName='Nathan Azaria' /> ]}>
+      <TwoColumnLayout
+        upperWidgets={
+          [ <UserProfileWidget key='UserProfileWidget' username='nathanajah' realName='Nathan Azaria' /> ]
+        }
+      >
         <ContentLayout />
       </TwoColumnLayout>
     </main>
