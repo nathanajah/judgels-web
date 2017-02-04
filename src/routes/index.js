@@ -1,16 +1,34 @@
 // We only need to import the modules necessary for initial render
 import CoreLayout from '../layouts/CoreLayout'
 import Home from './Home'
-
+import LoginContainer from './Home/containers/LoginContainer'
+import { refreshCurrentUser } from '../store/session'
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
 
-export const createRoutes = (store) => ({
-  path        : '/',
-  component   : CoreLayout,
-  indexRoute  : Home
-})
+export const createRoutes = (store) => {
+  const checkAuthentication = (state, replace, callback) => {
+    const { dispatch } = store
+    const { session } = store.getState()
+    const { currentUser } = session
+    // TODO: save the auth token when login in localStorage,
+    // view routes/store/session.js for more info
+    if (!currentUser.username && localStorage.getItem('toki-auth-token')) {
+      dispatch(refreshCurrentUser())
+    }
+    callback()
+  }
 
+  return {
+    path        : '/',
+    component   : CoreLayout,
+    indexRoute  : Home,
+    childRoutes : [
+      { path: 'login', component: LoginContainer }
+    ],
+    onEnter     : checkAuthentication
+  }
+}
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically
     using getChildRoutes with the following signature:
 

@@ -1,37 +1,62 @@
 import React from 'react'
 import avatarDefault from './avatar-default.png'
+import { Link } from 'react-router'
 
-export const UserProfileWidget = ({ username, realName }) => (
-  <div className='avatar clearfix'>
-    <div className='col-md-12'>
+export const UserProfileWidget = ({ handleLogoutClick, isFetching, isAuthenticated, username, realName }) => {
+  let profileBox
+  if (isFetching === true || isAuthenticated === true) {
+    profileBox = (
       <div className='row'>
         <div className='col-md-4 col-xs-2'>
           <img className='avatar-picture' src={avatarDefault} alt='avatar' />
         </div>
         <div className='col-md-8 col-xs-10'>
           <div className='avatar-username'>
-            {username}
+            {isFetching ? 'loading...' : username}
           </div>
           <div className='avatar-real-name'>
-            {realName}
+            {isFetching ? 'loading...' : realName}
           </div>
-          <div className='row'>
+          {!isFetching && isAuthenticated && username && realName && <div className='row'>
             <div className='col-md-3 col-xs-1 avatar-menu'>
               <a href='#' className='btn btn-xs'>Edit</a>
             </div>
             <div className='col-md-9 col-xs-11 avatar-menu'>
-              <a href='#' className='btn btn-xs'>Log out</a>
+              <a onClick={handleLogoutClick} className='btn btn-xs'>Log out</a>
             </div>
-          </div>
+          </div>}
         </div>
       </div>
+    )
+  } else {
+    profileBox = [
+      <p key={'profileBoxGreeting'}>Hello, Guest</p>,
+      <div key={'profileBoxNavigationMenu'} className='clearfix'>
+        <div className='pull-left'>
+          <a className='btn btn-default' href='#' target='_blank'>Register</a>
+        </div>
+        <div className='pull-right'>
+          <Link to={'/login'} className='btn btn-primary'>Login</Link>
+        </div>
+      </div>
+    ]
+  }
+
+  return (
+    <div className='avatar clearfix'>
+      <div className='col-md-12'>
+        { profileBox }
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 UserProfileWidget.propTypes = {
-  username: React.PropTypes.string.isRequired,
-  realName: React.PropTypes.string.isRequired
+  handleLogoutClick: React.PropTypes.func.isRequired,
+  isAuthenticated: React.PropTypes.bool.isRequired,
+  isFetching: React.PropTypes.bool.isRequired,
+  username: React.PropTypes.string,
+  realName: React.PropTypes.string
 }
 
 export default UserProfileWidget
