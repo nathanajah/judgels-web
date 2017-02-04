@@ -1,6 +1,6 @@
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
-import CoreLayout from 'layouts/CoreLayout/CoreLayout'
+import { CoreLayout } from 'layouts/CoreLayout/CoreLayout'
 
 function shallowRender (component) {
   const renderer = TestUtils.createRenderer()
@@ -21,6 +21,12 @@ describe('(Layout) Core', function () {
   beforeEach(function () {
     _child = <h1 className='child'>Child</h1>
     _props = {
+      currentUser: {
+        'username': 'test_username',
+        'realName': 'test_realName',
+        'isFetching': false,
+        'isAuthenticated': true
+      },
       children : _child
     }
 
