@@ -11,13 +11,18 @@ export class LoginContainer extends React.Component {
   }
 
   render () {
-    const { error } = this.props;
-    return (<LoginView handleSubmitLogin={::this._handleSubmitLogin} error={error.login}/>)
+    const { error } = this.props
+    return (<LoginView handleSubmitLogin={::this._handleSubmitLogin} error={error.login} />)
   }
 }
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser,
   error: state.session.error
-});
+})
 
-export default connect(mapStateToProps)(LoginContainer);
+LoginContainer.propTypes = {
+  dispatch: React.PropTypes.func,
+  error: React.PropTypes.object
+}
+
+export default connect(mapStateToProps)(LoginContainer)
