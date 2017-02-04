@@ -8,6 +8,12 @@ Based on [react-redux-starter-kit](https://github.com/davezuko/react-redux-start
 
 ## Getting Started
 
+You should install PhantomJS, because it is a big dependency
+
+```bash
+$ sudo npm install -g phantomjs    # Install PhantomJS globally
+```
+
 After cloning the project, install the dependencies using Yarn.
 
 ```bash
