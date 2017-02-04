@@ -1,4 +1,4 @@
-import LoginContainer from './components/LoginContainer'
+import LoginContainer from './containers/LoginContainer'
 
 // Sync route definition
 export default {
