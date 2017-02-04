@@ -1,7 +1,7 @@
 // We only need to import the modules necessary for initial render
 import CoreLayout from '../layouts/CoreLayout'
 import Home from './Home'
-import LoginContainer from './Home/containers/LoginContainer'
+import LoginContainer from './Login/containers/LoginContainer'
 import { refreshCurrentUser } from '../store/session'
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
