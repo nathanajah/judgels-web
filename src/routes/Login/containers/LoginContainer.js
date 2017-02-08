@@ -4,6 +4,11 @@ import LoginView from '../components/LoginView'
 import { login } from '../../../store/session'
 
 export class LoginContainer extends React.Component {
+  constructor (props) {
+    super(props)
+    this._handleSubmitLogin = this._handleSubmitLogin.bind(this)
+  }
+
   _handleSubmitLogin (data) {
     const { dispatch } = this.props
     const { usernameOrEmail, password } = data
@@ -12,7 +17,7 @@ export class LoginContainer extends React.Component {
 
   render () {
     const { error } = this.props
-    return (<LoginView handleSubmitLogin={::this._handleSubmitLogin} error={error.login} />)
+    return (<LoginView handleSubmitLogin={this._handleSubmitLogin} error={error.login} />)
   }
 }
 const mapStateToProps = (state) => ({

@@ -4,16 +4,21 @@ import UserProfileWidget from '../components/UserProfileWidget'
 import { logout } from '../store/session'
 
 export class UserProfileWidgetContainer extends React.Component {
+  constructor (props) {
+    super(props)
+    this._handleLogoutClick = this._handleLogoutClick.bind(this)
+  }
+
   _handleLogoutClick () {
     const { dispatch } = this.props
     dispatch(logout())
   }
 
   render () {
-    const { currentUser } = this.props;
+    const { currentUser } = this.props
     return (
       <UserProfileWidget
-        handleLogoutClick={::this._handleLogoutClick}
+        handleLogoutClick={this._handleLogoutClick}
         key='UserProfileWidget'
         isAuthenticated={currentUser.isAuthenticated}
         isFetching={currentUser.isFetching}
@@ -24,7 +29,7 @@ export class UserProfileWidgetContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  currentUser: state.session.currentUser,
+  currentUser: state.session.currentUser
 })
 
 UserProfileWidgetContainer.propTypes = {
