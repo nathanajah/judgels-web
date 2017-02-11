@@ -7,6 +7,10 @@ export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 export const FETCHING_CURRENT_USER = 'FETCHING_CURRENT_USER'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const SIGN_OUT = 'SIGN_OUT'
+export const REGISTERING_USER = 'REGISTERING_USER'
+export const REGISTER_ERROR = 'REGISTER_ERROR'
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+export const LOAD_REGISTER = 'LOAD_REGISTER'
 
 // ------------------------------------
 // Actions
@@ -14,6 +18,12 @@ export const SIGN_OUT = 'SIGN_OUT'
 export function setCurrentUser (currentUser) {
   return (dispatch) => {
     dispatch({ type: SET_CURRENT_USER, currentUser: currentUser })
+  }
+}
+
+export function loadRegister () {
+  return (dispatch) => {
+    dispatch({ type: LOAD_REGISTER })
   }
 }
 
@@ -51,11 +61,26 @@ export function login (username, password) {
         localStorage.setItem('toki-auth-token', 'token')
         dispatch(setCurrentUser(data))
         dispatch(push('/'))
-      })
+      }, 1000)
     } else {
       const error = 'Username/email/password invalid'
       dispatch({ type: LOGIN_ERROR, error: error })
     }
+  }
+}
+
+export function register (username, name, email, password, confirmPassword) {
+  return (dispatch) => {
+    dispatch({ type: REGISTERING_USER })
+    setTimeout(() => {
+      if (password === confirmPassword) {
+        dispatch({
+          type: REGISTER_SUCCESS,
+          message: `An email for activating your account has been sent to ${email}. Please check your inbox/spam.` })
+      } else {
+        dispatch({ type: REGISTER_ERROR, error: 'Passwords didn\'t match' })
+      }
+    }, 1000)
   }
 }
 
@@ -83,13 +108,37 @@ const initialState = {
     realName: undefined,
     token: undefined
   },
+  message: {
+    register: undefined
+  },
   error: {
+    register: undefined,
     login: undefined
   }
 }
 
 export default function sessionReducer (state = initialState, action) {
   switch (action.type) {
+    case LOAD_REGISTER:
+      return { ...state, message: { ...initialState.message }, error: { ...initialState.error } }
+    case REGISTERING_USER:
+      return {
+        ...state,
+        message: { ...state.message, register: 'Loading...' },
+        error: { ...state.error, register: initialState.error.register }
+      }
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        message: { ...state.message, register: action.message },
+        error: { ...state.error, register: initialState.error.register }
+      }
+    case REGISTER_ERROR:
+      return {
+        ...state,
+        message: { ...state.message, register: initialState.message.register },
+        error: { ...state.error, register: action.error }
+      }
     case FETCHING_CURRENT_USER:
       return {
         ...state,

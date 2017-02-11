@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import locationReducer from './location'
 import sessionReducer from './session'
+import form from './form'
 import { reducer as formReducer } from 'redux-form'
 import { routerReducer } from 'react-router-redux'
 
@@ -8,7 +9,7 @@ export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
     location: locationReducer,
     session: sessionReducer,
-    form: formReducer,
+    form: formReducer.plugin(form),
     routing: routerReducer,
     ...asyncReducers
   })
