@@ -2,6 +2,7 @@
 import JophielLayout from '../layouts/JophielLayout'
 import Home from './Home'
 import LoginContainer from './Login/containers/LoginContainer'
+import Welcome from './Welcome'
 import { refreshCurrentUser } from '../store/session'
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -24,7 +25,8 @@ export const createRoutes = (store) => {
     component   : JophielLayout,
     indexRoute  : Home,
     childRoutes : [
-      { path: 'login', component: LoginContainer }
+      { path: 'login', component: LoginContainer },
+      Welcome(store)
     ],
     onEnter     : checkAuthentication
   }
