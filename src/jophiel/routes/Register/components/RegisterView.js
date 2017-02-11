@@ -7,7 +7,7 @@ export class RegisterView extends React.Component {
     const { handleSubmitRegister, error, message } = this.props
     return (
       <div className='col-md-12'>
-        <h2>Log In</h2>
+        <h2>Register New Account</h2>
         { error && (<div className='alert alert-danger' role='alert'> {error} </div>) }
         { message && (<div className='alert alert-info' role='info'> {message} </div>) }
         <RegisterForm onSubmit={handleSubmitRegister} />
