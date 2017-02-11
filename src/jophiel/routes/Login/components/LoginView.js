@@ -1,6 +1,7 @@
 import React from 'react'
 import './LoginView.scss'
 import LoginForm from './LoginForm'
+import { Link } from 'react-router'
 
 export class LoginView extends React.Component {
   render () {
@@ -10,8 +11,8 @@ export class LoginView extends React.Component {
         <h2>Log In</h2>
         { error && (<div className='alert alert-danger' role='alert'> {error} </div>) }
         <LoginForm onSubmit={handleSubmitLogin} />
-        <a href='#'>Forgot password</a><br />
-        Don't have account? <a href='#'>Register</a>
+        <Link to={'/forgotPassword'}>Forgot password</Link><br />
+        Don't have account? <Link to={'/register'}>Register</Link>
       </div>
     )
   }

@@ -9,13 +9,13 @@ export class LoginForm extends React.Component {
         <div className='form-group' id='usernameOrEmail_field'>
           <label className='control-label col-md-4' htmlFor='usernameOrEmail'>Username or Email</label>
           <div className='col-md-8'>
-            <Field name='usernameOrEmail' component='input' className='form-control' type='text' />
+            <Field id='usernameOrEmail' name='usernameOrEmail' component='input' className='form-control' type='text' />
           </div>
         </div>
         <div className='form-group' id='password_field'>
           <label className='control-label col-md-4' htmlFor='password'>Password</label>
           <div className='col-md-8'>
-            <Field name='password' component='input' className='form-control' type='password' />
+            <Field id='password' name='password' component='input' className='form-control' type='password' />
           </div>
         </div>
         <div className='form-group'>

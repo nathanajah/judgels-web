@@ -11,6 +11,9 @@ export const REGISTERING_USER = 'REGISTERING_USER'
 export const REGISTER_ERROR = 'REGISTER_ERROR'
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const LOAD_REGISTER = 'LOAD_REGISTER'
+export const SUBMITTING_FORGOT_PASSWORD = 'SUBMITTING_FORGOT_PASSWORD'
+export const ERROR_FORGOT_PASSWORD = 'ERROR_FORGOT_PASSWORD'
+export const SUCCESS_FORGOT_PASSWORD = 'SUCCESS_FORGOT_PASSWORD'
 
 // ------------------------------------
 // Actions
@@ -24,6 +27,23 @@ export function setCurrentUser (currentUser) {
 export function loadRegister () {
   return (dispatch) => {
     dispatch({ type: LOAD_REGISTER })
+  }
+}
+
+export function forgotPassword (username, email) {
+  return (dispatch) => {
+    dispatch({ type: SUBMITTING_FORGOT_PASSWORD })
+    setTimeout(() => {
+      if (username !== 'nathanajah' || email !== 'nathanajah@nathanajah.com') {
+        dispatch({ type: ERROR_FORGOT_PASSWORD, error: 'Username not exists.' })
+      } else {
+        dispatch({
+          type: SUCCESS_FORGOT_PASSWORD,
+          message: 'An email with instruction for changing your password has been sent to ' +
+            `${email}. Please check your inbox/spam.`
+        })
+      }
+    }, 1000)
   }
 }
 
@@ -109,11 +129,13 @@ const initialState = {
     token: undefined
   },
   message: {
-    register: undefined
+    register: undefined,
+    forgotPassword: undefined
   },
   error: {
     register: undefined,
-    login: undefined
+    login: undefined,
+    forgotPassword: undefined
   }
 }
 
@@ -138,6 +160,24 @@ export default function sessionReducer (state = initialState, action) {
         ...state,
         message: { ...state.message, register: initialState.message.register },
         error: { ...state.error, register: action.error }
+      }
+    case SUBMITTING_FORGOT_PASSWORD:
+      return {
+        ...state,
+        message: { ...state.message, forgotPassword: 'Loading...' },
+        error: { ...state.error, forgotPassword: initialState.error.forgotPassword }
+      }
+    case ERROR_FORGOT_PASSWORD:
+      return {
+        ...state,
+        message: { ...state.message, forgotPassword: initialState.message.forgotPassword },
+        error: { ...state.error, forgotPassword: action.error }
+      }
+    case SUCCESS_FORGOT_PASSWORD:
+      return {
+        ...state,
+        message: { ...state.message, forgotPassword: action.message },
+        error: { ...state.error, forgotPassword: initialState.error.forgotPassword }
       }
     case FETCHING_CURRENT_USER:
       return {
