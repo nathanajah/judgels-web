@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ForgotPasswordView from '../components/ForgotPasswordView'
-import { forgotPassword } from '../../../store/session'
+import { forgotPassword } from '../modules/forgotPassword'
 
 export class ForgotPasswordContainer extends React.Component {
   constructor (props) {
@@ -16,22 +16,20 @@ export class ForgotPasswordContainer extends React.Component {
   }
 
   render () {
-    const { error, message } = this.props
+    const { forgotPassword } = this.props
     return (<ForgotPasswordView handleSubmitForgotPassword={this._handleSubmitForgotPassword}
-      error={error.forgotPassword} message={message.forgotPassword} />)
+      error={forgotPassword.error} message={forgotPassword.message} />)
   }
 }
 
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser,
-  error: state.session.error,
-  message: state.session.message
+  forgotPassword: state.forgotPassword
 })
 
 ForgotPasswordContainer.propTypes = {
   dispatch: React.PropTypes.func,
-  error: React.PropTypes.object,
-  message: React.PropTypes.object
+  forgotPassword: React.PropTypes.object
 }
 
 export default connect(mapStateToProps)(ForgotPasswordContainer)

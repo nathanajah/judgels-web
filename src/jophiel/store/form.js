@@ -1,4 +1,5 @@
-import { REGISTER_SUCCESS, SUCCESS_FORGOT_PASSWORD } from './session'
+import { REGISTER_SUCCESS } from '../routes/Register/modules/register'
+import { SUCCESS_FORGOT_PASSWORD } from '../routes/ForgotPassword/modules/forgotPassword'
 
 const form = {
   register: (state, action) => {
