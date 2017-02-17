@@ -33,7 +33,7 @@ export const UserProfileWidget = ({ handleLogoutClick, isFetching, isAuthenticat
       <p key={'profileBoxGreeting'}>Hello, Guest</p>,
       <div key={'profileBoxNavigationMenu'} className='clearfix'>
         <div className='pull-left'>
-          <a className='btn btn-default' href='#' target='_blank'>Register</a>
+          <Link to={'/register'} className='btn btn-default'>Register</Link>
         </div>
         <div className='pull-right'>
           <Link to={'/login'} className='btn btn-primary'>Login</Link>

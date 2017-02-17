@@ -51,7 +51,7 @@ export function login (username, password) {
         localStorage.setItem('toki-auth-token', 'token')
         dispatch(setCurrentUser(data))
         dispatch(push('/'))
-      })
+      }, 1000)
     } else {
       const error = 'Username/email/password invalid'
       dispatch({ type: LOGIN_ERROR, error: error })
