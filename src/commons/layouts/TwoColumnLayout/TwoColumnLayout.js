@@ -1,11 +1,11 @@
 import React from 'react'
 
-export const TwoColumnLayout = ({ upperWidgets, menus, lowerWidgets, children }) => (
+export const TwoColumnLayout = ({ upperWidgets, menu, lowerWidgets, children }) => (
   <div className='row content'>
     <div className='col-md-3'>
       <div className='sidebar clearfix'>
         { upperWidgets }
-        { menus }
+        { menu }
         { lowerWidgets }
       </div>
     </div>
