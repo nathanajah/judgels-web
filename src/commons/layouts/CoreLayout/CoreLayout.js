@@ -22,7 +22,6 @@ export class CoreLayout extends React.Component {
 
 CoreLayout.propTypes = {
   children : React.PropTypes.element.isRequired,
-  menu: React.PropTypes.element.isRequired,
   breadcrumbs: React.PropTypes.element.isRequired
 }
 

@@ -1,4 +1,4 @@
-import { WelcomeViewContainer } from './containers/WelcomeViewContainer'
+import WelcomeViewContainer from './containers/WelcomeViewContainer'
 
 export default (store) => ({
   path : 'welcome',

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import LoginView from '../components/LoginView'
 import { login } from '../../../store/session'
+import BreadcrumbWrapper from 'jophiel/hoc/BreadcrumbWrapper'
 
 export class LoginContainer extends React.Component {
   constructor (props) {
@@ -30,4 +31,7 @@ LoginContainer.propTypes = {
   error: React.PropTypes.object
 }
 
-export default connect(mapStateToProps)(LoginContainer)
+const ConnectedLoginContainer = connect(mapStateToProps)(LoginContainer)
+const WrappedLoginContainer = BreadcrumbWrapper([{ label: 'Login', link: '#' }])(ConnectedLoginContainer)
+
+export default WrappedLoginContainer
