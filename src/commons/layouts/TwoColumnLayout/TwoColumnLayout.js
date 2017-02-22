@@ -17,7 +17,7 @@ export const TwoColumnLayout = ({ upperWidgets, menu, lowerWidgets, children }) 
 
 TwoColumnLayout.propTypes = {
   upperWidgets: React.PropTypes.array,
-  menus: React.PropTypes.array,
+  menu: React.PropTypes.array,
   lowerWidgets: React.PropTypes.array,
   children: React.PropTypes.node
 }

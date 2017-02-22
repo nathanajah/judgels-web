@@ -30,7 +30,7 @@ export const createRoutes = (store) => {
       { path: 'login', component: LoginContainer },
       Register(store),
       ForgotPassword(store),
-      Welcome(store),
+      Welcome(store)
     ],
     onEnter     : checkAuthentication
   }
