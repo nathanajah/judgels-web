@@ -1,8 +1,8 @@
 import React from 'react'
-import TwoColumnLayout from 'commons/layouts/TwoColumnLayout'
+import TwoColumnLayoutContainer from 'commons/containers/TwoColumnLayoutContainer'
 import UserProfileWidgetContainer from 'jophiel/containers/UserProfileWidgetContainer'
 import ContentLayout from 'commons/layouts/ContentLayout'
-import CoreLayout from 'commons/layouts/CoreLayout'
+import CoreLayoutContainer from 'commons/containers/CoreLayoutContainer'
 import ScreenControlContainer from 'commons/containers/ScreenControlContainer'
 import JophielBreadcrumbsContainer from 'jophiel/containers/JophielBreadcrumbsContainer'
 import Menu from 'commons/components/Menu'
@@ -11,10 +11,10 @@ export class JophielLayout extends React.Component {
   render () {
     const { children } = this.props
     return (
-      <CoreLayout
+      <CoreLayoutContainer
         breadcrumbs={<JophielBreadcrumbsContainer />}
       >
-        <TwoColumnLayout
+        <TwoColumnLayoutContainer
           upperWidgets={
             [ <UserProfileWidgetContainer key='UserProfileWidgetContainer' /> ]
           }
@@ -24,8 +24,8 @@ export class JophielLayout extends React.Component {
           <ContentLayout>
             { children }
           </ContentLayout>
-        </TwoColumnLayout>
-      </CoreLayout>
+        </TwoColumnLayoutContainer>
+      </CoreLayoutContainer>
     )
   }
 }
