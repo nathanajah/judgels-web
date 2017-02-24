@@ -3,6 +3,7 @@ import TwoColumnLayout from 'commons/layouts/TwoColumnLayout'
 import UserProfileWidgetContainer from 'jophiel/containers/UserProfileWidgetContainer'
 import ContentLayout from 'commons/layouts/ContentLayout'
 import CoreLayout from 'commons/layouts/CoreLayout'
+import ScreenControlContainer from 'commons/containers/ScreenControlContainer'
 import JophielBreadcrumbsContainer from 'jophiel/containers/JophielBreadcrumbsContainer'
 import Menu from 'commons/components/Menu'
 
@@ -19,6 +20,7 @@ export class JophielLayout extends React.Component {
           }
           menu={<Menu entries={[{ link: '#', label: 'Welcome' }]} />}
         >
+          <ScreenControlContainer />
           <ContentLayout>
             { children }
           </ContentLayout>
