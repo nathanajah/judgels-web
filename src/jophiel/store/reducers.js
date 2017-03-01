@@ -5,6 +5,7 @@ import form from './form'
 import { reducer as formReducer } from 'redux-form'
 import { routerReducer } from 'react-router-redux'
 import breadcrumbsReducer from './breadcrumbs'
+import screenControlReducer from 'commons/store/screencontrol'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
@@ -13,6 +14,7 @@ export const makeRootReducer = (asyncReducers) => {
     form: formReducer.plugin(form),
     routing: routerReducer,
     breadcrumbs: breadcrumbsReducer,
+    screen: screenControlReducer,
     ...asyncReducers
   })
 }
