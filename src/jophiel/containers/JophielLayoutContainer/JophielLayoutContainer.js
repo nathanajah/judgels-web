@@ -1,10 +1,9 @@
-import CoreLayout from 'commons/layouts/CoreLayout'
+import JophielLayout from 'jophiel/layouts/JophielLayout'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state, ownProps) => ({
   children: ownProps.children,
-  breadcrumbs: ownProps.breadcrumbs,
   isFullscreen: state.screen.isFullscreen
 })
 
-export default connect(mapStateToProps)(CoreLayout)
+export default connect(mapStateToProps)(JophielLayout)

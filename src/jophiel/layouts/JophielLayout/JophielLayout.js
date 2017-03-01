@@ -1,18 +1,19 @@
 import React from 'react'
-import TwoColumnLayoutContainer from 'commons/containers/TwoColumnLayoutContainer'
+import TwoColumnLayoutContainer from 'jophiel/containers/TwoColumnLayoutContainer'
 import UserProfileWidgetContainer from 'jophiel/containers/UserProfileWidgetContainer'
 import ContentLayout from 'commons/layouts/ContentLayout'
-import CoreLayoutContainer from 'commons/containers/CoreLayoutContainer'
-import ScreenControlContainer from 'commons/containers/ScreenControlContainer'
+import CoreLayout from 'commons/layouts/CoreLayout'
+import ScreenControlContainer from 'jophiel/containers/ScreenControlContainer'
 import JophielBreadcrumbsContainer from 'jophiel/containers/JophielBreadcrumbsContainer'
 import Menu from 'commons/components/Menu'
 
 export class JophielLayout extends React.Component {
   render () {
-    const { children } = this.props
+    const { children, isFullscreen } = this.props
     return (
-      <CoreLayoutContainer
+      <CoreLayout
         breadcrumbs={<JophielBreadcrumbsContainer />}
+        isFullscreen={isFullscreen}
       >
         <TwoColumnLayoutContainer
           upperWidgets={
@@ -25,13 +26,14 @@ export class JophielLayout extends React.Component {
             { children }
           </ContentLayout>
         </TwoColumnLayoutContainer>
-      </CoreLayoutContainer>
+      </CoreLayout>
     )
   }
 }
 
 JophielLayout.propTypes = {
-  children : React.PropTypes.element.isRequired
+  children : React.PropTypes.element.isRequired,
+  isFullscreen: React.PropTypes.bool.isRequired
 }
 
 export default JophielLayout

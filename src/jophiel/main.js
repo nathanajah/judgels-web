@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import createStore from './store/createStore'
-import AppContainer from 'commons/containers/AppContainer'
+import AppContainer from 'jophiel/containers/AppContainer'
 
 // ========================================================
 // Store Instantiation

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 const mapStateToProps = (state, ownProps) => ({
   upperWidgets: ownProps.upperWidgets,
   menu: ownProps.menu,
-  lowerWidgest: ownProps.lowerWidgets,
+  lowerWidgets: ownProps.lowerWidgets,
   children: ownProps.children,
   isSidebarShown: state.screen.isSidebarShown
 })
