@@ -29,7 +29,7 @@ export const TwoColumnLayout = ({ upperWidgets, menu, lowerWidgets, children, is
 
 TwoColumnLayout.propTypes = {
   upperWidgets: React.PropTypes.array,
-  menu: React.PropTypes.HTMLElement,
+  menu: React.PropTypes.element,
   lowerWidgets: React.PropTypes.array,
   children: React.PropTypes.node,
   isSidebarShown: React.PropTypes.bool
