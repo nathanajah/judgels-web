@@ -13,8 +13,6 @@ export class CoreLayout extends React.Component {
       header = <Header />
       footer = <Footer />
     }
-    console.log(isFullscreen);
-    console.log(header);
     return (
       <div className='container-fluid'>
         { header }
