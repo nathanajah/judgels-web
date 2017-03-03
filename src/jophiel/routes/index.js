@@ -25,7 +25,7 @@ export const createRoutes = (store) => {
   return {
     path        : '/',
     component   : JophielLayoutContainer,
-    indexRoute  : Home,
+    indexRoute  : { onEnter: ({ params }, replace) => replace('/welcome') },
     childRoutes : [
       { path: 'login', component: LoginContainer },
       Register(store),
