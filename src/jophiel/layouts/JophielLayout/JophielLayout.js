@@ -5,6 +5,7 @@ import ContentLayout from 'commons/layouts/ContentLayout'
 import CoreLayout from 'commons/layouts/CoreLayout'
 import ScreenControlContainer from 'jophiel/containers/ScreenControlContainer'
 import JophielBreadcrumbsContainer from 'jophiel/containers/JophielBreadcrumbsContainer'
+import LinkedClientsViewContainer from 'jophiel/containers/LinkedClientsViewContainer'
 import UserProfileSearch from 'jophiel/components/UserProfileSearch'
 import Menu from 'commons/components/Menu'
 
@@ -21,9 +22,10 @@ export class JophielLayout extends React.Component {
             [ <UserProfileWidgetContainer key='UserProfileWidgetContainer' /> ]
           }
           menu={<Menu entries={[{ link: '#', label: 'Welcome' }]} />}
-          lowerWidgets={
-            [ <UserProfileSearch /> ]
-          }
+          lowerWidgets={[
+            <LinkedClientsViewContainer key='LinkedClientsViewContainer'/>,
+            <UserProfileSearch key='UserProfileSearch' />
+          ]}
         >
           <ScreenControlContainer />
           <ContentLayout>
