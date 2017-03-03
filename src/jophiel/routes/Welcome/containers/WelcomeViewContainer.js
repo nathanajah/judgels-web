@@ -1,15 +1,17 @@
-import React from 'react'
 import { WelcomeView } from '../components/WelcomeView'
 import BreadcrumbWrapper from 'jophiel/hoc/BreadcrumbWrapper'
+import { connect } from 'react-redux'
 
-const InnerWelcomeViewContainer = () => (
-  <WelcomeView
-    linkedClients={[
-      { label: 'Repository Gate', link: '#' }
-    ]}
-  />
-)
+const mapStateToProps = () => ({
+  linkedClients:[
+    { label: 'Repository Gate', link: '#' }
+  ],
+  title: 'Single Sign-On - Welcome'
+})
 
-export const WelcomeViewContainer = BreadcrumbWrapper([{ label: 'Welcome', link: '#' }])(InnerWelcomeViewContainer)
+export const WelcomeViewContainer =
+  BreadcrumbWrapper([{ label: 'Welcome', link: '#' }])(
+    connect(mapStateToProps)(WelcomeView)
+  )
 
 export default WelcomeViewContainer
