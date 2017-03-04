@@ -1,6 +1,5 @@
 // We only need to import the modules necessary for initial render
 import JophielLayoutContainer from '../containers/JophielLayoutContainer'
-import Home from './Home'
 import LoginContainer from './Login/containers/LoginContainer'
 import Register from './Register'
 import ForgotPassword from './ForgotPassword'
