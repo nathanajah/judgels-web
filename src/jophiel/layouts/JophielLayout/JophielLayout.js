@@ -24,7 +24,7 @@ export class JophielLayout extends React.Component {
           }
           menu={<Menu entries={[{ link: '#', label: 'Welcome' }]} />}
           lowerWidgets={[
-            <LinkedClientsViewContainer key='LinkedClientsViewContainer'/>,
+            <LinkedClientsViewContainer key='LinkedClientsViewContainer' />,
             <UserProfileSearch key='UserProfileSearch' />
           ]}
         >

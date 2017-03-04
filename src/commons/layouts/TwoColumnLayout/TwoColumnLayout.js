@@ -1,28 +1,27 @@
 import React from 'react'
+import { Grid } from 'semantic-ui-react'
 
 export const TwoColumnLayout = ({ upperWidgets, menu, lowerWidgets, children, isSidebarShown }) => {
   if (isSidebarShown) {
     return (
-      <div className='row content'>
-        <div className='col-md-3'>
-          <div className='sidebar clearfix'>
-            { upperWidgets }
-            { menu }
-            { lowerWidgets }
-          </div>
-        </div>
-        <div className='col-md-9'>
+      <Grid>
+        <Grid.Column width='four'>
+          { upperWidgets }
+          { menu }
+          { lowerWidgets }
+        </Grid.Column>
+        <Grid.Column width='twelve'>
           { children }
-        </div>
-      </div>
+        </Grid.Column>
+      </Grid>
     )
   } else {
     return (
-      <div className='row content'>
-        <div className='col-md-12'>
+      <Grid>
+        <Grid.Column width='sixteen'>
           { children }
-        </div>
-      </div>
+        </Grid.Column>
+      </Grid>
     )
   }
 }

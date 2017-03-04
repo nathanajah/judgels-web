@@ -3,6 +3,7 @@ import Header from 'commons/components/Header'
 import Footer from 'commons/components/Footer'
 import './CoreLayout.scss'
 import 'commons/styles/core.scss'
+import { Grid, Container } from 'semantic-ui-react'
 
 export class CoreLayout extends React.Component {
   render () {
@@ -14,19 +15,21 @@ export class CoreLayout extends React.Component {
       footer = <Footer />
     }
     return (
-      <div className='container-fluid'>
+      <Container fluid>
         { header }
-        <main className='container'>
-          <div className='row'>
+        <Grid container>
+          <Grid.Row>
             { linkedClients }
-          </div>
-          <div className='row'>
+          </Grid.Row>
+          <Grid.Row>
             { breadcrumbs }
+          </Grid.Row>
+          <Grid.Row>
             { children }
-          </div>
-        </main>
+          </Grid.Row>
+        </Grid>
         { footer }
-      </div>
+      </Container>
     )
   }
 }
