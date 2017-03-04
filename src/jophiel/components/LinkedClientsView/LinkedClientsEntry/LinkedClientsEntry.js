@@ -1,9 +1,8 @@
 import React from 'react'
+import { Menu } from 'semantic-ui-react'
 
 export const LinkedClientsEntry = ({ label, link }) => (
-  <div className='clearfix' key={link}>
-    <a className='btn btn-primary col-md-12' href={link}>{label}</a>
-  </div>
+  <Menu.Item href='#'>{label}</Menu.Item>
 )
 
 LinkedClientsEntry.propTypes = {

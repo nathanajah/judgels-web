@@ -1,5 +1,5 @@
 // We only need to import the modules necessary for initial render
-import JophielLayoutContainer from '../containers/JophielLayoutContainer'
+import JophielLayout from '../layouts/JophielLayout'
 import LoginContainer from './Login/containers/LoginContainer'
 import Register from './Register'
 import ForgotPassword from './ForgotPassword'
@@ -23,7 +23,7 @@ export const createRoutes = (store) => {
 
   return {
     path        : '/',
-    component   : JophielLayoutContainer,
+    component   : JophielLayout,
     indexRoute  : { onEnter: ({ params }, replace) => replace('/welcome') },
     childRoutes : [
       { path: 'login', component: LoginContainer },
