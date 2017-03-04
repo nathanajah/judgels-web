@@ -16,6 +16,7 @@ export class JophielLayout extends React.Component {
       <CoreLayout
         breadcrumbs={<JophielBreadcrumbsContainer />}
         isFullscreen={isFullscreen}
+        linkedClients={<LinkedClientsViewContainer />}
       >
         <TwoColumnLayoutContainer
           upperWidgets={

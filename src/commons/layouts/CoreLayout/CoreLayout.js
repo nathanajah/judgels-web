@@ -6,7 +6,7 @@ import 'commons/styles/core.scss'
 
 export class CoreLayout extends React.Component {
   render () {
-    const { children, breadcrumbs, isFullscreen } = this.props
+    const { children, breadcrumbs, linkedClients, isFullscreen } = this.props
     let header = null
     let footer = null
     if (!isFullscreen) {
@@ -17,8 +17,13 @@ export class CoreLayout extends React.Component {
       <div className='container-fluid'>
         { header }
         <main className='container'>
-          { breadcrumbs }
-          { children }
+          <div className='row'>
+            { linkedClients }
+          </div>
+          <div className='row'>
+            { breadcrumbs }
+            { children }
+          </div>
         </main>
         { footer }
       </div>
@@ -29,6 +34,7 @@ export class CoreLayout extends React.Component {
 CoreLayout.propTypes = {
   children : React.PropTypes.element.isRequired,
   breadcrumbs: React.PropTypes.element.isRequired,
+  linkedClients: React.PropTypes.element.isRequired,
   isFullscreen: React.PropTypes.bool
 }
 
