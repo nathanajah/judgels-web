@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react'
 
 export const TwoColumnLayout = ({ upperWidgets, menu, lowerWidgets, children }) => {
   return (
-    <Grid>
+    <Grid fluid>
       <Grid.Column width='four'>
         { upperWidgets }
         { menu }
