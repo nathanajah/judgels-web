@@ -1,11 +1,10 @@
 import React from 'react'
+import { Segment } from 'semantic-ui-react'
 
 export const LinkedClientPanel = ({ label, link }) => (
-  <div className='panel panel-default'>
-    <div className='panel-body'>
-      <a href={link}>{label}</a>
-    </div>
-  </div>
+  <Segment>
+    <a href={link}>{label}</a>
+  </Segment>
 )
 
 LinkedClientPanel.propTypes = {
