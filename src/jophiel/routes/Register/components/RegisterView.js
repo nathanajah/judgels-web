@@ -1,17 +1,26 @@
 import React from 'react'
 import './RegisterView.scss'
 import RegisterForm from './RegisterForm'
+import { Grid, Header, Message } from 'semantic-ui-react'
 
 export class RegisterView extends React.Component {
   render () {
     const { handleSubmitRegister, error, message } = this.props
     return (
-      <div className='col-md-12'>
-        <h2>Register New Account</h2>
-        { error && (<div className='alert alert-danger' role='alert'> {error} </div>) }
-        { message && (<div className='alert alert-info' role='info'> {message} </div>) }
-        <RegisterForm onSubmit={handleSubmitRegister} />
-      </div>
+      <Grid>
+        <Grid.Row columns={1}>
+          <Grid.Column>
+            <Header as='h2'>Register New Account</Header>
+            { error && (
+              <Message negative header='Error'
+                content={error} />) }
+            { message && (
+              <Message info
+                content={message} />) }
+            <RegisterForm onSubmit={handleSubmitRegister} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     )
   }
 }

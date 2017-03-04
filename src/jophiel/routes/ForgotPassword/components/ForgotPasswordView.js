@@ -1,17 +1,26 @@
 import React from 'react'
 import './ForgotPasswordView.scss'
 import ForgotPasswordForm from './ForgotPasswordForm'
+import { Grid, Header, Message } from 'semantic-ui-react'
 
 export class ForgotPasswordView extends React.Component {
   render () {
     const { handleSubmitForgotPassword, error, message } = this.props
     return (
-      <div className='col-md-12'>
-        <h2>Forgot Password</h2>
-        { error && (<div className='alert alert-danger' role='alert'> {error} </div>) }
-        { message && (<div className='alert alert-info' role='info'> {message} </div>) }
-        <ForgotPasswordForm onSubmit={handleSubmitForgotPassword} />
-      </div>
+      <Grid>
+        <Grid.Row columns={1}>
+          <Grid.Column>
+            <Header as='h2'>Forgot Password</Header>
+            { error && (
+              <Message negative header='Error'
+                content={error} />) }
+            { message && (
+              <Message info
+                content={message} />) }
+            <ForgotPasswordForm onSubmit={handleSubmitForgotPassword} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     )
   }
 }

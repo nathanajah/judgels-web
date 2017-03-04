@@ -19,7 +19,8 @@ export function register (username, name, email, password, confirmPassword) {
   return (dispatch) => {
     dispatch({ type: REGISTERING_USER })
     setTimeout(() => {
-      if (password === confirmPassword) {
+      if (username && name && email && password &&
+        password === confirmPassword) {
         dispatch({
           type: REGISTER_SUCCESS,
           message: `An email for activating your account has been sent to ${email}. Please check your inbox/spam.` })
