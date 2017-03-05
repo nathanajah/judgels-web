@@ -1,6 +1,5 @@
 import React from 'react'
 import TwoColumnLayout from 'commons/layouts/TwoColumnLayout'
-import UserProfileWidgetContainer from 'jophiel/containers/UserProfileWidgetContainer'
 import ContentLayout from 'commons/layouts/ContentLayout'
 import CoreLayout from 'commons/layouts/CoreLayout'
 import JophielBreadcrumbsContainer from 'jophiel/containers/JophielBreadcrumbsContainer'
@@ -17,9 +16,6 @@ export class JophielLayout extends React.Component {
         linkedClients={<LinkedClientsViewContainer />}
       >
         <TwoColumnLayout
-          upperWidgets={
-            [ <UserProfileWidgetContainer key='UserProfileWidgetContainer' /> ]
-          }
           menu={<Menu entries={[{ link: '#', label: 'Welcome' }]} />}
           lowerWidgets={[
             <UserProfileSearch key='UserProfileSearch' />
