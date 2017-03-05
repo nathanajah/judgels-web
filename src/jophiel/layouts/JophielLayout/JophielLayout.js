@@ -5,7 +5,7 @@ import CoreLayout from 'commons/layouts/CoreLayout'
 import JophielBreadcrumbsContainer from 'jophiel/containers/JophielBreadcrumbsContainer'
 import LinkedClientsViewContainer from 'jophiel/containers/LinkedClientsViewContainer'
 import UserProfileSearch from 'jophiel/components/UserProfileSearch'
-import Menu from 'commons/components/Menu'
+import JophielNavigationContainer from 'jophiel/containers/JophielNavigationContainer'
 
 export class JophielLayout extends React.Component {
   render () {
@@ -16,8 +16,8 @@ export class JophielLayout extends React.Component {
         linkedClients={<LinkedClientsViewContainer />}
       >
         <TwoColumnLayout
-          menu={<Menu entries={[{ link: '#', label: 'Welcome' }]} />}
           lowerWidgets={[
+            <JophielNavigationContainer key='navigation' />,
             <UserProfileSearch key='UserProfileSearch' />
           ]}
         >
