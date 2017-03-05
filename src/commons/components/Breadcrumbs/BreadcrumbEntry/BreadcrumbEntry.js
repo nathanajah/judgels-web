@@ -1,10 +1,10 @@
 import React from 'react'
 
 export const BreadcrumbEntry = ({ label, link, position }) => (
-  <li property='itemListElement' typeof='ListItem'>
-    <a href={link} className='breadcrumb-link'>{label}</a>
-    <meta property='position' content={position + 1} />
-  </li>
+  <span>
+    <a href={link} className='breadcrumb-link'>{label} </a>
+    <span>&nbsp;&rsaquo;&nbsp;</span>
+  </span>
 )
 
 BreadcrumbEntry.propTypes = {

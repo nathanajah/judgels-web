@@ -15,7 +15,7 @@ export class CoreLayout extends React.Component {
           <Grid.Row>
             { linkedClients }
           </Grid.Row>
-          <Grid.Row>
+          <Grid.Row style={{ padding: '0px' }}>
             { breadcrumbs }
           </Grid.Row>
           <Grid.Row>
