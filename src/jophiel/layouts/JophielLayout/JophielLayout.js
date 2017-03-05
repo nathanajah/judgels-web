@@ -35,7 +35,7 @@ export class JophielLayout extends React.Component {
 }
 
 JophielLayout.propTypes = {
-  children : React.PropTypes.element.isRequired,
+  children : React.PropTypes.element.isRequired
 }
 
 export default JophielLayout

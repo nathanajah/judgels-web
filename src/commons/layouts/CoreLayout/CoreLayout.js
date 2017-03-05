@@ -31,7 +31,7 @@ export class CoreLayout extends React.Component {
 CoreLayout.propTypes = {
   children : React.PropTypes.element.isRequired,
   breadcrumbs: React.PropTypes.element.isRequired,
-  linkedClients: React.PropTypes.element.isRequired,
+  linkedClients: React.PropTypes.element.isRequired
 }
 
 export default CoreLayout
