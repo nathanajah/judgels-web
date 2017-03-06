@@ -7,7 +7,7 @@ export const Navigation = ({ entries }) => (
     <Header as='h3'>
       Navigation
     </Header>
-    <Menu vertical secondary pointing>
+    <Menu vertical secondary pointing fluid>
       {entries.map((entry, position) => (
         <NavigationEntry key={position} link={entry.link} label={entry.label} active={entry.active} />
       ))}

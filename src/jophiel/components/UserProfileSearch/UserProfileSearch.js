@@ -1,33 +1,18 @@
 import React from 'react'
+import { Container, Header, Input, Button, Icon } from 'semantic-ui-react'
 
 export const UserProfileSearch = () => (
-  <div className='box clearfix'>
-    <div className='col-md-12 clearfix'>
-      User Profile Search
-
-      <br />
-      <br />
-
-      <form className='form-horizontal'>
-        <div className='form-group row clearfix'>
-          <label className='control-label col-md-4' htmlFor='search_username'>
-            Username:
-          </label>
-          <div className='col-md-8'>
-            <input id='search_username' type='text' className='form-control user_autocomplete' name='username' />
-          </div>
-        </div>
-
-        <div className='form-group clearfix'>
-          <div className='col-md-12'>
-            <div className='pull-right'>
-              <button className='btn btn-primary'>Search</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+  <Container>
+    <Header as='h3'>
+      User Search
+    </Header>
+    <Input action fluid placeholder='username'>
+      <input />
+      <Button icon>
+        <Icon name='search' />
+      </Button>
+    </Input>
+  </Container>
 )
 
 export default UserProfileSearch
