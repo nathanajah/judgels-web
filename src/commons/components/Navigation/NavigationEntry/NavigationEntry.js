@@ -10,7 +10,7 @@ export const NavigationEntry = ({ link, label, active }) => (
 NavigationEntry.propTypes = {
   link: React.PropTypes.string.isRequired,
   label: React.PropTypes.string.isRequired,
-  active: React.PropTypes.boolean
+  active: React.PropTypes.bool
 }
 
 export default NavigationEntry
