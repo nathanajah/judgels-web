@@ -3,25 +3,53 @@ import Header from 'commons/components/Header'
 import Footer from 'commons/components/Footer'
 import './CoreLayout.scss'
 import 'commons/styles/core.scss'
-import { Grid, Container } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
+
+const colors = {
+  grey: '#f5f6f7',
+  white: '#ffffff'
+}
+
+const styles = {
+  topContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%'
+  },
+  linkedClientDiv: {
+    backgroundColor: colors.white
+  },
+  breadcrumbsDiv: {
+    backgroundColor: colors.grey,
+    paddingBottom: '30px'
+  },
+  childrenDiv: {
+    flexGrow: 1,
+    backgroundColor: colors.grey
+  }
+}
 
 export class CoreLayout extends React.Component {
   render () {
     const { children, breadcrumbs, linkedClients } = this.props
     return (
-      <Container fluid>
+      <Container fluid style={styles.topContainer}>
         <Header />
-        <Grid container>
-          <Grid.Row>
+        <div style={styles.linkedClientDiv} >
+          <Container>
             { linkedClients }
-          </Grid.Row>
-          <Grid.Row style={{ padding: '0px' }}>
+          </Container>
+        </div>
+        <div style={styles.breadcrumbsDiv} >
+          <Container>
             { breadcrumbs }
-          </Grid.Row>
-          <Grid.Row>
+          </Container>
+        </div>
+        <div style={styles.childrenDiv}>
+          <Container>
             { children }
-          </Grid.Row>
-        </Grid>
+          </Container>
+        </div>
         <Footer />
       </Container>
     )

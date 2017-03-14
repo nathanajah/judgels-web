@@ -12,8 +12,14 @@ const trigger = (
   </span>
 )
 
+const styles = {
+  menu: {
+    marginBottom: '0px'
+  }
+}
+
 export const Header = () => (
-  <Menu inverted color='blue'>
+  <Menu inverted color='blue' style={styles.menu}>
     <Menu.Item><Image size='mini' src={Logo} /></Menu.Item>
     <Menu.Item header><span>TLX | TOKI Learning Center</span></Menu.Item>
     <Menu.Menu position='right'>
