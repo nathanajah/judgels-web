@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from 'components/Header'
 import Footer from 'components/Footer'
 import './CoreLayout.scss'
 import 'styles/core.scss'
@@ -31,10 +30,10 @@ const styles = {
 
 export class CoreLayout extends React.Component {
   render () {
-    const { children, breadcrumbs, linkedClients } = this.props
+    const { header, children, breadcrumbs, linkedClients } = this.props
     return (
       <Container fluid style={styles.topContainer}>
-        <Header />
+        { header }
         <div style={styles.linkedClientDiv} >
           <Container>
             { linkedClients }
@@ -57,6 +56,7 @@ export class CoreLayout extends React.Component {
 }
 
 CoreLayout.propTypes = {
+  header: React.PropTypes.element.isRequired,
   children : React.PropTypes.element.isRequired,
   breadcrumbs: React.PropTypes.element.isRequired,
   linkedClients: React.PropTypes.element.isRequired

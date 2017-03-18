@@ -6,12 +6,14 @@ import JophielBreadcrumbsContainer from 'containers/JophielBreadcrumbsContainer'
 import LinkedClientsViewContainer from 'containers/LinkedClientsViewContainer'
 import UserProfileSearch from 'components/UserProfileSearch'
 import JophielNavigationContainer from 'containers/JophielNavigationContainer'
+import JophielHeaderContainer from 'containers/JophielHeaderContainer'
 
 export class JophielLayout extends React.Component {
   render () {
     const { children } = this.props
     return (
       <CoreLayout
+        header={<JophielHeaderContainer />}
         breadcrumbs={<JophielBreadcrumbsContainer />}
         linkedClients={<LinkedClientsViewContainer />}
       >

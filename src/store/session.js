@@ -6,7 +6,7 @@ import { push } from 'react-router-redux'
 export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 export const FETCHING_CURRENT_USER = 'FETCHING_CURRENT_USER'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
-export const SIGN_OUT = 'SIGN_OUT'
+export const LOGOUT = 'LOGOUT'
 
 // ------------------------------------
 // Actions
@@ -63,7 +63,7 @@ export function logout () {
   return (dispatch) => {
     setTimeout(() => {
       localStorage.removeItem('toki-auth-token')
-      dispatch({ type: SIGN_OUT })
+      dispatch({ type: LOGOUT })
     })
   }
 }
@@ -115,7 +115,7 @@ export default function sessionReducer (state = initialState, action) {
       }
     case LOGIN_ERROR:
       return { ...state, error: { ...state.error, login: action.error } }
-    case SIGN_OUT:
+    case LOGOUT:
       return { ...initialState }
     default:
       return state
