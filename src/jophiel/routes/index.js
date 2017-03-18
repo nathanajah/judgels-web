@@ -25,13 +25,13 @@ export const createRoutes = (store) => {
     path        : '/',
     component   : JophielLayout,
     indexRoute  : { onEnter: ({ params }, replace) => replace('/welcome') },
+    onEnter     : checkAuthentication,
     childRoutes : [
       { path: 'login', component: LoginContainer },
       Register(store),
       ForgotPassword(store),
       Welcome(store)
-    ],
-    onEnter     : checkAuthentication
+    ]
   }
 }
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically
