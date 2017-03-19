@@ -1,5 +1,5 @@
 import { WelcomeView } from '../components/WelcomeView'
-import BreadcrumbWrapper from 'jophiel/hoc/BreadcrumbWrapper'
+import BreadcrumbWrapper from 'hoc/BreadcrumbWrapper'
 import { connect } from 'react-redux'
 
 const mapStateToProps = () => ({

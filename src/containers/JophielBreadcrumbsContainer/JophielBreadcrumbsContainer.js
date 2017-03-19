@@ -1,4 +1,4 @@
-import Breadcrumbs from 'commons/components/Breadcrumbs'
+import Breadcrumbs from 'components/Breadcrumbs'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {

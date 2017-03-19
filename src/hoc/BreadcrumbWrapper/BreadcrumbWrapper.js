@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { breadcrumbsAdd, breadcrumbsRemove } from 'jophiel/store/breadcrumbs'
+import { breadcrumbsAdd, breadcrumbsRemove } from 'store/breadcrumbs'
 
 export const BreadcrumbWrapper = (links) => {
   let generatedId = 0

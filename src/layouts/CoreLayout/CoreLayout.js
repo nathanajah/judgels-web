@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from 'commons/components/Header'
-import Footer from 'commons/components/Footer'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 import './CoreLayout.scss'
-import 'commons/styles/core.scss'
+import 'styles/core.scss'
 import { Container } from 'semantic-ui-react'
 
 const colors = {
