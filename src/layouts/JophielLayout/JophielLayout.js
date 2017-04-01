@@ -2,6 +2,7 @@ import React from 'react'
 import TwoColumnLayout from 'layouts/TwoColumnLayout'
 import ContentLayout from 'layouts/ContentLayout'
 import CoreLayout from 'layouts/CoreLayout'
+import JophielHeaderContainer from 'containers/JophielHeaderContainer'
 import JophielBreadcrumbsContainer from 'containers/JophielBreadcrumbsContainer'
 import LinkedClientsViewContainer from 'containers/LinkedClientsViewContainer'
 import UserProfileSearch from 'components/UserProfileSearch'
@@ -12,6 +13,7 @@ export class JophielLayout extends React.Component {
     const { children } = this.props
     return (
       <CoreLayout
+        header={<JophielHeaderContainer />}
         breadcrumbs={<JophielBreadcrumbsContainer />}
         linkedClients={<LinkedClientsViewContainer />}
       >

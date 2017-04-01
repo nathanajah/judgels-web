@@ -1,7 +1,7 @@
 import { injectReducer } from '../../store/reducers'
 
 export default (store) => ({
-  path : 'register',
+  path : 'join',
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
       const RegisterContainer = require('./containers/RegisterContainer').default

@@ -18,7 +18,7 @@ export class LoginView extends React.Component {
                   content={error} />) }
               <LoginForm onSubmit={handleSubmitLogin} />
               <Link to={'/forgotPassword'}>Forgot password</Link><br />
-              Don't have account? <Link to={'/register'}>Register</Link>
+              Don't have account? <Link to={'/join'}>Register</Link>
             </Grid.Column>
           </Grid.Row>
         </Grid>
