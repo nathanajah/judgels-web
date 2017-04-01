@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import LoginView from '../components/LoginView'
-import { login } from '../../../store/session'
+import LoginView from '../../components/LoginView'
+import { login } from 'store/session'
 
 export class LoginContainer extends React.Component {
   constructor (props) {

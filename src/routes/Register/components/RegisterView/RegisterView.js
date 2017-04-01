@@ -1,6 +1,6 @@
 import React from 'react'
 import './RegisterView.scss'
-import RegisterForm from './RegisterForm'
+import RegisterForm from '../RegisterForm'
 import { Grid, Header, Message } from 'semantic-ui-react'
 
 export class RegisterView extends React.Component {
