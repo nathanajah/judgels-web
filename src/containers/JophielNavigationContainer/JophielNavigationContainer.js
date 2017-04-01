@@ -1,5 +1,5 @@
 import React from 'react'
-import Navigation from 'commons/components/Navigation'
+import Navigation from 'components/Navigation'
 
 export const JophielNavigationContainer = () => (
   <Navigation
