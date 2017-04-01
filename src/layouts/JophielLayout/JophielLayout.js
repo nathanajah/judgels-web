@@ -1,12 +1,12 @@
 import React from 'react'
-import TwoColumnLayout from 'layouts/TwoColumnLayout'
-import ContentLayout from 'layouts/ContentLayout'
-import CoreLayout from 'layouts/CoreLayout'
-import JophielBreadcrumbsContainer from 'containers/JophielBreadcrumbsContainer'
-import LinkedClientsViewContainer from 'containers/LinkedClientsViewContainer'
-import UserProfileSearch from 'components/UserProfileSearch'
-import JophielNavigationContainer from 'containers/JophielNavigationContainer'
-import JophielHeaderContainer from 'containers/JophielHeaderContainer'
+import TwoColumnLayout from 'commons/layouts/TwoColumnLayout'
+import ContentLayout from 'commons/layouts/ContentLayout'
+import CoreLayout from 'commons/layouts/CoreLayout'
+import JophielHeaderContainer from 'jophiel/containers/JophielHeaderContainer'
+import JophielBreadcrumbsContainer from 'jophiel/containers/JophielBreadcrumbsContainer'
+import LinkedClientsViewContainer from 'jophiel/containers/LinkedClientsViewContainer'
+import UserProfileSearch from 'jophiel/components/UserProfileSearch'
+import JophielNavigationContainer from 'jophiel/containers/JophielNavigationContainer'
 
 export class JophielLayout extends React.Component {
   render () {
