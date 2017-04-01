@@ -44,7 +44,8 @@ Header.propTypes = {
 
 const styles = {
   menu: {
-    marginBottom: '0px'
+    marginBottom: '0px',
+    borderRadius: '0'
   }
 }
 
