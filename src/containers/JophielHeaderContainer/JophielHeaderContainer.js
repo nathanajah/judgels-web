@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import Header from 'commons/components/Header'
-import { logout } from '../store/session'
+import Header from 'components/Header'
+import { logout } from 'store/session'
 
 export class JophielHeaderContainer extends React.Component {
   constructor (props) {

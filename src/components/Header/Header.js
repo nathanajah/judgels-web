@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.scss'
-import Logo from 'commons/assets/images/logo.png'
+import Logo from 'assets/images/logo.png'
 import { Image, Menu } from 'semantic-ui-react'
 import UserWidget from './UserWidget'
 
