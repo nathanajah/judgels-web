@@ -12,15 +12,14 @@
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src",
     "lint:fix": "npm run lint -- --fix",
-    "start": "better-npm-run start",
+    "start": "npm run deploy:prod && better-npm-run start",
     "serve": "better-npm-run start",
-    "postinstall": "npm run deploy:prod",
+    "postinstall": "node semantic/semantic-fix.js",
     "dev": "better-npm-run dev",
     "deploy": "better-npm-run deploy",
     "deploy:dev": "better-npm-run deploy:dev",
     "deploy:prod": "better-npm-run deploy:prod",
-    "codecov": "cat coverage/*/lcov.info | codecov",
-    "postinstall": "node semantic/semantic-fix.js"
+    "codecov": "cat coverage/*/lcov.info | cogdecov"
   },
   "betterScripts": {
     "compile": {
