@@ -4,7 +4,7 @@ import { push } from 'react-router-redux'
 import Header from 'components/Header'
 import { logout } from 'store/session'
 
-export class JophielHeaderContainer extends React.Component {
+export class HeaderContainer extends React.Component {
   constructor (props) {
     super(props)
     this._handleClickLogin = this._handleClickLogin.bind(this)
@@ -43,7 +43,7 @@ export class JophielHeaderContainer extends React.Component {
   }
 }
 
-JophielHeaderContainer.propTypes = {
+HeaderContainer.propTypes = {
   currentUser: React.PropTypes.shape({
     isAuthenticated: React.PropTypes.bool.isRequired,
     isFetching: React.PropTypes.bool.isRequired,
@@ -57,4 +57,4 @@ const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser
 })
 
-export default connect(mapStateToProps)(JophielHeaderContainer)
+export default connect(mapStateToProps)(HeaderContainer)

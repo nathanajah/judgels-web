@@ -2,24 +2,24 @@ import React from 'react'
 import TwoColumnLayout from 'layouts/TwoColumnLayout'
 import ContentLayout from 'layouts/ContentLayout'
 import CoreLayout from 'layouts/CoreLayout'
-import JophielHeaderContainer from 'containers/JophielHeaderContainer'
-import JophielBreadcrumbsContainer from 'containers/JophielBreadcrumbsContainer'
+import HeaderContainer from 'containers/HeaderContainer'
+import BreadcrumbsContainer from 'containers/BreadcrumbsContainer'
 import LinkedClientsViewContainer from 'containers/LinkedClientsViewContainer'
 import UserProfileSearch from 'components/UserProfileSearch'
-import JophielNavigationContainer from 'containers/JophielNavigationContainer'
+import NavigationContainer from 'containers/NavigationContainer'
 
-export class JophielLayout extends React.Component {
+export class NavigationalLayout extends React.Component {
   render () {
     const { children } = this.props
     return (
       <CoreLayout
-        header={<JophielHeaderContainer />}
-        breadcrumbs={<JophielBreadcrumbsContainer />}
+        header={<HeaderContainer />}
+        breadcrumbs={<BreadcrumbsContainer />}
         linkedClients={<LinkedClientsViewContainer />}
       >
         <TwoColumnLayout
           lowerWidgets={[
-            <JophielNavigationContainer key='navigation' />,
+            <NavigationContainer key='navigation' />,
             <UserProfileSearch key='UserProfileSearch' />
           ]}
         >
@@ -32,8 +32,8 @@ export class JophielLayout extends React.Component {
   }
 }
 
-JophielLayout.propTypes = {
+NavigationalLayout.propTypes = {
   children : React.PropTypes.element.isRequired
 }
 
-export default JophielLayout
+export default NavigationalLayout

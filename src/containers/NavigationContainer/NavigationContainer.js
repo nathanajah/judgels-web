@@ -1,7 +1,7 @@
 import React from 'react'
 import Navigation from 'components/Navigation'
 
-export const JophielNavigationContainer = () => (
+export const NavigationContainer = () => (
   <Navigation
     entries={[{
       link: '#',
@@ -14,4 +14,4 @@ export const JophielNavigationContainer = () => (
   />
 )
 
-export default JophielNavigationContainer
+export default NavigationContainer

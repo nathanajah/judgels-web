@@ -23,7 +23,7 @@ export const createRoutes = (store) => {
 
   return {
     path        : '/',
-    component   : JophielLayout,
+    component   : NavigationalLayout,
     indexRoute  : { onEnter: ({ params }, replace) => replace('/welcome') },
     onEnter     : checkAuthentication,
     childRoutes : [
