@@ -2,7 +2,7 @@ import React from 'react'
 import NavigationalLayout from 'layouts/NavigationalLayout'
 import LinkedClientPanel from '../LinkedClientPanel'
 import DocumentTitle from 'react-document-title'
-import { Button, Grid, Header } from 'semantic-ui-react'
+import { Grid, Header } from 'semantic-ui-react'
 
 export const WelcomeView = ({ title, linkedClients }) => (
   <DocumentTitle title={title} >
