@@ -1,0 +1,8 @@
+@fontName       : 'Open Sans';
+
+
+@primaryColor   : @blue;
+@blue           : #3b73ba;
+@red            : #DB3069;
+@yellow         : #f5d547;
+@green          : #29bf12;
