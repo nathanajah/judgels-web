@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import RegisterView from '../components/RegisterView'
-import { register, loadRegister } from '../modules/register'
+import RegisterView from '../../components/RegisterView'
+import { register, loadRegister } from '../../modules/register'
 
 export class RegisterContainer extends React.Component {
   constructor (props) {

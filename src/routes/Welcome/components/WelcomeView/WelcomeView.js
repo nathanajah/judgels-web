@@ -1,5 +1,5 @@
 import React from 'react'
-import { LinkedClientPanel } from './LinkedClientPanel'
+import LinkedClientPanel from '../LinkedClientPanel'
 import DocumentTitle from 'react-document-title'
 import { Grid, Header } from 'semantic-ui-react'
 
@@ -22,3 +22,5 @@ WelcomeView.propTypes = {
   linkedClients: React.PropTypes.arrayOf(React.PropTypes.object),
   title: React.PropTypes.string
 }
+
+export default WelcomeView

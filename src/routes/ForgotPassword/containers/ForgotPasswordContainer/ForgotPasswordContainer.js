@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ForgotPasswordView from '../components/ForgotPasswordView'
-import { forgotPassword } from '../modules/forgotPassword'
+import ForgotPasswordView from '../../components/ForgotPasswordView'
+import { forgotPassword } from '../../modules/forgotPassword'
 
 export class ForgotPasswordContainer extends React.Component {
   constructor (props) {

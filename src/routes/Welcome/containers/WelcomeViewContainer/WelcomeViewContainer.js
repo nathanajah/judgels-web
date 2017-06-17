@@ -1,4 +1,4 @@
-import { WelcomeView } from '../components/WelcomeView'
+import WelcomeView from '../../components/WelcomeView'
 import BreadcrumbWrapper from 'hoc/BreadcrumbWrapper'
 import { connect } from 'react-redux'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import './ForgotPasswordView.scss'
-import ForgotPasswordForm from './ForgotPasswordForm'
+import ForgotPasswordForm from '../ForgotPasswordForm'
 import { Grid, Header, Message } from 'semantic-ui-react'
 
 export class ForgotPasswordView extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react'
 import './LoginView.scss'
-import LoginForm from './LoginForm'
+import LoginForm from '../LoginForm'
 import { Link } from 'react-router'
 import { Container, Grid, Header, Message } from 'semantic-ui-react'
 
