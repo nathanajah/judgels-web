@@ -1,11 +1,28 @@
 import LinkedClientsView from 'components/LinkedClientsView'
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 
 const mapStateToProps = () => ({
-  clients: [{
-    link: '#',
-    label: 'Repository Gate'
-  }]
+  clients: [
+    {
+      link: 'home',
+      label: 'Home'
+    },
+    {
+      link: 'training',
+      label: 'Training Gate'
+    },
+    {
+      link: 'competition',
+      label: 'Competition Gate'
+    }
+  ]
 })
 
-export default connect(mapStateToProps)(LinkedClientsView)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleMoveHomepageTab: (link) => dispatch(push(link))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LinkedClientsView)

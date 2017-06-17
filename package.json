@@ -12,14 +12,14 @@
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src",
     "lint:fix": "npm run lint -- --fix",
-    "start": "better-npm-run start:prod",
+    "start": "npm run deploy:prod && better-npm-run start",
     "serve": "better-npm-run start",
-    "postinstall": "npm run deploy:prod",
+    "postinstall": "node semantic/semantic-fix.js",
     "dev": "better-npm-run dev",
     "deploy": "better-npm-run deploy",
     "deploy:dev": "better-npm-run deploy:dev",
     "deploy:prod": "better-npm-run deploy:prod",
-    "codecov": "cat coverage/*/lcov.info | codecov"
+    "codecov": "cat coverage/*/lcov.info | cogdecov"
   },
   "betterScripts": {
     "compile": {
@@ -60,12 +60,6 @@
       "env": {
         "DEBUG": "app:*"
       }
-    },
-    "start:prod": {
-      "command": "node bin/server",
-      "env": {
-        "NODE_ENV": "production"
-      }
     }
   },
   "repository": {
@@ -96,6 +90,8 @@
     "imports-loader": "^0.7.0",
     "ip": "^1.1.2",
     "json-loader": "^0.5.4",
+    "less": "^2.7.2",
+    "less-loader": "2.2.3",
     "node-sass": "^4.0.0",
     "normalize.css": "^5.0.0",
     "postcss-loader": "^1.1.0",
@@ -113,6 +109,7 @@
     "rimraf": "^2.5.4",
     "sass-loader": "^4.1.1",
     "semantic-ui-css": "^2.2.9",
+    "semantic-ui-less": "^2.2.10",
     "semantic-ui-react": "^0.67.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.6",
@@ -142,6 +139,7 @@
     "karma-mocha-reporter": "^2.0.0",
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-webpack-with-fast-source-maps": "^1.9.2",
+    "less-plugin-rewrite-import": "^0.1.1",
     "mocha": "^3.0.1",
     "nodemon": "^1.10.2",
     "phantomjs-prebuilt": "^2.1.12",

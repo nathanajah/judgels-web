@@ -19,7 +19,11 @@ class Header extends React.Component {
     return (
       <Menu inverted color='blue' style={styles.menu}>
         <Menu.Item><Image size='mini' src={Logo} /></Menu.Item>
-        <Menu.Item header><span>TLX | TOKI Learning Center</span></Menu.Item>
+        <Menu.Item header>
+          <span>TLX</span>
+          <span>&nbsp;|&nbsp;</span>
+          <span style={{ fontWeight: 100 }}>TOKI Learning Center</span>
+        </Menu.Item>
         <UserWidget isFetching={isFetching}
           isAuthenticated={isAuthenticated}
           username={username}

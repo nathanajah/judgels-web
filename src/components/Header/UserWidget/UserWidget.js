@@ -27,16 +27,17 @@ class UserWidget extends React.Component {
         <Menu.Menu position='right'>
           <Dropdown trigger={trigger} item>
             {
-              !isFetching &&
+              (!isFetching &&
               isAuthenticated &&
               username &&
-              realName &&
-              (
+              realName)
+              ? (
                 <Dropdown.Menu>
                   <Dropdown.Item>Profile</Dropdown.Item>
                   <Dropdown.Item onClick={handleClickLogout}>Sign out</Dropdown.Item>
                 </Dropdown.Menu>
               )
+              : null
             }
           </Dropdown>
         </Menu.Menu>

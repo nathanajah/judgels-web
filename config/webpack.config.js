@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const project = require('./project.config')
 const debug = require('debug')('app:config:webpack')
+const RewriteImportPlugin = require('less-plugin-rewrite-import')
 
 const __DEV__ = project.globals.__DEV__
 const __PROD__ = project.globals.__PROD__
@@ -136,6 +137,10 @@ webpackConfig.module.loaders = [{
 const BASE_CSS_LOADER = 'css?sourceMap&-minimize'
 
 webpackConfig.module.loaders.push({
+  test: /\.less/,
+  loader: 'style!css!less'
+})
+webpackConfig.module.loaders.push({
   test    : /\.scss$/,
   exclude : null,
   loaders : [
@@ -155,7 +160,15 @@ webpackConfig.module.loaders.push({
     'postcss'
   ]
 })
-
+webpackConfig.lessLoader = {
+  lessPlugins: [
+    new RewriteImportPlugin({
+      paths: {
+        '../../theme.config':  project.paths.base('src/semantic/theme.config')
+      }
+    })
+  ]
+}
 webpackConfig.sassLoader = {
   includePaths : project.paths.client('styles')
 }
