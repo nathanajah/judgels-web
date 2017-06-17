@@ -17,4 +17,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export const JophielBreadcrumbsContainer = connect(mapStateToProps)(Breadcrumbs)
+export const BreadcrumbsContainer = connect(mapStateToProps)(Breadcrumbs)
