@@ -2,7 +2,8 @@ import LinkedClientsView from 'components/LinkedClientsView'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state, ownProps) => ({
+  currentPath: ownProps.currentPath,
   clients: [
     {
       link: 'home',

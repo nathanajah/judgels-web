@@ -4,6 +4,10 @@ import LoginContainer from './Login/containers/LoginContainer'
 import Register from './Register'
 import ForgotPassword from './ForgotPassword'
 import Welcome from './Welcome'
+import Home from './Home'
+import Training from './Training'
+import Competition from './Competition'
+
 import { refreshCurrentUser } from '../store/session'
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -24,13 +28,16 @@ export const createRoutes = (store) => {
   return {
     path        : '/',
     component   : BaseLayout,
-    indexRoute  : { onEnter: ({ params }, replace) => replace('/welcome') },
+    indexRoute  : { onEnter: ({ params }, replace) => replace('/home') },
     onEnter     : checkAuthentication,
     childRoutes : [
       { path: 'login', component: LoginContainer },
       Register(store),
       ForgotPassword(store),
-      Welcome(store)
+      Welcome(store),
+      Home(store),
+      Training(store),
+      Competition(store)
     ]
   }
 }

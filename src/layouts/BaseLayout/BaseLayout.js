@@ -6,12 +6,12 @@ import LinkedClientsViewContainer from 'containers/LinkedClientsViewContainer'
 
 export class BaseLayout extends React.Component {
   render () {
-    const { children } = this.props
+    const { children, location } = this.props
     return (
       <CoreLayout
         header={<HeaderContainer />}
         breadcrumbs={<BreadcrumbsContainer />}
-        linkedClients={<LinkedClientsViewContainer />}
+        linkedClients={<LinkedClientsViewContainer currentPath={location.pathname} />}
       >
         { children }
       </CoreLayout>
@@ -20,7 +20,8 @@ export class BaseLayout extends React.Component {
 }
 
 BaseLayout.propTypes = {
-  children : React.PropTypes.element.isRequired
+  children : React.PropTypes.element.isRequired,
+  location: React.PropTypes.object.isRequired
 }
 
 export default BaseLayout
