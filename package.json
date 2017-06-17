@@ -12,7 +12,9 @@
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src",
     "lint:fix": "npm run lint -- --fix",
-    "start": "better-npm-run start",
+    "start": "better-npm-run start:prod",
+    "serve": "better-npm-run start",
+    "postinstall": "npm run deploy:prod",
     "dev": "better-npm-run dev",
     "deploy": "better-npm-run deploy",
     "deploy:dev": "better-npm-run deploy:dev",
@@ -57,6 +59,12 @@
       "command": "node bin/dev-server",
       "env": {
         "DEBUG": "app:*"
+      }
+    },
+    "start:prod": {
+      "command": "node bin/server",
+      "env": {
+        "NODE_ENV": "production"
       }
     }
   },
