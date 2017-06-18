@@ -13,7 +13,7 @@
     "lint": "eslint bin build config server src",
     "lint:fix": "npm run lint -- --fix",
     "start": "better-npm-run start",
-    "test": "", // yep, currently no test :P
+    "test": "",
     "postinstall": "node semantic/semantic-fix.js",
     "heroku-postbuild": "npm run deploy:prod",
     "dev": "better-npm-run dev",
