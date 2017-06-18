@@ -1,0 +1,15 @@
+{
+  "name": "judgels-web",
+  "scripts": {},
+  "env": {
+    "NODE_MODULES_CACHE": "false",
+    "NPM_CONFIG_PRODUCTION": "false"
+  },
+  "formation": {},
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
