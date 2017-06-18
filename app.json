@@ -1,7 +1,14 @@
 {
   "name": "judgels-web",
   "scripts": {},
-  "env": {},
+  "env": {
+    "NODE_MODULES_CACHE": {
+      "required": true
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    }
+  },
   "formation": {},
   "addons": [],
   "buildpacks": [
