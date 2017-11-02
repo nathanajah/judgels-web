@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Dropdown, Image, Menu } from 'semantic-ui-react'
+import { Button, Dropdown, Header, Image, Menu } from 'semantic-ui-react'
 import faker from 'faker'
 class UserWidget extends React.Component {
   render () {
@@ -16,11 +16,15 @@ class UserWidget extends React.Component {
 
     if (isFetching === true || isAuthenticated === true) {
       const trigger = (
-        <span>
-          <Image avatar src={faker.internet.avatar()} />&nbsp;
-          <span>{isFetching ? 'loading...' : realName}</span><br />
-          <small>{isFetching ? 'loading...' : `Username: ${username}`}</small>
-        </span>
+        <Menu.Item>
+          <Image avatar src={faker.internet.avatar()} />
+          <Header size='tiny' style={{ margin: 0, fontWeight: 'normal', color: 'white' }}>
+            {isFetching ? 'loading...' : realName}
+            <Header.Subheader style={{ fontSize: '12px', color: '#d6d9da' }}>
+              {isFetching ? 'loading...' : username}
+            </Header.Subheader>
+          </Header>
+        </Menu.Item>
       )
 
       return (

@@ -30,24 +30,24 @@ const styles = {
 
 export class CoreLayout extends React.Component {
   render () {
-    const { header, children, breadcrumbs, linkedClients } = this.props
+    const { header, children, breadcrumbs, showBreadcrumb, linkedClients } = this.props
     return (
       <Container fluid style={styles.topContainer}>
         { header }
         <div style={styles.linkedClientDiv} >
-          <Container>
-            { linkedClients }
-          </Container>
+          { linkedClients }
         </div>
-        <div style={styles.breadcrumbsDiv} >
-          <Container>
-            { breadcrumbs }
-          </Container>
-        </div>
+        {
+          showBreadcrumb && (
+            <div style={styles.breadcrumbsDiv} >
+              <Container>
+                { breadcrumbs }
+              </Container>
+            </div>
+          )
+        }
         <div style={styles.childrenDiv}>
-          <Container>
-            { children }
-          </Container>
+          { children }
         </div>
         <Footer />
       </Container>
@@ -58,6 +58,7 @@ export class CoreLayout extends React.Component {
 CoreLayout.propTypes = {
   header: React.PropTypes.element.isRequired,
   children : React.PropTypes.element.isRequired,
+  showBreadcrumb: React.PropTypes.bool.isRequired,
   breadcrumbs: React.PropTypes.element.isRequired,
   linkedClients: React.PropTypes.element.isRequired
 }

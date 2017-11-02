@@ -6,3 +6,7 @@
 @red            : #DB3069;
 @yellow         : #f5d547;
 @green          : #29bf12;
+
+@darkWhite      : #fafafb;
+
+@absoluteBorderRadius: @3px;

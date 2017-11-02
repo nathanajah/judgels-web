@@ -11,6 +11,7 @@ export class BaseLayout extends React.Component {
       <CoreLayout
         header={<HeaderContainer />}
         breadcrumbs={<BreadcrumbsContainer />}
+        showBreadcrumb={location.pathname.indexOf('home') === -1}
         linkedClients={<LinkedClientsViewContainer currentPath={location.pathname} />}
       >
         { children }

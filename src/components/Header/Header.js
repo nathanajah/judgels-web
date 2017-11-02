@@ -17,9 +17,9 @@ class Header extends React.Component {
     } = this.props
 
     return (
-      <Menu inverted color='blue' style={styles.menu}>
+      <Menu inverted secondary color='blue' style={styles.menu}>
         <Menu.Item><Image size='mini' src={Logo} /></Menu.Item>
-        <Menu.Item header>
+        <Menu.Item>
           <span>TLX</span>
           <span>&nbsp;|&nbsp;</span>
           <span style={{ fontWeight: 100 }}>TOKI Learning Center</span>
@@ -49,7 +49,8 @@ Header.propTypes = {
 const styles = {
   menu: {
     marginBottom: '0px',
-    borderRadius: '0'
+    borderRadius: '0',
+    height: '2.85714286em'
   }
 }
 
