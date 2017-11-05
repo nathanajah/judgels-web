@@ -1,10 +1,8 @@
 import * as React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, InjectedFormProps, reduxForm } from 'redux-form'
 import { Button, Form } from 'semantic-ui-react'
 
-interface ForgotPasswordFormProps {
-  handleSubmit?: any;
-}
+interface ForgotPasswordFormProps extends InjectedFormProps {}
 
 export class ForgotPasswordForm extends React.Component<ForgotPasswordFormProps> {
   render () {
@@ -25,4 +23,4 @@ export class ForgotPasswordForm extends React.Component<ForgotPasswordFormProps>
   }
 }
 
-export default reduxForm({ form: 'forgotPassword' })(ForgotPasswordForm)
+export default reduxForm<any>({ form: 'forgotPassword' })(ForgotPasswordForm)

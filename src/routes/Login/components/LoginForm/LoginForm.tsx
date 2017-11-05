@@ -1,10 +1,8 @@
 import * as React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import {Field, InjectedFormProps, reduxForm} from 'redux-form'
 import { Button, Form } from 'semantic-ui-react'
 
-interface LoginFormProps {
-  handleSubmit?: any;
-}
+interface LoginFormProps extends InjectedFormProps {}
 
 export class LoginForm extends React.Component<LoginFormProps> {
   render () {
@@ -25,4 +23,4 @@ export class LoginForm extends React.Component<LoginFormProps> {
   }
 }
 
-export default reduxForm({ form: 'login' })(LoginForm)
+export default reduxForm<any>({ form: 'login' })(LoginForm)

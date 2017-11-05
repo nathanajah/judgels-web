@@ -1,10 +1,8 @@
 import * as React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import {Field, InjectedFormProps, reduxForm} from 'redux-form'
 import { Button, Form, Popup } from 'semantic-ui-react'
 
-interface RegisterFormProps {
-  handleSubmit?: any;
-}
+interface RegisterFormProps extends InjectedFormProps {}
 
 export class RegisterForm extends React.Component<RegisterFormProps> {
   render () {
@@ -54,4 +52,4 @@ export class RegisterForm extends React.Component<RegisterFormProps> {
   }
 }
 
-export default reduxForm({ form: 'register' })(RegisterForm)
+export default reduxForm<any>({ form: 'register' })(RegisterForm)
