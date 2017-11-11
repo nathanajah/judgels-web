@@ -2,7 +2,7 @@ import * as React from 'react'
 import './LoginView.css'
 import NavigationalLayout from 'layouts/NavigationalLayout'
 import LoginForm from '../LoginForm/index'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { Container, Grid, Header, Message } from 'semantic-ui-react'
 
 interface LoginViewProps {
