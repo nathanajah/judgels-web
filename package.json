@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^1.32.0",
     "bootstrap-sass": "^3.3.7",
     "faker": "^4.1.0",
     "node-sass-chokidar": "^0.0.3",
     "normalize.css": "^5.0.0",
     "react": "^16.0.0",
+    "react-addons-css-transition-group": "^15.0.1",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",

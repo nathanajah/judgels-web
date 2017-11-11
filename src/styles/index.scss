@@ -1,0 +1,15 @@
+@import '../../node_modules/normalize.css/normalize.css';
+@import '../../node_modules/@blueprintjs/core/dist/blueprint.css';
+
+@import './base';
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: $primary-background-color;
+}
+
+h3 {
+  font-size: $pt-font-size-large;
+  color: #252527 !important;
+  line-height: 0.5 * $pt-font-size-large !important;
+}
