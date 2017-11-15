@@ -1,0 +1,12 @@
+@import './base';
+
+label {
+  font-size: $pt-font-size-small;
+  font-weight: bold;
+}
+
+input {
+  font-family: $primary-font;
+  width: 100%;
+  border-radius: 2px;
+}

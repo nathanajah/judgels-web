@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import LoginView from '../../components/LoginView'
+import { LoginView } from '../../components/LoginView/LoginView'
 import { login } from 'store/session'
 
 interface LoginContainerProps {

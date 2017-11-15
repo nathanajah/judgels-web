@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import Header from 'components/Header'
 import { logout } from 'store/session'
 
 interface HeaderContainerProps {
@@ -38,18 +37,19 @@ export class HeaderContainer extends React.Component<HeaderContainerProps> {
   }
 
   render () {
-    const { currentUser } = this.props
-    return (
-      <Header
-        handleClickLogin={this._handleClickLogin}
-        handleClickRegister={this._handleClickRegister}
-        handleClickLogout={this._handleClickLogout}
-        isAuthenticated={currentUser.isAuthenticated}
-        isFetching={currentUser.isFetching}
-        username={currentUser.username}
-        realName={currentUser.realName}
-      />
-    )
+    return null;
+    // const { currentUser } = this.props
+    // return (
+    //   <Header
+    //     handleClickLogin={this._handleClickLogin}
+    //     handleClickRegister={this._handleClickRegister}
+    //     handleClickLogout={this._handleClickLogout}
+    //     isAuthenticated={currentUser.isAuthenticated}
+    //     isFetching={currentUser.isFetching}
+    //     username={currentUser.username}
+    //     realName={currentUser.realName}
+    //   />
+    // )
   }
 }
 

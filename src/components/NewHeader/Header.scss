@@ -1,0 +1,11 @@
+@import '../../styles/base';
+
+.navbar {
+  background-color: $primary-color;
+  height: 60px;
+}
+
+.navbar__wrapper {
+  margin: 0 auto;
+  width: $page-width;
+}

@@ -1,0 +1,10 @@
+@import '../../styles/base';
+
+.layout-single-col {
+  width: 56 * $pt-grid-size;
+  margin: auto;
+  min-height: 40 * $pt-grid-size;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -1,13 +1,14 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import createStore from './store/createStore'
-import AppContainer from './containers/AppContainer'
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-const store = createStore()
-const routes = require('./routes/index').default(store)
 import './styles/index.css';
 
+import { AppContainer } from './containers/AppContainer';
+
 ReactDOM.render(
-  <AppContainer store={store} routes={routes} />,
+  <BrowserRouter>
+    <AppContainer />
+  </BrowserRouter>,
   document.getElementById('root') as HTMLElement
 );

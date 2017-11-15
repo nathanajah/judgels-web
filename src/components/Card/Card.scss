@@ -1,0 +1,14 @@
+@import '../../styles/base';
+
+.card__title {
+  background-color: #fbfbfc;
+  height: 4.5 * $pt-grid-size;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 1px;
+}
+
+.card__content {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

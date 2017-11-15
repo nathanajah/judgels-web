@@ -1,6 +1,6 @@
 import * as React from 'react'
 import CoreLayout from 'layouts/CoreLayout'
-import HeaderContainer from 'containers/HeaderContainer'
+import HeaderContainer from 'containers/HeaderContainer/HeaderContainer'
 import BreadcrumbsContainer from 'containers/BreadcrumbsContainer'
 import LinkedClientsViewContainer from 'containers/LinkedClientsViewContainer'
 
