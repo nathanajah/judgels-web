@@ -1,123 +1,62 @@
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
+import { setWith, TypedAction, TypedReducer } from 'redoodle';
+import * as jophielAccountService from '../api/user/account';
+import { SessionToken } from '../api/user/account';
 
-// ------------------------------------
-// Constants
-// ------------------------------------
-export const SET_CURRENT_USER = 'SET_CURRENT_USER'
-export const FETCHING_CURRENT_USER = 'FETCHING_CURRENT_USER'
-export const LOGIN_ERROR = 'LOGIN_ERROR'
-export const LOGOUT = 'LOGOUT'
+export const JUDGELS_SESSION_TOKEN_KEY = 'judgels:session_token';
 
-// ------------------------------------
-// Actions
-// ------------------------------------
-export function setCurrentUser (currentUser) {
-  return (dispatch) => {
-    dispatch({ type: SET_CURRENT_USER, currentUser: currentUser })
-  }
+export interface SessionState {
+  username: string;
+  isLoggedIn: boolean;
 }
 
-export function refreshCurrentUser () {
-  return (dispatch) => {
-    dispatch({ type: FETCHING_CURRENT_USER })
-    const token = localStorage.getItem('toki-auth-token')
-    if (token === 'token') {
-      // TODO: this is simulating fetch request to dummy data,
-      // change this to request to server to get currently logged user,
-      // and save the token to localStorage for futher usage(ex: in routes/index)
-      setTimeout(() => {
-        const data = {
-          username: 'nathanajah',
-          realName: 'Nathan Azaria'
-        }
-        dispatch(setCurrentUser(data))
-      }, 1000)
-    } else {
-      const error = 'Username/email/password invalid'
-      dispatch({ type: LOGIN_ERROR, error: error })
+export const INITIAL_SESSION_STATE: SessionState = {
+  username: 'guest',
+  isLoggedIn: false,
+};
+
+export const LoginRequested = TypedAction.define('judgels:session:login:requested')<{
+  username: string;
+}>();
+
+export const LoginAllowed = TypedAction.define('judgels:session:login:allowed')<{
+  username: string;
+}>();
+
+export const LoginRejected = TypedAction.define('judgels:session:login:rejected')<{
+  username: string;
+}>();
+
+export const LoginFailed = TypedAction.define('judgels:session:login:failed')<{
+  username: string;
+  error: Error;
+}>();
+
+export const logIn = (username: string, password: string) => async dispatch => {
+  dispatch(LoginRequested.create({ username }));
+
+  try {
+    const sessionToken: SessionToken|null = await jophielAccountService.logIn(username, password);
+    if (sessionToken === null) {
+      return dispatch(LoginRejected.create({ username }));
     }
-  }
-}
 
-export function login (username, password) {
-  return (dispatch) => {
-    if (username === 'nathanajah' && password === 'password') {
-      setTimeout(() => {
-        const data = {
-          username: 'nathanajah',
-          realName: 'Nathan Azaria',
-          token: 'token'
-        }
-        localStorage.setItem('toki-auth-token', 'token')
-        dispatch(setCurrentUser(data))
-        dispatch(push('/'))
-      }, 1000)
-    } else {
-      const error = 'Username/email/password invalid'
-      dispatch({ type: LOGIN_ERROR, error: error })
-    }
+    dispatch(LoginAllowed.create({ username }));
+    localStorage.setItem(JUDGELS_SESSION_TOKEN_KEY, sessionToken.token);
+    dispatch(push('/home'));
+  } catch (error) {
+    dispatch(LoginFailed.create({ username, error }));
   }
-}
+};
 
-export function logout () {
-  return (dispatch) => {
-    setTimeout(() => {
-      localStorage.removeItem('toki-auth-token')
-      dispatch({ type: LOGOUT })
-    })
-  }
-}
+const createSessionReducer = () => {
+  const builder = TypedReducer.builder<SessionState>();
 
-// ------------------------------------
-// Specialized Action Creator
-// ------------------------------------
+  builder.withHandler(LoginAllowed.TYPE, (state, payload) => setWith(state, {
+    username: payload.username,
+  }));
 
-// ------------------------------------
-// Reducer
-// ------------------------------------
-const initialState = {
-  currentUser: {
-    isAuthenticated: false,
-    isFetching: false,
-    username: undefined,
-    realName: undefined,
-    token: undefined
-  },
-  error: {
-    login: undefined
-  }
-}
+  return builder.build();
+};
 
-export default function sessionReducer (state = initialState, action) {
-  switch (action.type) {
-    case FETCHING_CURRENT_USER:
-      return {
-        ...state,
-        currentUser: {
-          ...state.currentUser,
-          isFetching: true,
-          isAuthenticated: false,
-          username: undefined,
-          realName: undefined
-        },
-        error: { ...state.error, login: undefined }
-      }
-    case SET_CURRENT_USER:
-      return {
-        ...state,
-        currentUser: {
-          ...state.currentUser,
-          ...action.currentUser,
-          isFetching: false,
-          isAuthenticated: true
-        },
-        error: { ...state.error, login: undefined }
-      }
-    case LOGIN_ERROR:
-      return { ...state, error: { ...state.error, login: action.error } }
-    case LOGOUT:
-      return { ...initialState }
-    default:
-      return state
-  }
-}
+export const sessionReducer = createSessionReducer();

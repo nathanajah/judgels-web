@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import { logout } from 'store/session'
 
 interface HeaderContainerProps {
   currentUser: {
@@ -32,8 +31,6 @@ export class HeaderContainer extends React.Component<HeaderContainerProps> {
   }
 
   _handleClickLogout () {
-    const { dispatch } = this.props
-    dispatch(logout())
   }
 
   render () {

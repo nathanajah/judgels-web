@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { LoginView } from '../../components/LoginView/LoginView'
-import { login } from 'store/session'
 
 interface LoginContainerProps {
   currentUser: {
@@ -23,9 +22,6 @@ export class LoginContainer extends React.Component<LoginContainerProps> {
   }
 
   _handleSubmitLogin (data) {
-    const { dispatch } = this.props
-    const { usernameOrEmail, password } = data
-    dispatch(login(usernameOrEmail, password))
   }
 
   render () {
