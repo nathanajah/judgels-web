@@ -1,9 +1,9 @@
-export interface SessionToken {
+export interface Session {
   token: string;
 }
 
-export async function logIn(username: string, password: string): Promise<SessionToken|null> {
-  const response = await fetch('http://localhost:9001/api/v2/login', {
+export async function logIn(username: string, password: string): Promise<Session|null> {
+  const response = await fetch('http://localhost:9001/api/v2/account/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

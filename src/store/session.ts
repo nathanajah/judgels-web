@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 import { setWith, TypedAction, TypedReducer } from 'redoodle';
 import * as jophielAccountService from '../api/user/account';
-import { SessionToken } from '../api/user/account';
+import { Session } from '../api/user/account';
 
 export const JUDGELS_SESSION_TOKEN_KEY = 'judgels:session_token';
 
@@ -36,8 +36,8 @@ export const logIn = (username: string, password: string) => async dispatch => {
   dispatch(LoginRequested.create({ username }));
 
   try {
-    const sessionToken: SessionToken|null = await jophielAccountService.logIn(username, password);
-    if (sessionToken === null) {
+    const session: Session|null = await jophielAccountService.logIn(username, password);
+    if (session === null) {
       return dispatch(LoginRejected.create({ username }));
     }
 
