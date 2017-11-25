@@ -3,8 +3,6 @@ import { setWith, TypedAction, TypedReducer } from 'redoodle';
 import * as jophielAccountService from '../api/user/account';
 import { Session } from '../api/user/account';
 
-export const JUDGELS_SESSION_TOKEN_KEY = 'judgels:session_token';
-
 export interface SessionState {
   username: string;
   isLoggedIn: boolean;
@@ -42,7 +40,6 @@ export const logIn = (username: string, password: string) => async dispatch => {
     }
 
     dispatch(LoginAllowed.create({ username }));
-    localStorage.setItem(JUDGELS_SESSION_TOKEN_KEY, sessionToken.token);
     dispatch(push('/home'));
   } catch (error) {
     dispatch(LoginFailed.create({ username, error }));

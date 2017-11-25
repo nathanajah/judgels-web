@@ -1,9 +1,12 @@
 import createBrowserHistory from 'history/createBrowserHistory';
 import { FormStateMap, reducer as formReducer } from 'redux-form';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/es/storage';
 import { routerMiddleware, routerReducer, RouterState } from 'react-router-redux';
 import { combineReducers } from 'redoodle';
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
+
 import { INITIAL_SESSION_STATE, sessionReducer, SessionState } from './session';
 
 interface AppState {
@@ -19,7 +22,7 @@ const INITIAL_STATE: AppState = {
 };
 
 const rootReducer = combineReducers<AppState>({
-  session: sessionReducer,
+  session: persistReducer({ key: 'session', storage }, sessionReducer),
   router: routerReducer,
   form: formReducer,
 });
@@ -33,3 +36,5 @@ export const store = createStore(
   INITIAL_STATE,
   composeEnhancers(applyMiddleware(thunk, routerMiddleware(history))),
 );
+
+export const persistor = persistStore(store);
