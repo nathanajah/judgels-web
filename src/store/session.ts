@@ -8,7 +8,7 @@ export interface SessionState {
   isLoggedIn: boolean;
 }
 
-export const INITIAL_SESSION_STATE: SessionState = {
+const INITIAL_STATE: SessionState = {
   username: 'guest',
   isLoggedIn: false,
 };
@@ -52,6 +52,7 @@ const createSessionReducer = () => {
   builder.withHandler(LoginAllowed.TYPE, (state, payload) => setWith(state, {
     username: payload.username,
   }));
+  builder.withDefaultHandler(state => state !== undefined ? state : INITIAL_STATE);
 
   return builder.build();
 };
