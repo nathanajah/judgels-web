@@ -11,7 +11,7 @@ interface LoginFormProps {
   handleSubmit: SubmitHandler<LoginFormData>;
 }
 
-const RawLoginForm = (props: LoginFormProps) => (
+const LoginForm = (props: LoginFormProps) => (
   <form onSubmit={props.handleSubmit}>
     <FormGroup labelFor="username" label="Username/Email">
       <Field name="username" component="input" type="text" className="pt-input" />
@@ -24,4 +24,4 @@ const RawLoginForm = (props: LoginFormProps) => (
   </form>
 );
 
-export const LoginForm = reduxForm<LoginFormData>({ form: 'login'})(RawLoginForm);
+export default reduxForm<LoginFormData>({ form: 'login'})(LoginForm);

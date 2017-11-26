@@ -12,8 +12,8 @@ const mapDispatchToProps = dispatch => ({
   handleLogIn: (username: string, password: string) => dispatch(logIn(username, password)),
 });
 
-const RawLoginContainer = (props: LoginContainerProps) => (
+const LoginContainer = (props: LoginContainerProps) => (
     <Login handleLogIn={props.handleLogIn} />
 );
 
-export const LoginContainer = connect(null, mapDispatchToProps)(RawLoginContainer);
+export default connect(undefined, mapDispatchToProps)(LoginContainer);

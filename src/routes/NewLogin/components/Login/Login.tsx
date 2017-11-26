@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { LoginForm, LoginFormData } from './LoginForm';
-import { SingleColumnLayout } from '../../../../layouts/SingleColumnLayout';
+import LoginForm, { LoginFormData } from './LoginForm';
 import { Card } from '../../../../components/Card';
+import { SingleColumnLayout } from '../../../../layouts/SingleColumnLayout';
 
 import '../../../../styles/form.css';
 

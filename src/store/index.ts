@@ -7,6 +7,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 import { sessionReducer } from './session';
+import { createAccountAPI } from '../api/jophiel/account';
 
 const rootReducer = combineReducers({
   session: persistReducer({ key: 'session', storage }, sessionReducer),
@@ -20,7 +21,14 @@ export const history = createBrowserHistory();
 
 export const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk, routerMiddleware(history))),
+  composeEnhancers(
+    applyMiddleware(
+      thunk.withExtraArgument({
+        accountAPI: createAccountAPI('http://localhost:9001/api/v2/account'),
+      }),
+      routerMiddleware(history)
+    ),
+  ),
 );
 
 export const persistor = persistStore(store);

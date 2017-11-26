@@ -1,56 +1,52 @@
 import { push } from 'react-router-redux';
 import { setWith, TypedAction, TypedReducer } from 'redoodle';
-import * as jophielAccountService from '../api/user/account';
-import { Session } from '../api/user/account';
+
+import { AccountAPI } from '../api/jophiel/account';
 
 export interface SessionState {
   username: string;
-  isLoggedIn: boolean;
+  token: string;
 }
 
-const INITIAL_STATE: SessionState = {
+export const INITIAL_STATE: SessionState = {
   username: 'guest',
-  isLoggedIn: false,
+  token: '',
 };
 
-export const LoginRequested = TypedAction.define('judgels:session:login:requested')<{
+export const LogInRequest = TypedAction.define('session/LOG_IN_REQUEST')<{
   username: string;
 }>();
 
-export const LoginAllowed = TypedAction.define('judgels:session:login:allowed')<{
+export const LogInSuccess = TypedAction.define('session/LOG_IN_SUCCESS')<{
   username: string;
+  token: string;
 }>();
 
-export const LoginRejected = TypedAction.define('judgels:session:login:rejected')<{
-  username: string;
+export const LogInFailure = TypedAction.define('session/LOG_IN_FAILURE')<{
+  error?: Error;
 }>();
 
-export const LoginFailed = TypedAction.define('judgels:session:login:failed')<{
-  username: string;
-  error: Error;
-}>();
+export function logIn(username: string, password: string) {
+  return async (dispatch, getState, { accountAPI }: { accountAPI: AccountAPI }) => {
+    dispatch(LogInRequest.create({ username }));
 
-export const logIn = (username: string, password: string) => async dispatch => {
-  dispatch(LoginRequested.create({ username }));
-
-  try {
-    const session: Session|null = await jophielAccountService.logIn(username, password);
-    if (session === null) {
-      return dispatch(LoginRejected.create({ username }));
+    try {
+      const session = await accountAPI.logIn(username, password);
+      const { token } = session;
+      dispatch(LogInSuccess.create({ username, token }));
+      dispatch(push('/home'));
+    } catch (error) {
+      dispatch(LogInFailure.create({ error }));
     }
-
-    dispatch(LoginAllowed.create({ username }));
-    dispatch(push('/home'));
-  } catch (error) {
-    dispatch(LoginFailed.create({ username, error }));
-  }
-};
+  };
+}
 
 const createSessionReducer = () => {
   const builder = TypedReducer.builder<SessionState>();
 
-  builder.withHandler(LoginAllowed.TYPE, (state, payload) => setWith(state, {
+  builder.withHandler(LogInSuccess.TYPE, (state, payload) => setWith(state, {
     username: payload.username,
+    token: payload.token,
   }));
   builder.withDefaultHandler(state => state !== undefined ? state : INITIAL_STATE);
 
