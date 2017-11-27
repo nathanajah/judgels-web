@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import LoginForm, { LoginFormData } from './LoginForm';
-import { Card } from '../../../../components/Card';
-import { SingleColumnLayout } from '../../../../layouts/SingleColumnLayout';
+import { Card } from '../../../components/Card';
+import { SingleColumnLayout } from '../../../layouts/SingleColumnLayout';
 
-import '../../../../styles/form.css';
+import './Login.css';
 
 export interface LoginProps {
   handleLogIn: (username: string, password: string) => void;
@@ -14,9 +14,11 @@ export class Login extends React.Component<LoginProps> {
   render() {
     return (
       <SingleColumnLayout>
-        <Card title="Log in">
-          <LoginForm onSubmit={this.handleLogIn}/>
-        </Card>
+        <div className="card-login">
+          <Card title="Log in">
+            <LoginForm onSubmit={this.handleLogIn}/>
+          </Card>
+        </div>
       </SingleColumnLayout>
     );
   }
