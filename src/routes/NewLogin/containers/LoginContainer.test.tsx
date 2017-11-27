@@ -4,24 +4,28 @@ import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 import { reducer as formReducer } from 'redux-form'
 
-import { Login } from './Login';
+import { createLoginContainer } from './LoginContainer';
 
-describe('Login', () => {
-  let handleLogIn: any;
+describe('LoginContainer', () => {
+  let sessionActions: jest.Mocked<any>;
   let wrapper: ReactWrapper<any, any>;
 
   beforeEach(() => {
-    const store = createStore(combineReducers({ form: formReducer }));
+    sessionActions = {
+      logIn: jest.fn().mockReturnValue({ type: 'mock' }),
+    };
 
-    handleLogIn = jest.fn();
+    const store = createStore(combineReducers({ form: formReducer }));
+    const LoginContainer = createLoginContainer(sessionActions);
+
     wrapper = mount(
       <Provider store={store}>
-        <Login handleLogIn={handleLogIn}/>
+        <LoginContainer />
       </Provider>,
     );
   });
 
-  it('handles login when submitted', () => {
+  it('dispatches logIn() when the form is submitted', () => {
     const username = wrapper.find('input[name="username"]');
     username.simulate('change', { target: { value: 'user' } });
 
@@ -31,6 +35,6 @@ describe('Login', () => {
     const form = wrapper.find('form');
     form.simulate('submit');
 
-    expect(handleLogIn).toHaveBeenCalledWith('user', 'pass');
+    expect(sessionActions.logIn).toHaveBeenCalledWith('user', 'pass');
   });
 });
