@@ -15,18 +15,24 @@ export interface FormTextInputProps {
   label: string;
 }
 
-export const FormTextInput = (props: FormTextInputProps) => (
-  <FormGroup
-    labelFor={props.input.name}
-    label={props.label}
-    intent={!props.meta.touched || props.meta.valid ? undefined : Intent.DANGER}
-  >
-    <input
-      {...props.input}
-      type={props.type || 'text'}
-      className={classNames('pt-input', { 'pt-intent-danger': props.meta.touched && !props.meta.valid })}
-    />
+export const FormTextInput = (props: FormTextInputProps) => {
+  const validationError = props.meta.touched && !props.meta.valid && (
+    <div className="form-text-input-error pt-form-helper-text">{props.meta.error}</div>
+  );
 
-    {props.meta.touched && !props.meta.valid && <div className="form-text-input-error pt-form-helper-text">{props.meta.error}</div>}
-  </FormGroup>
-);
+  return (
+    <FormGroup
+      labelFor={props.input.name}
+      label={props.label}
+      intent={!props.meta.touched || props.meta.valid ? undefined : Intent.DANGER}
+    >
+      <input
+        {...props.input}
+        type={props.type || 'text'}
+        className={classNames('pt-input', { 'pt-intent-danger': props.meta.touched && !props.meta.valid })}
+      />
+
+      {validationError}
+    </FormGroup>
+  );
+};
