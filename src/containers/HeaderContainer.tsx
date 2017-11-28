@@ -2,5 +2,7 @@ import * as React from 'react';
 
 import { Header } from '../components/Header';
 
-export const HeaderContainer = () =>
+const HeaderContainer = () =>
   <Header />;
+
+export default HeaderContainer;

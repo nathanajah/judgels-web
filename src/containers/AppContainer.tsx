@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
 
-import { HeaderContainer } from './HeaderContainer';
-import LoginContainer from '../routes/NewLogin/containers/LoginContainer';
+import HeaderContainer from './HeaderContainer';
+import LoginContainer from '../routes/Login/containers/LoginContainer';
 
 export const AppContainer = () => (
   <div>
     <HeaderContainer />
-    <Route exact path="/login" component={LoginContainer} />
+    <Route exact path="/login" component={LoginContainer}/>
   </div>
 );

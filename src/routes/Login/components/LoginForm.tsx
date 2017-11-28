@@ -18,10 +18,10 @@ interface LoginFormProps {
 const LoginForm = (props: LoginFormProps) => (
   <form onSubmit={props.handleSubmit}>
     <FormGroup labelFor="username" label="Username/Email">
-      <Field name="username" component="input" type="text" className="pt-input" />
+      <Field name="username" component="input" type="text" className="pt-input"/>
     </FormGroup>
     <FormGroup labelFor="password" label="Password">
-      <Field name="password" component="input" type="password" className="pt-input" required />
+      <Field name="password" component="input" type="password" className="pt-input" required/>
     </FormGroup>
 
     <HorizontalDivider />
