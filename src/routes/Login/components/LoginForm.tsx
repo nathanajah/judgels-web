@@ -1,7 +1,9 @@
-import { Button, FormGroup, Intent } from '@blueprintjs/core';
+import { Button, Intent } from '@blueprintjs/core';
 import * as React from 'react';
 import { Field, reduxForm, SubmitHandler } from 'redux-form';
 
+import { FormTextInput } from '../../../components/FormTextInput';
+import { Required } from '../../../components/FormValidations';
 import { HorizontalDivider } from '../../../components/HorizontalDivider';
 
 import '../../../styles/form.css';
@@ -15,14 +17,23 @@ interface LoginFormProps {
   handleSubmit: SubmitHandler<LoginFormData>;
 }
 
+const usernameField = {
+  name: 'username',
+  label: 'Username',
+  validate: [Required]
+};
+
+const passwordField = {
+  name: 'password',
+  label: 'Password',
+  type: 'password',
+  validate: [Required]
+};
+
 const LoginForm = (props: LoginFormProps) => (
   <form onSubmit={props.handleSubmit}>
-    <FormGroup labelFor="username" label="Username/Email">
-      <Field name="username" component="input" type="text" className="pt-input"/>
-    </FormGroup>
-    <FormGroup labelFor="password" label="Password">
-      <Field name="password" component="input" type="password" className="pt-input" required/>
-    </FormGroup>
+    <Field component={FormTextInput} {...usernameField}/>
+    <Field component={FormTextInput} {...passwordField}/>
 
     <HorizontalDivider />
 
