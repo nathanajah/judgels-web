@@ -6,10 +6,10 @@ import { FormTextInput, FormTextInputProps } from './FormTextInput';
 
 describe('FormTextInput', () => {
   let wrapper: ShallowWrapper;
-  let name: string = 'username';
+  let name: string;
   let touched: boolean;
   let valid: boolean;
-  let error: string = 'Required';
+  let error: string;
   let label: string;
 
   const render = () => {
@@ -23,6 +23,14 @@ describe('FormTextInput', () => {
       <FormTextInput {...props}/>
     );
   };
+
+  beforeEach(() => {
+    name = 'username';
+    touched = false;
+    valid = false;
+    error = 'Required';
+    label = 'label';
+  });
 
   describe('when the input is first rendered', () => {
     beforeEach(() => {

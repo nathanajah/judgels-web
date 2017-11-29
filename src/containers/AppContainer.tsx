@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
 
-import HeaderContainer from './HeaderContainer';
+import HeaderContainer from './HeaderContainer/HeaderContainer';
 import LoginContainer from '../routes/Login/containers/LoginContainer';
 
 export const AppContainer = () => (

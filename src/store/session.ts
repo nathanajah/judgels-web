@@ -1,12 +1,13 @@
 import { setWith, TypedAction, TypedReducer } from 'redoodle';
 
+import { User } from '../models/user';
+
 export interface SessionState {
-  username: string;
+  user?: User;
   token: string;
 }
 
 export const INITIAL_STATE: SessionState = {
-  username: 'guest',
   token: '',
 };
 
@@ -23,13 +24,20 @@ export const LogInFailure = TypedAction.define('session/LOG_IN_FAILURE')<{
   error?: Error;
 }>();
 
+export const LogOut = TypedAction.define('session/LOG_OUT')<{
+  username: string;
+}>();
+
 const createSessionReducer = () => {
   const builder = TypedReducer.builder<SessionState>();
 
   builder.withHandler(LogInSuccess.TYPE, (state, payload) => setWith(state, {
-    username: payload.username,
+    user: {
+      username: payload.username,
+    },
     token: payload.token,
   }));
+  builder.withHandler(LogOut.TYPE, (state, payload) => INITIAL_STATE);
   builder.withDefaultHandler(state => state !== undefined ? state : INITIAL_STATE);
 
   return builder.build();

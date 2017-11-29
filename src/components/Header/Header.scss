@@ -1,32 +1,35 @@
 @import '../../styles/base';
 
-.navbar {
+.header {
   background-color: $primary-color !important;
   height: 6 * $pt-grid-size;
 }
 
-.navbar__wrapper {
+.header, .header a {
+  color: white;
+}
+
+.header a:hover {
+  text-decoration: none;
+}
+
+.header__wrapper {
   margin: 0 auto;
   padding-top: 0.5 * $pt-grid-size;
   max-width: $page-width;
 }
 
-.navbar__logo {
+.header__logo {
   width: 4 * $pt-grid-size;
 }
 
-.navbar__title {
+.header__title {
   margin-left: 2 * $pt-grid-size;
   margin-right: 0;
   font-size: 1.5 * $pt-font-size;
   transform: scale(1, 1.2);
 }
 
-.navbar__subtitle {
-  font-size: 0.9 * $pt-font-size;
-}
-
-.navbar__link {
-  margin-right: 2 * $pt-font-size;
+.header__subtitle {
   font-size: 0.9 * $pt-font-size;
 }

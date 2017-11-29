@@ -10,7 +10,7 @@ describe('sessionReducer', () => {
   it('handles LOG_IN_SUCCESS', () => {
     const state = INITIAL_STATE;
     const action = LogInSuccess.create({ username: 'user', token: 'token123' });
-    const nextState: SessionState = { username: 'user', token: 'token123'};
+    const nextState: SessionState = { user: { username: 'user' }, token: 'token123'};
     expect(sessionReducer(state, action)).toEqual(nextState);
   });
 

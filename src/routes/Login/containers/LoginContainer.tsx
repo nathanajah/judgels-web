@@ -1,15 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Login } from '../components/Login/Login';
-import { sessionActions as realSessionActions } from '../../../actions/session';
+import { Login, LoginProps } from '../components/Login/Login';
+import { sessionActions as injectedSessionActions } from '../../../actions/session';
 
-interface LoginContainerProps {
-  handleLogIn: (username: string, password: string) => void;
-}
-
-const LoginContainer = (props: LoginContainerProps) => (
-  <Login handleLogIn={props.handleLogIn} />
+const LoginContainer = (props: LoginProps) => (
+  <Login {...props}/>
 );
 
 export function createLoginContainer(sessionActions) {
@@ -20,4 +16,4 @@ export function createLoginContainer(sessionActions) {
   return connect(undefined, mapDispatchToProps)(LoginContainer);
 }
 
-export default createLoginContainer(realSessionActions);
+export default createLoginContainer(injectedSessionActions);

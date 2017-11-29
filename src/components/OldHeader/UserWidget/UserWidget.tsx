@@ -30,7 +30,7 @@ class UserWidget extends React.Component<UserWidgetProps> {
       const trigger = (
         <Menu.Item>
           <Image avatar src={faker.internet.avatar()} />
-          <Header size='tiny' style={{ margin: 0, fontWeight: 'normal', color: 'white' }}>
+          <Header size='tiny' style={{ marin: 0, fontWeight: 'normal', color: 'white' }}>
             {isFetching ? 'loading...' : realName}
             <Header.Subheader style={{ fontSize: '12px', color: '#d6d9da' }}>
               {isFetching ? 'loading...' : username}

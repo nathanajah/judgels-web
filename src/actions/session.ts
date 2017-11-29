@@ -1,6 +1,6 @@
 import { push } from 'react-router-redux';
 
-import { LogInFailure, LogInRequest, LogInSuccess } from '../store/session';
+import { LogInFailure, LogInRequest, LogInSuccess, LogOut } from '../store/session';
 
 export const sessionActions = {
   logIn: (username: string, password: string) => {
@@ -16,5 +16,9 @@ export const sessionActions = {
         dispatch(LogInFailure.create({ error }));
       }
     };
+  },
+
+  logOut: (username: string) => {
+    return async (dispatch) => dispatch(LogOut.create({ username }));
   }
 };
