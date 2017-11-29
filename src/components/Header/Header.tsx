@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import './Header.css';
 
-const logo = require('../assets/images/logo.png');
+const logo = require('../../assets/images/logo.png');
 
 export const Header = () => (
   <nav className="pt-navbar pt-dark navbar">

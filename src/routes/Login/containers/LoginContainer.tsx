@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Login } from '../components/Login';
+import { Login } from '../components/Login/Login';
 import { sessionActions as realSessionActions } from '../../../actions/session';
 
 interface LoginContainerProps {
