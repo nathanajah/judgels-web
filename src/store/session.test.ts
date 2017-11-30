@@ -1,4 +1,7 @@
-import { INITIAL_STATE, LogInFailure, LogInRequest, LogInSuccess, sessionReducer, SessionState, } from './session';
+import {
+  INITIAL_STATE, LogInFailure, LogInRequest, LogInSuccess, LogOut, sessionReducer,
+  SessionState,
+} from './session';
 
 describe('sessionReducer', () => {
   it('handles LOG_IN_REQUEST', () => {
@@ -18,5 +21,11 @@ describe('sessionReducer', () => {
     const state = INITIAL_STATE;
     const action = LogInFailure.create({ error: new Error() });
     expect(sessionReducer(state, action)).toEqual(state);
+  });
+
+  it('handles LOG_OUT', () => {
+    const state: SessionState = { user: { username: 'user' }, token: 'token123'};;
+    const action = LogOut.create({ username: 'user' });
+    expect(sessionReducer(state, action)).toEqual(INITIAL_STATE);
   });
 });

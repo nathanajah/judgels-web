@@ -1,7 +1,8 @@
-import { LogInFailure, LogInRequest, LogInSuccess } from '../store/session';
-import { Session } from '../api/jophiel/models';
 import { push } from 'react-router-redux';
+
 import { ForbiddenError } from '../api/errors';
+import { Session } from '../api/jophiel/models';
+import { LogInFailure, LogInRequest, LogInSuccess, LogOut } from '../store/session';
 import { sessionActions } from './session';
 
 describe('sessionActions', () => {
@@ -45,6 +46,16 @@ describe('sessionActions', () => {
       await logIn('user', 'pass')(dispatch, getState, { accountAPI });
 
       expect(dispatch).toHaveBeenCalledWith(LogInFailure.create({ error }));
+    });
+  });
+
+  describe('logOut()', () => {
+    const { logOut } = sessionActions;
+
+    it('requests', async () => {
+      await logOut('user')(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(LogOut.create({ username: 'user' }));
     });
   });
 });

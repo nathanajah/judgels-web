@@ -5,9 +5,9 @@ import { User } from '../../../models/user';
 import { UserWidget, UserWidgetProps } from './UserWidget';
 
 describe('UserWidget', () => {
-  let wrapper: ShallowWrapper;
-
   let user: User|undefined;
+
+  let wrapper: ShallowWrapper;
 
   const render = () => {
     const props: UserWidgetProps = {
