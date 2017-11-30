@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { Login, LoginProps } from '../../components/Login/Login';
+import { LoginFormData } from '../../components/LoginForm/LoginForm';
 import { sessionActions as injectedSessionActions } from '../../../../actions/session';
 
 const LoginContainer = (props: LoginProps) => (
@@ -10,7 +11,7 @@ const LoginContainer = (props: LoginProps) => (
 
 export function createLoginContainer(sessionActions) {
   const mapDispatchToProps = dispatch => ({
-    handleLogIn: (username: string, password: string) => dispatch(sessionActions.logIn(username, password)),
+    handleLogIn: (data: LoginFormData) => dispatch(sessionActions.logIn(data)),
   });
 
   return connect(undefined, mapDispatchToProps)(LoginContainer);

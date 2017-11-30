@@ -1,55 +1,69 @@
-import * as React from 'react'
-import {Field, InjectedFormProps, reduxForm} from 'redux-form'
-import { Button, Form, Popup } from 'semantic-ui-react'
+import { Button, Intent } from '@blueprintjs/core';
+import * as React from 'react';
+import { Field, reduxForm, SubmitHandler } from 'redux-form';
 
-interface RegisterFormProps extends InjectedFormProps {}
+import { FormTextInput } from '../../../../components/Form/FormTextInput/FormTextInput';
+import { Required } from '../../../../components/Form/FormValidations';
+import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivider';
 
-export class RegisterForm extends React.Component<RegisterFormProps> {
-  render () {
-    const { handleSubmit } = this.props
-    return (
-      <Form onSubmit={handleSubmit}>
-        <Form.Field>
-          <label>Username</label>
-          <Popup
-            trigger={
-              <Field name='username' component='input'
-                className='ui input' type='text' />
-            }
-            content='This is the name you will log in with.'
-            on='focus'
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Name</label>
-          <Field name='name' component='input' className='ui input' type='text' />
-        </Form.Field>
-        <Form.Field>
-          <label>Email</label>
-          <Popup
-            trigger={
-              <Field id='email' name='email' component='input'
-                className='ui input' type='email' />
-            }
-            content='A verification email will be sent to this address, so make sure it is correct!'
-            on='focus'
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <Field name='password' component='input'
-            className='ui input' type='password' />
-        </Form.Field>
-        <Form.Field>
-          <label>Confirm Password</label>
-          <Field name='confirmPassword' component='input'
-            className='ui input' type='password' />
-        </Form.Field>
-        {/* TODO: captcha */}
-        <Button type='submit'>Register</Button>
-      </Form>
-    )
-  }
+import '../../../../styles/form.css';
+
+export interface RegisterFormData {
+  username: string;
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
-export default reduxForm<any>({ form: 'register' })(RegisterForm)
+interface RegisterFormProps {
+  handleSubmit: SubmitHandler<RegisterFormData>;
+}
+
+const usernameField = {
+  name: 'username',
+  label: 'Username',
+  validate: [Required]
+};
+
+const nameField = {
+  name: 'name',
+  label: 'Name',
+  validate: [Required]
+};
+
+const emailField = {
+  name: 'email',
+  label: 'Email',
+  validate: [Required]
+};
+
+const passwordField = {
+  name: 'password',
+  label: 'Password',
+  type: 'password',
+  validate: [Required]
+};
+
+const confirmPasswordField = {
+  name: 'confirmPassword',
+  label: 'Confirm Password',
+  type: 'password',
+  validate: [Required]
+};
+
+const RegisterForm = (props: RegisterFormProps) => (
+  <form onSubmit={props.handleSubmit}>
+    <Field component={FormTextInput} {...usernameField}/>
+    <Field component={FormTextInput} {...nameField}/>
+    <Field component={FormTextInput} {...emailField}/>
+    <Field component={FormTextInput} {...passwordField}/>
+    <Field component={FormTextInput} {...confirmPasswordField}/>
+
+    <HorizontalDivider />
+
+    <Button type="submit" text="Register" intent={Intent.PRIMARY}/>
+  </form>
+);
+
+export default reduxForm<RegisterFormData>({ form: 'register' })(RegisterForm);

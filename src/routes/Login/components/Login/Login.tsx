@@ -7,23 +7,15 @@ import { SingleColumnLayout } from '../../../../layouts/SingleColumnLayout/Singl
 import './Login.css';
 
 export interface LoginProps {
-  handleLogIn: (username: string, password: string) => void;
+  handleLogIn: (data: LoginFormData) => void;
 }
 
-export class Login extends React.Component<LoginProps> {
-  render() {
-    return (
-      <SingleColumnLayout>
-        <div className="card-login">
-          <Card title="Log in">
-            <LoginForm onSubmit={this.handleLogIn}/>
-          </Card>
-        </div>
-      </SingleColumnLayout>
-    );
-  }
-
-  private handleLogIn = (data: LoginFormData) => {
-    this.props.handleLogIn(data.username, data.password);
-  }
-}
+export const Login = (props: LoginProps) => (
+  <SingleColumnLayout>
+    <div className="card-login">
+      <Card title="Log in">
+        <LoginForm onSubmit={props.handleLogIn}/>
+      </Card>
+    </div>
+  </SingleColumnLayout>
+);

@@ -1,42 +1,22 @@
-import * as React from 'react'
-import { connect } from 'react-redux'
-import RegisterView from '../../components/RegisterView'
-import { register, loadRegister } from '../../modules/register'
+import * as React from 'react';
+import { connect } from 'react-redux';
 
-interface RegisterContainerProps {
-  dispatch: any;
-  register: {
-    error: string;
-    message: string;
-  };
+import { Register, RegisterProps } from '../../components/Register/Register';
+import { RegisterFormData } from '../../components/RegisterForm/RegisterForm';
+import { registerActions as injectedRegisterActions } from '../../modules/registerActions';
+
+const RegisterContainer = (props: RegisterProps) => (
+  <Register {...props}/>
+);
+
+export function createRegisterContainer(registerActions) {
+  const mapDispatchToProps = dispatch => ({
+    handleRegister: (data: RegisterFormData) => {
+      return dispatch(registerActions.register(data.username, data.name, data.email, data.password));
+    },
+  });
+
+  return connect(undefined, mapDispatchToProps)(RegisterContainer);
 }
 
-export class RegisterContainer extends React.Component<RegisterContainerProps> {
-  constructor (props) {
-    super(props)
-    this.handleSubmitRegister = this.handleSubmitRegister.bind(this)
-  }
-
-  componentWillMount () {
-    const { dispatch } = this.props
-    dispatch(loadRegister())
-  }
-
-  handleSubmitRegister (data) {
-    const { dispatch } = this.props
-    const { username, name, email, password, confirmPassword } = data
-    dispatch(register(username, name, email, password, confirmPassword))
-  }
-
-  render () {
-    const { register } = this.props
-    return (<RegisterView handleSubmitRegister={this.handleSubmitRegister}
-      error={register.error} message={register.message} />)
-  }
-}
-const mapStateToProps = (state) => ({
-  currentUser: state.session.currentUser,
-  register: state.register
-})
-
-export default connect<any>(mapStateToProps)(RegisterContainer)
+export default createRegisterContainer(injectedRegisterActions);
