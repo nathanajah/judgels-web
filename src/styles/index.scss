@@ -13,3 +13,7 @@ h3 {
   color: #252527 !important;
   line-height: 0.5 * $pt-font-size-large !important;
 }
+
+.toast {
+  margin-top: 5 * $pt-grid-size;
+}

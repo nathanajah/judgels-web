@@ -7,6 +7,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 import { sessionReducer, SessionState } from './session';
+import { toastActions } from '../actions/toast';
 import { createAccountAPI } from '../api/jophiel/account';
 
 export interface AppState {
@@ -30,6 +31,7 @@ export const store = createStore<AppState>(
   composeEnhancers(
     applyMiddleware(
       thunk.withExtraArgument({
+        toastActions,
         accountAPI: createAccountAPI('http://localhost:9001/api/v2/account'),
       }),
       routerMiddleware(history)

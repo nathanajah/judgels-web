@@ -1,10 +1,11 @@
 import { push } from 'react-router-redux';
 
+import { ForbiddenError } from '../api/errors';
 import { LogInFailure, LogInRequest, LogInSuccess, LogOut } from '../store/session';
 
 export const sessionActions = {
   logIn: (username: string, password: string) => {
-    return async (dispatch, getState, { accountAPI }) => {
+    return async (dispatch, getState, { toastActions, accountAPI }) => {
       dispatch(LogInRequest.create({ username }));
 
       try {
@@ -14,6 +15,12 @@ export const sessionActions = {
         dispatch(push('/home'));
       } catch (error) {
         dispatch(LogInFailure.create({ error }));
+
+        if (error instanceof ForbiddenError) {
+          dispatch(toastActions.showErrorToast('Invalid username/password.'));
+        } else {
+          dispatch(toastActions.showErrorToast());
+        }
       }
     };
   },

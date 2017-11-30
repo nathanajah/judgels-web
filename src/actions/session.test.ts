@@ -9,12 +9,16 @@ describe('sessionActions', () => {
   let dispatch: jest.Mock<any>;
   let getState: jest.Mock<any>;
 
+  let toastActions: jest.Mocked<any>;
   let accountAPI: jest.Mocked<any>;
 
   beforeEach(() => {
     dispatch = jest.fn();
     getState = jest.fn();
 
+    toastActions = {
+      showErrorToast: jest.fn().mockImplementation(message => ({ type: 'mock', payload: message })),
+    };
     accountAPI = {
       logIn: jest.fn(),
     };
@@ -22,9 +26,10 @@ describe('sessionActions', () => {
 
   describe('logIn()', () => {
     const { logIn } = sessionActions;
+    const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { toastActions, accountAPI });
 
     it('requests', async () => {
-      await logIn('user', 'pass')(dispatch, getState, { accountAPI });
+      await doLogIn();
 
       expect(accountAPI.logIn).toHaveBeenCalledWith('user', 'pass');
       expect(dispatch).toHaveBeenCalledWith(LogInRequest.create({ username: 'user' }));
@@ -33,7 +38,7 @@ describe('sessionActions', () => {
     it('succeeds when the credentials is valid', async () => {
       accountAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
 
-      await logIn('user', 'pass')(dispatch, getState, { accountAPI });
+      await doLogIn();
 
       expect(dispatch).toHaveBeenCalledWith(LogInSuccess.create({ username: 'user', token: 'token123' }));
       expect(dispatch).toHaveBeenCalledWith(push('/home'));
@@ -43,17 +48,19 @@ describe('sessionActions', () => {
       const error = new ForbiddenError();
       accountAPI.logIn.mockImplementation(() => { throw error; });
 
-      await logIn('user', 'pass')(dispatch, getState, { accountAPI });
+      await doLogIn();
 
       expect(dispatch).toHaveBeenCalledWith(LogInFailure.create({ error }));
+      expect(dispatch).toHaveBeenCalledWith(toastActions.showErrorToast('Invalid username/password.'));
     });
   });
 
   describe('logOut()', () => {
     const { logOut } = sessionActions;
+    const doLogOut = async () => logOut('user')(dispatch);
 
     it('requests', async () => {
-      await logOut('user')(dispatch);
+      await doLogOut();
 
       expect(dispatch).toHaveBeenCalledWith(LogOut.create({ username: 'user' }));
     });
