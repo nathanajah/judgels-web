@@ -2,7 +2,7 @@ import { Button, Intent } from '@blueprintjs/core';
 import * as React from 'react';
 import { Field, reduxForm, SubmitHandler } from 'redux-form';
 
-import { FormTextInput } from '../../../../components/Form/FormTextInput';
+import { FormTextInput } from '../../../../components/Form/FormTextInput/FormTextInput';
 import { Required } from '../../../../components/Form/FormValidations';
 import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivider';
 
