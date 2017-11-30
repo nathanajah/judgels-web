@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Login, LoginProps } from '../../components/Login/Login';
 import { LoginFormData } from '../../components/LoginForm/LoginForm';
-import { sessionActions as injectedSessionActions } from '../../../../actions/session';
+import { sessionActions as injectedSessionActions } from '../../../../modules/session/sessionActions';
 
 const LoginContainer = (props: LoginProps) => (
   <Login {...props}/>

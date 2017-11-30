@@ -35,6 +35,6 @@ describe('LoginContainer', () => {
     const form = wrapper.find('form');
     form.simulate('submit');
 
-    expect(sessionActions.logIn).toHaveBeenCalledWith('user', 'pass');
+    expect(sessionActions.logIn).toHaveBeenCalledWith({ username: 'user', password: 'pass'});
   });
 });

@@ -1,9 +1,9 @@
 import { push } from 'react-router-redux';
 
-import { ForbiddenError } from '../api/errors';
-import { Session } from '../api/jophiel/models';
-import { LogInFailure, LogInRequest, LogInSuccess, LogOut } from '../store/session';
-import { sessionActions } from './session';
+import { Session } from '../../api/jophiel/models';
+import { ForbiddenError } from '../../models/error';
+import { sessionActions } from './sessionActions';
+import { LogInFailure, LogInRequest, LogInSuccess, LogOut } from './sessionReducer';
 
 describe('sessionActions', () => {
   let dispatch: jest.Mock<any>;

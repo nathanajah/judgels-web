@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { sessionActions as injectedSessionActions } from '../../../actions/session';
+import { sessionActions as injectedSessionActions } from '../../../modules/session/sessionActions';
 import { UserWidget, UserWidgetProps } from '../../../components/Header/UserWidget/UserWidget';
-import { AppState } from '../../../store/index';
+import { AppState } from '../../../store/store';
 
 const UserWidgetContainer = (props: UserWidgetProps) => (
   <UserWidget {...props}/>

@@ -1,5 +1,5 @@
-import { createToastActions } from './toast';
-import { ShowErrorToast } from '../store/toast';
+import { createToastActions } from './toastActions';
+import { ShowErrorToast } from './toastReducer';
 
 describe('toastActions', () => {
   let dispatch: jest.Mock<any>;

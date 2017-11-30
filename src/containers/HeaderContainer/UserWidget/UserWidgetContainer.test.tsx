@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { combineReducers, createStore, Store } from 'redux';
 
 import { createUserWidgetContainer } from './UserWidgetContainer';
-import { AppState } from '../../../store/index';
-import { LogInSuccess, sessionReducer } from '../../../store/session';
+import { LogInSuccess, sessionReducer } from '../../../modules/session/sessionReducer';
+import { AppState } from '../../../store/store';
 
 describe('UserWidgetContainer', () => {
   let sessionActions: jest.Mocked<any>;

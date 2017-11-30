@@ -1,6 +1,6 @@
 import { Intent, IToaster, Position, Toaster } from '@blueprintjs/core';
 
-import { ShowErrorToast } from '../store/toast';
+import { ShowErrorToast } from './toastReducer';
 
 const TOASTER = Toaster.create({ position: Position.TOP, className: 'toast' });
 

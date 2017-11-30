@@ -1,7 +1,7 @@
 import {
   INITIAL_STATE, LogInFailure, LogInRequest, LogInSuccess, LogOut, sessionReducer,
   SessionState,
-} from './session';
+} from './sessionReducer';
 
 describe('sessionReducer', () => {
   it('handles LOG_IN_REQUEST', () => {
