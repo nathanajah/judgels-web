@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import LoginForm, { LoginFormData } from './LoginForm';
+import LoginForm, { LoginFormData } from '../LoginForm/LoginForm';
 import { Card } from '../../../../components/Card/Card';
 import { SingleColumnLayout } from '../../../../layouts/SingleColumnLayout/SingleColumnLayout';
 
