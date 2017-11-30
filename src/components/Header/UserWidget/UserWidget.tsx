@@ -1,5 +1,6 @@
 import { Icon, Menu, MenuItem, Popover, Position } from '@blueprintjs/core';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import { User } from '../../../models/user';
 
@@ -45,7 +46,7 @@ export class UserWidget extends React.Component<UserWidgetProps> {
     return (
       <div className="pt-navbar-group pt-align-right">
         <div className="widget-user__link">
-          <a className="widget-user__login" href="#">Log in</a>
+          <Link className="widget-user__login" to="/login">Log in</Link>
         </div>
         <div className="widget-user__link">
           <a className="widget-user__register" href="#">Register</a>
