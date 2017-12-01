@@ -6,11 +6,11 @@ import { StartSession } from '../../../../modules/session/sessionReducer';
 
 export const loginActions = {
   logIn: (username: string, password: string) => {
-    return async (dispatch, getState, { toastActions, accountAPI }) => {
+    return async (dispatch, getState, { toastActions, sessionAPI }) => {
       dispatch(LogInRequest.create());
 
       try {
-        const session = await accountAPI.logIn(username, password);
+        const session = await sessionAPI.logIn(username, password);
         const { token } = session;
 
         dispatch(LogInSuccess.create());

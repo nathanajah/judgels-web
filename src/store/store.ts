@@ -6,7 +6,7 @@ import { routerMiddleware, routerReducer, RouterState } from 'react-router-redux
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
-import { createAccountAPI } from '../api/jophiel/account';
+import { createSessionAPI } from '../api/jophiel/session';
 import { sessionReducer, SessionState } from '../modules/session/sessionReducer';
 import { toastActions } from '../modules/toast/toastActions';
 import { jophielReducer, JophielState } from '../routes/jophiel/modules/jophielReducer';
@@ -35,7 +35,7 @@ export const store = createStore<AppState>(
     applyMiddleware(
       thunk.withExtraArgument({
         toastActions,
-        accountAPI: createAccountAPI('http://localhost:9001/api/v2/account'),
+        sessionAPI: createSessionAPI('http://localhost:9001/api/v2/session'),
       }),
       routerMiddleware(history)
     ),

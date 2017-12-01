@@ -11,7 +11,7 @@ describe('sessionActions', () => {
   let getState: jest.Mock<any>;
 
   let toastActions: jest.Mocked<any>;
-  let accountAPI: jest.Mocked<any>;
+  let sessionAPI: jest.Mocked<any>;
 
   beforeEach(() => {
     dispatch = jest.fn();
@@ -20,14 +20,14 @@ describe('sessionActions', () => {
     toastActions = {
       showErrorToast: jest.fn().mockImplementation(message => ({ type: 'mock', payload: message })),
     };
-    accountAPI = {
+    sessionAPI = {
       logIn: jest.fn(),
     };
   });
 
   describe('logIn()', () => {
     const { logIn } = loginActions;
-    const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { toastActions, accountAPI });
+    const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { toastActions, sessionAPI });
 
     it('requests', async () => {
       await doLogIn();
@@ -38,12 +38,12 @@ describe('sessionActions', () => {
     it('tries to logs in', async () => {
       await doLogIn();
 
-      expect(accountAPI.logIn).toHaveBeenCalledWith('user', 'pass');
+      expect(sessionAPI.logIn).toHaveBeenCalledWith('user', 'pass');
     });
 
     describe('when the credentials is valid', () => {
       beforeEach(() => {
-        accountAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
+        sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
       });
 
       it('succeeds', async () => {
@@ -67,7 +67,7 @@ describe('sessionActions', () => {
     describe('when the credentials is valid', () => {
       beforeEach(() => {
         const error = new ForbiddenError();
-        accountAPI.logIn.mockImplementation(() => { throw error; });
+        sessionAPI.logIn.mockImplementation(() => { throw error; });
       });
 
       it('fails with toast', async () => {
