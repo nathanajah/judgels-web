@@ -49,7 +49,7 @@ export class UserWidget extends React.Component<UserWidgetProps> {
           <Link className="widget-user__login" to="/login">Log in</Link>
         </div>
         <div className="widget-user__link">
-          <a className="widget-user__register" href="#">Register</a>
+          <Link className="widget-user__register" to="/register">Register</Link>
         </div>
       </div>
     );

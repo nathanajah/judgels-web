@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Field, reduxForm, SubmitHandler } from 'redux-form';
 
 import { FormTextInput } from '../../../../components/Form/FormTextInput/FormTextInput';
-import { Required } from '../../../../components/Form/FormValidations';
 import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivider';
+import { ConfirmPassword, EmailAddress, Required, Username } from '../../../../utils/validations';
 
 import '../../../../styles/form.css';
 
@@ -23,7 +23,8 @@ interface RegisterFormProps {
 const usernameField = {
   name: 'username',
   label: 'Username',
-  validate: [Required]
+  required: true,
+  validate: [Required, Username]
 };
 
 const nameField = {
@@ -35,7 +36,7 @@ const nameField = {
 const emailField = {
   name: 'email',
   label: 'Email',
-  validate: [Required]
+  validate: [Required, EmailAddress]
 };
 
 const passwordField = {
@@ -49,7 +50,8 @@ const confirmPasswordField = {
   name: 'confirmPassword',
   label: 'Confirm Password',
   type: 'password',
-  validate: [Required]
+  required: true,
+  validate: [Required, ConfirmPassword]
 };
 
 const RegisterForm = (props: RegisterFormProps) => (
