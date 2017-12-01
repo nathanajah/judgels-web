@@ -1,7 +1,12 @@
 import { ForbiddenError, RemoteError, UnauthorizedError } from '../models/error';
 
 async function call(url: string, init: RequestInit): Promise<any> {
-  const response = await fetch(url, init);
+  let response: Response;
+  try {
+    response = await fetch(url, init);
+  } catch (error) {
+    throw new RemoteError();
+  }
 
   if (response.status === 401) {
     throw new UnauthorizedError();

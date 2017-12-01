@@ -1,23 +1,25 @@
 import { Intent, IToaster, Position, Toaster } from '@blueprintjs/core';
 
-import { ShowErrorToast } from './toastReducer';
+import { RemoteError } from '../../models/error';
 
 const TOASTER = Toaster.create({ position: Position.TOP, className: 'toast' });
 
 export function createToastActions(toaster: IToaster) {
   return {
-    showErrorToast: (message?: string) => {
-      return async dispatch => {
-        const actualMessage = message || 'Internal server error; please try again later.';
+    showErrorToast: (error) => {
+      let message: string;
 
-        dispatch(ShowErrorToast.create({ message: actualMessage }));
+      if (error instanceof RemoteError) {
+        message = 'Internal server error; please try again later.';
+      } else {
+        message = error.message;
+      }
 
-        toaster.show({
-          iconName: 'warning-sign',
-          message: actualMessage,
-          intent: Intent.DANGER,
-        });
-      };
+      toaster.show({
+        iconName: 'warning-sign',
+        message,
+        intent: Intent.DANGER,
+      });
     },
   };
 }

@@ -5,15 +5,11 @@ describe('logoutActions', () => {
   let dispatch: jest.Mock<any>;
   let getState: jest.Mock<any>;
 
-  let toastActions: jest.Mocked<any>;
   let sessionAPI: jest.Mocked<any>;
 
   beforeEach(() => {
     dispatch = jest.fn();
 
-    toastActions = {
-      showErrorToast: jest.fn().mockImplementation(() => ({ type: 'mock' })),
-    };
     sessionAPI = {
       logOut: jest.fn(),
     };
@@ -21,7 +17,7 @@ describe('logoutActions', () => {
 
   describe('logOut()', () => {
     const { logOut } = logoutActions;
-    const doLogOut = async () => logOut()(dispatch, getState, { toastActions, sessionAPI });
+    const doLogOut = async () => logOut()(dispatch, getState, { sessionAPI });
 
     it('tries to log out', async () => {
       await doLogOut();

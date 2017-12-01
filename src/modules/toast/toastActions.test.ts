@@ -1,13 +1,11 @@
 import { createToastActions } from './toastActions';
-import { ShowErrorToast } from './toastReducer';
+import { RemoteError } from '../../models/error';
 
 describe('toastActions', () => {
-  let dispatch: jest.Mock<any>;
   let toaster: jest.Mocked<any>;
   let toastActions: any;
 
   beforeEach(() => {
-    dispatch = jest.fn();
     toaster = {
       show: jest.fn(),
     };
@@ -15,33 +13,16 @@ describe('toastActions', () => {
   });
 
   describe('showErrorToast()', () => {
-    let doShowErrorToast: any;
+    it('calls the toaster with default message', async () => {
+      toastActions.showErrorToast(new RemoteError('Rate limit exceeded.'));
 
-    beforeEach(() => {
-      const { showErrorToast } = toastActions;
-      doShowErrorToast = async (message?: string) => showErrorToast(message)(dispatch);
+      expect(toaster.show.mock.calls[0][0].message).toEqual('Internal server error; please try again later.');
     });
 
-    it('calls the toaster', async () => {
-      await doShowErrorToast();
+    it('calls the toaster with message', async () => {
+      toastActions.showErrorToast(new Error('Please show this error.'));
 
-      expect(toaster.show).toHaveBeenCalled();
-    });
-
-    it('shows error toast with default message', async () => {
-      await doShowErrorToast();
-
-      expect(dispatch).toHaveBeenCalledWith(ShowErrorToast.create({
-        message: 'Internal server error; please try again later.'
-      }));
-    });
-
-    it('shows error toast with message', async () => {
-      await doShowErrorToast('Some error.');
-
-      expect(dispatch).toHaveBeenCalledWith(ShowErrorToast.create({
-        message: 'Some error.'
-      }));
+      expect(toaster.show.mock.calls[0][0].message).toEqual('Please show this error.');
     });
   });
 });

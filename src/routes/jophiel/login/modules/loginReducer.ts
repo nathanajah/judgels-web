@@ -12,7 +12,9 @@ export const LogInRequest = TypedAction.defineWithoutPayload('login/LOG_IN_REQUE
 
 export const LogInSuccess = TypedAction.defineWithoutPayload('login/LOG_IN_SUCCESS')();
 
-export const LogInFailure = TypedAction.defineWithoutPayload('login/LOG_IN_FAILURE')();
+export const LogInFailure = TypedAction.define('login/LOG_IN_FAILURE')<{
+  error: any;
+}>();
 
 const createLoginReducer = () => {
   const builder = TypedReducer.builder<LoginState>();

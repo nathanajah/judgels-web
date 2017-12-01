@@ -6,20 +6,16 @@ import { Session } from '../../../../api/jophiel/models';
 import { ForbiddenError } from '../../../../models/error';
 import { StartSession } from '../../../../modules/session/sessionReducer';
 
-describe('sessionActions', () => {
+describe('loginActions', () => {
   let dispatch: jest.Mock<any>;
   let getState: jest.Mock<any>;
 
-  let toastActions: jest.Mocked<any>;
   let sessionAPI: jest.Mocked<any>;
 
   beforeEach(() => {
     dispatch = jest.fn();
     getState = jest.fn();
 
-    toastActions = {
-      showErrorToast: jest.fn().mockImplementation(message => ({ type: 'mock', payload: message })),
-    };
     sessionAPI = {
       logIn: jest.fn(),
     };
@@ -27,7 +23,7 @@ describe('sessionActions', () => {
 
   describe('logIn()', () => {
     const { logIn } = loginActions;
-    const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { toastActions, sessionAPI });
+    const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { sessionAPI });
 
     it('requests', async () => {
       await doLogIn();
@@ -64,17 +60,20 @@ describe('sessionActions', () => {
       });
     });
 
-    describe('when the credentials is valid', () => {
+    describe('when the credentials is invalid', () => {
+      let error: any;
+
       beforeEach(() => {
-        const error = new ForbiddenError();
+        error = new ForbiddenError();
         sessionAPI.logIn.mockImplementation(() => { throw error; });
       });
 
-      it('fails with toast', async () => {
+      it('fails with appropriate error', async () => {
         await doLogIn();
 
-        expect(dispatch).toHaveBeenCalledWith(LogInFailure.create());
-        expect(dispatch).toHaveBeenCalledWith(toastActions.showErrorToast('Invalid username/password.'));
+        expect(dispatch).toHaveBeenCalledWith(LogInFailure.create({
+          error: new Error('Invalid username/password.'),
+        }));
       });
     });
   });

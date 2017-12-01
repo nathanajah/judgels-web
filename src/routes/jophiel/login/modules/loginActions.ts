@@ -6,7 +6,7 @@ import { StartSession } from '../../../../modules/session/sessionReducer';
 
 export const loginActions = {
   logIn: (username: string, password: string) => {
-    return async (dispatch, getState, { toastActions, sessionAPI }) => {
+    return async (dispatch, getState, { sessionAPI }) => {
       dispatch(LogInRequest.create());
 
       try {
@@ -22,12 +22,10 @@ export const loginActions = {
 
         dispatch(push('/home'));
       } catch (error) {
-        dispatch(LogInFailure.create());
-
         if (error instanceof ForbiddenError) {
-          dispatch(toastActions.showErrorToast('Invalid username/password.'));
+          dispatch(LogInFailure.create({ error: new Error('Invalid username/password.') }));
         } else {
-          dispatch(toastActions.showErrorToast());
+          dispatch(LogInFailure.create({ error }));
         }
       }
     };

@@ -1,13 +1,14 @@
 import { EndSession } from '../../../../modules/session/sessionReducer';
+import { LogOutFailure } from './logoutReducer';
 
 export const logoutActions = {
   logOut: () => {
-    return async (dispatch, getState, { toastActions, sessionAPI }) => {
+    return async (dispatch, getState, { sessionAPI }) => {
       try {
         await sessionAPI.logOut();
         dispatch(EndSession.create());
       } catch (error) {
-        dispatch(toastActions.showErrorToast());
+        dispatch(LogOutFailure.create({ error }));
       }
     };
   },

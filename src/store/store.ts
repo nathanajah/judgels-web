@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 
 import { createSessionAPI } from '../api/jophiel/session';
 import { sessionReducer, SessionState } from '../modules/session/sessionReducer';
-import { toastActions } from '../modules/toast/toastActions';
+import { toastMiddleware } from '../modules/toast/toastMiddleware';
 import { jophielReducer, JophielState } from '../routes/jophiel/modules/jophielReducer';
 
 export interface AppState {
@@ -34,9 +34,9 @@ export const store = createStore<AppState>(
   composeEnhancers(
     applyMiddleware(
       thunk.withExtraArgument({
-        toastActions,
         sessionAPI: createSessionAPI('http://localhost:9001/api/v2/session'),
       }),
+      toastMiddleware,
       routerMiddleware(history)
     ),
   ),
