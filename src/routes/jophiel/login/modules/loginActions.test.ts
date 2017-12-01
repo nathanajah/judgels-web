@@ -68,11 +68,13 @@ describe('loginActions', () => {
         sessionAPI.logIn.mockImplementation(() => { throw error; });
       });
 
-      it('fails with appropriate error', async () => {
+      it('fails with error toast', async () => {
         await doLogIn();
 
         expect(dispatch).toHaveBeenCalledWith(LogInFailure.create({
-          error: new Error('Invalid username/password.'),
+          toast: {
+            error: new Error('Invalid username/password.')
+          },
         }));
       });
     });

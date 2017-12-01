@@ -17,7 +17,11 @@ describe('loginReducer', () => {
 
   it('handles LOG_IN_FAILURE', () => {
     const state: LoginState = { isLoading: true };
-    const action = LogInFailure.create({ error: new Error() });
+    const action = LogInFailure.create({
+      toast: {
+        error: new Error()
+      },
+    });
     const nextState: LoginState = { isLoading: false };
     expect(loginReducer(state, action)).toEqual(nextState);
   });

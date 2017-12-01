@@ -1,5 +1,7 @@
 import { setWith, TypedAction, TypedReducer } from 'redoodle';
 
+import { Toast } from '../../../../modules/toast/toast';
+
 export interface LoginState {
   isLoading: boolean;
 }
@@ -13,7 +15,7 @@ export const LogInRequest = TypedAction.defineWithoutPayload('login/LOG_IN_REQUE
 export const LogInSuccess = TypedAction.defineWithoutPayload('login/LOG_IN_SUCCESS')();
 
 export const LogInFailure = TypedAction.define('login/LOG_IN_FAILURE')<{
-  error: any;
+  toast: Toast;
 }>();
 
 const createLoginReducer = () => {

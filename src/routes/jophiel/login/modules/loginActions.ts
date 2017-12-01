@@ -23,9 +23,17 @@ export const loginActions = {
         dispatch(push('/home'));
       } catch (error) {
         if (error instanceof ForbiddenError) {
-          dispatch(LogInFailure.create({ error: new Error('Invalid username/password.') }));
+          dispatch(LogInFailure.create({
+            toast: {
+              error: new Error('Invalid username/password.')
+            },
+          }));
         } else {
-          dispatch(LogInFailure.create({ error }));
+          dispatch(LogInFailure.create({
+            toast: {
+              error
+            },
+          }));
         }
       }
     };
