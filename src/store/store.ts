@@ -1,5 +1,5 @@
 import createBrowserHistory from 'history/createBrowserHistory';
-import { FormReducer, reducer as formReducer } from 'redux-form';
+import { FormState, reducer as formReducer } from 'redux-form';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 import { routerMiddleware, routerReducer, RouterState } from 'react-router-redux';
@@ -9,17 +9,20 @@ import thunk from 'redux-thunk';
 import { createAccountAPI } from '../api/jophiel/account';
 import { sessionReducer, SessionState } from '../modules/session/sessionReducer';
 import { toastActions } from '../modules/toast/toastActions';
+import { jophielReducer, JophielState } from '../routes/jophiel/modules/jophielReducer';
 
 export interface AppState {
   session: SessionState;
   router: RouterState;
-  form: FormReducer;
+  form: FormState;
+  jophiel: JophielState;
 }
 
 const rootReducer = combineReducers<AppState>({
   session: persistReducer({ key: 'session', storage }, sessionReducer),
   router: routerReducer,
   form: formReducer,
+  jophiel: jophielReducer,
 });
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import RegisterForm, { RegisterFormData } from '../RegisterForm/RegisterForm';
-import { Card } from '../../../../components/Card/Card';
-import { SingleColumnLayout } from '../../../../layouts/SingleColumnLayout/SingleColumnLayout';
+import { Card } from '../../../../../components/Card/Card';
+import { SingleColumnLayout } from '../../../../../layouts/SingleColumnLayout/SingleColumnLayout';
 
 import './Register.css';
 

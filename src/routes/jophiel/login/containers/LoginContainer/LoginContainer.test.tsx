@@ -7,16 +7,16 @@ import { reducer as formReducer } from 'redux-form'
 import { createLoginContainer } from './LoginContainer';
 
 describe('LoginContainer', () => {
-  let sessionActions: jest.Mocked<any>;
+  let loginActions: jest.Mocked<any>;
   let wrapper: ReactWrapper<any, any>;
 
   beforeEach(() => {
-    sessionActions = {
+    loginActions = {
       logIn: jest.fn().mockReturnValue({ type: 'mock' }),
     };
 
     const store = createStore(combineReducers({ form: formReducer }));
-    const LoginContainer = createLoginContainer(sessionActions);
+    const LoginContainer = createLoginContainer(loginActions);
 
     wrapper = mount(
       <Provider store={store}>
@@ -35,6 +35,6 @@ describe('LoginContainer', () => {
     const form = wrapper.find('form');
     form.simulate('submit');
 
-    expect(sessionActions.logIn).toHaveBeenCalledWith({ username: 'user', password: 'pass'});
+    expect(loginActions.logIn).toHaveBeenCalledWith('user', 'pass');
   });
 });

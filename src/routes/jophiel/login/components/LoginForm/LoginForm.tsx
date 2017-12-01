@@ -2,11 +2,11 @@ import { Button, Intent } from '@blueprintjs/core';
 import * as React from 'react';
 import { Field, reduxForm, SubmitHandler } from 'redux-form';
 
-import { FormTextInput } from '../../../../components/Form/FormTextInput/FormTextInput';
-import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivider';
-import { Required } from '../../../../utils/validations';
+import { FormTextInput } from '../../../../../components/Form/FormTextInput/FormTextInput';
+import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider';
+import { Required } from '../../../../../utils/validations';
 
-import '../../../../styles/form.css';
+import '../../../../../styles/form.css';
 
 export interface LoginFormData {
   username: string;
