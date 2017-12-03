@@ -1,10 +1,5 @@
-import { loginReducer, LoginState } from '../login/modules/loginReducer';
 import { combineReducers } from 'redux';
 
-export interface JophielState {
-  login: LoginState;
-}
+export interface JophielState {}
 
-export const jophielReducer = combineReducers<JophielState>({
-  login: loginReducer,
-});
+export const jophielReducer = combineReducers<JophielState>({});

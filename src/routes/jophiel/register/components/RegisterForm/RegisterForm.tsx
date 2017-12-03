@@ -1,6 +1,6 @@
 import { Button, Intent } from '@blueprintjs/core';
 import * as React from 'react';
-import { Field, reduxForm, SubmitHandler } from 'redux-form';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { FormTextInput } from '../../../../../components/Form/FormTextInput/FormTextInput';
 import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider';
@@ -16,34 +16,30 @@ export interface RegisterFormData {
   confirmPassword: string;
 }
 
-interface RegisterFormProps {
-  handleSubmit: SubmitHandler<RegisterFormData>;
-}
-
 const usernameField = {
   name: 'username',
   label: 'Username',
   required: true,
-  validate: [Required, Username]
+  validate: [Required, Username],
 };
 
 const nameField = {
   name: 'name',
   label: 'Name',
-  validate: [Required]
+  validate: [Required],
 };
 
 const emailField = {
   name: 'email',
   label: 'Email',
-  validate: [Required, EmailAddress]
+  validate: [Required, EmailAddress],
 };
 
 const passwordField = {
   name: 'password',
   label: 'Password',
   type: 'password',
-  validate: [Required]
+  validate: [Required],
 };
 
 const confirmPasswordField = {
@@ -51,10 +47,10 @@ const confirmPasswordField = {
   label: 'Confirm Password',
   type: 'password',
   required: true,
-  validate: [Required, ConfirmPassword]
+  validate: [Required, ConfirmPassword],
 };
 
-const RegisterForm = (props: RegisterFormProps) => (
+const RegisterForm = (props: InjectedFormProps<RegisterFormData>) => (
   <form onSubmit={props.handleSubmit}>
     <Field component={FormTextInput} {...usernameField}/>
     <Field component={FormTextInput} {...nameField}/>
@@ -64,7 +60,7 @@ const RegisterForm = (props: RegisterFormProps) => (
 
     <HorizontalDivider />
 
-    <Button type="submit" text="Register" intent={Intent.PRIMARY}/>
+    <Button type="submit" text="Register" intent={Intent.PRIMARY} loading={props.submitting}/>
   </form>
 );
 

@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 
 import { loginActions } from './loginActions';
-import { LogInFailure, LogInRequest, LogInSuccess } from './loginReducer';
+import { LogInFailure, LogInSuccess } from './loginReducer';
 import { ForbiddenError } from '../../../../modules/api/error';
 import { Session } from '../../../../modules/api/jophiel/session';
 import { StartSession } from '../../../../modules/session/sessionReducer';
@@ -24,12 +24,6 @@ describe('loginActions', () => {
   describe('logIn()', () => {
     const { logIn } = loginActions;
     const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { sessionAPI });
-
-    it('requests', async () => {
-      await doLogIn();
-
-      expect(dispatch).toHaveBeenCalledWith(LogInRequest.create());
-    });
 
     it('tries to logs in', async () => {
       await doLogIn();
