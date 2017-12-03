@@ -2,8 +2,8 @@ import { push } from 'react-router-redux';
 
 import { loginActions } from './loginActions';
 import { LogInFailure, LogInRequest, LogInSuccess } from './loginReducer';
-import { Session } from '../../../../api/jophiel/models';
-import { ForbiddenError } from '../../../../models/error';
+import { ForbiddenError } from '../../../../modules/api/error';
+import { Session } from '../../../../modules/api/jophiel/session';
 import { StartSession } from '../../../../modules/session/sessionReducer';
 
 describe('loginActions', () => {

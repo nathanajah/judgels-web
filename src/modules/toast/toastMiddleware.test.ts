@@ -1,4 +1,4 @@
-import { RemoteError } from '../../models/error';
+import { RemoteError } from '../api/error';
 import { createToastMiddleware } from './toastMiddleware';
 import { Toast } from './toast';
 

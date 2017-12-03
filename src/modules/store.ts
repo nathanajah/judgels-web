@@ -6,9 +6,9 @@ import { routerMiddleware, routerReducer, RouterState } from 'react-router-redux
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
-import { createSessionAPI } from '../api/jophiel/session';
-import { sessionReducer, SessionState } from '../modules/session/sessionReducer';
-import { toastMiddleware } from '../modules/toast/toastMiddleware';
+import { createSessionAPI } from './api/jophiel/session';
+import { sessionReducer, SessionState } from './session/sessionReducer';
+import { toastMiddleware } from './toast/toastMiddleware';
 import { jophielReducer, JophielState } from '../routes/jophiel/modules/jophielReducer';
 
 export interface AppState {

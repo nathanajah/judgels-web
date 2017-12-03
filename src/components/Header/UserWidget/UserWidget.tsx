@@ -2,7 +2,7 @@ import { Icon, Menu, MenuItem, Popover, Position } from '@blueprintjs/core';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { User } from '../../../models/user';
+import { User } from '../../../modules/api/jophiel/user';
 
 import './UserWidget.css';
 

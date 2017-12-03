@@ -1,4 +1,4 @@
-import { ForbiddenError, RemoteError, UnauthorizedError } from '../models/error';
+import { ForbiddenError, RemoteError, UnauthorizedError } from './error';
 
 async function call(url: string, init: RequestInit): Promise<any> {
   let response: Response;

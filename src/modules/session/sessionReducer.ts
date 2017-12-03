@@ -1,6 +1,6 @@
 import { TypedAction, TypedReducer } from 'redoodle';
 
-import { User } from '../../models/user';
+import { User } from '../api/jophiel/user';
 
 export interface SessionState {
   user?: User;

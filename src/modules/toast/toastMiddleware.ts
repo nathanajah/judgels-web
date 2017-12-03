@@ -1,6 +1,6 @@
 import { Intent, Position, Toaster } from '@blueprintjs/core';
 
-import { RemoteError } from '../../models/error';
+import { RemoteError } from '../api/error';
 import { Toast } from './toast';
 
 const TOASTER = Toaster.create({ position: Position.TOP, className: 'toast' });

@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 
-import { ForbiddenError } from '../../../../models/error';
 import { LogInFailure, LogInRequest, LogInSuccess } from './loginReducer';
+import { ForbiddenError } from '../../../../modules/api/error';
 import { StartSession } from '../../../../modules/session/sessionReducer';
 
 export const loginActions = {

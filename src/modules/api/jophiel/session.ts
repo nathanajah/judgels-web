@@ -1,5 +1,8 @@
-import { Session } from './models';
 import { post } from '../http';
+
+export interface Session {
+  token: string;
+}
 
 export function createSessionAPI(baseURL: string) {
   return {
