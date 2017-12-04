@@ -18,25 +18,32 @@ async function call(url: string, init: RequestInit): Promise<any> {
     throw new RemoteError();
   }
 
-  return response.json();
+  return response.json().catch(() => { return; });
 }
 
-export async function get(url: string): Promise<any> {
+export async function get(url: string, token?: string): Promise<any> {
+  const authHeader = token ? { Authorization: `Bearer ${token}` } : {};
+
   const init: RequestInit = {
     method: 'GET',
     mode: 'cors',
+    headers: { ...authHeader },
   };
   return call(url, init);
 }
 
-export async function post(url: string, body?: any): Promise<any> {
+export async function post(url: string, token?: string, body?: any): Promise<any> {
+  const authHeader = token ? { Authorization: `Bearer ${token}` } : {};
+  const bodyJson = body ? { body: JSON.stringify(body) } : {};
+
   const init: RequestInit = {
     method: 'POST',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
+      ...authHeader,
     },
-    body: body && JSON.stringify(body),
+    ...bodyJson,
   };
   return call(url, init);
 }

@@ -3,7 +3,7 @@ import { EndSession } from '../../../../modules/session/sessionReducer';
 
 describe('logoutActions', () => {
   let dispatch: jest.Mock<any>;
-  let getState: jest.Mock<any>;
+  const getState = () => ({ session: { token: 'token123' } });
 
   let sessionAPI: jest.Mocked<any>;
 
@@ -22,7 +22,7 @@ describe('logoutActions', () => {
     it('tries to log out', async () => {
       await doLogOut();
 
-      expect(sessionAPI.logOut).toHaveBeenCalledWith();
+      expect(sessionAPI.logOut).toHaveBeenCalledWith('token123');
     });
 
     it('ends the session', async () => {

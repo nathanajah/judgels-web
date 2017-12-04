@@ -7,11 +7,11 @@ export interface Session {
 export function createSessionAPI(baseURL: string) {
   return {
     logIn: (username: string, password: string): Promise<Session> => {
-      return post(`${baseURL}/login`, { username, password });
+      return post(`${baseURL}/login`, undefined, { username, password });
     },
 
-    logOut: (): Promise<void> => {
-      return post(`${baseURL}/logout`);
+    logOut: (token: string): Promise<void> => {
+      return post(`${baseURL}/logout`, token);
     },
   };
 }

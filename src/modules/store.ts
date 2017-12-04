@@ -9,20 +9,17 @@ import thunk from 'redux-thunk';
 import { createSessionAPI } from './api/jophiel/session';
 import { sessionReducer, SessionState } from './session/sessionReducer';
 import { toastMiddleware } from './toast/toastMiddleware';
-import { jophielReducer, JophielState } from '../routes/jophiel/modules/jophielReducer';
 
 export interface AppState {
   session: SessionState;
   router: RouterState;
   form: FormState;
-  jophiel: JophielState;
 }
 
 const rootReducer = combineReducers<AppState>({
   session: persistReducer({ key: 'session', storage }, sessionReducer),
   router: routerReducer,
   form: formReducer,
-  jophiel: jophielReducer,
 });
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
