@@ -14,7 +14,7 @@ ReactDOM.render(
     <PersistGate persistor={persistor}>
       <ConnectedRouter history={history}>
         <AppContainer />
-    </ConnectedRouter>
+      </ConnectedRouter>
     </PersistGate>
   </Provider>,
   document.getElementById('root') as HTMLElement

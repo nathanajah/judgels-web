@@ -40,6 +40,9 @@ describe('loginActions', () => {
 
       it('succeeds', () => {
         expect(dispatch).toHaveBeenCalledWith(LogInSuccess.create( { toast: { message: 'Welcome, user.' }} ));
+      });
+
+      it('redirects to home', () => {
         expect(dispatch).toHaveBeenCalledWith(push('/home'));
       });
 
@@ -61,7 +64,7 @@ describe('loginActions', () => {
         await doLogIn();
       });
 
-      it('fails with error toast', () => {
+      it('fails', () => {
         expect(dispatch).toHaveBeenCalledWith(
           LogInFailure.create({ toast: { error: new Error('Invalid username/password.') } }));
       });

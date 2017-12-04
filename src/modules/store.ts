@@ -1,9 +1,9 @@
 import createBrowserHistory from 'history/createBrowserHistory';
+import { routerMiddleware, routerReducer, RouterState } from 'react-router-redux';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { FormState, reducer as formReducer } from 'redux-form';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
-import { routerMiddleware, routerReducer, RouterState } from 'react-router-redux';
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 import { createSessionAPI } from './api/jophiel/session';

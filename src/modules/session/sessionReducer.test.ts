@@ -8,6 +8,7 @@ describe('sessionReducer', () => {
       token: 'token123',
     });
     const nextState: SessionState = {
+      isLoggedIn: true,
       user: { username: 'user' },
       token: 'token123',
     };
@@ -16,6 +17,7 @@ describe('sessionReducer', () => {
 
   it('handles END_SESSION', () => {
     const state: SessionState = {
+      isLoggedIn: true,
       user: { username: 'user' },
       token: 'token123',
     };
