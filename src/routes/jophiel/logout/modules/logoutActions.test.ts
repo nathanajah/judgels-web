@@ -1,4 +1,7 @@
+import { push } from 'react-router-redux';
+
 import { logoutActions } from './logoutActions';
+import { LogOutSuccess } from './logoutReducer';
 import { EndSession } from '../../../../modules/session/sessionReducer';
 
 describe('logoutActions', () => {
@@ -25,10 +28,20 @@ describe('logoutActions', () => {
       expect(sessionAPI.logOut).toHaveBeenCalledWith('token123');
     });
 
-    it('ends the session', async () => {
-      await doLogOut();
+    describe('when the logout is successful', () => {
+      beforeEach(async () => {
+        await doLogOut();
+      });
 
-      expect(dispatch).toHaveBeenCalledWith(EndSession.create());
+      it('succeeds', () => {
+        expect(dispatch).toHaveBeenCalledWith(
+          LogOutSuccess.create({ toast: { message: 'You have been logged out.' } }));
+        expect(dispatch).toHaveBeenCalledWith(push('/'));
+      });
+
+      it('ends the session', () => {
+        expect(dispatch).toHaveBeenCalledWith(EndSession.create());
+      });
     });
   });
 });

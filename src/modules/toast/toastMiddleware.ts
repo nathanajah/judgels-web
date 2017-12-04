@@ -9,7 +9,13 @@ export function createToastMiddleware(toaster) {
   return store => next => action => {
     if (action.payload && action.payload.toast) {
       const toast = action.payload.toast as Toast;
-      if (toast.error) {
+
+      if (toast.message) {
+        toaster.show({
+          message: toast.message,
+          intent: Intent.NONE,
+        });
+      } else if (toast.error) {
         let message: string;
 
         if (toast.error instanceof RemoteError) {

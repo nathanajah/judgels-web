@@ -1,6 +1,6 @@
 import { push } from 'react-router-redux';
 
-import { LogOutFailure } from './logoutReducer';
+import { LogOutFailure, LogOutSuccess } from './logoutReducer';
 import { EndSession } from '../../../../modules/session/sessionReducer';
 import { selectToken } from '../../../../modules/session/sessionSelectors';
 
@@ -9,10 +9,12 @@ export const logoutActions = {
     return async (dispatch, getState, { sessionAPI }) => {
       try {
         await sessionAPI.logOut(selectToken(getState));
+
+        dispatch(LogOutSuccess.create({ toast: { message: 'You have been logged out.' } }));
         dispatch(EndSession.create());
         dispatch(push('/'));
       } catch (error) {
-        dispatch(LogOutFailure.create({ error }));
+        dispatch(LogOutFailure.create({ toast: { error } }));
       }
     };
   },

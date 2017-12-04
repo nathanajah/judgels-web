@@ -11,7 +11,7 @@ export const loginActions = {
         const session = await sessionAPI.logIn(username, password);
         const { token } = session;
 
-        dispatch(LogInSuccess.create());
+        dispatch(LogInSuccess.create({ toast: { message: `Welcome, ${username}.` } }));
 
         dispatch(StartSession.create({
           user: { username },
@@ -21,17 +21,9 @@ export const loginActions = {
         dispatch(push('/home'));
       } catch (error) {
         if (error instanceof ForbiddenError) {
-          dispatch(LogInFailure.create({
-            toast: {
-              error: new Error('Invalid username/password.'),
-            },
-          }));
+          dispatch(LogInFailure.create({ toast: { error: new Error('Invalid username/password.') } }));
         } else {
-          dispatch(LogInFailure.create({
-            toast: {
-              error,
-            },
-          }));
+          dispatch(LogInFailure.create({ toast: { error } }));
         }
       }
     };

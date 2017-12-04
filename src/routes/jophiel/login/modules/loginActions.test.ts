@@ -32,44 +32,38 @@ describe('loginActions', () => {
     });
 
     describe('when the credentials is valid', () => {
-      beforeEach(() => {
+      beforeEach(async () => {
         sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
+
+        await doLogIn();
       });
 
-      it('succeeds', async () => {
-        await doLogIn();
-
-        expect(dispatch).toHaveBeenCalledWith(LogInSuccess.create());
+      it('succeeds', () => {
+        expect(dispatch).toHaveBeenCalledWith(LogInSuccess.create( { toast: { message: 'Welcome, user.' }} ));
         expect(dispatch).toHaveBeenCalledWith(push('/home'));
       });
 
-      it('starts the session', async () => {
-        await doLogIn();
-
+      it('starts the session', () => {
         expect(dispatch).toHaveBeenCalledWith(StartSession.create({
           user: { username: 'user' },
           token: 'token123',
         }));
-        expect(dispatch).toHaveBeenCalledWith(push('/home'));
       });
     });
 
     describe('when the credentials is invalid', () => {
       let error: any;
 
-      beforeEach(() => {
+      beforeEach(async () => {
         error = new ForbiddenError();
         sessionAPI.logIn.mockImplementation(() => { throw error; });
+
+        await doLogIn();
       });
 
-      it('fails with error toast', async () => {
-        await doLogIn();
-
-        expect(dispatch).toHaveBeenCalledWith(LogInFailure.create({
-          toast: {
-            error: new Error('Invalid username/password.')
-          },
-        }));
+      it('fails with error toast', () => {
+        expect(dispatch).toHaveBeenCalledWith(
+          LogInFailure.create({ toast: { error: new Error('Invalid username/password.') } }));
       });
     });
   });
