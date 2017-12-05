@@ -6,7 +6,7 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import './styles/index.css';
 
-import { AppContainer } from './containers/AppContainer';
+import AppContainer from './containers/AppContainer/AppContainer';
 import { history, persistor, store } from './modules/store';
 
 ReactDOM.render(
