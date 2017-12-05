@@ -1,9 +1,15 @@
-import { RegisterRequest } from './registerReducer';
+import { RegisterFailure } from './registerReducer';
+import { UserData } from '../../../../modules/api/jophiel/user';
 
 export const registerActions = {
-  register: (username: string, name: string, email: string, password: string) => {
-    return async (dispatch, getState, { toastActions, accountAPI }) => {
-      dispatch(RegisterRequest.create());
+  register: (userData: UserData, successCallback: () => void) => {
+    return async (dispatch, getState, { userAPI }) => {
+      try {
+        await userAPI.createUser(userData);
+        successCallback();
+      } catch (error) {
+        dispatch(RegisterFailure.create({ toast: { error } }));
+      }
     };
   },
 };

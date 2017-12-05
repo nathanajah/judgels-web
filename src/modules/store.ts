@@ -7,6 +7,7 @@ import storage from 'redux-persist/es/storage';
 import thunk from 'redux-thunk';
 
 import { createSessionAPI } from './api/jophiel/session';
+import { createUserAPI } from './api/jophiel/user';
 import { sessionReducer, SessionState } from './session/sessionReducer';
 import { toastMiddleware } from './toast/toastMiddleware';
 
@@ -32,6 +33,7 @@ export const store = createStore<AppState>(
     applyMiddleware(
       thunk.withExtraArgument({
         sessionAPI: createSessionAPI('http://localhost:9001/api/v2/session'),
+        userAPI: createUserAPI('http://localhost:9001/api/v2/users'),
       }),
       toastMiddleware,
       routerMiddleware(history)

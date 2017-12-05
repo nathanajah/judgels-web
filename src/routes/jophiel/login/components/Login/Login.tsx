@@ -7,7 +7,7 @@ import { SingleColumnLayout } from '../../../../../layouts/SingleColumnLayout/Si
 import './Login.css';
 
 export interface LoginProps {
-  handleLogIn: (data: LoginFormData) => void;
+  handleLogIn: (data: LoginFormData) => Promise<void>;
 }
 
 export const Login = (props: LoginProps) => (

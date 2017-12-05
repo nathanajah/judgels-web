@@ -1,3 +1,7 @@
 import { TypedAction } from 'redoodle';
 
-export const RegisterRequest = TypedAction.defineWithoutPayload('register/REGISTER_REQUEST')();
+import { Toast } from '../../../../modules/toast/toast';
+
+export const RegisterFailure = TypedAction.define('register/REGISTER_FAILURE')<{
+  toast: Toast;
+}>();

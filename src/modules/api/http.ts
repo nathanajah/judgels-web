@@ -21,29 +21,20 @@ async function call(url: string, init: RequestInit): Promise<any> {
   return response.json().catch(() => { return; });
 }
 
-export async function get(url: string, token?: string): Promise<any> {
-  const authHeader = token ? { Authorization: `Bearer ${token}` } : {};
-
-  const init: RequestInit = {
-    method: 'GET',
-    mode: 'cors',
-    headers: { ...authHeader },
-  };
-  return call(url, init);
-}
-
-export async function post(url: string, token?: string, body?: any): Promise<any> {
+async function request(method: string, url: string, token?: string, headers?: any, body?: any): Promise<any> {
   const authHeader = token ? { Authorization: `Bearer ${token}` } : {};
   const bodyJson = body ? { body: JSON.stringify(body) } : {};
 
   const init: RequestInit = {
-    method: 'POST',
+    method,
     mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      ...authHeader,
-    },
+    headers: { ...headers, ...authHeader },
     ...bodyJson,
   };
+
   return call(url, init);
+}
+
+export async function post(url: string, token?: string, body?: any): Promise<any> {
+  return request('POST', url, token, { 'Content-Type': 'application/json' }, body);
 }
