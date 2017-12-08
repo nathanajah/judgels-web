@@ -1,7 +1,6 @@
 import { push } from 'react-router-redux';
 
 import { logoutActions } from './logoutActions';
-import { LogOutSuccess } from './logoutReducer';
 import { EndSession } from '../../../../modules/session/sessionReducer';
 import { UnauthorizedError } from '../../../../modules/api/error';
 
@@ -10,6 +9,7 @@ describe('logoutActions', () => {
   const getState = () => ({ session: { token: 'token123' } });
 
   let sessionAPI: jest.Mocked<any>;
+  let toastActions: jest.Mocked<any>;
 
   beforeEach(() => {
     dispatch = jest.fn();
@@ -17,11 +17,15 @@ describe('logoutActions', () => {
     sessionAPI = {
       logOut: jest.fn(),
     };
+    toastActions = {
+      showToast: jest.fn(),
+      showErrorToast: jest.fn(),
+    };
   });
 
   describe('logOut()', () => {
     const { logOut } = logoutActions;
-    const doLogOut = async () => logOut()(dispatch, getState, { sessionAPI });
+    const doLogOut = async () => logOut()(dispatch, getState, { sessionAPI, toastActions });
 
     it('tries to log out', async () => {
       await doLogOut();
@@ -34,9 +38,8 @@ describe('logoutActions', () => {
         await doLogOut();
       });
 
-      it('succeeds', () => {
-        expect(dispatch).toHaveBeenCalledWith(
-          LogOutSuccess.create({ toast: { message: 'You have been logged out.' } }));
+      it('succeeds with toast', () => {
+        expect(toastActions.showToast).toHaveBeenCalledWith('You have been logged out.');
       });
 
       it('ends the session', () => {

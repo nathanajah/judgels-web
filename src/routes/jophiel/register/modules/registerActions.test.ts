@@ -6,6 +6,7 @@ describe('registerActions', () => {
   let getState: jest.Mock<any>;
 
   let userAPI: jest.Mocked<any>;
+  let toastActions: jest.Mocked<any>;
   let successCallback: jest.Mock<any>;
 
   beforeEach(() => {
@@ -14,6 +15,9 @@ describe('registerActions', () => {
 
     userAPI = {
       registerUser: jest.fn(),
+    };
+    toastActions = {
+      showErrorToast: jest.fn(),
     };
     successCallback = jest.fn();
   });
@@ -26,7 +30,7 @@ describe('registerActions', () => {
       email: 'email@domain.com',
       password: 'pass',
     };
-    const doRegister = async () => register(userData, successCallback)(dispatch, getState, { userAPI });
+    const doRegister = async () => register(userData, successCallback)(dispatch, getState, { userAPI, toastActions });
 
     beforeEach(async () => {
       await doRegister();

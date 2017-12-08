@@ -1,7 +1,6 @@
 import { push } from 'react-router-redux';
 
 import { loginActions } from './loginActions';
-import { LogInFailure, LogInSuccess } from './loginReducer';
 import { ForbiddenError } from '../../../../modules/api/error';
 import { Session } from '../../../../modules/api/jophiel/session';
 import { StartSession } from '../../../../modules/session/sessionReducer';
@@ -11,6 +10,7 @@ describe('loginActions', () => {
   let getState: jest.Mock<any>;
 
   let sessionAPI: jest.Mocked<any>;
+  let toastActions: jest.Mocked<any>;
 
   beforeEach(() => {
     dispatch = jest.fn();
@@ -19,11 +19,15 @@ describe('loginActions', () => {
     sessionAPI = {
       logIn: jest.fn(),
     };
+    toastActions = {
+      showToast: jest.fn(),
+      showErrorToast: jest.fn(),
+    };
   });
 
   describe('logIn()', () => {
     const { logIn } = loginActions;
-    const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { sessionAPI });
+    const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { sessionAPI, toastActions });
 
     it('tries to logs in', async () => {
       await doLogIn();
@@ -38,8 +42,8 @@ describe('loginActions', () => {
         await doLogIn();
       });
 
-      it('succeeds', () => {
-        expect(dispatch).toHaveBeenCalledWith(LogInSuccess.create( { toast: { message: 'Welcome, user.' }} ));
+      it('succeeds with toast', () => {
+        expect(toastActions.showToast).toHaveBeenCalledWith('Welcome, user.');
       });
 
       it('redirects to home', () => {
@@ -64,9 +68,8 @@ describe('loginActions', () => {
         await doLogIn();
       });
 
-      it('fails', () => {
-        expect(dispatch).toHaveBeenCalledWith(
-          LogInFailure.create({ toast: { error: new Error('Invalid username/password.') } }));
+      it('fails with toast', () => {
+        expect(toastActions.showErrorToast).toHaveBeenCalledWith(new Error('Invalid username/password.'));
       });
     });
   });
