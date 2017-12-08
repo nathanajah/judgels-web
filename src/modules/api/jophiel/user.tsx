@@ -13,8 +13,8 @@ export interface UserData {
 
 export function createUserAPI(baseURL: string) {
   return {
-    createUser: (userData: UserData): Promise<void> => {
-      return post(`${baseURL}/`, undefined, userData);
+    registerUser: (userData: UserData): Promise<void> => {
+      return post(`${baseURL}/register`, undefined, userData);
     },
   };
 }

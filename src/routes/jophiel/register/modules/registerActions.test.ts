@@ -13,7 +13,7 @@ describe('registerActions', () => {
     getState = jest.fn();
 
     userAPI = {
-      createUser: jest.fn(),
+      registerUser: jest.fn(),
     };
     successCallback = jest.fn();
   });
@@ -32,8 +32,8 @@ describe('registerActions', () => {
       await doRegister();
     });
 
-    it('tries to create user', async () => {
-      expect(userAPI.createUser).toHaveBeenCalledWith(userData);
+    it('tries to register user', async () => {
+      expect(userAPI.registerUser).toHaveBeenCalledWith(userData);
     });
 
     it('calls the success callback', async () => {

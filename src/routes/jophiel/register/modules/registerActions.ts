@@ -5,7 +5,7 @@ export const registerActions = {
   register: (userData: UserData, successCallback: () => void) => {
     return async (dispatch, getState, { userAPI }) => {
       try {
-        await userAPI.createUser(userData);
+        await userAPI.registerUser(userData);
         successCallback();
       } catch (error) {
         dispatch(RegisterFailure.create({ toast: { error } }));
