@@ -10,7 +10,7 @@ export const loginActions = {
         const session = await sessionAPI.logIn(username, password);
         const { token } = session;
 
-        dispatch(toastActions.showToast(`Welcome, ${username}.`));
+        toastActions.showToast(`Welcome, ${username}.`);
 
         dispatch(StartSession.create({
           user: { username },
@@ -20,9 +20,9 @@ export const loginActions = {
         dispatch(push('/home'));
       } catch (error) {
         if (error instanceof ForbiddenError) {
-          dispatch(toastActions.showErrorToast(new Error('Invalid username/password.')));
+          throw new Error('Invalid username/password.');
         } else {
-          dispatch(toastActions.showErrorToast(error));
+          throw error;
         }
       }
     };

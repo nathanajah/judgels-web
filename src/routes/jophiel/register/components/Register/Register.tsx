@@ -57,7 +57,7 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
       registeredUser: {
         username: data.username,
         email: data.email,
-      }
+      },
     });
   }
 }

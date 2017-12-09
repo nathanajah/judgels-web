@@ -30,6 +30,8 @@ describe('loginActions', () => {
     const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { sessionAPI, toastActions });
 
     it('tries to logs in', async () => {
+      sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
+
       await doLogIn();
 
       expect(sessionAPI.logIn).toHaveBeenCalledWith('user', 'pass');
@@ -64,12 +66,14 @@ describe('loginActions', () => {
       beforeEach(async () => {
         error = new ForbiddenError();
         sessionAPI.logIn.mockImplementation(() => { throw error; });
-
-        await doLogIn();
       });
 
-      it('fails with toast', () => {
-        expect(toastActions.showErrorToast).toHaveBeenCalledWith(new Error('Invalid username/password.'));
+      it('throws a more descriptive error', async () => {
+        setTimeout(() => {
+          expect(async () => {
+            await doLogIn();
+          }).toThrow('Invalid username/password.');
+        });
       });
     });
   });

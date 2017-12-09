@@ -8,19 +8,15 @@ export const logoutActions = {
   logOut: () => {
     return async (dispatch, getState, { sessionAPI, toastActions }) => {
       try {
-        try {
-          await sessionAPI.logOut(selectToken(getState));
-        } catch (error) {
-          if (!(error instanceof UnauthorizedError)) {
-            dispatch(toastActions.showErrorToast(error));
-          }
-        }
-        dispatch(toastActions.showToast('You have been logged out.'));
-        dispatch(EndSession.create());
-        dispatch(push('/'));
+        await sessionAPI.logOut(selectToken(getState));
       } catch (error) {
-        dispatch(toastActions.showErrorToast(error));
+        if (!(error instanceof UnauthorizedError)) {
+          throw error;
+        }
       }
+      toastActions.showToast('You have been logged out.');
+      dispatch(EndSession.create());
+      dispatch(push('/'));
     };
   },
 };
