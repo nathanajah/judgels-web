@@ -16,5 +16,9 @@ export function createUserAPI(baseURL: string) {
     registerUser: (userData: UserData): Promise<void> => {
       return post(`${baseURL}/register`, undefined, userData);
     },
+
+    activateUser: (emailCode: string): Promise<void> => {
+      return post(`${baseURL}/activate/${emailCode}`);
+    },
   };
 }

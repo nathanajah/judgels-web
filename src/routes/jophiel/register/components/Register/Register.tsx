@@ -33,13 +33,13 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
   private renderCard = () => {
     if (this.state.registeredUser) {
       return (
-        <Card title="Registration successful">
+        <Card title="Activation required">
           <p>Thank you for registering, <strong>{this.state.registeredUser.username}</strong>.</p>
           <p className="card-register__instruction">
             A confirmation email has been sent to&nbsp;
-            <strong>{this.state.registeredUser.email}</strong>.
-            Please follow the instruction to activate your account.
+            <strong>{this.state.registeredUser.email}</strong> with instruction to activate your account.
           </p>
+          <p>Please check your inbox/spam.</p>
         </Card>
       );
     } else {
