@@ -7,7 +7,7 @@ import { SingleColumnLayout } from '../../../../../layouts/SingleColumnLayout/Si
 import './Register.css';
 
 export interface RegisterProps {
-  handleRegister: (data: RegisterFormData, successCallback: () => void) => Promise<void>;
+  handleRegister: (data: RegisterFormData) => Promise<void>;
 }
 
 interface RegisterState {
@@ -51,12 +51,13 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
     }
   };
 
-  private handleRegister = (data: RegisterFormData) => {
-    return this.props.handleRegister(data, () => this.setState({
+  private handleRegister = async (data: RegisterFormData) => {
+    await this.props.handleRegister(data);
+    this.setState({
       registeredUser: {
         username: data.username,
         email: data.email,
       }
-    }));
+    });
   }
 }

@@ -12,14 +12,14 @@ const RegisterContainer = (props: RegisterProps) => (
 
 export function createRegisterContainer(registerActions) {
   const mapDispatchToProps = dispatch => ({
-    handleRegister: (data: RegisterFormData, successCallback: () => void) => {
+    handleRegister: (data: RegisterFormData) => {
       const userData: UserData = {
         username: data.username,
         password: data.password,
         name: data.name,
         email: data.email,
       };
-      return dispatch(registerActions.register(userData, successCallback));
+      return dispatch(registerActions.register(userData));
     },
   });
 
