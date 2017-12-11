@@ -35,6 +35,10 @@ async function request(method: string, url: string, token?: string, headers?: an
   return call(url, init);
 }
 
+export async function get(url: string, token?: string): Promise<any> {
+  return request('GET', url, token);
+}
+
 export async function post(url: string, token?: string, body?: any): Promise<any> {
   return request('POST', url, token, { 'Content-Type': 'application/json' }, body);
 }

@@ -1,3 +1,5 @@
+import { SubmissionError } from 'redux-form';
+
 import { registerActions } from './registerActions';
 import { UserData } from '../../../../modules/api/jophiel/user';
 
@@ -12,6 +14,8 @@ describe('registerActions', () => {
     getState = jest.fn();
 
     userAPI = {
+      usernameExists: jest.fn(),
+      emailExists: jest.fn(),
       registerUser: jest.fn(),
     };
   });
@@ -26,12 +30,47 @@ describe('registerActions', () => {
     };
     const doRegister = async () => register(userData)(dispatch, getState, { userAPI });
 
-    beforeEach(async () => {
-      await doRegister();
+    describe('when username already exists', () => {
+      beforeEach(async () => {
+        userAPI.usernameExists.mockImplementation(() => Promise.resolve(true));
+        userAPI.emailExists.mockImplementation(() => Promise.resolve(false));
+      });
+
+      it('throws SubmissionError', async () => {
+        setTimeout(() => {
+          expect(async () => {
+            await doRegister();
+          }).toThrow(SubmissionError);
+        });
+      });
     });
 
-    it('tries to register user', async () => {
-      expect(userAPI.registerUser).toHaveBeenCalledWith(userData);
+    describe('when email already exists', () => {
+      beforeEach(async () => {
+        userAPI.usernameExists.mockImplementation(() => Promise.resolve(false));
+        userAPI.emailExists.mockImplementation(() => Promise.resolve(true));
+      });
+
+      it('throws SubmissionError', async () => {
+        setTimeout(() => {
+          expect(async () => {
+            await doRegister();
+          }).toThrow(SubmissionError);
+        });
+      });
+    });
+
+    describe('when the form is valid', () => {
+      beforeEach(async () => {
+        userAPI.usernameExists.mockImplementation(() => Promise.resolve(false));
+        userAPI.emailExists.mockImplementation(() => Promise.resolve(false));
+      });
+
+      it('tries to register user', async () => {
+        await doRegister();
+
+        expect(userAPI.registerUser).toHaveBeenCalledWith(userData);
+      });
     });
   });
 });
