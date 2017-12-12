@@ -1,12 +1,14 @@
 import { Button, Intent } from '@blueprintjs/core';
 import * as React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 import { FormTextInput } from '../../../../../components/Form/FormTextInput/FormTextInput';
 import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider';
 import { ConfirmPassword, EmailAddress, Required, Username } from '../../../../../utils/validations';
 
 import '../../../../../styles/form.css';
+import './RegisterForm.css';
 
 export interface RegisterFormData {
   username: string;
@@ -60,7 +62,10 @@ const RegisterForm = (props: InjectedFormProps<RegisterFormData>) => (
 
     <HorizontalDivider />
 
-    <Button type="submit" text="Register" intent={Intent.PRIMARY} loading={props.submitting}/>
+    <div className="form-login__actions">
+      <Button type="submit" text="Register" intent={Intent.PRIMARY} loading={props.submitting}/>
+      <p className="form-login__actions-register">Have an account already? <Link to="/login">Log in now</Link></p>
+    </div>
   </form>
 );
 
