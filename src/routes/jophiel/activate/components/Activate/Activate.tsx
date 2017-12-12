@@ -1,6 +1,7 @@
+import { Intent } from '@blueprintjs/core';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
+import { ButtonLink } from '../../../../../components/ButtonLink/ButtonLink';
 import { Card } from '../../../../../components/Card/Card';
 import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider';
 import { SingleColumnLayout } from '../../../../../layouts/SingleColumnLayout/SingleColumnLayout';
@@ -15,7 +16,7 @@ export const Activate = () => (
 
         <HorizontalDivider />
 
-        <Link to="/login" as="button" className="pt-button pt-intent-primary">Log in</Link>
+        <ButtonLink to="/login" intent={Intent.PRIMARY}>Log in</ButtonLink>
       </Card>
     </div>
   </SingleColumnLayout>
