@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Header.css';
 
@@ -13,7 +14,7 @@ export const Header = (props: HeaderProps) => (
     <div className="header__wrapper">
       <div className="pt-navbar-group pt-align-left">
         <div>
-          <img src={logo} className="header__logo"/>
+          <Link to="/"><img src={logo} className="header__logo"/></Link>
         </div>
         <div className="pt-navbar-heading header__title">
           TLX
