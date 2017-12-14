@@ -21,3 +21,15 @@ a {
 .toast {
   margin-top: 5 * $pt-grid-size;
 }
+
+label {
+  font-size: $pt-font-size-small;
+  font-weight: bold;
+}
+
+input {
+  font-family: $primary-font;
+  width: 100%;
+  height: 3.5 * $pt-grid-size !important;
+  border-radius: 2px;
+}

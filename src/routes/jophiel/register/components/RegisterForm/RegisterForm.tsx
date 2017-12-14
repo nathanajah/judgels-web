@@ -7,7 +7,6 @@ import { FormTextInput } from '../../../../../components/Form/FormTextInput/Form
 import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider';
 import { ConfirmPassword, EmailAddress, Required, Username } from '../../../../../utils/validations';
 
-import '../../../../../styles/form.css';
 import './RegisterForm.css';
 
 export interface RegisterFormData {

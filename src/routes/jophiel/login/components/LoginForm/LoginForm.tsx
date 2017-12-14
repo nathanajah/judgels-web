@@ -7,7 +7,6 @@ import { FormTextInput } from '../../../../../components/Form/FormTextInput/Form
 import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider';
 import { Required } from '../../../../../utils/validations';
 
-import '../../../../../styles/form.css';
 import './LoginForm.css';
 
 export interface LoginFormData {
