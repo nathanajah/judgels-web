@@ -23,9 +23,7 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
   render() {
     return (
       <SingleColumnLayout>
-        <div className="card-register">
-          {this.renderCard()}
-        </div>
+        {this.renderCard()}
       </SingleColumnLayout>
     );
   }
@@ -33,7 +31,7 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
   private renderCard = () => {
     if (this.state.registeredUser) {
       return (
-        <Card title="Activation required">
+        <Card title="Activation required" className="card-register">
           <p>Thank you for registering, <strong>{this.state.registeredUser.username}</strong>.</p>
           <p className="card-register__instruction">
             A confirmation email has been sent to&nbsp;
@@ -44,7 +42,7 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
       );
     } else {
       return (
-        <Card title="Register">
+        <Card title="Register" className="card-register">
           <RegisterForm onSubmit={this.handleRegister}/>
         </Card>
       );

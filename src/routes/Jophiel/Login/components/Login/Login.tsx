@@ -12,10 +12,8 @@ export interface LoginProps {
 
 export const Login = (props: LoginProps) => (
   <SingleColumnLayout>
-    <div className="card-login">
-      <Card title="Log in">
-        <LoginForm onSubmit={props.handleLogIn}/>
-      </Card>
-    </div>
+    <Card title="Log in" className="card-login">
+      <LoginForm onSubmit={props.handleLogIn}/>
+    </Card>
   </SingleColumnLayout>
 );

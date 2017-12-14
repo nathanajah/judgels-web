@@ -10,14 +10,12 @@ import './Activate.css';
 
 export const Activate = () => (
   <SingleColumnLayout>
-    <div className="card-activate">
-      <Card title="Activation successful">
-        <p>Your account has been activated.</p>
+    <Card title="Activation successful" className="card-activate">
+      <p>Your account has been activated.</p>
 
-        <HorizontalDivider />
+      <HorizontalDivider />
 
-        <ButtonLink to="/login" intent={Intent.PRIMARY}>Log in</ButtonLink>
-      </Card>
-    </div>
+      <ButtonLink to="/login" intent={Intent.PRIMARY}>Log in</ButtonLink>
+    </Card>
   </SingleColumnLayout>
 );
