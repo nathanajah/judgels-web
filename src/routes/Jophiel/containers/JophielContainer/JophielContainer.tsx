@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Switch } from 'react-router';
 
-import ActivateContainer from '../../activate/containers/ActivateContainer/ActivateContainer';
+import ActivateContainer from '../../Activate/containers/ActivateContainer/ActivateContainer';
 import GuestRoute from '../../../../containers/GuestRoute/GuestRoute';
-import LoginContainer from '../../login/containers/LoginContainer/LoginContainer';
-import RegisterContainer from '../../register/containers/RegisterContainer/RegisterContainer';
+import LoginContainer from '../../Login/containers/LoginContainer/LoginContainer';
+import RegisterContainer from '../../Register/containers/RegisterContainer/RegisterContainer';
 
 const JophielContainer = () => (
   <div>
