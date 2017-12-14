@@ -2,20 +2,21 @@ import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
-import configureStore from 'redux-mock-store';
+import configureStore, { MockStore } from 'redux-mock-store';
 
 import { createActivateContainer } from './ActivateContainer';
 
 describe('ActivateContainer', () => {
   let activateActions: jest.Mocked<any>;
+  let store: MockStore<any>;
   let wrapper: ReactWrapper<any, any>;
 
   beforeEach(() => {
     activateActions = {
-      activate: jest.fn().mockReturnValue({ type: 'mock' }),
+      activate: jest.fn(code => ({ type: 'mock-activate', emailCode: code })),
     };
 
-    const store = configureStore()({});
+    store = configureStore()({});
     const ActivateContainer = createActivateContainer(activateActions);
 
     wrapper = mount(
@@ -28,6 +29,6 @@ describe('ActivateContainer', () => {
   });
 
   it('dispatches activate()', () => {
-    expect(activateActions.activate).toHaveBeenCalledWith('code');
+    expect(store.getActions()).toContainEqual({ type: 'mock-activate', emailCode: 'code' });
   });
 });

@@ -13,7 +13,7 @@ describe('LoginContainer', () => {
 
   beforeEach(() => {
     loginActions = {
-      logIn: jest.fn().mockReturnValue({ type: 'mock' }),
+      logIn: jest.fn().mockReturnValue({ type: 'mock-login' }),
     };
 
     const store = createStore(combineReducers({ form: formReducer }));

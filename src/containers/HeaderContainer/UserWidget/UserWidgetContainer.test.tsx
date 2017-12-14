@@ -23,7 +23,7 @@ describe('UserWidgetContainer', () => {
 
   beforeEach(() => {
     logoutActions = {
-      logOut: jest.fn().mockReturnValue({ type: 'mock' }),
+      logOut: jest.fn().mockReturnValue({ type: 'mock-logout' }),
     };
 
     store = configureStore()({
@@ -50,7 +50,7 @@ describe('UserWidgetContainer', () => {
     it('dispatches logOut() when the "log out" menu item is clicked', () => {
       wrapper.find('.widget-user__user__logout').at(1).simulate('click');
 
-      expect(logoutActions.logOut).toHaveBeenCalledWith();
+      expect(store.getActions()).toContainEqual({ type: 'mock-logout' });
     });
   });
 });

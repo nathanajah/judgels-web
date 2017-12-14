@@ -13,7 +13,7 @@ describe('RegisterContainer', () => {
 
   beforeEach(() => {
     registerActions = {
-      register: jest.fn().mockReturnValue({ type: 'mock', then: fn => fn() }),
+      register: jest.fn().mockReturnValue({ type: 'mock-register', then: fn => fn() }),
     };
 
     const store = createStore(combineReducers({ form: formReducer }));
