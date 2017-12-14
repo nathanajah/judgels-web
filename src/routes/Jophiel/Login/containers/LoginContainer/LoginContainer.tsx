@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 
 import { Login, LoginProps } from '../../components/Login/Login';
 import { LoginFormData } from '../../components/LoginForm/LoginForm';
+import { SingleColumnLayout } from '../../../../../layouts/SingleColumnLayout/SingleColumnLayout';
 import { loginActions as injectedLoginActions } from '../../modules/loginActions';
 
 const LoginContainer = (props: LoginProps) => (
-  <Login {...props}/>
+  <SingleColumnLayout>
+    <Login {...props}/>
+  </SingleColumnLayout>
 );
 
 export function createLoginContainer(loginActions) {

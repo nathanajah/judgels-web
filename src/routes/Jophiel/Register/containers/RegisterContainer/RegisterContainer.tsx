@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 
 import { Register, RegisterProps } from '../../components/Register/Register';
 import { RegisterFormData } from '../../components/RegisterForm/RegisterForm';
+import { SingleColumnLayout } from '../../../../../layouts/SingleColumnLayout/SingleColumnLayout';
 import { UserData } from '../../../../../modules/api/jophiel/user';
 import { registerActions as injectedRegisterActions } from '../../modules/registerActions';
 
 const RegisterContainer = (props: RegisterProps) => (
-  <Register {...props}/>
+  <SingleColumnLayout>
+    <Register {...props}/>
+  </SingleColumnLayout>
 );
 
 export function createRegisterContainer(registerActions) {

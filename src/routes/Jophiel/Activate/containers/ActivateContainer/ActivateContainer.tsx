@@ -33,14 +33,15 @@ class ActivateContainer extends React.Component<ActivateContainerProps, Activate
   }
 
   render() {
-    if (this.state.isFetching) {
-      return (
-        <SingleColumnLayout>
-          <NonIdealState visual={<Spinner/>}/>
-        </SingleColumnLayout>
-      );
-    }
-    return <Activate />;
+    const content = this.state.isFetching
+      ? <NonIdealState visual={<Spinner/>}/>
+      : <Activate />;
+
+    return (
+      <SingleColumnLayout>
+        {content}
+      </SingleColumnLayout>
+    );
   }
 }
 

@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import RegisterForm, { RegisterFormData } from '../RegisterForm/RegisterForm';
 import { Card } from '../../../../../components/Card/Card';
-import { SingleColumnLayout } from '../../../../../layouts/SingleColumnLayout/SingleColumnLayout';
 
 import './Register.css';
 
@@ -21,14 +20,6 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
   state: RegisterState = {};
 
   render() {
-    return (
-      <SingleColumnLayout>
-        {this.renderCard()}
-      </SingleColumnLayout>
-    );
-  }
-
-  private renderCard = () => {
     if (this.state.registeredUser) {
       return (
         <Card title="Activation required" className="card-register">
@@ -47,7 +38,7 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
         </Card>
       );
     }
-  };
+  }
 
   private handleRegister = async (data: RegisterFormData) => {
     await this.props.handleRegister(data);
