@@ -8,6 +8,7 @@ import './UserWidget.css';
 
 export interface UserWidgetProps {
   user?: User;
+  handleProfile: () => void;
   handleLogOut: () => void;
 }
 
@@ -23,6 +24,11 @@ export class UserWidget extends React.Component<UserWidgetProps> {
   private renderForUser = (user: User) => {
     const menu = (
       <Menu className="widget-user__user__menu">
+        <MenuItem
+          className="widget-user__user__profile"
+          text="Profile"
+          onClick={this.props.handleProfile}
+        />
         <MenuItem
           className="widget-user__user__logout"
           text="Log out"

@@ -1,28 +1,14 @@
-import * as React from 'react'
-import { Container, Grid } from 'semantic-ui-react'
+import * as React from 'react';
 
-interface TwoColumnLayoutProps {
-  upperWidgets?: JSX.Element[];
-  menu?: JSX.Element;
-  lowerWidgets: JSX.Element[];
-  children: JSX.Element;
-}
+import './TwoColumnLayout.css';
 
-export const TwoColumnLayout = ({ upperWidgets, menu, lowerWidgets, children }: TwoColumnLayoutProps) => {
-  return (
-    <Container fluid>
-      <Grid>
-        <Grid.Column width='four'>
-          { upperWidgets }
-          { menu }
-          { lowerWidgets }
-        </Grid.Column>
-        <Grid.Column width='twelve'>
-          { children }
-        </Grid.Column>
-      </Grid>
-    </Container>
-  )
-}
-
-export default TwoColumnLayout
+export const TwoColumnLayout = (props) => (
+  <div className="layout-two-col">
+    <div className="layout-two-col__left">
+      {props.children[0]}
+    </div>
+    <div className="layout-two-col__right">
+      {props.children[1]}
+    </div>
+  </div>
+);

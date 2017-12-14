@@ -1,15 +1,14 @@
 import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { combineReducers, createStore, Store } from 'redux';
+import { push } from 'react-router-redux';
+import configureStore, { MockStore } from 'redux-mock-store';
 
 import { createUserWidgetContainer } from './UserWidgetContainer';
-import { sessionReducer, StartSession } from '../../../modules/session/sessionReducer';
-import { AppState } from '../../../modules/store';
 
 describe('UserWidgetContainer', () => {
   let logoutActions: jest.Mocked<any>;
-  let store: Store<AppState>;
+  let store: MockStore<any>;
   let wrapper: ReactWrapper<any, any>;
 
   const render = () => {
@@ -27,18 +26,25 @@ describe('UserWidgetContainer', () => {
       logOut: jest.fn().mockReturnValue({ type: 'mock' }),
     };
 
-    store = createStore(combineReducers({ session: sessionReducer }));
+    store = configureStore()({
+      session: {
+        user: { username: 'user' },
+        token: 'token123'
+      }
+    });
   });
 
   describe('when the dropdown for the current user is clicked', () => {
     beforeEach(() => {
-      store.dispatch(StartSession.create({
-        user: { username: 'user' },
-        token: 'token123'
-      }));
       render();
 
       wrapper.find('.widget-user__user').simulate('click');
+    });
+
+    it('dispatches push("/profile") when the "profile" menu item is clicked', () => {
+      wrapper.find('.widget-user__user__profile').at(1).simulate('click');
+
+      expect(store.getActions()).toContainEqual(push('/profile'));
     });
 
     it('dispatches logOut() when the "log out" menu item is clicked', () => {

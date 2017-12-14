@@ -1,0 +1,21 @@
+@import '../../styles/base';
+
+.layout-two-col {
+  max-width: 116 * $pt-grid-size;
+  min-height: 40 * $pt-grid-size;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5 * $pt-grid-size;
+  padding-left: $pt-grid-size;
+  padding-right: $pt-grid-size;
+  display: flex;
+}
+
+.layout-two-col__left {
+  width: 27 * $pt-grid-size;
+  margin-right: 2 * $pt-grid-size;
+}
+
+.layout-two-col__right {
+  flex-grow: 1;
+}

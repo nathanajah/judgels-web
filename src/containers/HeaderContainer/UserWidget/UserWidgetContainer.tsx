@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import { UserWidget, UserWidgetProps } from '../../../components/Header/UserWidget/UserWidget';
 import { AppState } from '../../../modules/store';
@@ -15,6 +16,7 @@ export function createUserWidgetContainer(logoutActions) {
   });
 
   const mapDispatchToProps = (dispatch) => ({
+    handleProfile: () => dispatch(push('/profile')),
     handleLogOut: () => dispatch(logoutActions.logOut()),
   });
 
