@@ -1,9 +1,9 @@
 @import '../../styles/base';
 
 .layout-single-col {
-  width: 56 * $pt-grid-size;
+  width: 560px;
   margin: auto;
-  min-height: 40 * $pt-grid-size;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;

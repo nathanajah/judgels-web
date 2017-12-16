@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Footer from 'components/Footer'
 import './CoreLayout.css'
-import 'styles/core.css'
 import { Container } from 'semantic-ui-react'
 
 const colors = {

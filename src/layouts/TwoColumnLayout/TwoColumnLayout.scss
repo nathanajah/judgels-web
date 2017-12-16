@@ -1,19 +1,19 @@
 @import '../../styles/base';
 
 .layout-two-col {
-  max-width: 116 * $pt-grid-size;
-  min-height: 40 * $pt-grid-size;
+  max-width: 1160px;
+  min-height: 400px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5 * $pt-grid-size;
-  padding-left: $pt-grid-size;
-  padding-right: $pt-grid-size;
+  margin-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
   display: flex;
 }
 
 .layout-two-col__left {
-  width: 27 * $pt-grid-size;
-  margin-right: 2 * $pt-grid-size;
+  width: 270px;
+  margin-right: 20px;
 }
 
 .layout-two-col__right {

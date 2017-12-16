@@ -2,7 +2,7 @@
 
 .header {
   background-color: $primary-color !important;
-  height: 6 * $pt-grid-size;
+  height: 60px;
 }
 
 .header, .header a {
@@ -15,21 +15,20 @@
 
 .header__wrapper {
   margin: 0 auto;
-  padding-top: 0.5 * $pt-grid-size;
-  max-width: $page-width;
+  padding-top: 5px;
+  max-width: 1250px;
 }
 
 .header__logo {
-  width: 4 * $pt-grid-size;
+  width: 40px;
 }
 
 .header__title {
-  margin-left: 2 * $pt-grid-size;
+  margin-left: 20px;
   margin-right: 0;
-  font-size: 1.5 * $pt-font-size;
-  transform: scale(1, 1.2);
+  font-size: 23px;
 }
 
 .header__subtitle {
-  font-size: 0.9 * $pt-font-size;
+  font-size: 12px;
 }

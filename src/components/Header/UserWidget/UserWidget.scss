@@ -1,18 +1,18 @@
 @import '../../../styles/base';
 
 .widget-user__user {
-  margin-right: 2 * $pt-grid-size;
+  margin-right: 20px;
 }
 
 .widget-user__popover {
-  margin-right: 4 * $pt-grid-size;
+  margin-right: 40px;
 }
 
 .widget-user__link {
-  margin-right: 2 * $pt-grid-size;
-  font-size: 0.9 * $pt-font-size;
+  margin-right: 20px;
+  font-size: 0.9 * $font-size;
 }
 
 .widget-user__user__menu a {
-  color: $primary-font-color;
+  color: $text-color;
 }
