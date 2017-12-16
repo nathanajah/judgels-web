@@ -10,6 +10,7 @@ describe('loginActions', () => {
   let getState: jest.Mock<any>;
 
   let sessionAPI: jest.Mocked<any>;
+  let userAPI: jest.Mocked<any>;
   let toastActions: jest.Mocked<any>;
 
   beforeEach(() => {
@@ -19,6 +20,9 @@ describe('loginActions', () => {
     sessionAPI = {
       logIn: jest.fn(),
     };
+    userAPI = {
+      getMyself: jest.fn(),
+    };
     toastActions = {
       showToast: jest.fn(),
       showErrorToast: jest.fn(),
@@ -27,7 +31,7 @@ describe('loginActions', () => {
 
   describe('logIn()', () => {
     const { logIn } = loginActions;
-    const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { sessionAPI, toastActions });
+    const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { sessionAPI, userAPI, toastActions });
 
     it('tries to logs in', async () => {
       sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
@@ -40,6 +44,7 @@ describe('loginActions', () => {
     describe('when the credentials is valid', () => {
       beforeEach(async () => {
         sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
+        userAPI.getMyself.mockImplementation(() => Promise.resolve<any>({ jid: 'jid123' }));
 
         await doLogIn();
       });
@@ -54,7 +59,10 @@ describe('loginActions', () => {
 
       it('starts the session', () => {
         expect(dispatch).toHaveBeenCalledWith(StartSession.create({
-          user: { username: 'user' },
+          user: {
+            jid: 'jid123',
+            username: 'user'
+          },
           token: 'token123',
         }));
       });

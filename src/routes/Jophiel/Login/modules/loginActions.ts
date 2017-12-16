@@ -5,15 +5,18 @@ import { StartSession } from '../../../../modules/session/sessionReducer';
 
 export const loginActions = {
   logIn: (username: string, password: string) => {
-    return async (dispatch, getState, { sessionAPI, toastActions }) => {
+    return async (dispatch, getState, { sessionAPI, userAPI, toastActions }) => {
       try {
-        const session = await sessionAPI.logIn(username, password);
-        const { token } = session;
+        const { token } = await sessionAPI.logIn(username, password);
+        const { jid } = await userAPI.getMyself(token);
 
         toastActions.showToast(`Welcome, ${username}.`);
 
         dispatch(StartSession.create({
-          user: { username },
+          user: {
+            jid,
+            username,
+          },
           token,
         }));
 

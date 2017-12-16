@@ -1,7 +1,7 @@
 import { SubmissionError } from 'redux-form';
 
 import { registerActions } from './registerActions';
-import { UserData } from '../../../../modules/api/jophiel/user';
+import { UserRegistrationData } from '../../../../modules/api/jophiel/user';
 
 describe('registerActions', () => {
   let dispatch: jest.Mock<any>;
@@ -22,13 +22,13 @@ describe('registerActions', () => {
 
   describe('register()', () => {
     const { register } = registerActions;
-    const userData: UserData = {
+    const userRegistrationData: UserRegistrationData = {
       username: 'user',
       name: 'name',
       email: 'email@domain.com',
       password: 'pass',
     };
-    const doRegister = async () => register(userData)(dispatch, getState, { userAPI });
+    const doRegister = async () => register(userRegistrationData)(dispatch, getState, { userAPI });
 
     describe('when username already exists', () => {
       beforeEach(async () => {
@@ -69,7 +69,7 @@ describe('registerActions', () => {
       it('tries to register user', async () => {
         await doRegister();
 
-        expect(userAPI.registerUser).toHaveBeenCalledWith(userData);
+        expect(userAPI.registerUser).toHaveBeenCalledWith(userRegistrationData);
       });
     });
   });

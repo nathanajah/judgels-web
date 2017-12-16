@@ -1,12 +1,12 @@
 import { SubmissionError } from 'redux-form';
 
-import { UserData } from '../../../../modules/api/jophiel/user';
+import { UserRegistrationData } from '../../../../modules/api/jophiel/user';
 
 export const registerActions = {
-  register: (userData: UserData) => {
+  register: (userRegistrationData: UserRegistrationData) => {
     return async (dispatch, getState, { userAPI }) => {
-      const usernameExists = await userAPI.usernameExists(userData.username);
-      const emailExists = await userAPI.emailExists(userData.email);
+      const usernameExists = await userAPI.usernameExists(userRegistrationData.username);
+      const emailExists = await userAPI.emailExists(userRegistrationData.email);
 
       if (usernameExists || emailExists) {
         const usernameError = usernameExists ? { username: 'Username already exists'} : {};
@@ -17,7 +17,7 @@ export const registerActions = {
         });
       }
 
-      await userAPI.registerUser(userData);
+      await userAPI.registerUser(userRegistrationData);
     };
   },
 };

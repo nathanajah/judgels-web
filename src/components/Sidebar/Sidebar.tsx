@@ -34,9 +34,9 @@ export class Sidebar extends React.Component<SidebarProps> {
   render() {
     const { id, title, items } = this.props;
     const tabs = items.map(item => {
-      const icon = (item.id === this.state.selectedItemId)
-        ? <Icon iconName="chevron-right" iconSize={Icon.SIZE_LARGE} className="card-sidebar__arrow"/>
-        : null;
+      const icon = (item.id === this.state.selectedItemId) && (
+        <Icon iconName="chevron-right" iconSize={Icon.SIZE_LARGE} className="card-sidebar__arrow"/>
+      );
 
       return (
         <Tab2 key={item.id} id={item.id}>

@@ -38,7 +38,7 @@ describe('UserWidget', () => {
 
   describe('when the user is logged in', () => {
     beforeEach(() => {
-      user = { username: 'user' };
+      user = { jid: 'jid123', username: 'user' };
       render();
     });
 

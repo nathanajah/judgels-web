@@ -42,3 +42,7 @@ export async function get(url: string, token?: string): Promise<any> {
 export async function post(url: string, token?: string, body?: any): Promise<any> {
   return request('POST', url, token, { 'Content-Type': 'application/json' }, body);
 }
+
+export async function put(url: string, token?: string, body?: any): Promise<any> {
+  return request('PUT', url, token, { 'Content-Type': 'application/json' }, body);
+}

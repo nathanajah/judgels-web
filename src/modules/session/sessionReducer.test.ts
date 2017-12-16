@@ -4,12 +4,12 @@ describe('sessionReducer', () => {
   it('handles START_SESSION', () => {
     const state = INITIAL_STATE;
     const action = StartSession.create({
-      user: { username: 'user' },
+      user: { jid: 'jid123', username: 'user' },
       token: 'token123',
     });
     const nextState: SessionState = {
       isLoggedIn: true,
-      user: { username: 'user' },
+      user: { jid: 'jid123', username: 'user' },
       token: 'token123',
     };
     expect(sessionReducer(state, action)).toEqual(nextState);
@@ -18,7 +18,7 @@ describe('sessionReducer', () => {
   it('handles END_SESSION', () => {
     const state: SessionState = {
       isLoggedIn: true,
-      user: { username: 'user' },
+      user: { jid: 'jid123', username: 'user' },
       token: 'token123',
     };
     const action = EndSession.create();
