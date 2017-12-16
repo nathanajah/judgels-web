@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch } from 'react-router';
+import { Switch, withRouter } from 'react-router';
 
 import GuestRoute from '../../../../containers/GuestRoute/GuestRoute';
 import UserRoute from '../../../../containers/UserRoute/UserRoute';
@@ -14,9 +14,9 @@ const JophielContainer = () => (
       <GuestRoute exact path="/login" component={LoginContainer}/>
       <GuestRoute exact path="/register" component={RegisterContainer}/>
       <GuestRoute exact path="/activate/:emailCode" component={ActivateContainer}/>
-      <UserRoute exact path="/profile" component={ProfileContainer}/>
+      <UserRoute path="/profile" component={ProfileContainer}/>
     </Switch>
   </div>
 );
 
-export default JophielContainer;
+export default withRouter<any>(JophielContainer);
