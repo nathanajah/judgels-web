@@ -1,38 +1,28 @@
-import { FormGroup, Intent } from '@blueprintjs/core';
+import { FormGroup } from '@blueprintjs/core';
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-export interface FormTextInputProps {
-  input: {
-    name: string;
-  };
-  meta: {
-    touched: boolean;
-    valid: boolean;
-    error?: string;
-  };
+import { getIntent, getIntentClassName } from '../FormInputMeta';
+import { FormInputProps } from '../FormInputProps';
+import { FormInputValidation } from '../FormInputValidation/FormInputValidation';
+
+export interface FormTextInputProps extends FormInputProps {
   type?: 'password';
-  label: string;
 }
 
 export const FormTextInput = (props: FormTextInputProps) => {
-  const validationError = props.meta.touched && !props.meta.valid && (
-    <div className="form-text-input-error pt-form-helper-text">{props.meta.error}</div>
-  );
-
   return (
     <FormGroup
       labelFor={props.input.name}
       label={props.label}
-      intent={!props.meta.touched || props.meta.valid ? undefined : Intent.DANGER}
+      intent={getIntent(props.meta)}
     >
       <input
         {...props.input}
         type={props.type || 'text'}
-        className={classNames('pt-input', { 'pt-intent-danger': props.meta.touched && !props.meta.valid })}
+        className={classNames('pt-input', getIntentClassName(props.meta))}
       />
-
-      {validationError}
+      <FormInputValidation meta={props.meta}/>
     </FormGroup>
   );
 };

@@ -1,35 +1,28 @@
-import { FormGroup, Intent } from '@blueprintjs/core';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 
-import { FormTextInput, FormTextInputProps } from './FormTextInput';
+import { FormInputValidation, FormInputValidationProps } from './FormInputValidation';
 
-describe('FormTextInput', () => {
+describe('FormInputValidation', () => {
   let wrapper: ShallowWrapper;
-  let name: string;
   let touched: boolean;
   let valid: boolean;
   let error: string;
-  let label: string;
 
   const render = () => {
-    const props: FormTextInputProps = {
-      input: { name },
+    const props: FormInputValidationProps = {
       meta: { touched, valid, error },
-      label,
     };
 
     wrapper = shallow(
-      <FormTextInput {...props}/>
+      <FormInputValidation {...props}/>
     );
   };
 
   beforeEach(() => {
-    name = 'username';
     touched = false;
     valid = false;
     error = 'Required';
-    label = 'label';
   });
 
   describe('when the input is first rendered', () => {
@@ -38,8 +31,6 @@ describe('FormTextInput', () => {
     });
 
     it('does not show any errors', () => {
-      expect(wrapper.find(FormGroup).props().intent).toBeUndefined();
-      expect(wrapper.find('input').hasClass('pt-intent-danger')).toBeFalsy();
       expect(wrapper.find('.form-text-input-error')).toHaveLength(0);
     });
   });
@@ -52,8 +43,6 @@ describe('FormTextInput', () => {
     });
 
     it('does not show any errors', () => {
-      expect(wrapper.find(FormGroup).props().intent).toBeUndefined();
-      expect(wrapper.find('input').hasClass('pt-intent-danger')).toBeFalsy();
       expect(wrapper.find('.form-text-input-error')).toHaveLength(0);
     });
   });
@@ -66,8 +55,6 @@ describe('FormTextInput', () => {
     });
 
     it('shows the error', () => {
-      expect(wrapper.find(FormGroup).props().intent).toEqual(Intent.DANGER);
-      expect(wrapper.find('input').hasClass('pt-intent-danger')).toBeTruthy();
       expect(wrapper.find('.form-text-input-error').text()).toEqual('Required');
     });
   });
