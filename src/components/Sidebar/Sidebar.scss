@@ -36,3 +36,9 @@
     color: $primary-color;
   }
 }
+
+.card-sidebar__arrow {
+  line-height: 50px !important;
+  color: $primary-color !important;
+  float: right;
+}

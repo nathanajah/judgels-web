@@ -17,7 +17,6 @@ interface ProfileContainerProps {
 const ProfileContainer = (props: ProfileContainerProps) => {
   const sidebarItems: SidebarItem[] = [
     { id: 'me', title: 'My Profile' },
-    { id: 'her', title: 'Her Profile' },
   ];
 
   return (
