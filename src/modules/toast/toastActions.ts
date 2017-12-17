@@ -9,12 +9,12 @@ export function createToastActions(toaster) {
         intent: Intent.NONE,
       });
     },
-    
+
     showSuccessToast: (message: string) => {
       toaster.show({
         iconName: 'tick',
         message,
-        intent: Intent.NONE,
+        intent: Intent.SUCCESS,
       });
     },
 

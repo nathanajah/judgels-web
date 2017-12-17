@@ -35,6 +35,7 @@ describe('loginActions', () => {
 
     it('tries to logs in', async () => {
       sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
+      userAPI.getMyself.mockImplementation(() => Promise.resolve<any>({ jid: 'jid123' }));
 
       await doLogIn();
 

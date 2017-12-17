@@ -24,12 +24,7 @@ class MyProfileContainer extends React.Component<MyProfileContainerProps, MyProf
   }
 
   render() {
-    const { userInfo } = this.state;
-    if (!userInfo) {
-      return null;
-    }
-
-    return <MyProfile handleUpdateUserInfo={this.props.handleUpdateUserInfo} userInfo={userInfo}/>;
+    return <MyProfile userInfo={this.state.userInfo} handleUpdateUserInfo={this.props.handleUpdateUserInfo}/>;
   }
 }
 

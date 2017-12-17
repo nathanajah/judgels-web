@@ -5,6 +5,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { FormTableTextInput } from '../../../../../../../components/Form/FormTableTextInput/FormTableTextInput';
 import { UserInfo } from '../../../../../../../modules/api/jophiel/user';
 import { Required } from '../../../../../../../utils/validations';
+import { HorizontalDivider } from '../../../../../../../components/Divider/HorizontalDivider';
 
 const nameField = {
   name: 'name',
@@ -27,6 +28,8 @@ const UserInfoForm = (props: InjectedFormProps<UserInfo>) => (
         <Field component={FormTableTextInput} {...institutionField}/>
       </tbody>
     </table>
+
+    <HorizontalDivider />
 
     <Button type="submit" text="Save changes" intent={Intent.PRIMARY} loading={props.submitting}/>
   </form>
