@@ -11,15 +11,18 @@ import { createUserAPI } from './api/jophiel/user';
 import { sessionReducer, SessionState } from './session/sessionReducer';
 import { toastActions } from './toast/toastActions';
 import { toastMiddleware } from './toast/toastMiddleware';
+import { jophielReducer, JophielState } from '../routes/Jophiel/modules/jophielReducer';
 
 export interface AppState {
   session: SessionState;
+  jophiel: JophielState;
   router: RouterState;
   form: FormState;
 }
 
 const rootReducer = combineReducers<AppState>({
   session: persistReducer({ key: 'session', storage }, sessionReducer),
+  jophiel: jophielReducer,
   router: routerReducer,
   form: formReducer,
 });

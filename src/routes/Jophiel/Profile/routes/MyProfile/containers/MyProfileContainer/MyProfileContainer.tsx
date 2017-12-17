@@ -5,36 +5,35 @@ import { withRouter } from 'react-router';
 import { MyProfile } from '../../components/MyProfile/MyProfile';
 import { UserInfo } from '../../../../../../../modules/api/jophiel/user';
 import { userInfoActions as injectedUserInfoActions } from '../../modules/userInfoActions';
+import { selectUserInfo } from '../../../../modules/profileSelectors';
 
 interface MyProfileContainerProps {
-  handleGetUserInfo: () => Promise<UserInfo>;
-  handleUpdateUserInfo: (userInfo: UserInfo) => Promise<void>;
+  userInfo: UserInfo | undefined;
+  onGetUserInfo: () => Promise<void>;
+  onUpdateUserInfo: (userInfo: UserInfo) => Promise<void>;
 }
 
-interface MyProfileContainerState {
-  userInfo?: UserInfo;
-}
-
-class MyProfileContainer extends React.Component<MyProfileContainerProps, MyProfileContainerState> {
-  state: MyProfileContainerState = {};
-
+class MyProfileContainer extends React.Component<MyProfileContainerProps> {
   async componentDidMount() {
-    const userInfo = await this.props.handleGetUserInfo();
-    this.setState({ userInfo });
+    await this.props.onGetUserInfo();
   }
 
   render() {
-    return <MyProfile userInfo={this.state.userInfo} handleUpdateUserInfo={this.props.handleUpdateUserInfo}/>;
+    return <MyProfile userInfo={this.props.userInfo} onUpdateUserInfo={this.props.onUpdateUserInfo}/>;
   }
 }
 
 export function createMyProfileContainer(userInfoActions) {
-  const mapDispatchToProps = dispatch => ({
-    handleGetUserInfo: () => dispatch(userInfoActions.getMine()),
-    handleUpdateUserInfo: (userInfo: UserInfo) => dispatch(userInfoActions.updateMine(userInfo)),
+  const mapStateToProps = state => ({
+    userInfo: selectUserInfo(state),
   });
 
-  return connect(undefined, mapDispatchToProps)(MyProfileContainer);
+  const mapDispatchToProps = dispatch => ({
+    onGetUserInfo: () => dispatch(userInfoActions.getMine()),
+    onUpdateUserInfo: (userInfo: UserInfo) => dispatch(userInfoActions.updateMine(userInfo)),
+  });
+
+  return connect(mapStateToProps, mapDispatchToProps)(MyProfileContainer);
 }
 
 export default withRouter<any>(createMyProfileContainer(injectedUserInfoActions));

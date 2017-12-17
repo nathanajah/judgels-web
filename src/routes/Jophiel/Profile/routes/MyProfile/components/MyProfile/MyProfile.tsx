@@ -9,28 +9,15 @@ import './MyProfile.css';
 
 export interface MyProfileProps {
   userInfo?: UserInfo;
-  handleUpdateUserInfo: (userInfo: UserInfo) => Promise<void>;
+  onUpdateUserInfo: (userInfo: UserInfo) => Promise<void>;
 }
 
 interface MyProfileState {
   isEditing: boolean;
-  userInfo?: UserInfo;
 }
 
 export class MyProfile extends React.Component<MyProfileProps, MyProfileState> {
-  state: MyProfileState;
-
-  constructor(props: MyProfileProps) {
-    super(props);
-    this.state = {
-      isEditing: false,
-      userInfo: props.userInfo,
-    };
-  }
-
-  componentWillReceiveProps(props: MyProfileProps) {
-    this.setState({ userInfo: props.userInfo });
-  }
+  state: MyProfileState = { isEditing: false };
 
   render() {
     return (
@@ -41,12 +28,12 @@ export class MyProfile extends React.Component<MyProfileProps, MyProfileState> {
   }
 
   private renderContent = () => {
-    const { isEditing, userInfo } = this.state;
+    const { userInfo } = this.props;
     if (!userInfo) {
       return null;
     }
-    if (isEditing) {
-      return <UserInfoForm onSubmit={this.handleUpdateUserInfo} initialValues={userInfo}/>;
+    if (this.state.isEditing) {
+      return <UserInfoForm onSubmit={this.onUpdateUserInfo} initialValues={userInfo}/>;
     }
     return <UserInfoTable userInfo={userInfo} onEdit={this.onEdit}/>;
   };
@@ -55,11 +42,8 @@ export class MyProfile extends React.Component<MyProfileProps, MyProfileState> {
     this.setState({ isEditing: true });
   };
 
-  private handleUpdateUserInfo = async (userInfo: UserInfo) => {
-    await this.props.handleUpdateUserInfo(userInfo);
-    this.setState({
-      isEditing: false,
-      userInfo,
-    });
+  private onUpdateUserInfo = async (userInfo: UserInfo) => {
+    await this.props.onUpdateUserInfo(userInfo);
+    this.setState({ isEditing: false });
   };
 }
