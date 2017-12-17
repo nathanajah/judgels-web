@@ -17,7 +17,7 @@ export const userInfoActions = {
       const userJid = selectUser(getState).jid;
       await userAPI.updateUserInfo(token, userJid, userInfo);
 
-      toastActions.showToast(`Profile updated.`);
+      toastActions.showSuccessToast('Profile updated.');
     };
   },
 };

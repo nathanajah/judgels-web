@@ -4,15 +4,19 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { FormTableTextInput } from '../../../../../../../components/Form/FormTableTextInput/FormTableTextInput';
 import { UserInfo } from '../../../../../../../modules/api/jophiel/user';
+import { Required } from '../../../../../../../utils/validations';
 
 const nameField = {
   name: 'name',
   label: 'Name',
+  labelHelper: 'required',
+  validate: [Required],
 };
 
 const institutionField = {
   name: 'institution',
   label: 'Institution',
+  inputHelper: 'School/uni',
 };
 
 const UserInfoForm = (props: InjectedFormProps<UserInfo>) => (
@@ -24,7 +28,7 @@ const UserInfoForm = (props: InjectedFormProps<UserInfo>) => (
       </tbody>
     </table>
 
-    <Button type="submit" text="Update" intent={Intent.PRIMARY} loading={props.submitting}/>
+    <Button type="submit" text="Save changes" intent={Intent.PRIMARY} loading={props.submitting}/>
   </form>
 );
 

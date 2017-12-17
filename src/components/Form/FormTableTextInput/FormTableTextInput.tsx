@@ -1,33 +1,19 @@
-import { FormGroup } from '@blueprintjs/core';
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import { getIntent, getIntentClassName } from '../FormInputMeta';
-import { FormInputProps } from '../FormInputProps';
-import { FormInputValidation } from '../FormInputValidation/FormInputValidation';
+import { getIntentClassName } from '../FormInputMeta';
+import { FormTableInput, FormTableInputProps } from '../FormTableInput/FormTableInput';
 
-export interface FormTextInputProps extends FormInputProps {
+export interface FormTableTextInputProps extends FormTableInputProps {
   type?: 'password';
 }
 
-export const FormTableTextInput = (props: FormTextInputProps) => {
-  return (
-    <tr>
-      <td>
-        {props.label}
-      </td>
-      <td>
-        <FormGroup
-          intent={getIntent(props.meta)}
-        >
-          <input
-            {...props.input}
-            type={props.type || 'text'}
-            className={classNames('pt-input', getIntentClassName(props.meta))}
-          />
-          <FormInputValidation meta={props.meta}/>
-        </FormGroup>
-      </td>
-    </tr>
-  );
-};
+export const FormTableTextInput = (props: FormTableTextInputProps) => (
+  <FormTableInput {...props}>
+    <input
+      {...props.input}
+      type={props.type || 'text'}
+      className={classNames('pt-input', getIntentClassName(props.meta))}
+    />
+  </FormTableInput>
+);
