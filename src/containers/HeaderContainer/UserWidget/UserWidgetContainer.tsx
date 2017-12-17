@@ -16,8 +16,8 @@ export function createUserWidgetContainer(logoutActions) {
   });
 
   const mapDispatchToProps = (dispatch) => ({
-    handleProfile: () => dispatch(push('/profile')),
-    handleLogOut: () => dispatch(logoutActions.logOut()),
+    onClickProfile: () => dispatch(push('/profile')),
+    onClickLogOut: () => dispatch(logoutActions.logOut()),
   });
 
   return connect(mapStateToProps, mapDispatchToProps)(UserWidgetContainer);

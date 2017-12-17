@@ -14,7 +14,7 @@ const LoginContainer = (props: LoginProps) => (
 
 export function createLoginContainer(loginActions) {
   const mapDispatchToProps = dispatch => ({
-    handleLogIn: (data: LoginFormData) => dispatch(loginActions.logIn(data.username, data.password)),
+    onLogIn: (data: LoginFormData) => dispatch(loginActions.logIn(data.username, data.password)),
   });
 
   return connect(undefined, mapDispatchToProps)(LoginContainer);

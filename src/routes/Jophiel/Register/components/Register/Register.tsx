@@ -6,7 +6,7 @@ import { Card } from '../../../../../components/Card/Card';
 import './Register.css';
 
 export interface RegisterProps {
-  handleRegister: (data: RegisterFormData) => Promise<void>;
+  onRegister: (data: RegisterFormData) => Promise<void>;
 }
 
 interface RegisterState {
@@ -34,14 +34,14 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
     } else {
       return (
         <Card title="Register" className="card-register">
-          <RegisterForm onSubmit={this.handleRegister}/>
+          <RegisterForm onSubmit={this.onRegister}/>
         </Card>
       );
     }
   }
 
-  private handleRegister = async (data: RegisterFormData) => {
-    await this.props.handleRegister(data);
+  private onRegister = async (data: RegisterFormData) => {
+    await this.props.onRegister(data);
     this.setState({
       registeredUser: {
         username: data.username,

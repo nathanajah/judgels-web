@@ -12,8 +12,8 @@ describe('UserWidget', () => {
   const render = () => {
     const props: UserWidgetProps = {
       user,
-      handleProfile: jest.fn(),
-      handleLogOut: jest.fn(),
+      onClickProfile: jest.fn(),
+      onClickLogOut: jest.fn(),
     };
 
     wrapper = shallow(

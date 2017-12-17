@@ -15,7 +15,7 @@ const RegisterContainer = (props: RegisterProps) => (
 
 export function createRegisterContainer(registerActions) {
   const mapDispatchToProps = dispatch => ({
-    handleRegister: (data: RegisterFormData) => {
+    onRegister: (data: RegisterFormData) => {
       const userRegistrationData: UserRegistrationData = {
         username: data.username,
         password: data.password,

@@ -6,11 +6,11 @@ import { Card } from '../../../../../components/Card/Card';
 import './Login.css';
 
 export interface LoginProps {
-  handleLogIn: (data: LoginFormData) => Promise<void>;
+  onLogIn: (data: LoginFormData) => Promise<void>;
 }
 
 export const Login = (props: LoginProps) => (
   <Card title="Log in" className="card-login">
-    <LoginForm onSubmit={props.handleLogIn}/>
+    <LoginForm onSubmit={props.onLogIn}/>
   </Card>
 );

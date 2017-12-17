@@ -8,8 +8,8 @@ import './UserWidget.css';
 
 export interface UserWidgetProps {
   user?: User;
-  handleProfile: () => void;
-  handleLogOut: () => void;
+  onClickProfile: () => void;
+  onClickLogOut: () => void;
 }
 
 export class UserWidget extends React.Component<UserWidgetProps> {
@@ -27,12 +27,12 @@ export class UserWidget extends React.Component<UserWidgetProps> {
         <MenuItem
           className="widget-user__user__profile"
           text="Profile"
-          onClick={this.props.handleProfile}
+          onClick={this.props.onClickProfile}
         />
         <MenuItem
           className="widget-user__user__logout"
           text="Log out"
-          onClick={this.props.handleLogOut}
+          onClick={this.props.onClickLogOut}
         />
       </Menu>
     );
