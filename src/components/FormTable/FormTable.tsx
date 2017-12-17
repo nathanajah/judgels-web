@@ -12,8 +12,8 @@ export interface FormTableProps {
 }
 
 export const FormTable = (props: FormTableProps) => {
-  const rows = props.rows.map(row =>
-    <tr>
+  const rows = props.rows.map(row => (
+    <tr key={row.title}>
       <td className="form-table__title">
         {row.title}
       </td>
@@ -21,7 +21,7 @@ export const FormTable = (props: FormTableProps) => {
         {row.value}
       </td>
     </tr>
-  );
+  ));
 
   return (
     <table className="pt-table pt-striped">
