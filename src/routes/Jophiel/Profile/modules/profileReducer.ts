@@ -12,7 +12,7 @@ export const SetUserInfo = TypedAction.define('jophiel/profile/SET_USER_INFO')<{
   userInfo: UserInfo;
 }>();
 
-export const ClearUserInfo = TypedAction.define('jophiel/profile/CLEAR_USER_INFO')();
+export const ClearUserInfo = TypedAction.defineWithoutPayload('jophiel/profile/CLEAR_USER_INFO')();
 
 const createProfileReducer = () => {
   const builder = TypedReducer.builder<ProfileState>();
