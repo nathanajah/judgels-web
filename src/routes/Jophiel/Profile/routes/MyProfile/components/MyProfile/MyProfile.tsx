@@ -1,3 +1,4 @@
+import { Button, Intent } from '@blueprintjs/core';
 import * as React from 'react';
 
 import { Card } from '../../../../../../../components/Card/Card';
@@ -20,8 +21,12 @@ export class MyProfile extends React.Component<MyProfileProps, MyProfileState> {
   state: MyProfileState = { isEditing: false };
 
   render() {
+    const action = this.state.isEditing
+      ? undefined
+      : <Button text="Edit" intent={Intent.PRIMARY} className="pt-small" onClick={this.toggleEdit}/>;
+
     return (
-      <Card title="My Profile" className="card-profile-me">
+      <Card title="My Profile" action={action} className="card-profile-me">
         {this.renderContent()}
       </Card>
     );
@@ -33,16 +38,17 @@ export class MyProfile extends React.Component<MyProfileProps, MyProfileState> {
       return null;
     }
     if (this.state.isEditing) {
-      return <UserInfoForm onSubmit={this.onUpdateUserInfo} initialValues={userInfo}/>;
+      const onCancel = { onCancel: this.toggleEdit };
+      return <UserInfoForm onSubmit={this.onSave} initialValues={userInfo} {...onCancel}/>;
     }
-    return <UserInfoTable userInfo={userInfo} onEdit={this.onEdit}/>;
+    return <UserInfoTable userInfo={userInfo}/>;
   };
 
-  private onEdit = () => {
-    this.setState({ isEditing: true });
+  private toggleEdit = () => {
+    this.setState((prevState: MyProfileState) => ({ isEditing: !prevState.isEditing }));
   };
 
-  private onUpdateUserInfo = async (userInfo: UserInfo) => {
+  private onSave = async (userInfo: UserInfo) => {
     await this.props.onUpdateUserInfo(userInfo);
     this.setState({ isEditing: false });
   };
