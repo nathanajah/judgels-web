@@ -25,12 +25,12 @@ export class UserWidget extends React.Component<UserWidgetProps> {
     const menu = (
       <Menu className="widget-user__user__menu">
         <MenuItem
-          className="widget-user__user__profile"
+          data-key="profile"
           text="Profile"
           onClick={this.props.onClickProfile}
         />
         <MenuItem
-          className="widget-user__user__logout"
+          data-key="logout"
           text="Log out"
           onClick={this.props.onClickLogOut}
         />
@@ -52,10 +52,10 @@ export class UserWidget extends React.Component<UserWidgetProps> {
     return (
       <div className="pt-navbar-group pt-align-right">
         <div className="widget-user__link">
-          <Link className="widget-user__login" to="/login">Log in</Link>
+          <Link data-key="login" to="/login">Log in</Link>
         </div>
         <div className="widget-user__link">
-          <Link className="widget-user__register" to="/register">Register</Link>
+          <Link data-key="register" to="/register">Register</Link>
         </div>
       </div>
     );

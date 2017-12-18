@@ -42,15 +42,19 @@ describe('UserWidgetContainer', () => {
     });
 
     it('dispatches push("/profile") when the "profile" menu item is clicked', () => {
-      wrapper.find('.widget-user__user__profile').at(1).simulate('click');
+      wrapper.find('[data-key="profile"]').simulate('click');
 
-      expect(store.getActions()).toContainEqual(push('/profile'));
+      setTimeout(() => {
+        expect(store.getActions()).toContainEqual(push('/profile'));
+      });
     });
 
-    it('dispatches logOut() when the "log out" menu item is clicked', () => {
-      wrapper.find('.widget-user__user__logout').at(1).simulate('click');
+    it('dispatches logOut() when the "log out" menu item is clicked', async () => {
+      wrapper.find('[data-key="logout"]').simulate('click');
 
-      expect(store.getActions()).toContainEqual({ type: 'mock-logout' });
+      setTimeout(() => {
+        expect(store.getActions()).toContainEqual({ type: 'mock-logout' });
+      });
     });
   });
 });

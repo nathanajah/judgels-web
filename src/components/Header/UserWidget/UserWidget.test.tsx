@@ -31,8 +31,8 @@ describe('UserWidget', () => {
     });
 
     it('shows guest links', () => {
-      expect(wrapper.find('.widget-user__login')).toHaveLength(1);
-      expect(wrapper.find('.widget-user__register')).toHaveLength(1);
+      expect(wrapper.find('[data-key="login"]')).toHaveLength(1);
+      expect(wrapper.find('[data-key="register"]')).toHaveLength(1);
     });
   });
 
