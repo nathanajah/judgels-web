@@ -9,7 +9,7 @@ import UserRoute from '../../../../../containers/UserRoute/UserRoute';
 import MyProfileContainer from '../../routes/MyProfile/containers/MyProfileContainer/MyProfileContainer';
 
 interface ProfileContainerProps {
-  sidebarOnItemClick: (parent: string, itemId: string) => void;
+  onSidebarItemClick: (parentPath: string, itemId: string) => void;
   match: {
     url: string;
   };
@@ -26,13 +26,12 @@ const ProfileContainer = (props: ProfileContainerProps) => {
         title="Profile"
         parentPath={props.match.url}
         items={sidebarItems}
-        onItemClick={props.sidebarOnItemClick}
+        onItemClick={props.onSidebarItemClick}
       />
       <div>
         <Switch>
           <Redirect exact from={props.match.url} to={props.match.url + '/me'}/>
           <UserRoute exact path={props.match.url + '/me'} component={MyProfileContainer}/>
-          <UserRoute exact path={props.match.url + '/her'} component={MyProfileContainer}/>
         </Switch>
       </div>
     </TwoColumnLayout>
@@ -40,7 +39,7 @@ const ProfileContainer = (props: ProfileContainerProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  sidebarOnItemClick: (parent: string, itemId: string) => dispatch(push(parent + '/' + itemId)),
+  onSidebarItemClick: (parentPath: string, itemId: string) => dispatch(push(parentPath + '/' + itemId)),
 });
 
 export default withRouter<any>(connect(undefined, mapDispatchToProps)(ProfileContainer));

@@ -38,7 +38,7 @@ const UserInfoForm = (props: UserInfoFormProps) => (
 
     <ActionButtons>
       <Button type="submit" text="Save changes" intent={Intent.PRIMARY} loading={props.submitting}/>
-      <Button text="Cancel" onClick={props.onCancel} disabled={props.submitting}/>
+      <Button data-key="edit" text="Cancel" onClick={props.onCancel} disabled={props.submitting}/>
     </ActionButtons>
   </form>
 );

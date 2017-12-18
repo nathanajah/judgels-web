@@ -3,6 +3,7 @@ import * as React from 'react';
 import './FormTable.css';
 
 export interface FormTableRow {
+  key: string;
   title: string;
   value?: string;
 }
@@ -17,7 +18,7 @@ export const FormTable = (props: FormTableProps) => {
       <td className="form-table__title">
         {row.title}
       </td>
-      <td>
+      <td data-key={row.key}>
         {row.value}
       </td>
     </tr>

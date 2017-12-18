@@ -10,8 +10,8 @@ export interface UserInfoTableProps {
 export const UserInfoTable = (props: UserInfoTableProps) => {
   const { userInfo } = props;
   const rows: FormTableRow[] = [
-    { title: 'Name', value: userInfo.name },
-    { title: 'Institution', value: userInfo.institution },
+    { key: 'name', title: 'Name', value: userInfo.name },
+    { key: 'institution', title: 'Institution', value: userInfo.institution },
   ];
 
   return <FormTable rows={rows}/>;

@@ -23,7 +23,7 @@ export class MyProfile extends React.Component<MyProfileProps, MyProfileState> {
   render() {
     const action = this.state.isEditing
       ? undefined
-      : <Button text="Edit" intent={Intent.PRIMARY} className="pt-small" onClick={this.toggleEdit}/>;
+      : <Button data-key="edit" text="Edit" intent={Intent.PRIMARY} className="pt-small" onClick={this.toggleEdit}/>;
 
     return (
       <Card title="My Profile" action={action} className="card-profile-me">
