@@ -8,7 +8,7 @@ export const logoutActions = {
   logOut: () => {
     return async (dispatch, getState, { sessionAPI, toastActions }) => {
       try {
-        await sessionAPI.logOut(selectToken(getState));
+        await sessionAPI.logOut(selectToken(getState()));
       } catch (error) {
         if (!(error instanceof UnauthorizedError)) {
           throw error;

@@ -1,5 +1,7 @@
+import { createSelector } from 'reselect';
+
 import { AppState } from '../../../../modules/store';
 
-export function selectUserInfo(state: AppState) {
-  return state.jophiel.profile.userInfo;
-}
+export const selectUserInfo = createSelector(
+  [(state: AppState) => state.jophiel.profile.userInfo],
+  userInfo => userInfo);

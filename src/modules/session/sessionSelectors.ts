@@ -1,9 +1,11 @@
+import { createSelector } from 'reselect';
+
 import { AppState } from '../store';
 
-export function selectToken(getState: () => AppState) {
-  return getState().session.token || '';
-}
+export const selectToken = createSelector(
+  [(state: AppState) => state.session.token],
+  token => token || '');
 
-export function selectUser(getState: () => AppState) {
-  return getState().session.user || { jid: '', username: '' };
-}
+export const selectUserJid = createSelector(
+  [(state: AppState) => state.session.user],
+  user => user ? user.jid : '');
