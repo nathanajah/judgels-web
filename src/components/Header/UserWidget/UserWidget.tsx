@@ -41,7 +41,7 @@ export class UserWidget extends React.Component<UserWidgetProps> {
       <div className="pt-navbar-group pt-align-right">
         <Popover className="widget-user__popover" content={menu} position={Position.BOTTOM} inline>
           <div className="widget-user__user">
-            <a href="#">{user.username}</a> <Icon iconName="pt-icon-chevron-down"/>
+            <span className="widget-user__user__username">{user.username}</span> <Icon iconName="pt-icon-chevron-down"/>
           </div>
         </Popover>
       </div>
