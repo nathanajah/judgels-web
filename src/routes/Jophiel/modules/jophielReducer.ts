@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
-import { profileReducer, ProfileState } from '../Profile/modules/profileReducer';
+
+import { profilesReducer, ProfilesState } from './profilesReducer';
 
 export interface JophielState {
-  profile: ProfileState;
+  profiles: ProfilesState;
 }
 
 export const jophielReducer = combineReducers<JophielState>({
-  profile: profileReducer,
+  profiles: profilesReducer,
 });

@@ -41,11 +41,11 @@ describe('UserWidgetContainer', () => {
       wrapper.find('.widget-user__user').simulate('click');
     });
 
-    it('dispatches push("/profile") when the "profile" menu item is clicked', () => {
-      wrapper.find('[data-key="profile"]').simulate('click');
+    it('dispatches push("/account") when the "account" menu item is clicked', () => {
+      wrapper.find('[data-key="account"]').simulate('click');
 
       setTimeout(() => {
-        expect(store.getActions()).toContainEqual(push('/profile'));
+        expect(store.getActions()).toContainEqual(push('/account'));
       });
     });
 

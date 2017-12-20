@@ -12,7 +12,7 @@ describe('UserWidget', () => {
   const render = () => {
     const props: UserWidgetProps = {
       user,
-      onClickProfile: jest.fn(),
+      onClickAccount: jest.fn(),
       onClickLogOut: jest.fn(),
     };
 

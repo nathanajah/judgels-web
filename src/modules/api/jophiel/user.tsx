@@ -5,7 +5,7 @@ export interface User {
   username: string;
 }
 
-export interface UserInfo {
+export interface UserProfile {
   name?: string;
   institution?: string;
 }
@@ -39,12 +39,12 @@ export function createUserAPI(baseURL: string) {
       return post(`${baseURL}/activate/${emailCode}`);
     },
 
-    getUserInfo: (token: string, userJid: string): Promise<UserInfo> => {
-      return get(`${baseURL}/${userJid}/info`, token);
+    getUserProfile: (token: string, userJid: string): Promise<UserProfile> => {
+      return get(`${baseURL}/${userJid}/profile`, token);
     },
 
-    updateUserInfo: (token: string, userJid: string, userInfo: UserInfo): Promise<void> => {
-      return put(`${baseURL}/${userJid}/info`, token, userInfo);
+    updateUserProfile: (token: string, userJid: string, userProfile: UserProfile): Promise<void> => {
+      return put(`${baseURL}/${userJid}/profile`, token, userProfile);
     },
   };
 }

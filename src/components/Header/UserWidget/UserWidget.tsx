@@ -8,7 +8,7 @@ import './UserWidget.css';
 
 export interface UserWidgetProps {
   user?: User;
-  onClickProfile: () => void;
+  onClickAccount: () => void;
   onClickLogOut: () => void;
 }
 
@@ -25,9 +25,9 @@ export class UserWidget extends React.Component<UserWidgetProps> {
     const menu = (
       <Menu className="widget-user__user__menu">
         <MenuItem
-          data-key="profile"
-          text="Profile"
-          onClick={this.props.onClickProfile}
+          data-key="account"
+          text="My Account"
+          onClick={this.props.onClickAccount}
         />
         <MenuItem
           data-key="logout"

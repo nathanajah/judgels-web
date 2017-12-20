@@ -6,7 +6,7 @@ import UserRoute from '../../../../containers/UserRoute/UserRoute';
 import ActivateContainer from '../../Activate/containers/ActivateContainer/ActivateContainer';
 import LoginContainer from '../../Login/containers/LoginContainer/LoginContainer';
 import RegisterContainer from '../../Register/containers/RegisterContainer/RegisterContainer';
-import ProfileContainer from '../../Profile/containers/ProfileContainer/ProfileContainer';
+import AccountContainer from '../../Account/containers/AccountContainer/AccountContainer';
 
 const JophielContainer = () => (
   <div>
@@ -14,7 +14,7 @@ const JophielContainer = () => (
       <GuestRoute exact path="/login" component={LoginContainer}/>
       <GuestRoute exact path="/register" component={RegisterContainer}/>
       <GuestRoute exact path="/activate/:emailCode" component={ActivateContainer}/>
-      <UserRoute path="/profile" component={ProfileContainer}/>
+      <UserRoute path="/account" component={AccountContainer}/>
     </Switch>
   </div>
 );
