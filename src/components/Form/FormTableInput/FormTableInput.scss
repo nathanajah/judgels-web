@@ -1,8 +1,7 @@
 @import '../../../styles/base';
 
 .form-table-input td {
-  height: 40px;
-  line-height: 40px;
+  line-height: 40px !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }

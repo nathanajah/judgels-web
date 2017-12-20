@@ -1,4 +1,5 @@
 import { Button, Intent } from '@blueprintjs/core';
+import * as CountryList from 'country-list';
 import * as React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
@@ -9,6 +10,7 @@ import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivi
 import { ActionButtons } from '../../../../components/ActionButtons/ActionButtons';
 import { HorizontalInnerDivider } from '../../../../components/Divider/HorizontalInnerDivider';
 import { FormTableTextArea } from 'components/Form/FormTableTextArea/FormTableTextArea';
+import { FormTableSelect } from '../../../../components/Form/FormTableSelect/FormTableSelect';
 
 const nameField = {
   name: 'name',
@@ -61,38 +63,64 @@ export interface ProfileFormProps extends InjectedFormProps<UserProfile> {
   onCancel: () => void;
 }
 
-const ProfileForm = (props: ProfileFormProps) => (
-  <form onSubmit={props.handleSubmit}>
-    <h4>My Info</h4>
-    <table className="pt-table pt-striped">
-      <tbody>
-      <Field component={FormTableTextInput} {...nameField}/>
-      <Field component={FormTableTextInput} {...genderField}/>
-      <Field component={FormTableTextInput} {...nationalityField}/>
-      <Field component={FormTableTextArea} {...homeAddressField}/>
-      <Field component={FormTableTextInput} {...shirtSizeField}/>
-      </tbody>
-    </table>
+const ProfileForm = (props: ProfileFormProps) => {
+  const countryOptions = CountryList().getNames().map(name => (
+    <option key={name} value={name}>{name}</option>
+  ));
 
-    <HorizontalInnerDivider />
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <h4>My Info</h4>
+      <table className="pt-table pt-striped">
+        <tbody>
+        <Field component={FormTableTextInput} {...nameField}/>
+        <Field component={FormTableSelect} {...genderField}>
+          <option/>
+          <option value="MALE">Male</option>
+          <option value="FEMALE">Female</option>
+        </Field>
+        <Field component={FormTableSelect} {...nationalityField}>
+          <option/>
+          {countryOptions}
+        </Field>
+        <Field component={FormTableTextArea} {...homeAddressField}/>
+        <Field component={FormTableSelect} {...shirtSizeField}>
+          <option/>
+          <option value="XXS">XXS</option>
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
+          <option value="XXXL">XXXL</option>
+        </Field>
+        </tbody>
+      </table>
 
-    <h4>My Institution (school/organization represented)</h4>
-    <table className="pt-table pt-striped">
-      <tbody>
-      <Field component={FormTableTextInput} {...institutionField}/>
-      <Field component={FormTableTextInput} {...countryField}/>
-      <Field component={FormTableTextInput} {...provinceOrStateField}/>
-      <Field component={FormTableTextInput} {...cityField}/>
-      </tbody>
-    </table>
+      <HorizontalInnerDivider/>
 
-    <HorizontalDivider />
+      <h4>My Institution (school/organization represented)</h4>
+      <table className="pt-table pt-striped">
+        <tbody>
+        <Field component={FormTableTextInput} {...institutionField}/>
+        <Field component={FormTableSelect} {...countryField}>
+          <option/>
+          {countryOptions}
+        </Field>
+        <Field component={FormTableTextInput} {...provinceOrStateField}/>
+        <Field component={FormTableTextInput} {...cityField}/>
+        </tbody>
+      </table>
 
-    <ActionButtons>
-      <Button type="submit" text="Save changes" intent={Intent.PRIMARY} loading={props.submitting}/>
-      <Button data-key="cancel" text="Cancel" onClick={props.onCancel} disabled={props.submitting}/>
-    </ActionButtons>
-  </form>
-);
+      <HorizontalDivider/>
+
+      <ActionButtons>
+        <Button type="submit" text="Save changes" intent={Intent.PRIMARY} loading={props.submitting}/>
+        <Button data-key="cancel" text="Cancel" onClick={props.onCancel} disabled={props.submitting}/>
+      </ActionButtons>
+    </form>
+  );
+};
 
 export default reduxForm<UserProfile>({ form: 'profile' })(ProfileForm);

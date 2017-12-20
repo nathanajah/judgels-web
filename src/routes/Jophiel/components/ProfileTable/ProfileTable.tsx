@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { UserProfile } from '../../../../modules/api/jophiel/user';
+import { UserProfile, userProfileGender } from '../../../../modules/api/jophiel/user';
 import { FormTable, FormTableRow } from '../../../../components/FormTable/FormTable';
 import { HorizontalInnerDivider } from '../../../../components/Divider/HorizontalInnerDivider';
 
@@ -13,7 +13,7 @@ export const ProfileTable = (props: ProfileTableProps) => {
 
   const infoRows: FormTableRow[] = [
     { key: 'name', title: 'Name', value: profile.name },
-    { key: 'gender', title: 'Gender', value: profile.gender },
+    { key: 'gender', title: 'Gender', value: profile.gender && userProfileGender[profile.gender] },
     { key: 'nationality', title: 'Nationality', value: profile.nationality },
     { key: 'homeAddress', title: 'Home Address', value: profile.homeAddress },
     { key: 'shirtSize', title: 'Shirt Size', value: profile.shirtSize },

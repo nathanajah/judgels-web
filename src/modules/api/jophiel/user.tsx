@@ -17,6 +17,11 @@ export interface UserProfile {
   shirtSize?: string;
 }
 
+export const userProfileGender = {
+  ['MALE']: 'Male',
+  ['FEMALE']: 'Female',
+};
+
 export interface UserRegistrationData {
   username: string;
   password: string;
