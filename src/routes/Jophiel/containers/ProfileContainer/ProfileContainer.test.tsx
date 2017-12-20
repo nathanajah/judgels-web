@@ -40,7 +40,7 @@ describe('ProfileContainer', () => {
     );
   });
 
-  test('integration', async () => {
+  it('has working profile form', async () => {
     expect(profileActions.get).toHaveBeenCalledWith('jid123');
 
     expect(wrapper.find('[data-key="name"]').text()).toEqual('My Name');

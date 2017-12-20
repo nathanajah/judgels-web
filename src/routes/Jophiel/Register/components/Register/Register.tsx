@@ -24,7 +24,7 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
       return (
         <Card title="Activation required" className="card-register">
           <p>Thank you for registering, <strong>{this.state.registeredUser.username}</strong>.</p>
-          <p className="card-register__instruction">
+          <p data-key="instruction" className="card-register__instruction">
             A confirmation email has been sent to&nbsp;
             <strong>{this.state.registeredUser.email}</strong> with instruction to activate your account.
           </p>

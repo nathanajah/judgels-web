@@ -28,7 +28,7 @@ describe('RegisterContainer', () => {
     );
   });
 
-  it('dispatches register() then shows instructions when the form is submitted', () => {
+  it('has working register form', () => {
     const username = wrapper.find('input[name="username"]');
     username.simulate('change', { target: { value: 'user' } });
 
@@ -52,10 +52,6 @@ describe('RegisterContainer', () => {
       name: 'name',
       email: 'email@domain.com',
       password: 'pass',
-    });
-
-    setTimeout(() => {
-      expect(wrapper.find('.card-register__instruction').text()).toContain('email@domain.com')
     });
   });
 });

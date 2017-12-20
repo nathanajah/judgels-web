@@ -28,7 +28,7 @@ describe('LoginContainer', () => {
     );
   });
 
-  it('dispatches logIn() when the form is submitted', () => {
+  it('has working login form', () => {
     const username = wrapper.find('input[name="username"]');
     username.simulate('change', { target: { value: 'user' } });
 

@@ -42,19 +42,15 @@ describe('UserWidgetContainer', () => {
     });
 
     it('dispatches push("/account") when the "account" menu item is clicked', () => {
-      wrapper.find('[data-key="account"]').simulate('click');
+      wrapper.find('[data-key="account"]').find('a').simulate('click');
 
-      setTimeout(() => {
-        expect(store.getActions()).toContainEqual(push('/account'));
-      });
+      expect(store.getActions()).toContainEqual(push('/account'));
     });
 
-    it('dispatches logOut() when the "log out" menu item is clicked', async () => {
-      wrapper.find('[data-key="logout"]').simulate('click');
+    it('dispatches logOut() when the "log out" menu item is clicked', () => {
+      wrapper.find('[data-key="logout"]').find('a').simulate('click');
 
-      setTimeout(() => {
-        expect(store.getActions()).toContainEqual({ type: 'mock-logout' });
-      });
+      expect(store.getActions()).toContainEqual({ type: 'mock-logout' });
     });
   });
 });
