@@ -24,4 +24,17 @@ describe('sessionReducer', () => {
     const action = EndSession.create();
     expect(sessionReducer(state, action)).toEqual(INITIAL_STATE);
   });
+
+  it('handles other actions', () => {
+    const state: SessionState = {
+      isLoggedIn: true,
+      user: { jid: 'jid123', username: 'user' },
+      token: 'token123',
+    };
+    expect(sessionReducer(state, { type: 'other' })).toEqual(state);
+  });
+
+  it('handles initial state', () => {
+    expect(sessionReducer(undefined as any, { type: 'other' })).toEqual(INITIAL_STATE);
+  });
 });

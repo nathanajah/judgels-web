@@ -8,12 +8,12 @@ export interface ProfilesState {
 
 export const INITIAL_STATE: ProfilesState = {};
 
-export const StoreProfile = TypedAction.define('jophiel/profile/STORE_PROFILE')<{
+export const StoreProfile = TypedAction.define('jophiel/profiles/STORE_PROFILE')<{
   userJid: string;
   profile: UserProfile;
 }>();
 
-export const ClearProfile = TypedAction.define('jophiel/profile/CLEAR_PROFILE')<{
+export const ClearProfile = TypedAction.define('jophiel/profiles/CLEAR_PROFILE')<{
   userJid: string;
 }>();
 
