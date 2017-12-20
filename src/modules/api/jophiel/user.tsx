@@ -7,7 +7,14 @@ export interface User {
 
 export interface UserProfile {
   name?: string;
+  gender?: string;
+  nationality?: string;
+  homeAddress?: string;
   institution?: string;
+  country?: string;
+  provinceOrState?: string;
+  city?: string;
+  shirtSize?: string;
 }
 
 export interface UserRegistrationData {

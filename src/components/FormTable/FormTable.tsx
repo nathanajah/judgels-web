@@ -14,11 +14,11 @@ export interface FormTableProps {
 
 export const FormTable = (props: FormTableProps) => {
   const rows = props.rows.map(row => (
-    <tr key={row.title}>
+    <tr key={row.key}>
       <td className="form-table__title">
         {row.title}
       </td>
-      <td data-key={row.key}>
+      <td data-key={row.key} className="form-table__value">
         {row.value}
       </td>
     </tr>

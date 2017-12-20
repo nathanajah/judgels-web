@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { UserProfile } from '../../../../modules/api/jophiel/user';
 import { FormTable, FormTableRow } from '../../../../components/FormTable/FormTable';
+import { HorizontalInnerDivider } from '../../../../components/Divider/HorizontalInnerDivider';
 
 export interface ProfileTableProps {
   profile: UserProfile;
@@ -9,10 +10,32 @@ export interface ProfileTableProps {
 
 export const ProfileTable = (props: ProfileTableProps) => {
   const { profile } = props;
-  const rows: FormTableRow[] = [
+
+  const infoRows: FormTableRow[] = [
     { key: 'name', title: 'Name', value: profile.name },
-    { key: 'institution', title: 'Institution', value: profile.institution },
+    { key: 'gender', title: 'Gender', value: profile.gender },
+    { key: 'nationality', title: 'Nationality', value: profile.nationality },
+    { key: 'homeAddress', title: 'Home Address', value: profile.homeAddress },
+    { key: 'shirtSize', title: 'Shirt Size', value: profile.shirtSize },
+
   ];
 
-  return <FormTable rows={rows}/>;
+  const institutionRows: FormTableRow[] = [
+    { key: 'institution', title: 'Name', value: profile.institution },
+    { key: 'country', title: 'Country', value: profile.country },
+    { key: 'provinceOrState', title: 'Province/State', value: profile.provinceOrState },
+    { key: 'city', title: 'City', value: profile.city },
+  ];
+
+  return (
+    <div>
+      <h4>My Info</h4>
+      <FormTable rows={infoRows}/>
+
+      <HorizontalInnerDivider />
+
+      <h4>My Institution</h4>
+      <FormTable rows={institutionRows}/>
+    </div>
+  );
 };

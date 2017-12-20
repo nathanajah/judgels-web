@@ -7,6 +7,8 @@ import { UserProfile } from '../../../../modules/api/jophiel/user';
 import { Required } from '../../../../utils/validations';
 import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivider';
 import { ActionButtons } from '../../../../components/ActionButtons/ActionButtons';
+import { HorizontalInnerDivider } from '../../../../components/Divider/HorizontalInnerDivider';
+import { FormTableTextArea } from 'components/Form/FormTableTextArea/FormTableTextArea';
 
 const nameField = {
   name: 'name',
@@ -15,10 +17,44 @@ const nameField = {
   validate: [Required],
 };
 
+const genderField = {
+  name: 'gender',
+  label: 'Gender',
+};
+
+const nationalityField = {
+  name: 'nationality',
+  label: 'Nationality',
+};
+
+const homeAddressField = {
+  name: 'homeAddress',
+  label: 'Home Address',
+};
+
+const shirtSizeField = {
+  name: 'shirtSize',
+  label: 'Shirt Size',
+};
+
 const institutionField = {
   name: 'institution',
-  label: 'Institution',
-  inputHelper: 'School/organization you represent',
+  label: 'Name',
+};
+
+const countryField = {
+  name: 'country',
+  label: 'Country',
+};
+
+const provinceOrStateField = {
+  name: 'provinceOrState',
+  label: 'Province/State',
+};
+
+const cityField = {
+  name: 'city',
+  label: 'City',
 };
 
 export interface ProfileFormProps extends InjectedFormProps<UserProfile> {
@@ -27,10 +63,26 @@ export interface ProfileFormProps extends InjectedFormProps<UserProfile> {
 
 const ProfileForm = (props: ProfileFormProps) => (
   <form onSubmit={props.handleSubmit}>
+    <h4>My Info</h4>
     <table className="pt-table pt-striped">
       <tbody>
       <Field component={FormTableTextInput} {...nameField}/>
+      <Field component={FormTableTextInput} {...genderField}/>
+      <Field component={FormTableTextInput} {...nationalityField}/>
+      <Field component={FormTableTextArea} {...homeAddressField}/>
+      <Field component={FormTableTextInput} {...shirtSizeField}/>
+      </tbody>
+    </table>
+
+    <HorizontalInnerDivider />
+
+    <h4>My Institution (school/organization represented)</h4>
+    <table className="pt-table pt-striped">
+      <tbody>
       <Field component={FormTableTextInput} {...institutionField}/>
+      <Field component={FormTableTextInput} {...countryField}/>
+      <Field component={FormTableTextInput} {...provinceOrStateField}/>
+      <Field component={FormTableTextInput} {...cityField}/>
       </tbody>
     </table>
 

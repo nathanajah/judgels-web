@@ -26,7 +26,7 @@ export class Profile extends React.Component<ProfileProps, ProfileState> {
       : <Button data-key="edit" text="Edit" intent={Intent.PRIMARY} className="pt-small" onClick={this.toggleEdit}/>;
 
     return (
-      <Card title=" Profile" action={action} className="card-profile-me">
+      <Card title="Profile" action={action} className="card-profile">
         {this.renderContent()}
       </Card>
     );
