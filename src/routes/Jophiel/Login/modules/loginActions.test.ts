@@ -78,11 +78,7 @@ describe('loginActions', () => {
       });
 
       it('throws a more descriptive error', async () => {
-        setTimeout(() => {
-          expect(async () => {
-            await doLogIn();
-          }).toThrow('Invalid username/password.');
-        });
+        await expect(doLogIn()).rejects.toEqual(new Error('Invalid username/password.'));
       });
     });
   });

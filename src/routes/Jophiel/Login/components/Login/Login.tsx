@@ -10,7 +10,7 @@ export interface LoginProps {
 }
 
 export const Login = (props: LoginProps) => (
-  <Card title="Log in" className="card-login">
+  <Card title="Log In" className="card-login">
     <LoginForm onSubmit={props.onLogIn}/>
   </Card>
 );

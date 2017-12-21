@@ -1,4 +1,4 @@
-import { ForbiddenError, RemoteError, UnauthorizedError } from './error';
+import { BadRequestError, ForbiddenError, RemoteError, UnauthorizedError } from './error';
 
 async function call(url: string, init: RequestInit): Promise<any> {
   let response: Response;
@@ -8,6 +8,9 @@ async function call(url: string, init: RequestInit): Promise<any> {
     throw new RemoteError();
   }
 
+  if (response.status === 400) {
+    throw new BadRequestError();
+  }
   if (response.status === 401) {
     throw new UnauthorizedError();
   }

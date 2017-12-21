@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { Redirect, Switch, withRouter } from 'react-router';
 import { push } from 'react-router-redux';
 
-import { TwoColumnLayout } from '../../../../../layouts/TwoColumnLayout/TwoColumnLayout';
+import { TwoColumnSmallLayout } from '../../../../../layouts/TwoColumnSmallLayout/TwoColumnSmallLayout';
 import { Sidebar, SidebarItem } from '../../../../../components/Sidebar/Sidebar';
 import UserRoute from '../../../../../containers/UserRoute/UserRoute';
 import ProfileContainer from '../../../containers/ProfileContainer/ProfileContainer';
 import { selectUserJid } from '../../../../../modules/session/sessionSelectors';
+import ChangePasswordContainer from '../../routes/ChangePassword/containers/ChangePasswordContainer/ChangePasswordContainer';
 
 interface AccountContainerProps {
   userJid: string;
@@ -19,10 +20,11 @@ interface AccountContainerProps {
 const AccountContainer = (props: AccountContainerProps) => {
   const sidebarItems: SidebarItem[] = [
     { id: 'profile', title: 'Profile' },
+    { id: 'password', title: 'Change Password' },
   ];
 
   return (
-    <TwoColumnLayout>
+    <TwoColumnSmallLayout>
       <Sidebar
         id="account"
         title="My Account"
@@ -32,15 +34,16 @@ const AccountContainer = (props: AccountContainerProps) => {
       />
       <div>
         <Switch>
-          <Redirect exact from={props.match.url} to={props.match.url + '/profile'}/>
+          <Redirect exact from={props.match.url} to={'/account/profile'}/>
           <UserRoute
             exact
-            path={props.match.url + '/profile'}
+            path={'/account/profile'}
             component={() => <ProfileContainer userJid={props.userJid}/>}
           />
+          <UserRoute exact path={'/account/password'} component={ChangePasswordContainer}/>
         </Switch>
       </div>
-    </TwoColumnLayout>
+    </TwoColumnSmallLayout>
   );
 };
 

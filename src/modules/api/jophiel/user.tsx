@@ -29,6 +29,11 @@ export interface UserRegistrationData {
   name?: string;
 }
 
+export interface PasswordUpdateData {
+  oldPassword: string;
+  newPassword: string;
+}
+
 export function createUserAPI(baseURL: string) {
   return {
     usernameExists: (username: string): Promise<boolean> => {
@@ -41,6 +46,10 @@ export function createUserAPI(baseURL: string) {
 
     getMyself: (token: string): Promise<void> => {
       return get(`${baseURL}/me`, token);
+    },
+
+    updateMyPassword: (token: string, passwordUpdateData: PasswordUpdateData): Promise<void> => {
+      return post(`${baseURL}/me/password`, token, passwordUpdateData);
     },
 
     registerUser: (userRegistrationData: UserRegistrationData): Promise<void> => {
