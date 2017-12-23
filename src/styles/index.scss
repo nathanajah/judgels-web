@@ -27,6 +27,10 @@ a {
   color: $primary-color;
 }
 
+td {
+  color: $text-color !important;
+}
+
 .toast {
   margin-top: 50px;
 }
