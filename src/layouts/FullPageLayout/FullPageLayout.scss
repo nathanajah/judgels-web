@@ -1,6 +1,6 @@
 @import '../../styles/base';
 
-.layout-two-col {
+.layout-full-page {
   max-width: 1160px;
   min-height: 400px;
   margin-left: auto;
@@ -8,14 +8,4 @@
   margin-top: 50px;
   padding-left: 10px;
   padding-right: 10px;
-  display: flex;
-}
-
-.layout-two-col__left {
-  width: 270px;
-  margin-right: 20px;
-}
-
-.layout-two-col__right {
-  flex-grow: 1;
 }

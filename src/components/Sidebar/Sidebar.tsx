@@ -11,30 +11,18 @@ export interface SidebarItem {
 }
 
 export interface SidebarProps {
-  id: string;
   title: string;
-  parentPath: string;
+  activeItemId: string;
   items: SidebarItem[];
   onItemClick: (parentPath: string, itemId: string) => void;
 }
 
-interface SidebarState {
-  selectedItemId?: string;
-}
-
 export class Sidebar extends React.Component<SidebarProps> {
-  state: SidebarState = {};
-
-  componentDidMount() {
-    this.setState({
-      selectedItemId: this.props.items[0].id,
-    });
-  }
-
   render() {
-    const { id, title, items } = this.props;
+    const { title, activeItemId, items, onItemClick } = this.props;
+
     const tabs = items.map(item => {
-      const icon = (item.id === this.state.selectedItemId) && (
+      const icon = (item.id === activeItemId) && (
         <Icon iconName="chevron-right" iconSize={Icon.SIZE_LARGE} className="card-sidebar__arrow"/>
       );
 
@@ -48,17 +36,10 @@ export class Sidebar extends React.Component<SidebarProps> {
 
     return (
       <Card className="card-sidebar" title={title}>
-        <Tabs2 id={id} onChange={this.onItemClick} vertical renderActiveTabPanelOnly>
+        <Tabs2 id="sidebar" selectedTabId={activeItemId} onChange={onItemClick} vertical renderActiveTabPanelOnly>
           {tabs}
         </Tabs2>
       </Card>
     );
   }
-
-  private onItemClick = (itemId: string) => {
-    this.props.onItemClick(this.props.parentPath, itemId);
-    this.setState({
-      selectedItemId: itemId,
-    });
-  };
 }

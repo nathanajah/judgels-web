@@ -2,7 +2,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { push } from 'react-router-redux';
-import configureStore, { MockStore } from 'redux-mock-store';
+import createMockStore, { MockStore } from 'redux-mock-store';
 
 import { createUserWidgetContainer } from './UserWidgetContainer';
 
@@ -26,7 +26,7 @@ describe('UserWidgetContainer', () => {
       logOut: jest.fn().mockReturnValue({ type: 'mock-logout' }),
     };
 
-    store = configureStore()({
+    store = createMockStore()({
       session: {
         user: { username: 'user' },
         token: 'token123'

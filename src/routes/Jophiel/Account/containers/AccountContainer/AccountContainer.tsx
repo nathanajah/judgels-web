@@ -1,49 +1,39 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Switch, withRouter } from 'react-router';
-import { push } from 'react-router-redux';
+import { withRouter } from 'react-router';
 
-import { TwoColumnSmallLayout } from '../../../../../layouts/TwoColumnSmallLayout/TwoColumnSmallLayout';
-import { Sidebar, SidebarItem } from '../../../../../components/Sidebar/Sidebar';
+import { FullPageLayout } from '../../../../../layouts/FullPageLayout/FullPageLayout';
 import UserRoute from '../../../../../containers/UserRoute/UserRoute';
 import ProfileContainer from '../../../containers/ProfileContainer/ProfileContainer';
 import { selectUserJid } from '../../../../../modules/session/sessionSelectors';
 import ChangePasswordContainer from '../../routes/ChangePassword/containers/ChangePasswordContainer/ChangePasswordContainer';
+import ContentWithSidebarContainer, { ContentWithSidebarContainerItem, ContentWithSidebarContainerProps } from '../../../../../containers/ContentWithSidebarContainer/ContentWithSidebarContainer';
 
-interface AccountContainerProps {
+interface AccountContainerConnectedProps {
   userJid: string;
-  onSidebarItemClick: (parentPath: string, itemId: string) => void;
+  location: {
+    pathname: string;
+  };
   match: {
     url: string;
   };
 }
-const AccountContainer = (props: AccountContainerProps) => {
-  const sidebarItems: SidebarItem[] = [
-    { id: 'profile', title: 'Profile' },
-    { id: 'password', title: 'Change Password' },
+const AccountContainer = (props: AccountContainerConnectedProps) => {
+  const sidebarItems: ContentWithSidebarContainerItem[] = [
+    { id: 'profile', title: 'Profile', routeComponent: UserRoute, component: () => <ProfileContainer userJid={props.userJid}/> },
+    { id: 'password', title: 'Change Password', routeComponent: UserRoute, component: ChangePasswordContainer },
   ];
 
+  const contentWithSidebarContainerProps: ContentWithSidebarContainerProps = {
+    title: 'My Account',
+    items: sidebarItems,
+    smallContent: true,
+  };
+
   return (
-    <TwoColumnSmallLayout>
-      <Sidebar
-        id="account"
-        title="My Account"
-        parentPath={props.match.url}
-        items={sidebarItems}
-        onItemClick={props.onSidebarItemClick}
-      />
-      <div>
-        <Switch>
-          <Redirect exact from={props.match.url} to={'/account/profile'}/>
-          <UserRoute
-            exact
-            path={'/account/profile'}
-            component={() => <ProfileContainer userJid={props.userJid}/>}
-          />
-          <UserRoute exact path={'/account/password'} component={ChangePasswordContainer}/>
-        </Switch>
-      </div>
-    </TwoColumnSmallLayout>
+    <FullPageLayout>
+      <ContentWithSidebarContainer {...contentWithSidebarContainerProps}/>
+    </FullPageLayout>
   );
 };
 
@@ -52,11 +42,7 @@ function createAccountContainer() {
     userJid: selectUserJid(state),
   });
 
-  const mapDispatchToProps = dispatch => ({
-    onSidebarItemClick: (parentPath: string, itemId: string) => dispatch(push(parentPath + '/' + itemId)),
-  });
-
-  return connect(mapStateToProps, mapDispatchToProps)(AccountContainer);
+  return connect(mapStateToProps)(AccountContainer);
 }
 
 export default withRouter<any>(createAccountContainer());

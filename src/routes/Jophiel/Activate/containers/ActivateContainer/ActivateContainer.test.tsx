@@ -2,7 +2,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
-import configureStore, { MockStore } from 'redux-mock-store';
+import createMockStore, { MockStore } from 'redux-mock-store';
 
 import { createActivateContainer } from './ActivateContainer';
 
@@ -16,7 +16,7 @@ describe('ActivateContainer', () => {
       activate: jest.fn(code => ({ type: 'mock-activate', emailCode: code })),
     };
 
-    store = configureStore()({});
+    store = createMockStore()({});
     const ActivateContainer = createActivateContainer(activateActions);
 
     wrapper = mount(
