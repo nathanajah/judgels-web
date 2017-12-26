@@ -7,26 +7,26 @@ import { activateActions as injectedActivateActions } from '../../modules/activa
 import { SingleColumnLayout } from '../../../../../layouts/SingleColumnLayout/SingleColumnLayout';
 import { Activate } from '../../components/Activate/Activate';
 
-interface ActivateContainerProps {
+interface ActivateContainerConnectedProps {
   match: {
     params: {
       emailCode: string;
     };
   };
-  handleActivate: (emailCode: string) => Promise<void>;
+  onActivate: (emailCode: string) => Promise<void>;
 }
 
 interface ActivateContainerState {
   isFetching: boolean;
 }
 
-class ActivateContainer extends React.Component<ActivateContainerProps, ActivateContainerState> {
+class ActivateContainer extends React.Component<ActivateContainerConnectedProps, ActivateContainerState> {
   state: ActivateContainerState = {
     isFetching: true,
   };
 
   async componentDidMount() {
-    await this.props.handleActivate(this.props.match.params.emailCode);
+    await this.props.onActivate(this.props.match.params.emailCode);
     this.setState({
       isFetching: false,
     });
@@ -47,7 +47,7 @@ class ActivateContainer extends React.Component<ActivateContainerProps, Activate
 
 export function createActivateContainer(activateActions) {
   const mapDispatchToProps = dispatch => ({
-    handleActivate: (emailCode: string) => dispatch(activateActions.activate(emailCode)),
+    onActivate: (emailCode: string) => dispatch(activateActions.activate(emailCode)),
   });
 
   return connect(undefined, mapDispatchToProps)(ActivateContainer);

@@ -34,6 +34,11 @@ export interface PasswordUpdateData {
   newPassword: string;
 }
 
+export interface PasswordResetData {
+  emailCode: string;
+  newPassword: string;
+}
+
 export function createUserAPI(baseURL: string) {
   return {
     usernameExists: (username: string): Promise<boolean> => {
@@ -66,6 +71,14 @@ export function createUserAPI(baseURL: string) {
 
     updateUserProfile: (token: string, userJid: string, userProfile: UserProfile): Promise<void> => {
       return put(`${baseURL}/${userJid}/profile`, token, userProfile);
+    },
+
+    requestToResetUserPassword: (email: string): Promise<void> => {
+      return post(`${baseURL}/request-reset-password/${email}`);
+    },
+
+    resetUserPassword: (passwordResetData: PasswordResetData): Promise<void> => {
+      return post(`${baseURL}/reset-password`, undefined, passwordResetData);
     },
   };
 }

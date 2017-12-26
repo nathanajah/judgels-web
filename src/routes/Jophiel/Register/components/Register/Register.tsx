@@ -22,7 +22,7 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
   render() {
     if (this.state.registeredUser) {
       return (
-        <Card title="Activation required" className="card-register">
+        <Card title="Activation Required" className="card-register">
           <p>Thank you for registering, <strong>{this.state.registeredUser.username}</strong>.</p>
           <p data-key="instruction" className="card-register__instruction">
             A confirmation email has been sent to&nbsp;

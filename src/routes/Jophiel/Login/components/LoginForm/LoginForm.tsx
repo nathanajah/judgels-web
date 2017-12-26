@@ -31,6 +31,7 @@ const LoginForm = (props: InjectedFormProps<LoginFormData>) => (
   <form onSubmit={props.handleSubmit}>
     <Field component={FormTextInput} {...usernameField}/>
     <Field component={FormTextInput} {...passwordField}/>
+    <p className="form-login__actions-forgot-password"><Link to="/forgot-password">Forgot your password?</Link></p>
 
     <HorizontalDivider />
 
