@@ -4,8 +4,8 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 
 import { FormTextInput } from '../../../../../components/Form/FormTextInput/FormTextInput';
-import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider';
-import { ConfirmPassword, EmailAddress, Required, Username } from '../../../../../utils/validations';
+import { ConfirmPassword, EmailAddress, Required, Username } from '../../../../../components/Form/FormValidations';
+import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider/HorizontalDivider';
 
 import './RegisterForm.css';
 

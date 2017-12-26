@@ -4,13 +4,13 @@ import * as React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { FormTableTextInput } from '../../../../components/Form/FormTableTextInput/FormTableTextInput';
-import { UserProfile } from '../../../../modules/api/jophiel/user';
-import { Required } from '../../../../utils/validations';
-import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivider';
+import { Required } from '../../../../components/Form/FormValidations';
+import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivider/HorizontalDivider';
+import { HorizontalInnerDivider } from '../../../../components/Divider/HorizontalInnerDivider/HorizontalInnerDivider';
 import { ActionButtons } from '../../../../components/ActionButtons/ActionButtons';
-import { HorizontalInnerDivider } from '../../../../components/Divider/HorizontalInnerDivider';
 import { FormTableTextArea } from 'components/Form/FormTableTextArea/FormTableTextArea';
 import { FormTableSelect } from '../../../../components/Form/FormTableSelect/FormTableSelect';
+import { UserProfile } from '../../../../modules/api/jophiel/user';
 
 const nameField = {
   name: 'name',

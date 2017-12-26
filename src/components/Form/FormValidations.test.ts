@@ -1,11 +1,11 @@
-import { ConfirmPassword, EmailAddress, Required, Username } from './validations';
+import { ConfirmPassword, EmailAddress, Required, Username } from './FormValidations';
 
-it('Required', () => {
+test('Required', () => {
   expect(Required(undefined)).toBeTruthy();
   expect(Required('value')).toBeUndefined();
 });
 
-it('Username', () => {
+test('Username', () => {
   expect(Username('fu')).toBeTruthy();
   expect(Username('fusharfusharfusharfushar')).toBeTruthy();
   expect(Username(' fushar ')).toBeTruthy();
@@ -13,14 +13,14 @@ it('Username', () => {
   expect(Username('_fus4.r')).toBeUndefined();
 });
 
-it('EmailAddress', () => {
+test('EmailAddress', () => {
   expect(EmailAddress('emaildomain')).toBeTruthy();
   expect(EmailAddress('email@domain')).toBeTruthy();
   expect(EmailAddress('emaildomain.com')).toBeTruthy();
   expect(EmailAddress('emaIL+judgels@domain.com')).toBeUndefined();
 });
 
-it('ConfirmPassword', () => {
+test('ConfirmPassword', () => {
   expect(ConfirmPassword('pass', { password: undefined })).toBeTruthy();
   expect(ConfirmPassword('pass', { password: 'Pass' })).toBeTruthy();
   expect(ConfirmPassword('pass', { password: 'pass' })).toBeUndefined();

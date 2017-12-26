@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { FormTextInput } from '../../../../../../../components/Form/FormTextInput/FormTextInput';
-import { HorizontalDivider } from '../../../../../../../components/Divider/HorizontalDivider';
-import { ConfirmPassword, Required } from '../../../../../../../utils/validations';
+import { ConfirmPassword, Required } from '../../../../../../../components/Form/FormValidations';
+import { HorizontalDivider } from '../../../../../../../components/Divider/HorizontalDivider/HorizontalDivider';
 
 export interface ChangePasswordFormData {
   oldPassword: string;

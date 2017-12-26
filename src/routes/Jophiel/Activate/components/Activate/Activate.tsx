@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { ButtonLink } from '../../../../../components/ButtonLink/ButtonLink';
 import { Card } from '../../../../../components/Card/Card';
-import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider';
+import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider/HorizontalDivider';
 
 import './Activate.css';
 

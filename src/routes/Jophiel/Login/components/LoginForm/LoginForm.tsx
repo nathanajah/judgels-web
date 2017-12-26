@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { FormTextInput } from '../../../../../components/Form/FormTextInput/FormTextInput';
-import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider';
-import { Required } from '../../../../../utils/validations';
+import { Required } from '../../../../../components/Form/FormValidations';
+import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider/HorizontalDivider';
 
 import './LoginForm.css';
 
