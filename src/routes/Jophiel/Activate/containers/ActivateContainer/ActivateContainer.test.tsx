@@ -1,7 +1,7 @@
 import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, Route } from 'react-router';
 import createMockStore, { MockStore } from 'redux-mock-store';
 
 import { createActivateContainer } from './ActivateContainer';
@@ -21,14 +21,14 @@ describe('ActivateContainer', () => {
 
     wrapper = mount(
       <Provider store={store}>
-        <MemoryRouter>
-          <ActivateContainer match={{ params: { emailCode: 'code' }}}/>
+        <MemoryRouter initialEntries={['/activate/code123']}>
+          <Route exact path="/activate/:emailCode" component={ActivateContainer}/>
         </MemoryRouter>
       </Provider>,
     );
   });
 
   it('dispatches activate()', () => {
-    expect(store.getActions()).toContainEqual({ type: 'mock-activate', emailCode: 'code' });
+    expect(store.getActions()).toContainEqual({ type: 'mock-activate', emailCode: 'code123' });
   });
 });

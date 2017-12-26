@@ -1,4 +1,3 @@
-import { NonIdealState, Spinner } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -13,6 +12,7 @@ interface ActivateContainerConnectedProps {
       emailCode: string;
     };
   };
+
   onActivate: (emailCode: string) => Promise<void>;
 }
 
@@ -34,7 +34,7 @@ class ActivateContainer extends React.Component<ActivateContainerConnectedProps,
 
   render() {
     const content = this.state.isFetching
-      ? <NonIdealState visual={<Spinner/>}/>
+      ? null
       : <Activate />;
 
     return (
@@ -50,7 +50,7 @@ export function createActivateContainer(activateActions) {
     onActivate: (emailCode: string) => dispatch(activateActions.activate(emailCode)),
   });
 
-  return connect(undefined, mapDispatchToProps)(ActivateContainer);
+  return withRouter<any>(connect(undefined, mapDispatchToProps)(ActivateContainer));
 }
 
-export default withRouter<any>(createActivateContainer(injectedActivateActions));
+export default createActivateContainer(injectedActivateActions);
