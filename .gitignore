@@ -1,11 +1,8 @@
 .DS_STORE
-*.log
+
+build/
+node_modules/
 
 *.css
-
-node_modules
-
-dist
-coverage
 
 .idea/
