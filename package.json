@@ -4,10 +4,8 @@
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^1.32.0",
-    "bootstrap-sass": "^3.3.7",
     "classnames": "^2.2.5",
     "country-list": "^1.1.0",
-    "faker": "^4.1.0",
     "history": "^4.7.2",
     "node-sass-chokidar": "^0.0.3",
     "normalize.css": "^5.0.0",
@@ -19,19 +17,13 @@
     "react-router-dom": "^4.2.0",
     "react-router-redux": "^5.0.0-alpha.8",
     "react-scripts-ts": "2.8.0",
-    "react-slick": "^0.14.11",
     "redoodle": "^2.2.2",
     "redux": "^3.6.0",
     "redux-form": "^7.1.0",
     "redux-persist": "^5.4.0",
     "redux-thunk": "^2.0.0",
     "reselect": "^3.0.1",
-    "reset-css": "^2.2.0",
-    "resolve-url-loader": "^1.6.1",
-    "semantic-ui-css": "^2.2.9",
-    "semantic-ui-less": "^2.2.10",
-    "semantic-ui-react": "^0.76.0",
-    "slick-carousel": "^1.6.0"
+    "reset-css": "^2.2.0"
   },
   "scripts": {
     "start": "npm-run-all build:css --parallel watch:css start:ts",
