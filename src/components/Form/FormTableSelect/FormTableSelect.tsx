@@ -10,10 +10,7 @@ export const FormTableSelect = (props: FormTableInputProps) => {
   return (
     <FormTableInput {...props}>
       <div className="pt-select">
-        <select
-          {...props.input}
-          className={classNames(getIntentClassName(props.meta))}
-        >
+        <select {...props.input} className={classNames(getIntentClassName(props.meta))}>
           {props.children}
         </select>
       </div>

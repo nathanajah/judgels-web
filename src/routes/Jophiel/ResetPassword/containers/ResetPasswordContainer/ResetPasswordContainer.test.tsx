@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter, Route } from 'react-router';
 import { combineReducers, createStore } from 'redux';
-import { reducer as formReducer } from 'redux-form'
+import { reducer as formReducer } from 'redux-form';
 
 import { createResetPasswordContainer } from './ResetPasswordContainer';
 
@@ -22,9 +22,9 @@ describe('ResetPasswordContainer', () => {
     wrapper = mount(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/reset-password/code123']}>
-          <Route exact path="/reset-password/:emailCode" component={ResetPasswordContainer}/>
+          <Route exact path="/reset-password/:emailCode" component={ResetPasswordContainer} />
         </MemoryRouter>
-      </Provider>,
+      </Provider>
     );
   });
 

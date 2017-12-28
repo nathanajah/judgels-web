@@ -17,7 +17,7 @@ describe('UserWidgetContainer', () => {
     wrapper = mount(
       <Provider store={store}>
         <UserWidgetContainer />
-      </Provider>,
+      </Provider>
     );
   };
 
@@ -29,8 +29,8 @@ describe('UserWidgetContainer', () => {
     store = createMockStore()({
       session: {
         user: { username: 'user' },
-        token: 'token123'
-      }
+        token: 'token123',
+      },
     });
   });
 
@@ -42,13 +42,19 @@ describe('UserWidgetContainer', () => {
     });
 
     it('dispatches push("/account") when the "account" menu item is clicked', () => {
-      wrapper.find('[data-key="account"]').find('a').simulate('click');
+      wrapper
+        .find('[data-key="account"]')
+        .find('a')
+        .simulate('click');
 
       expect(store.getActions()).toContainEqual(push('/account'));
     });
 
     it('dispatches logOut() when the "log out" menu item is clicked', () => {
-      wrapper.find('[data-key="logout"]').find('a').simulate('click');
+      wrapper
+        .find('[data-key="logout"]')
+        .find('a')
+        .simulate('click');
 
       expect(store.getActions()).toContainEqual({ type: 'mock-logout' });
     });

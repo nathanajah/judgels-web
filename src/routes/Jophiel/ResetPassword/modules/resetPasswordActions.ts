@@ -17,5 +17,5 @@ export const resetPasswordActions = {
       toastActions.showSuccessToast('Password has been reset.');
       dispatch(push('/login'));
     };
-  }
+  },
 };

@@ -29,7 +29,10 @@ describe('resetPasswordActions', () => {
     it('tries to reset password', async () => {
       await doReset();
 
-      expect(userAPI.resetUserPassword).toHaveBeenCalledWith({ emailCode: 'code123', newPassword: 'pass' });
+      expect(userAPI.resetUserPassword).toHaveBeenCalledWith({
+        emailCode: 'code123',
+        newPassword: 'pass',
+      });
     });
 
     describe('when the email code is valid', () => {
@@ -53,7 +56,9 @@ describe('resetPasswordActions', () => {
 
       beforeEach(async () => {
         error = new BadRequestError();
-        userAPI.resetUserPassword.mockImplementation(() => { throw error; });
+        userAPI.resetUserPassword.mockImplementation(() => {
+          throw error;
+        });
       });
 
       it('throws a more descriptive error', async () => {

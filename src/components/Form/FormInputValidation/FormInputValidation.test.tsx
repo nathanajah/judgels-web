@@ -14,9 +14,7 @@ describe('FormInputValidation', () => {
       meta: { touched, valid, error },
     };
 
-    wrapper = shallow(
-      <FormInputValidation {...props}/>
-    );
+    wrapper = shallow(<FormInputValidation {...props} />);
   };
 
   beforeEach(() => {

@@ -22,8 +22,8 @@ export class Sidebar extends React.Component<SidebarProps> {
     const { title, activeItemId, items, onItemClick } = this.props;
 
     const tabs = items.map(item => {
-      const icon = (item.id === activeItemId) && (
-        <Icon iconName="chevron-right" iconSize={Icon.SIZE_LARGE} className="card-sidebar__arrow"/>
+      const icon = item.id === activeItemId && (
+        <Icon iconName="chevron-right" iconSize={Icon.SIZE_LARGE} className="card-sidebar__arrow" />
       );
 
       return (

@@ -11,16 +11,12 @@ export interface FormTextInputProps extends FormInputProps {
 }
 
 export const FormTextInput = (props: FormTextInputProps) => (
-  <FormGroup
-    labelFor={props.input.name}
-    label={props.label}
-    intent={getIntent(props.meta)}
-  >
+  <FormGroup labelFor={props.input.name} label={props.label} intent={getIntent(props.meta)}>
     <input
       {...props.input}
       type={props.type || 'text'}
       className={classNames('pt-input', getIntentClassName(props.meta))}
     />
-    <FormInputValidation meta={props.meta}/>
+    <FormInputValidation meta={props.meta} />
   </FormGroup>
 );

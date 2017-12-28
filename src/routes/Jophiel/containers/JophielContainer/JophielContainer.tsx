@@ -13,12 +13,12 @@ import AccountContainer from '../../Account/containers/AccountContainer/AccountC
 const JophielContainer = () => (
   <div>
     <Switch>
-      <GuestRoute exact path="/login" component={LoginContainer}/>
-      <GuestRoute exact path="/register" component={RegisterContainer}/>
-      <GuestRoute exact path="/activate/:emailCode" component={ActivateContainer}/>
-      <GuestRoute exact path="/forgot-password" component={ForgotPasswordContainer}/>
-      <GuestRoute exact path="/reset-password/:emailCode" component={ResetPasswordContainer}/>
-      <UserRoute path="/account" component={AccountContainer}/>
+      <GuestRoute exact path="/login" component={LoginContainer} />
+      <GuestRoute exact path="/register" component={RegisterContainer} />
+      <GuestRoute exact path="/activate/:emailCode" component={ActivateContainer} />
+      <GuestRoute exact path="/forgot-password" component={ForgotPasswordContainer} />
+      <GuestRoute exact path="/reset-password/:emailCode" component={ResetPasswordContainer} />
+      <UserRoute path="/account" component={AccountContainer} />
     </Switch>
   </div>
 );

@@ -33,15 +33,9 @@ class ActivateContainer extends React.Component<ActivateContainerConnectedProps,
   }
 
   render() {
-    const content = this.state.isFetching
-      ? null
-      : <Activate />;
+    const content = this.state.isFetching ? null : <Activate />;
 
-    return (
-      <SingleColumnLayout>
-        {content}
-      </SingleColumnLayout>
-    );
+    return <SingleColumnLayout>{content}</SingleColumnLayout>;
   }
 }
 

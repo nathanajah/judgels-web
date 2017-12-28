@@ -12,13 +12,15 @@ export const loginActions = {
 
         toastActions.showToast(`Welcome, ${username}.`);
 
-        dispatch(StartSession.create({
-          user: {
-            jid,
-            username,
-          },
-          token,
-        }));
+        dispatch(
+          StartSession.create({
+            user: {
+              jid,
+              username,
+            },
+            token,
+          })
+        );
 
         dispatch(push('/home'));
       } catch (error) {

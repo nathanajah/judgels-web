@@ -5,7 +5,7 @@ export class BadRequestError {
 
   constructor(message?: string) {
     const error = new Error(message);
-    this.stack  = error.stack;
+    this.stack = error.stack;
     this.message = error.message;
   }
 }
@@ -17,7 +17,7 @@ export class UnauthorizedError {
 
   constructor(message?: string) {
     const error = new Error(message);
-    this.stack  = error.stack;
+    this.stack = error.stack;
     this.message = error.message;
   }
 }
@@ -29,7 +29,7 @@ export class ForbiddenError {
 
   constructor(message?: string) {
     const error = new Error(message);
-    this.stack  = error.stack;
+    this.stack = error.stack;
     this.message = error.message;
   }
 }
@@ -41,7 +41,7 @@ export class RemoteError {
 
   constructor(message?: string) {
     const error = new Error(message);
-    this.stack  = error.stack;
+    this.stack = error.stack;
     this.message = error.message;
   }
 }

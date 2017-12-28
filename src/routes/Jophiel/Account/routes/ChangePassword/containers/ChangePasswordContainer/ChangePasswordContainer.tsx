@@ -5,9 +5,7 @@ import { ChangePassword, ChangePasswordProps } from '../../components/ChangePass
 import { ChangePasswordFormData } from '../../components/ChangePasswordForm/ChangePasswordForm';
 import { changePasswordActions as injectedChangePasswordActions } from '../../modules/changePasswordActions';
 
-const ChangePasswordContainer = (props: ChangePasswordProps) => (
-  <ChangePassword {...props}/>
-);
+const ChangePasswordContainer = (props: ChangePasswordProps) => <ChangePassword {...props} />;
 
 export function createChangePasswordContainer(changePasswordActions) {
   const mapDispatchToProps = dispatch => ({

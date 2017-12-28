@@ -29,15 +29,19 @@ const passwordField = {
 
 const LoginForm = (props: InjectedFormProps<LoginFormData>) => (
   <form onSubmit={props.handleSubmit}>
-    <Field component={FormTextInput} {...usernameField}/>
-    <Field component={FormTextInput} {...passwordField}/>
-    <p className="form-login__actions-forgot-password"><Link to="/forgot-password">Forgot your password?</Link></p>
+    <Field component={FormTextInput} {...usernameField} />
+    <Field component={FormTextInput} {...passwordField} />
+    <p className="form-login__actions-forgot-password">
+      <Link to="/forgot-password">Forgot your password?</Link>
+    </p>
 
     <HorizontalDivider />
 
     <div className="form-login__actions">
-      <Button type="submit" text="Log in" intent={Intent.PRIMARY} loading={props.submitting}/>
-      <p className="form-login__actions-register">Don't have account? <Link to="/register">Register now</Link></p>
+      <Button type="submit" text="Log in" intent={Intent.PRIMARY} loading={props.submitting} />
+      <p className="form-login__actions-register">
+        Don't have account? <Link to="/register">Register now</Link>
+      </p>
     </div>
   </form>
 );

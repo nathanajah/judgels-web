@@ -22,13 +22,16 @@ describe('ActivateContainer', () => {
     wrapper = mount(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/activate/code123']}>
-          <Route exact path="/activate/:emailCode" component={ActivateContainer}/>
+          <Route exact path="/activate/:emailCode" component={ActivateContainer} />
         </MemoryRouter>
-      </Provider>,
+      </Provider>
     );
   });
 
   it('dispatches activate()', () => {
-    expect(store.getActions()).toContainEqual({ type: 'mock-activate', emailCode: 'code123' });
+    expect(store.getActions()).toContainEqual({
+      type: 'mock-activate',
+      emailCode: 'code123',
+    });
   });
 });

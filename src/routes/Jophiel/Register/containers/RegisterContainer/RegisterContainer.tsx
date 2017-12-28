@@ -9,7 +9,7 @@ import { registerActions as injectedRegisterActions } from '../../modules/regist
 
 const RegisterContainer = (props: RegisterProps) => (
   <SingleColumnLayout>
-    <Register {...props}/>
+    <Register {...props} />
   </SingleColumnLayout>
 );
 

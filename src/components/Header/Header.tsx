@@ -14,15 +14,13 @@ export const Header = (props: HeaderProps) => (
     <div className="header__wrapper">
       <div className="pt-navbar-group pt-align-left">
         <div>
-          <Link to="/"><img src={logo} className="header__logo"/></Link>
+          <Link to="/">
+            <img src={logo} className="header__logo" />
+          </Link>
         </div>
-        <div className="pt-navbar-heading header__title">
-          TLX
-        </div>
-        <span className="pt-navbar-divider"/>
-        <div className="header__subtitle">
-          TOKI Learning Center
-        </div>
+        <div className="pt-navbar-heading header__title">TLX</div>
+        <span className="pt-navbar-divider" />
+        <div className="header__subtitle">TOKI Learning Center</div>
       </div>
 
       {props.userWidget}

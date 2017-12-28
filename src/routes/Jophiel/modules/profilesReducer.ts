@@ -20,13 +20,16 @@ export const ClearProfile = TypedAction.define('jophiel/profiles/CLEAR_PROFILE')
 function createProfilesReducer() {
   const builder = TypedReducer.builder<ProfilesState>();
 
-  builder.withHandler(StoreProfile.TYPE, (state, payload) => ({...state, [payload.userJid]: payload.profile }));
+  builder.withHandler(StoreProfile.TYPE, (state, payload) => ({
+    ...state,
+    [payload.userJid]: payload.profile,
+  }));
   builder.withHandler(ClearProfile.TYPE, (state, payload) => {
-    let newState = {...state};
+    let newState = { ...state };
     delete newState[payload.userJid];
     return newState;
   });
-  builder.withDefaultHandler(state => state !== undefined ? state : INITIAL_STATE);
+  builder.withDefaultHandler(state => (state !== undefined ? state : INITIAL_STATE));
 
   return builder.build();
 }

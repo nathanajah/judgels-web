@@ -34,7 +34,9 @@ function resolveUrl(parentPath: string, childPath: string) {
   return (parentPath + '/' + childPath).replace(/\/\/+/g, '/');
 }
 
-class ContentWithSidebarContainer extends React.Component<ContentWithSidebarContainerProps & ContentWithSidebarContainerConnectedProps> {
+class ContentWithSidebarContainer extends React.Component<
+  ContentWithSidebarContainerProps & ContentWithSidebarContainerConnectedProps
+> {
   render() {
     return (
       <ContentWithSidebar
@@ -69,13 +71,13 @@ class ContentWithSidebarContainer extends React.Component<ContentWithSidebarCont
         path: this.props.match.url + '/' + item.id,
         component: item.component,
       };
-      return <RouteC key={item.id} {...props}/>;
+      return <RouteC key={item.id} {...props} />;
     });
 
     return (
       <div>
         <Switch>
-          <Redirect exact from={this.props.match.url} to={resolveUrl(this.props.match.url, this.props.items[0].id)}/>
+          <Redirect exact from={this.props.match.url} to={resolveUrl(this.props.match.url, this.props.items[0].id)} />
           {components}
         </Switch>
       </div>

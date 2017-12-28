@@ -11,10 +11,12 @@ export interface ContentWithSidebarProps {
 
 export const ContentWithSidebar = (props: ContentWithSidebarProps) => (
   <div className="content-with-sidebar">
-    <div className="content-with-sidebar__sidebar">
-      {props.sidebarElement}
-    </div>
-    <div className={classNames('content-with-sidebar__content', { 'content-with-sidebar__content--small': props.smallContent })}>
+    <div className="content-with-sidebar__sidebar">{props.sidebarElement}</div>
+    <div
+      className={classNames('content-with-sidebar__content', {
+        'content-with-sidebar__content--small': props.smallContent,
+      })}
+    >
       {props.contentElement}
     </div>
   </div>

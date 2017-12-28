@@ -7,7 +7,7 @@ export const profileActions = {
   get: (userJid: string) => {
     return async (dispatch, getState, { userAPI }) => {
       const token = selectToken(getState());
-      const profile =  await userAPI.getUserProfile(token, userJid);
+      const profile = await userAPI.getUserProfile(token, userJid);
 
       dispatch(StoreProfile.create({ userJid, profile }));
     };
@@ -25,7 +25,7 @@ export const profileActions = {
   },
 
   clear: (userJid: string) => {
-    return async (dispatch) => {
+    return async dispatch => {
       dispatch(ClearProfile.create({ userJid }));
     };
   },

@@ -5,11 +5,9 @@ import { Redirect, Route, withRouter } from 'react-router';
 import { AppState } from '../../modules/store';
 
 const GuestRoute = ({ component: Component, isLoggedIn, ...rest }) => {
-  const render = props => isLoggedIn
-    ? <Redirect to={{ pathname: '/' }}/>
-    : <Component {...props} />;
+  const render = props => (isLoggedIn ? <Redirect to={{ pathname: '/' }} /> : <Component {...props} />);
 
-  return <Route {...rest} render={render}/>;
+  return <Route {...rest} render={render} />;
 };
 
 const mapStateToProps = (state: AppState) => ({

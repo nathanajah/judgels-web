@@ -8,7 +8,7 @@ import { forgotPasswordActions as injectedForgotPasswordActions } from '../../mo
 
 const ForgotPasswordContainer = (props: ForgotPasswordProps) => (
   <SingleColumnLayout>
-    <ForgotPassword {...props}/>
+    <ForgotPassword {...props} />
   </SingleColumnLayout>
 );
 

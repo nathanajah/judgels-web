@@ -2,7 +2,7 @@ import { ClearProfile, INITIAL_STATE, profilesReducer, ProfilesState, StoreProfi
 
 describe('profilesReducer', () => {
   it('handles STORE_PROFILE', () => {
-    const state : ProfilesState = {
+    const state: ProfilesState = {
       ['jid123']: { name: 'First Last' },
     };
     const action = StoreProfile.create({
@@ -21,7 +21,7 @@ describe('profilesReducer', () => {
       ['jid123']: { name: 'First Last' },
       ['jid456']: { name: 'Second Third' },
     };
-    const nextState : ProfilesState = {
+    const nextState: ProfilesState = {
       ['jid123']: { name: 'First Last' },
     };
     const action = ClearProfile.create({ userJid: 'jid456' });

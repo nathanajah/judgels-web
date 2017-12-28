@@ -7,7 +7,7 @@ describe('profileActions', () => {
 
   const userJid = 'jid123';
   const token = 'token123';
-  const getState = () => ({ session: { user: { jid: userJid }, token }});
+  const getState = () => ({ session: { user: { jid: userJid }, token } });
 
   let userAPI: jest.Mocked<any>;
 

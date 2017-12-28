@@ -21,9 +21,11 @@ export class Profile extends React.Component<ProfileProps, ProfileState> {
   state: ProfileState = { isEditing: false };
 
   render() {
-    const action = this.state.isEditing
-      ? undefined
-      : <Button data-key="edit" text="Edit" intent={Intent.PRIMARY} className="pt-small" onClick={this.toggleEdit}/>;
+    const action = this.state.isEditing ? (
+      undefined
+    ) : (
+      <Button data-key="edit" text="Edit" intent={Intent.PRIMARY} className="pt-small" onClick={this.toggleEdit} />
+    );
 
     return (
       <Card title="Profile" action={action} className="card-profile">
@@ -39,13 +41,15 @@ export class Profile extends React.Component<ProfileProps, ProfileState> {
     }
     if (this.state.isEditing) {
       const onCancel = { onCancel: this.toggleEdit };
-      return <ProfileForm onSubmit={this.onSave} initialValues={profile} {...onCancel}/>;
+      return <ProfileForm onSubmit={this.onSave} initialValues={profile} {...onCancel} />;
     }
-    return <ProfileTable profile={profile}/>;
+    return <ProfileTable profile={profile} />;
   };
 
   private toggleEdit = () => {
-    this.setState((prevState: ProfileState) => ({ isEditing: !prevState.isEditing }));
+    this.setState((prevState: ProfileState) => ({
+      isEditing: !prevState.isEditing,
+    }));
   };
 
   private onSave = async (profile: UserProfile) => {

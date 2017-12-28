@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
 import { combineReducers, createStore } from 'redux';
-import { reducer as formReducer } from 'redux-form'
+import { reducer as formReducer } from 'redux-form';
 
 import { createForgotPasswordContainer } from './ForgotPasswordContainer';
 
@@ -24,7 +24,7 @@ describe('ForgotPasswordContainer', () => {
         <MemoryRouter>
           <ForgotPasswordContainer />
         </MemoryRouter>
-      </Provider>,
+      </Provider>
     );
   });
 

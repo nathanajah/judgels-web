@@ -9,8 +9,8 @@ export const registerActions = {
       const emailExists = await userAPI.emailExists(userRegistrationData.email);
 
       if (usernameExists || emailExists) {
-        const usernameError = usernameExists ? { username: 'Username already exists'} : {};
-        const emailError = emailExists ? { email: 'Email already exists'} : {};
+        const usernameError = usernameExists ? { username: 'Username already exists' } : {};
+        const emailError = emailExists ? { email: 'Email already exists' } : {};
         throw new SubmissionError({
           ...usernameError,
           ...emailError,

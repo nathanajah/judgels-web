@@ -21,7 +21,9 @@ async function call(url: string, init: RequestInit): Promise<any> {
     throw new RemoteError();
   }
 
-  return response.json().catch(() => { return; });
+  return response.json().catch(() => {
+    return;
+  });
 }
 
 async function request(method: string, url: string, token?: string, headers?: any, body?: any): Promise<any> {

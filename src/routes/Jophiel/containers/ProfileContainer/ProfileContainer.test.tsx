@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
 import { combineReducers, createStore } from 'redux';
-import { reducer as formReducer } from 'redux-form'
+import { reducer as formReducer } from 'redux-form';
 
 import { createProfileContainer } from './ProfileContainer';
 import { UserProfile } from '../../../../modules/api/jophiel/user';
@@ -32,18 +32,18 @@ describe('ProfileContainer', () => {
       city: 'My City',
     };
 
-    const store = createStore(
-      combineReducers({ form: formReducer, jophiel: jophielReducer }),
-      { jophiel: { profiles: { ['jid123']: profile } } });
+    const store = createStore(combineReducers({ form: formReducer, jophiel: jophielReducer }), {
+      jophiel: { profiles: { ['jid123']: profile } },
+    });
 
     const ProfileContainer = createProfileContainer(profileActions);
 
     wrapper = mount(
       <Provider store={store}>
         <MemoryRouter>
-          <ProfileContainer userJid="jid123"/>
+          <ProfileContainer userJid="jid123" />
         </MemoryRouter>
-      </Provider>,
+      </Provider>
     );
   });
 
@@ -84,7 +84,9 @@ describe('ProfileContainer', () => {
     country.simulate('change', { target: { value: 'United States' } });
 
     const provinceOrState = wrapper.find('input[name="provinceOrState"]');
-    provinceOrState.simulate('change', { target: { value: 'My New Province' } });
+    provinceOrState.simulate('change', {
+      target: { value: 'My New Province' },
+    });
 
     const city = wrapper.find('input[name="city"]');
     city.simulate('change', { target: { value: 'My New City' } });
@@ -104,7 +106,7 @@ describe('ProfileContainer', () => {
       city: 'My New City',
     });
 
-    await new Promise((resolve) => setImmediate(resolve));
+    await new Promise(resolve => setImmediate(resolve));
 
     wrapper.unmount();
     expect(profileActions.clear).toHaveBeenCalledWith('jid123');

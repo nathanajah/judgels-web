@@ -35,6 +35,9 @@ export function createToastActions(toaster) {
   };
 }
 
-const injectedToaster = Toaster.create({ position: Position.TOP, className: 'toast' });
+const injectedToaster = Toaster.create({
+  position: Position.TOP,
+  className: 'toast',
+});
 
 export const toastActions = createToastActions(injectedToaster);

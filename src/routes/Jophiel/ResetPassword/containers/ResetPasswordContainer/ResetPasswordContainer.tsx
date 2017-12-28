@@ -21,7 +21,7 @@ class ResetPasswordContainer extends React.Component<ResetPasswordContainerConne
   render() {
     return (
       <SingleColumnLayout>
-        <ResetPassword onResetPassword={this.onResetPassword}/>
+        <ResetPassword onResetPassword={this.onResetPassword} />
       </SingleColumnLayout>
     );
   }

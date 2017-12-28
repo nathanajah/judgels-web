@@ -53,7 +53,9 @@ describe('logoutActions', () => {
 
     describe('when the current token is already invalid', () => {
       beforeEach(async () => {
-        sessionAPI.logOut.mockImplementation(() => { throw new UnauthorizedError(); });
+        sessionAPI.logOut.mockImplementation(() => {
+          throw new UnauthorizedError();
+        });
 
         await doLogOut();
       });

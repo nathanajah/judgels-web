@@ -15,8 +15,6 @@ export const Card = (props: CardProps) => (
       <h3 className="card__title__text">{props.title}</h3>
       <div className="card__title__action">{props.action}</div>
     </div>
-    <div className="pt-card card__content">
-      {props.children}
-    </div>
+    <div className="pt-card card__content">{props.children}</div>
   </div>
 );

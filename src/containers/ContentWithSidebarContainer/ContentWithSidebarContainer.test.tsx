@@ -12,26 +12,42 @@ describe('ContentWithSidebarContainer', () => {
   let store: MockStore<any>;
   let wrapper: ReactWrapper<any, any>;
 
-  const FirstComponent = () => <div/>;
-  const SecondComponent = () => <div/>;
-  const ThirdComponent = () => <div/>;
+  const FirstComponent = () => <div />;
+  const SecondComponent = () => <div />;
+  const ThirdComponent = () => <div />;
 
   const render = (childPath: string) => {
     const props: ContentWithSidebarContainerProps = {
       title: 'Content with Sidebar',
       items: [
-        { id: 'first', title: 'First', routeComponent: Route, component: FirstComponent },
-        { id: 'second', title: 'Second', routeComponent: Route, component: SecondComponent },
-        { id: 'third', title: 'Third', routeComponent: Route, component: ThirdComponent },
+        {
+          id: 'first',
+          title: 'First',
+          routeComponent: Route,
+          component: FirstComponent,
+        },
+        {
+          id: 'second',
+          title: 'Second',
+          routeComponent: Route,
+          component: SecondComponent,
+        },
+        {
+          id: 'third',
+          title: 'Third',
+          routeComponent: Route,
+          component: ThirdComponent,
+        },
       ],
     };
+    const component = () => <ContentWithSidebarContainer {...props} />;
 
     wrapper = mount(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/parent' + childPath]}>
-          <Route path="/parent" component={() => <ContentWithSidebarContainer{...props}/>}/>
+          <Route path="/parent" component={component} />
         </MemoryRouter>
-      </Provider>,
+      </Provider>
     );
   };
 
@@ -49,8 +65,18 @@ describe('ContentWithSidebarContainer', () => {
       expect(items).toHaveLength(3);
 
       expect(items.at(0).text()).toEqual('First');
-      expect(items.at(1).childAt(0).text()).toEqual('Second');
-      expect(items.at(2).childAt(0).text()).toEqual('Third');
+      expect(
+        items
+          .at(1)
+          .childAt(0)
+          .text()
+      ).toEqual('Second');
+      expect(
+        items
+          .at(2)
+          .childAt(0)
+          .text()
+      ).toEqual('Third');
     });
 
     it('has the correct active item', () => {
@@ -67,7 +93,10 @@ describe('ContentWithSidebarContainer', () => {
 
     describe('when another item is clicked', () => {
       beforeEach(() => {
-        wrapper.find('[role="tab"]').at(2).simulate('click');
+        wrapper
+          .find('[role="tab"]')
+          .at(2)
+          .simulate('click');
         wrapper.update();
       });
 

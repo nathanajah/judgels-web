@@ -35,13 +35,13 @@ const confirmNewPasswordField = {
 
 const ChangePasswordForm = (props: InjectedFormProps<ChangePasswordFormData>) => (
   <form onSubmit={props.handleSubmit}>
-    <Field component={FormTextInput} {...oldPasswordField}/>
-    <Field component={FormTextInput} {...newPasswordField}/>
-    <Field component={FormTextInput} {...confirmNewPasswordField}/>
+    <Field component={FormTextInput} {...oldPasswordField} />
+    <Field component={FormTextInput} {...newPasswordField} />
+    <Field component={FormTextInput} {...confirmNewPasswordField} />
 
     <HorizontalDivider />
 
-    <Button type="submit" text="Change password" intent={Intent.PRIMARY} loading={props.submitting}/>
+    <Button type="submit" text="Change password" intent={Intent.PRIMARY} loading={props.submitting} />
   </form>
 );
 

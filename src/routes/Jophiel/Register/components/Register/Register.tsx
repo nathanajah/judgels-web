@@ -23,7 +23,9 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
     if (this.state.registeredUser) {
       return (
         <Card title="Activation Required" className="card-register">
-          <p>Thank you for registering, <strong>{this.state.registeredUser.username}</strong>.</p>
+          <p>
+            Thank you for registering, <strong>{this.state.registeredUser.username}</strong>.
+          </p>
           <p data-key="instruction" className="card-register__instruction">
             A confirmation email has been sent to&nbsp;
             <strong>{this.state.registeredUser.email}</strong> with instruction to activate your account.
@@ -34,7 +36,7 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
     } else {
       return (
         <Card title="Register" className="card-register">
-          <RegisterForm onSubmit={this.onRegister}/>
+          <RegisterForm onSubmit={this.onRegister} />
         </Card>
       );
     }
@@ -48,5 +50,5 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
         email: data.email,
       },
     });
-  }
+  };
 }

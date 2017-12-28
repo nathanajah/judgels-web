@@ -8,7 +8,7 @@ import { loginActions as injectedLoginActions } from '../../modules/loginActions
 
 const LoginContainer = (props: LoginProps) => (
   <SingleColumnLayout>
-    <Login {...props}/>
+    <Login {...props} />
   </SingleColumnLayout>
 );
 

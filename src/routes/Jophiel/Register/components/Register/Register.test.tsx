@@ -14,9 +14,7 @@ describe('Register', () => {
       onRegister,
     };
 
-    wrapper = shallow(
-      <Register {...props}/>
-    );
+    wrapper = shallow(<Register {...props} />);
   };
 
   beforeEach(() => {
@@ -28,9 +26,12 @@ describe('Register', () => {
     const form = wrapper.find(RegisterForm);
     expect(form).toHaveLength(1);
 
-    (form.props().onSubmit as any)({ username: 'user', email: 'email@domain.com' });
+    (form.props().onSubmit as any)({
+      username: 'user',
+      email: 'email@domain.com',
+    });
 
-    await new Promise((resolve) => setImmediate(resolve));
+    await new Promise(resolve => setImmediate(resolve));
     wrapper.update();
 
     expect(wrapper.find(RegisterForm)).toHaveLength(0);

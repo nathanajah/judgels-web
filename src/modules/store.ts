@@ -39,11 +39,11 @@ export const store = createStore<AppState>(
       thunk.withExtraArgument({
         sessionAPI: createSessionAPI('http://localhost:9001/api/v2/session'),
         userAPI: createUserAPI('http://localhost:9001/api/v2/users'),
-        toastActions
+        toastActions,
       }),
-      routerMiddleware(history),
-    ),
-  ),
+      routerMiddleware(history)
+    )
+  )
 );
 
 export const persistor = persistStore(store);

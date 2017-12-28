@@ -13,6 +13,8 @@ export const Activate = () => (
 
     <HorizontalDivider />
 
-    <ButtonLink to="/login" intent={Intent.PRIMARY}>Log in</ButtonLink>
+    <ButtonLink to="/login" intent={Intent.PRIMARY}>
+      Log in
+    </ButtonLink>
   </Card>
 );

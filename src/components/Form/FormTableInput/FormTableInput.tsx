@@ -22,7 +22,7 @@ export const FormTableInput = (props: FormTableInputProps) => (
     <td>
       <FormGroup intent={getIntent(props.meta)} helperText={props.inputHelper} className="form-table-input__group">
         {props.children}
-        <FormInputValidation meta={props.meta}/>
+        <FormInputValidation meta={props.meta} />
       </FormGroup>
     </td>
   </tr>

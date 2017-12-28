@@ -7,7 +7,10 @@ import UserRoute from '../../../../../containers/UserRoute/UserRoute';
 import ProfileContainer from '../../../containers/ProfileContainer/ProfileContainer';
 import { selectUserJid } from '../../../../../modules/session/sessionSelectors';
 import ChangePasswordContainer from '../../routes/ChangePassword/containers/ChangePasswordContainer/ChangePasswordContainer';
-import ContentWithSidebarContainer, { ContentWithSidebarContainerItem, ContentWithSidebarContainerProps } from '../../../../../containers/ContentWithSidebarContainer/ContentWithSidebarContainer';
+import ContentWithSidebarContainer, {
+  ContentWithSidebarContainerItem,
+  ContentWithSidebarContainerProps,
+} from '../../../../../containers/ContentWithSidebarContainer/ContentWithSidebarContainer';
 
 interface AccountContainerConnectedProps {
   userJid: string;
@@ -20,8 +23,18 @@ interface AccountContainerConnectedProps {
 }
 const AccountContainer = (props: AccountContainerConnectedProps) => {
   const sidebarItems: ContentWithSidebarContainerItem[] = [
-    { id: 'profile', title: 'Profile', routeComponent: UserRoute, component: () => <ProfileContainer userJid={props.userJid}/> },
-    { id: 'password', title: 'Change Password', routeComponent: UserRoute, component: ChangePasswordContainer },
+    {
+      id: 'profile',
+      title: 'Profile',
+      routeComponent: UserRoute,
+      component: () => <ProfileContainer userJid={props.userJid} />,
+    },
+    {
+      id: 'password',
+      title: 'Change Password',
+      routeComponent: UserRoute,
+      component: ChangePasswordContainer,
+    },
   ];
 
   const contentWithSidebarContainerProps: ContentWithSidebarContainerProps = {
@@ -32,7 +45,7 @@ const AccountContainer = (props: AccountContainerConnectedProps) => {
 
   return (
     <FullPageLayout>
-      <ContentWithSidebarContainer {...contentWithSidebarContainerProps}/>
+      <ContentWithSidebarContainer {...contentWithSidebarContainerProps} />
     </FullPageLayout>
   );
 };

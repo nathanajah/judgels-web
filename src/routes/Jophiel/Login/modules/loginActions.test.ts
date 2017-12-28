@@ -31,7 +31,12 @@ describe('loginActions', () => {
 
   describe('logIn()', () => {
     const { logIn } = loginActions;
-    const doLogIn = async () => logIn('user', 'pass')(dispatch, getState, { sessionAPI, userAPI, toastActions });
+    const doLogIn = async () =>
+      logIn('user', 'pass')(dispatch, getState, {
+        sessionAPI,
+        userAPI,
+        toastActions,
+      });
 
     it('tries to logs in', async () => {
       sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
@@ -59,13 +64,15 @@ describe('loginActions', () => {
       });
 
       it('starts the session', () => {
-        expect(dispatch).toHaveBeenCalledWith(StartSession.create({
-          user: {
-            jid: 'jid123',
-            username: 'user'
-          },
-          token: 'token123',
-        }));
+        expect(dispatch).toHaveBeenCalledWith(
+          StartSession.create({
+            user: {
+              jid: 'jid123',
+              username: 'user',
+            },
+            token: 'token123',
+          })
+        );
       });
     });
 
@@ -74,7 +81,9 @@ describe('loginActions', () => {
 
       beforeEach(async () => {
         error = new ForbiddenError();
-        sessionAPI.logIn.mockImplementation(() => { throw error; });
+        sessionAPI.logIn.mockImplementation(() => {
+          throw error;
+        });
       });
 
       it('throws a more descriptive error', async () => {

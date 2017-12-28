@@ -64,60 +64,64 @@ export interface ProfileFormProps extends InjectedFormProps<UserProfile> {
 }
 
 const ProfileForm = (props: ProfileFormProps) => {
-  const countryOptions = CountryList().getNames().map(name => (
-    <option key={name} value={name}>{name}</option>
-  ));
+  const countryOptions = CountryList()
+    .getNames()
+    .map(name => (
+      <option key={name} value={name}>
+        {name}
+      </option>
+    ));
 
   return (
     <form onSubmit={props.handleSubmit}>
       <h4>My Info</h4>
       <table className="pt-table pt-striped">
         <tbody>
-        <Field component={FormTableTextInput} {...nameField}/>
-        <Field component={FormTableSelect} {...genderField}>
-          <option/>
-          <option value="MALE">Male</option>
-          <option value="FEMALE">Female</option>
-        </Field>
-        <Field component={FormTableSelect} {...nationalityField}>
-          <option/>
-          {countryOptions}
-        </Field>
-        <Field component={FormTableTextArea} {...homeAddressField}/>
-        <Field component={FormTableSelect} {...shirtSizeField}>
-          <option/>
-          <option value="XXS">XXS</option>
-          <option value="XS">XS</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
-          <option value="XXXL">XXXL</option>
-        </Field>
+          <Field component={FormTableTextInput} {...nameField} />
+          <Field component={FormTableSelect} {...genderField}>
+            <option />
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+          </Field>
+          <Field component={FormTableSelect} {...nationalityField}>
+            <option />
+            {countryOptions}
+          </Field>
+          <Field component={FormTableTextArea} {...homeAddressField} />
+          <Field component={FormTableSelect} {...shirtSizeField}>
+            <option />
+            <option value="XXS">XXS</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+            <option value="XXXL">XXXL</option>
+          </Field>
         </tbody>
       </table>
 
-      <HorizontalInnerDivider/>
+      <HorizontalInnerDivider />
 
       <h4>My Institution (school/organization represented)</h4>
       <table className="pt-table pt-striped">
         <tbody>
-        <Field component={FormTableTextInput} {...institutionField}/>
-        <Field component={FormTableSelect} {...countryField}>
-          <option/>
-          {countryOptions}
-        </Field>
-        <Field component={FormTableTextInput} {...provinceOrStateField}/>
-        <Field component={FormTableTextInput} {...cityField}/>
+          <Field component={FormTableTextInput} {...institutionField} />
+          <Field component={FormTableSelect} {...countryField}>
+            <option />
+            {countryOptions}
+          </Field>
+          <Field component={FormTableTextInput} {...provinceOrStateField} />
+          <Field component={FormTableTextInput} {...cityField} />
         </tbody>
       </table>
 
-      <HorizontalDivider/>
+      <HorizontalDivider />
 
       <ActionButtons>
-        <Button type="submit" text="Save changes" intent={Intent.PRIMARY} loading={props.submitting}/>
-        <Button data-key="cancel" text="Cancel" onClick={props.onCancel} disabled={props.submitting}/>
+        <Button type="submit" text="Save changes" intent={Intent.PRIMARY} loading={props.submitting} />
+        <Button data-key="cancel" text="Cancel" onClick={props.onCancel} disabled={props.submitting} />
       </ActionButtons>
     </form>
   );

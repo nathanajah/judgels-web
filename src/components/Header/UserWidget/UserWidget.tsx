@@ -24,16 +24,8 @@ export class UserWidget extends React.Component<UserWidgetProps> {
   private renderForUser = (user: User) => {
     const menu = (
       <Menu className="widget-user__user__menu">
-        <MenuItem
-          data-key="account"
-          text="My Account"
-          onClick={this.props.onClickAccount}
-        />
-        <MenuItem
-          data-key="logout"
-          text="Log out"
-          onClick={this.props.onClickLogOut}
-        />
+        <MenuItem data-key="account" text="My Account" onClick={this.props.onClickAccount} />
+        <MenuItem data-key="logout" text="Log out" onClick={this.props.onClickLogOut} />
       </Menu>
     );
 
@@ -41,7 +33,8 @@ export class UserWidget extends React.Component<UserWidgetProps> {
       <div className="pt-navbar-group pt-align-right">
         <Popover className="widget-user__popover" content={menu} position={Position.BOTTOM} inline>
           <div className="widget-user__user">
-            <span className="widget-user__user__username">{user.username}</span> <Icon iconName="pt-icon-chevron-down"/>
+            <span className="widget-user__user__username">{user.username}</span>{' '}
+            <Icon iconName="pt-icon-chevron-down" />
           </div>
         </Popover>
       </div>
@@ -52,10 +45,14 @@ export class UserWidget extends React.Component<UserWidgetProps> {
     return (
       <div className="pt-navbar-group pt-align-right">
         <div className="widget-user__link">
-          <Link data-key="login" to="/login">Log in</Link>
+          <Link data-key="login" to="/login">
+            Log in
+          </Link>
         </div>
         <div className="widget-user__link">
-          <Link data-key="register" to="/register">Register</Link>
+          <Link data-key="register" to="/register">
+            Register
+          </Link>
         </div>
       </div>
     );

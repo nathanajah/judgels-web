@@ -6,16 +6,14 @@ import { UserWidget, UserWidgetProps } from '../../../components/Header/UserWidg
 import { AppState } from '../../../modules/store';
 import { logoutActions as injectedLogoutActions } from '../../../routes/Jophiel/Logout/modules/logoutActions';
 
-const UserWidgetContainer = (props: UserWidgetProps) => (
-  <UserWidget {...props}/>
-);
+const UserWidgetContainer = (props: UserWidgetProps) => <UserWidget {...props} />;
 
 export function createUserWidgetContainer(logoutActions) {
   const mapStateToProps = (state: AppState) => ({
     user: state.session.user,
   });
 
-  const mapDispatchToProps = (dispatch) => ({
+  const mapDispatchToProps = dispatch => ({
     onClickAccount: () => dispatch(push('/account')),
     onClickLogOut: () => dispatch(logoutActions.logOut()),
   });

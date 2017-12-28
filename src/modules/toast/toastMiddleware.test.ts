@@ -4,8 +4,8 @@ describe('toastMiddleware', () => {
   let toastAction: jest.Mocked<any>;
   let store: jest.Mock<any>;
 
-  const myAction = { type: 'action '};
-  const nextAction = { type: 'next_action '};
+  const myAction = { type: 'action ' };
+  const nextAction = { type: 'next_action ' };
 
   beforeEach(() => {
     toastAction = {

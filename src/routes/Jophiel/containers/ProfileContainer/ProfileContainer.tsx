@@ -28,7 +28,7 @@ class ProfileContainer extends React.Component<ProfileContainerProps> {
   }
 
   render() {
-    return <Profile profile={this.props.profile} onUpdateProfile={this.props.onUpdateProfile}/>;
+    return <Profile profile={this.props.profile} onUpdateProfile={this.props.onUpdateProfile} />;
   }
 }
 

@@ -14,9 +14,7 @@ describe('ForgotPassword', () => {
       onForgetPassword,
     };
 
-    wrapper = shallow(
-      <ForgotPassword {...props}/>
-    );
+    wrapper = shallow(<ForgotPassword {...props} />);
   };
 
   beforeEach(() => {
@@ -30,7 +28,7 @@ describe('ForgotPassword', () => {
 
     (form.props().onSubmit as any)({ email: 'email@domain.com' });
 
-    await new Promise((resolve) => setImmediate(resolve));
+    await new Promise(resolve => setImmediate(resolve));
     wrapper.update();
 
     expect(wrapper.find(ForgotPasswordForm)).toHaveLength(0);

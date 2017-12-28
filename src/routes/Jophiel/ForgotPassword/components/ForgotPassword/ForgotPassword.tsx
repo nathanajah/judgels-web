@@ -18,16 +18,14 @@ export class ForgotPassword extends React.Component<ForgotPasswordProps, ForgotP
     if (this.state.submitted) {
       return (
         <Card title="Forgot Password">
-          <p data-key="instruction">
-            An email has been sent to your email with instruction to reset your password.
-          </p>
+          <p data-key="instruction">An email has been sent to your email with instruction to reset your password.</p>
           <p>Please check your inbox/spam.</p>
         </Card>
       );
     } else {
       return (
         <Card title="Forgot Password">
-          <ForgotPasswordForm onSubmit={this.onForgetPassword}/>
+          <ForgotPasswordForm onSubmit={this.onForgetPassword} />
         </Card>
       );
     }
@@ -36,5 +34,5 @@ export class ForgotPassword extends React.Component<ForgotPasswordProps, ForgotP
   private onForgetPassword = async (data: ForgotPasswordFormData) => {
     await this.props.onForgetPassword(data);
     this.setState({ submitted: true });
-  }
+  };
 }

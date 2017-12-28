@@ -21,12 +21,14 @@ export const EndSession = TypedAction.defineWithoutPayload('session/END_SESSION'
 const createSessionReducer = () => {
   const builder = TypedReducer.builder<SessionState>();
 
-  builder.withHandler(StartSession.TYPE, (state, payload) => setWith(state, {
-    isLoggedIn: true,
-    ...payload,
-  }));
+  builder.withHandler(StartSession.TYPE, (state, payload) =>
+    setWith(state, {
+      isLoggedIn: true,
+      ...payload,
+    })
+  );
   builder.withHandler(EndSession.TYPE, (state, payload) => INITIAL_STATE);
-  builder.withDefaultHandler(state => state !== undefined ? state : INITIAL_STATE);
+  builder.withDefaultHandler(state => (state !== undefined ? state : INITIAL_STATE));
 
   return builder.build();
 };

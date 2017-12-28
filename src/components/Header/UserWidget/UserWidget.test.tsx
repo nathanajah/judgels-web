@@ -5,7 +5,7 @@ import { UserWidget, UserWidgetProps } from './UserWidget';
 import { User } from '../../../modules/api/jophiel/user';
 
 describe('UserWidget', () => {
-  let user: User|undefined;
+  let user: User | undefined;
 
   let wrapper: ShallowWrapper;
 
@@ -16,9 +16,7 @@ describe('UserWidget', () => {
       onClickLogOut: jest.fn(),
     };
 
-    wrapper = shallow(
-      <UserWidget {...props}/>
-    );
+    wrapper = shallow(<UserWidget {...props} />);
   };
 
   beforeEach(() => {

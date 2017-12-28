@@ -53,17 +53,19 @@ const confirmPasswordField = {
 
 const RegisterForm = (props: InjectedFormProps<RegisterFormData>) => (
   <form onSubmit={props.handleSubmit}>
-    <Field component={FormTextInput} {...usernameField}/>
-    <Field component={FormTextInput} {...nameField}/>
-    <Field component={FormTextInput} {...emailField}/>
-    <Field component={FormTextInput} {...passwordField}/>
-    <Field component={FormTextInput} {...confirmPasswordField}/>
+    <Field component={FormTextInput} {...usernameField} />
+    <Field component={FormTextInput} {...nameField} />
+    <Field component={FormTextInput} {...emailField} />
+    <Field component={FormTextInput} {...passwordField} />
+    <Field component={FormTextInput} {...confirmPasswordField} />
 
     <HorizontalDivider />
 
     <div className="form-login__actions">
-      <Button type="submit" text="Register" intent={Intent.PRIMARY} loading={props.submitting}/>
-      <p className="form-login__actions-register">Have an account already? <Link to="/login">Log in now</Link></p>
+      <Button type="submit" text="Register" intent={Intent.PRIMARY} loading={props.submitting} />
+      <p className="form-login__actions-register">
+        Have an account already? <Link to="/login">Log in now</Link>
+      </p>
     </div>
   </form>
 );

@@ -19,12 +19,12 @@ const emailField = {
 
 const ForgotPasswordForm = (props: InjectedFormProps<ForgotPasswordFormData>) => (
   <form onSubmit={props.handleSubmit}>
-    <Field component={FormTextInput} {...emailField}/>
+    <Field component={FormTextInput} {...emailField} />
 
     <HorizontalDivider />
 
     <ActionButtons>
-      <Button type="submit" text="Request to reset password" intent={Intent.PRIMARY} loading={props.submitting}/>
+      <Button type="submit" text="Request to reset password" intent={Intent.PRIMARY} loading={props.submitting} />
     </ActionButtons>
   </form>
 );
