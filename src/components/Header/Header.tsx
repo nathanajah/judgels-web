@@ -18,9 +18,9 @@ export const Header = (props: HeaderProps) => (
             <img src={logo} className="header__logo" />
           </Link>
         </div>
-        <div className="pt-navbar-heading header__title">TLX</div>
+        <div className="pt-navbar-heading header__title">{(window as any).env.APP_NAME}</div>
         <span className="pt-navbar-divider" />
-        <div className="header__subtitle">TOKI Learning Center</div>
+        <div className="header__subtitle">{(window as any).env.APP_SLOGAN}</div>
       </div>
 
       {props.userWidget}

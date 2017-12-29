@@ -37,8 +37,8 @@ export const store = createStore<AppState>(
     applyMiddleware(
       toastMiddleware,
       thunk.withExtraArgument({
-        sessionAPI: createSessionAPI('http://localhost:9001/api/v2/session'),
-        userAPI: createUserAPI('http://localhost:9001/api/v2/users'),
+        sessionAPI: createSessionAPI(),
+        userAPI: createUserAPI(),
         toastActions,
       }),
       routerMiddleware(history)
