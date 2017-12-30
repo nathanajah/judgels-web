@@ -6,6 +6,8 @@ import { RegisterFormData } from '../../components/RegisterForm/RegisterForm';
 import { SingleColumnLayout } from '../../../../../layouts/SingleColumnLayout/SingleColumnLayout';
 import { UserRegistrationData } from '../../../../../modules/api/jophiel/user';
 import { registerActions as injectedRegisterActions } from '../../modules/registerActions';
+import { AppState } from '../../../../../modules/store';
+import { selectRecaptchaSiteKey } from '../../../modules/webConfigSelectors';
 
 const RegisterContainer = (props: RegisterProps) => (
   <SingleColumnLayout>
@@ -14,6 +16,10 @@ const RegisterContainer = (props: RegisterProps) => (
 );
 
 export function createRegisterContainer(registerActions) {
+  const mapStateToProps = (state: AppState) => ({
+    recaptchaSiteKey: selectRecaptchaSiteKey(state),
+  });
+
   const mapDispatchToProps = dispatch => ({
     onRegister: (data: RegisterFormData) => {
       const userRegistrationData: UserRegistrationData = {
@@ -21,12 +27,13 @@ export function createRegisterContainer(registerActions) {
         password: data.password,
         email: data.email,
         name: data.name,
+        recaptchaResponse: data.recaptchaResponse,
       };
       return dispatch(registerActions.register(userRegistrationData));
     },
   });
 
-  return connect(undefined, mapDispatchToProps)(RegisterContainer);
+  return connect(mapStateToProps, mapDispatchToProps)(RegisterContainer);
 }
 
 export default createRegisterContainer(injectedRegisterActions);

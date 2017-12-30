@@ -22,8 +22,10 @@ describe('webConfigActions', () => {
     const doGet = async () => get()(dispatch, getState, { webAPI });
 
     const webConfig: WebConfig = {
-      recaptchaSiteKey: 'key123',
-      userRegistrationUseRecaptcha: true,
+      userRegistration: {
+        enabled: true,
+        useRecaptcha: true,
+      },
     };
 
     beforeEach(async () => {

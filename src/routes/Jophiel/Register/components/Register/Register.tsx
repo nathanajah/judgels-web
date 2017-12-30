@@ -7,6 +7,7 @@ import './Register.css';
 
 export interface RegisterProps {
   onRegister: (data: RegisterFormData) => Promise<void>;
+  recaptchaSiteKey?: string;
 }
 
 interface RegisterState {
@@ -34,9 +35,10 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
         </Card>
       );
     } else {
+      const recaptchaSiteKey = { recaptchaSiteKey: this.props.recaptchaSiteKey };
       return (
         <Card title="Register" className="card-register">
-          <RegisterForm onSubmit={this.onRegister} />
+          <RegisterForm onSubmit={this.onRegister} {...recaptchaSiteKey} />
         </Card>
       );
     }

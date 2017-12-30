@@ -4,13 +4,17 @@ describe('webConfigReducer', () => {
   test('PUT', () => {
     const state = INITIAL_STATE;
     const action = PutWebConfig.create({
-      recaptchaSiteKey: 'key123',
-      userRegistrationUseRecaptcha: true,
+      userRegistration: {
+        enabled: true,
+        useRecaptcha: true,
+      },
     });
     const nextState: WebConfigState = {
       value: {
-        recaptchaSiteKey: 'key123',
-        userRegistrationUseRecaptcha: true,
+        userRegistration: {
+          enabled: true,
+          useRecaptcha: true,
+        },
       },
     };
     expect(webConfigReducer(state, action)).toEqual(nextState);
@@ -19,8 +23,10 @@ describe('webConfigReducer', () => {
   test('other actions', () => {
     const state: WebConfigState = {
       value: {
-        recaptchaSiteKey: 'key123',
-        userRegistrationUseRecaptcha: true,
+        userRegistration: {
+          enabled: true,
+          useRecaptcha: true,
+        },
       },
     };
     expect(webConfigReducer(state, { type: 'other' })).toEqual(state);

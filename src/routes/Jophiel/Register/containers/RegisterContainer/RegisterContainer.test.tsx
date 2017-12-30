@@ -6,6 +6,8 @@ import { combineReducers, createStore } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
 import { createRegisterContainer } from './RegisterContainer';
+import { AppState } from '../../../../../modules/store';
+import { jophielReducer } from '../../../modules/jophielReducer';
 
 describe('RegisterContainer', () => {
   let registerActions: jest.Mocked<any>;
@@ -16,7 +18,13 @@ describe('RegisterContainer', () => {
       register: jest.fn().mockReturnValue({ type: 'mock-register', then: fn => fn() }),
     };
 
-    const store = createStore(combineReducers({ form: formReducer }));
+    const store = createStore<Partial<AppState>>(
+      combineReducers({
+        form: formReducer,
+        jophiel: jophielReducer,
+      })
+    );
+
     const RegisterContainer = createRegisterContainer(registerActions);
 
     wrapper = mount(

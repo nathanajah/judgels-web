@@ -1,8 +1,13 @@
 import { get } from '../http';
 
 export interface WebConfig {
-  recaptchaSiteKey?: string;
-  userRegistrationUseRecaptcha: boolean;
+  recaptcha?: {
+    siteKey: string;
+  };
+  userRegistration: {
+    enabled: boolean;
+    useRecaptcha: boolean;
+  };
 }
 
 export function createWebAPI() {

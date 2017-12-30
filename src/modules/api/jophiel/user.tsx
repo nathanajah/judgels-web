@@ -27,6 +27,7 @@ export interface UserRegistrationData {
   password: string;
   email: string;
   name?: string;
+  recaptchaResponse?: string;
 }
 
 export interface PasswordUpdateData {
