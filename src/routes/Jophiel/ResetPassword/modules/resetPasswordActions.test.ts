@@ -26,7 +26,7 @@ describe('resetPasswordActions', () => {
     const { reset } = resetPasswordActions;
     const doReset = async () => reset('code123', 'pass')(dispatch, getState, { userAPI, toastActions });
 
-    it('tries to reset password', async () => {
+    it('calls API to reset password', async () => {
       await doReset();
 
       expect(userAPI.resetUserPassword).toHaveBeenCalledWith({

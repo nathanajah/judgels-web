@@ -2,8 +2,9 @@ import { push } from 'react-router-redux';
 
 import { loginActions } from './loginActions';
 import { ForbiddenError } from '../../../../modules/api/error';
+import { User } from '../../../../modules/api/jophiel/user';
 import { Session } from '../../../../modules/api/jophiel/session';
-import { StartSession } from '../../../../modules/session/sessionReducer';
+import { PutSession } from '../../../../modules/session/sessionReducer';
 
 describe('loginActions', () => {
   let dispatch: jest.Mock<any>;
@@ -38,7 +39,7 @@ describe('loginActions', () => {
         toastActions,
       });
 
-    it('tries to logs in', async () => {
+    it('calls API to logs in', async () => {
       sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
       userAPI.getMyself.mockImplementation(() => Promise.resolve<any>({ jid: 'jid123' }));
 
@@ -50,7 +51,7 @@ describe('loginActions', () => {
     describe('when the credentials is valid', () => {
       beforeEach(async () => {
         sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
-        userAPI.getMyself.mockImplementation(() => Promise.resolve<any>({ jid: 'jid123' }));
+        userAPI.getMyself.mockImplementation(() => Promise.resolve<User>({ jid: 'jid123', username: 'user' }));
 
         await doLogIn();
       });
@@ -63,14 +64,16 @@ describe('loginActions', () => {
         expect(dispatch).toHaveBeenCalledWith(push('/home'));
       });
 
-      it('starts the session', () => {
+      it('puts the session', () => {
         expect(dispatch).toHaveBeenCalledWith(
-          StartSession.create({
+          PutSession.create({
             user: {
               jid: 'jid123',
               username: 'user',
             },
-            token: 'token123',
+            session: {
+              token: 'token123',
+            },
           })
         );
       });

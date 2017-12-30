@@ -10,7 +10,7 @@ const UserWidgetContainer = (props: UserWidgetProps) => <UserWidget {...props} /
 
 export function createUserWidgetContainer(logoutActions) {
   const mapStateToProps = (state: AppState) => ({
-    user: state.session.user,
+    user: state.session.value && state.session.value.user,
   });
 
   const mapDispatchToProps = dispatch => ({

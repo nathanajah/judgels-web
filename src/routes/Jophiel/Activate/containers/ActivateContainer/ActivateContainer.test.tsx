@@ -5,10 +5,11 @@ import { MemoryRouter, Route } from 'react-router';
 import createMockStore, { MockStore } from 'redux-mock-store';
 
 import { createActivateContainer } from './ActivateContainer';
+import { AppState } from '../../../../../modules/store';
 
 describe('ActivateContainer', () => {
   let activateActions: jest.Mocked<any>;
-  let store: MockStore<any>;
+  let store: MockStore<Partial<AppState>>;
   let wrapper: ReactWrapper<any, any>;
 
   beforeEach(() => {
@@ -16,7 +17,7 @@ describe('ActivateContainer', () => {
       activate: jest.fn(code => ({ type: 'mock-activate', emailCode: code })),
     };
 
-    store = createMockStore()({});
+    store = createMockStore<Partial<AppState>>()({});
     const ActivateContainer = createActivateContainer(activateActions);
 
     wrapper = mount(

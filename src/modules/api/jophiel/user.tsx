@@ -51,7 +51,7 @@ export function createUserAPI() {
       return get(`${baseURL}/email/${email}/exists`);
     },
 
-    getMyself: (token: string): Promise<void> => {
+    getMyself: (token: string): Promise<User> => {
       return get(`${baseURL}/me`, token);
     },
 

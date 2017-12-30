@@ -2,12 +2,13 @@ import { push } from 'react-router-redux';
 
 import { changePasswordActions } from './changePasswordActions';
 import { BadRequestError } from '../../../../../../modules/api/error';
+import { AppState } from '../../../../../../modules/store';
+import { sessionState } from '../../../../../../fixtures/state';
 
 describe('changePasswordActions', () => {
   let dispatch: jest.Mock<any>;
 
-  const token = 'token123';
-  const getState = () => ({ session: { token } });
+  const getState = (): Partial<AppState> => ({ session: sessionState });
 
   let userAPI: jest.Mocked<any>;
   let toastActions: jest.Mocked<any>;
@@ -35,7 +36,7 @@ describe('changePasswordActions', () => {
     it('tries to change password', async () => {
       await doChangePassword();
 
-      expect(userAPI.updateMyPassword).toHaveBeenCalledWith(token, {
+      expect(userAPI.updateMyPassword).toHaveBeenCalledWith('token123', {
         oldPassword: 'oldPass',
         newPassword: 'newPass',
       });

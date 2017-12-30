@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 
 import { UnauthorizedError } from '../../../../modules/api/error';
-import { EndSession } from '../../../../modules/session/sessionReducer';
+import { DelSession } from '../../../../modules/session/sessionReducer';
 import { selectToken } from '../../../../modules/session/sessionSelectors';
 
 export const logoutActions = {
@@ -15,7 +15,7 @@ export const logoutActions = {
         }
       }
       toastActions.showToast('You have been logged out.');
-      dispatch(EndSession.create());
+      dispatch(DelSession.create());
       dispatch(push('/'));
     };
   },

@@ -19,7 +19,7 @@ describe('forgotPasswordActions', () => {
     const { requestToReset } = forgotPasswordActions;
     const doRequestToReset = async () => requestToReset('email@domain.com')(dispatch, getState, { userAPI });
 
-    it('tries to request to reset password', async () => {
+    it('calls API to request to reset password', async () => {
       await doRequestToReset();
 
       expect(userAPI.requestToResetUserPassword).toHaveBeenCalledWith('email@domain.com');

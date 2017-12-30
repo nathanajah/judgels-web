@@ -1,13 +1,15 @@
 import { profileActions } from './profileActions';
+import { DelProfile, PutProfile } from './profileReducer';
 import { UserProfile } from '../../../modules/api/jophiel/user';
-import { ClearProfile, StoreProfile } from './profilesReducer';
+import { AppState } from '../../../modules/store';
+import { sessionState } from '../../../fixtures/state';
 
 describe('profileActions', () => {
   let dispatch: jest.Mock<any>;
 
   const userJid = 'jid123';
   const token = 'token123';
-  const getState = () => ({ session: { user: { jid: userJid }, token } });
+  const getState = (): Partial<AppState> => ({ session: sessionState });
 
   let userAPI: jest.Mocked<any>;
 
@@ -22,7 +24,7 @@ describe('profileActions', () => {
 
   describe('get()', () => {
     const { get } = profileActions;
-    const doGet = async () => get(userJid)(dispatch, getState, { userAPI });
+    const doGet = async () => get('jid123')(dispatch, getState, { userAPI });
 
     const profile: UserProfile = { name: 'First Last' };
 
@@ -32,12 +34,12 @@ describe('profileActions', () => {
       await doGet();
     });
 
-    it('tries to get user profile', () => {
+    it('calls API to get user profile', () => {
       expect(userAPI.getUserProfile).toHaveBeenCalledWith(token, userJid);
     });
 
-    it('stores the profile', () => {
-      expect(dispatch).toHaveBeenCalledWith(StoreProfile.create({ userJid, profile }));
+    it('puts the profile', () => {
+      expect(dispatch).toHaveBeenCalledWith(PutProfile.create({ userJid, value: profile }));
     });
   });
 
@@ -51,12 +53,12 @@ describe('profileActions', () => {
       await doUpdate();
     });
 
-    it('tries to update user profile', () => {
+    it('calls API to update user profile', () => {
       expect(userAPI.updateUserProfile).toHaveBeenCalledWith(token, userJid, profile);
     });
 
-    it('stores the new profile', () => {
-      expect(dispatch).toHaveBeenCalledWith(StoreProfile.create({ userJid, profile }));
+    it('puts the new profile', () => {
+      expect(dispatch).toHaveBeenCalledWith(PutProfile.create({ userJid, value: profile }));
     });
   });
 
@@ -69,7 +71,7 @@ describe('profileActions', () => {
     });
 
     it('clears the profile', () => {
-      expect(dispatch).toHaveBeenCalledWith(ClearProfile.create({ userJid }));
+      expect(dispatch).toHaveBeenCalledWith(DelProfile.create({ userJid }));
     });
   });
 });

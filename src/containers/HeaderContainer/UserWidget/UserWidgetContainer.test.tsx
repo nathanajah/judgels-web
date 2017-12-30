@@ -5,10 +5,12 @@ import { push } from 'react-router-redux';
 import createMockStore, { MockStore } from 'redux-mock-store';
 
 import { createUserWidgetContainer } from './UserWidgetContainer';
+import { AppState } from '../../../modules/store';
+import { sessionState } from '../../../fixtures/state';
 
 describe('UserWidgetContainer', () => {
   let logoutActions: jest.Mocked<any>;
-  let store: MockStore<any>;
+  let store: MockStore<Partial<AppState>>;
   let wrapper: ReactWrapper<any, any>;
 
   const render = () => {
@@ -26,12 +28,7 @@ describe('UserWidgetContainer', () => {
       logOut: jest.fn().mockReturnValue({ type: 'mock-logout' }),
     };
 
-    store = createMockStore()({
-      session: {
-        user: { username: 'user' },
-        token: 'token123',
-      },
-    });
+    store = createMockStore<Partial<AppState>>()({ session: sessionState });
   });
 
   describe('when the dropdown for the current user is clicked', () => {

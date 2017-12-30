@@ -1,12 +1,14 @@
 import { push } from 'react-router-redux';
 
 import { logoutActions } from './logoutActions';
-import { EndSession } from '../../../../modules/session/sessionReducer';
 import { UnauthorizedError } from '../../../../modules/api/error';
+import { DelSession } from '../../../../modules/session/sessionReducer';
+import { AppState } from '../../../../modules/store';
+import { sessionState } from '../../../../fixtures/state';
 
 describe('logoutActions', () => {
   let dispatch: jest.Mock<any>;
-  const getState = () => ({ session: { token: 'token123' } });
+  const getState = (): Partial<AppState> => ({ session: sessionState });
 
   let sessionAPI: jest.Mocked<any>;
   let toastActions: jest.Mocked<any>;
@@ -27,7 +29,7 @@ describe('logoutActions', () => {
     const { logOut } = logoutActions;
     const doLogOut = async () => logOut()(dispatch, getState, { sessionAPI, toastActions });
 
-    it('tries to log out', async () => {
+    it('calls API to log out', async () => {
       await doLogOut();
 
       expect(sessionAPI.logOut).toHaveBeenCalledWith('token123');
@@ -42,8 +44,8 @@ describe('logoutActions', () => {
         expect(toastActions.showToast).toHaveBeenCalledWith('You have been logged out.');
       });
 
-      it('ends the session', () => {
-        expect(dispatch).toHaveBeenCalledWith(EndSession.create());
+      it('deletes the session', () => {
+        expect(dispatch).toHaveBeenCalledWith(DelSession.create());
       });
 
       it('redirects to root', () => {
@@ -61,7 +63,7 @@ describe('logoutActions', () => {
       });
 
       it('ends to session anyway', () => {
-        expect(dispatch).toHaveBeenCalledWith(EndSession.create());
+        expect(dispatch).toHaveBeenCalledWith(DelSession.create());
       });
     });
   });

@@ -24,7 +24,7 @@ describe('activateActions', () => {
       await doActivate();
     });
 
-    it('tries to activate user', async () => {
+    it('calls API to activate user', async () => {
       expect(userAPI.activateUser).toHaveBeenCalledWith(emailCode);
     });
   });

@@ -33,7 +33,7 @@ describe('ProfileContainer', () => {
     };
 
     const store = createStore(combineReducers({ form: formReducer, jophiel: jophielReducer }), {
-      jophiel: { profiles: { ['jid123']: profile } },
+      jophiel: { profile: { values: { ['jid123']: profile } } },
     });
 
     const ProfileContainer = createProfileContainer(profileActions);

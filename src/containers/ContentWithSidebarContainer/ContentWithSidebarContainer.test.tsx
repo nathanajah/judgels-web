@@ -7,9 +7,10 @@ import { push } from 'react-router-redux';
 import createMockStore, { MockStore } from 'redux-mock-store';
 
 import ContentWithSidebarContainer, { ContentWithSidebarContainerProps } from './ContentWithSidebarContainer';
+import { AppState } from '../../modules/store';
 
 describe('ContentWithSidebarContainer', () => {
-  let store: MockStore<any>;
+  let store: MockStore<Partial<AppState>>;
   let wrapper: ReactWrapper<any, any>;
 
   const FirstComponent = () => <div />;
@@ -52,7 +53,7 @@ describe('ContentWithSidebarContainer', () => {
   };
 
   beforeEach(() => {
-    store = createMockStore()({});
+    store = createMockStore<Partial<AppState>>()({});
   });
 
   describe('when the child path is present', () => {

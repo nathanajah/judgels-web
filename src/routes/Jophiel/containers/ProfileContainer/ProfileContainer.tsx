@@ -6,19 +6,20 @@ import { UserProfile } from '../../../../modules/api/jophiel/user';
 import { AppState } from '../../../../modules/store';
 import { Profile } from '../../components/Profile/Profile';
 import { profileActions as injectedProfileActions } from '../../modules/profileActions';
+import { selectProfile } from '../../modules/profileSelectors';
 
-interface ProfileContainerOwnProps {
+interface ProfileContainerProps {
   userJid: string;
 }
 
-interface ProfileContainerProps {
-  profile: UserProfile | undefined;
+interface ProfileContainerConnectedProps {
+  profile: UserProfile;
   onGetProfile: () => Promise<void>;
   onClearProfile: () => Promise<void>;
   onUpdateProfile: (profile: UserProfile) => Promise<void>;
 }
 
-class ProfileContainer extends React.Component<ProfileContainerProps> {
+class ProfileContainer extends React.Component<ProfileContainerConnectedProps> {
   async componentDidMount() {
     await this.props.onGetProfile();
   }
@@ -33,11 +34,11 @@ class ProfileContainer extends React.Component<ProfileContainerProps> {
 }
 
 export function createProfileContainer(profileActions) {
-  const mapStateToProps = (state: AppState, ownProps: ProfileContainerOwnProps) => ({
-    profile: state.jophiel.profiles[ownProps.userJid],
+  const mapStateToProps = (state: AppState, ownProps: ProfileContainerProps) => ({
+    profile: selectProfile(state, ownProps.userJid),
   });
 
-  const mapDispatchToProps = (dispatch, ownProps: ProfileContainerOwnProps) => ({
+  const mapDispatchToProps = (dispatch, ownProps: ProfileContainerProps) => ({
     onGetProfile: () => dispatch(profileActions.get(ownProps.userJid)),
     onClearProfile: () => dispatch(profileActions.clear(ownProps.userJid)),
     onUpdateProfile: (profile: UserProfile) => dispatch(profileActions.update(ownProps.userJid, profile)),

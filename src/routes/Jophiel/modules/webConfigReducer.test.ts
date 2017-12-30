@@ -1,9 +1,9 @@
-import { INITIAL_STATE, StoreWebConfig, webConfigReducer, WebConfigState } from './webConfigReducer';
+import { INITIAL_STATE, PutWebConfig, webConfigReducer, WebConfigState } from './webConfigReducer';
 
 describe('webConfigReducer', () => {
-  it('handles STORE_CONFIG', () => {
+  test('PUT', () => {
     const state = INITIAL_STATE;
-    const action = StoreWebConfig.create({
+    const action = PutWebConfig.create({
       recaptchaSiteKey: 'key123',
       userRegistrationUseRecaptcha: true,
     });
@@ -16,7 +16,7 @@ describe('webConfigReducer', () => {
     expect(webConfigReducer(state, action)).toEqual(nextState);
   });
 
-  it('handles other actions', () => {
+  test('other actions', () => {
     const state: WebConfigState = {
       value: {
         recaptchaSiteKey: 'key123',
@@ -26,7 +26,7 @@ describe('webConfigReducer', () => {
     expect(webConfigReducer(state, { type: 'other' })).toEqual(state);
   });
 
-  it('handles initial state', () => {
+  test('initial state', () => {
     expect(webConfigReducer(undefined as any, { type: 'other' })).toEqual(INITIAL_STATE);
   });
 });
