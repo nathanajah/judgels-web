@@ -28,7 +28,7 @@ describe('ProfileContainer', () => {
       shirtSize: 'XL',
       institution: 'My Institution',
       country: 'United Kingdom',
-      provinceOrState: 'My Province',
+      province: 'My Province',
       city: 'My City',
     };
 
@@ -57,7 +57,7 @@ describe('ProfileContainer', () => {
     expect(wrapper.find('[data-key="shirtSize"]').text()).toEqual('XL');
     expect(wrapper.find('[data-key="institution"]').text()).toEqual('My Institution');
     expect(wrapper.find('[data-key="country"]').text()).toEqual('United Kingdom');
-    expect(wrapper.find('[data-key="provinceOrState"]').text()).toEqual('My Province');
+    expect(wrapper.find('[data-key="province"]').text()).toEqual('My Province');
     expect(wrapper.find('[data-key="city"]').text()).toEqual('My City');
 
     wrapper.find('button[data-key="edit"]').simulate('click');
@@ -83,8 +83,8 @@ describe('ProfileContainer', () => {
     const country = wrapper.find('select[name="country"]');
     country.simulate('change', { target: { value: 'United States' } });
 
-    const provinceOrState = wrapper.find('input[name="provinceOrState"]');
-    provinceOrState.simulate('change', {
+    const province = wrapper.find('input[name="province"]');
+    province.simulate('change', {
       target: { value: 'My New Province' },
     });
 
@@ -102,7 +102,7 @@ describe('ProfileContainer', () => {
       shirtSize: 'S',
       institution: 'My New Institution',
       country: 'United States',
-      provinceOrState: 'My New Province',
+      province: 'My New Province',
       city: 'My New City',
     });
 

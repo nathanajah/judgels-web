@@ -27,9 +27,9 @@ export const ProfileTable = (props: ProfileTableProps) => {
     { key: 'institution', title: 'Name', value: profile.institution },
     { key: 'country', title: 'Country', value: profile.country },
     {
-      key: 'provinceOrState',
+      key: 'province',
       title: 'Province/State',
-      value: profile.provinceOrState,
+      value: profile.province,
     },
     { key: 'city', title: 'City', value: profile.city },
   ];

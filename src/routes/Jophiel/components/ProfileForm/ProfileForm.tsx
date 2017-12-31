@@ -49,8 +49,8 @@ const countryField = {
   label: 'Country',
 };
 
-const provinceOrStateField = {
-  name: 'provinceOrState',
+const provinceField = {
+  name: 'province',
   label: 'Province/State',
 };
 
@@ -112,7 +112,7 @@ const ProfileForm = (props: ProfileFormProps) => {
             <option />
             {countryOptions}
           </Field>
-          <Field component={FormTableTextInput} {...provinceOrStateField} />
+          <Field component={FormTableTextInput} {...provinceField} />
           <Field component={FormTableTextInput} {...cityField} />
         </tbody>
       </table>

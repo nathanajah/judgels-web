@@ -12,7 +12,7 @@ export interface UserProfile {
   homeAddress?: string;
   institution?: string;
   country?: string;
-  provinceOrState?: string;
+  province?: string;
   city?: string;
   shirtSize?: string;
 }
