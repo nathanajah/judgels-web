@@ -24,7 +24,7 @@ export class UserWidget extends React.Component<UserWidgetProps> {
   private renderForUser = (user: User) => {
     const menu = (
       <Menu className="widget-user__user__menu">
-        <MenuItem data-key="account" text="My Account" onClick={this.props.onClickAccount} />
+        <MenuItem data-key="account" text="My account" onClick={this.props.onClickAccount} />
         <MenuItem data-key="logout" text="Log out" onClick={this.props.onClickLogOut} />
       </Menu>
     );
