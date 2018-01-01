@@ -58,9 +58,9 @@
   version "8.0.47"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.47.tgz#968e596f91acd59069054558a00708c445ca30c2"
 
-"@types/react-document-title@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react-document-title/-/react-document-title-2.0.0.tgz#1ec98a105c9b68e6b76e9f3e26fb1423b2c0aaba"
+"@types/react-document-title@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-document-title/-/react-document-title-2.0.1.tgz#f2ac6d1a87d50b89e4ce141cb050ad7b865d63d8"
   dependencies:
     "@types/react" "*"
 

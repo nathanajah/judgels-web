@@ -13,12 +13,14 @@ import { sessionReducer, SessionState } from './session/sessionReducer';
 import { toastActions } from './toast/toastActions';
 import { toastMiddleware } from './toast/toastMiddleware';
 import { jophielReducer, JophielState } from '../routes/Jophiel/modules/jophielReducer';
+import { breadcrumbsReducer, BreadcrumbsState } from './breadcrumbs/breadcrumbsReducer';
 
 export interface AppState {
   session: SessionState;
   jophiel: JophielState;
   router: RouterState;
   form: FormState;
+  breadcrumbs: BreadcrumbsState;
 }
 
 const rootReducer = combineReducers<AppState>({
@@ -26,6 +28,7 @@ const rootReducer = combineReducers<AppState>({
   jophiel: jophielReducer,
   router: routerReducer,
   form: formReducer,
+  breadcrumbs: breadcrumbsReducer,
 });
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

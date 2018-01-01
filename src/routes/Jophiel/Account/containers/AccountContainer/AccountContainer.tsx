@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 
 import { FullPageLayout } from '../../../../../layouts/FullPageLayout/FullPageLayout';
 import UserRoute from '../../../../../containers/UserRoute/UserRoute';
@@ -11,6 +10,7 @@ import ContentWithSidebarContainer, {
   ContentWithSidebarContainerItem,
   ContentWithSidebarContainerProps,
 } from '../../../../../containers/ContentWithSidebarContainer/ContentWithSidebarContainer';
+import { withBreadcrumb } from '../../../../../containers/BreadcrumbsWrapper/BreadcrumbsWrapper';
 
 interface AccountContainerConnectedProps {
   userJid: string;
@@ -58,4 +58,4 @@ function createAccountContainer() {
   return connect(mapStateToProps)(AccountContainer);
 }
 
-export default withRouter<any>(createAccountContainer());
+export default withBreadcrumb('My account')(createAccountContainer());

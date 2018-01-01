@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 
 import { UserProfile } from '../../../../modules/api/jophiel/user';
 import { AppState } from '../../../../modules/store';
 import { Profile } from '../../components/Profile/Profile';
 import { profileActions as injectedProfileActions } from '../../modules/profileActions';
 import { selectProfile } from '../../modules/profileSelectors';
+import { withBreadcrumb } from '../../../../containers/BreadcrumbsWrapper/BreadcrumbsWrapper';
 
 interface ProfileContainerProps {
   userJid: string;
@@ -47,4 +47,4 @@ export function createProfileContainer(profileActions) {
   return connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
 }
 
-export default withRouter<any>(createProfileContainer(injectedProfileActions));
+export default withBreadcrumb('Profile')(createProfileContainer(injectedProfileActions));
