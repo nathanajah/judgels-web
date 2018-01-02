@@ -13,9 +13,13 @@ describe('BreadcrumbsWrapper', () => {
   let wrapper: ReactWrapper<any, any>;
   let renderFn: jest.Mock<any>;
 
-  class InnerComponent extends React.Component {
+  interface InnerComponentProps {
+    num: number;
+  }
+
+  class InnerComponent extends React.Component<InnerComponentProps> {
     render() {
-      renderFn();
+      renderFn(this.props.num);
       return <div />;
     }
   }
@@ -27,11 +31,12 @@ describe('BreadcrumbsWrapper', () => {
     renderFn = jest.fn();
 
     const WrappedComponent = withBreadcrumb('My Component')(InnerComponent);
+    const comp = () => <WrappedComponent num={42} />;
 
     wrapper = mount(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/component/first']}>
-          <Route path="/component" component={WrappedComponent} />
+          <Route path="/component" component={comp} />
         </MemoryRouter>
       </Provider>
     );
@@ -42,7 +47,7 @@ describe('BreadcrumbsWrapper', () => {
   });
 
   it('renders the inner component', () => {
-    expect(renderFn).toHaveBeenCalled();
+    expect(renderFn).toHaveBeenCalledWith(42);
   });
 
   it('pops a breadcrumb when unmounted', () => {

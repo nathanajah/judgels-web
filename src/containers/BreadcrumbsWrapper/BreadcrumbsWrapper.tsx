@@ -23,7 +23,8 @@ export function withBreadcrumb(breadcrumbTitle: string) {
       }
 
       render() {
-        return <InnerComponent location={this.props.location} />;
+        const { location, match, onPushBreadcrumb, onPopBreadcrumb, ...props } = this.props;
+        return <InnerComponent location={this.props.location} {...props} />;
       }
 
       async componentWillUnmount() {
