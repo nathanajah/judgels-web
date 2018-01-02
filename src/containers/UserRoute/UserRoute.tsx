@@ -5,7 +5,7 @@ import { Redirect, Route, withRouter } from 'react-router';
 import { AppState } from '../../modules/store';
 
 const UserRoute = ({ component: Component, isLoggedIn, ...rest }) => {
-  const render = props => (isLoggedIn ? <Component {...props} /> : <Redirect to={{ pathname: '/' }} />);
+  const render = props => (isLoggedIn ? <Component {...props} /> : <Redirect to={{ pathname: '/login' }} />);
 
   return <Route {...rest} render={render} />;
 };

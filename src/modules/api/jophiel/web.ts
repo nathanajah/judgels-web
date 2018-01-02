@@ -11,7 +11,7 @@ export interface WebConfig {
 }
 
 export function createWebAPI() {
-  const baseURL = `${(window as any).env.JOPHIEL_URL}/web`;
+  const baseURL = `${(window as any).env.JOPHIEL_API_URL}/web`;
 
   return {
     getConfig: (): Promise<WebConfig> => {

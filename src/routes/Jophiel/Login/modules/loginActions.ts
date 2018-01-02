@@ -14,7 +14,7 @@ export const loginActions = {
 
         dispatch(PutSession.create({ user, session }));
 
-        dispatch(push('/home'));
+        dispatch(push('/'));
       } catch (error) {
         if (error instanceof ForbiddenError) {
           throw new Error('Invalid username/password.');

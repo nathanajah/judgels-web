@@ -61,7 +61,7 @@ describe('loginActions', () => {
       });
 
       it('redirects to home', () => {
-        expect(dispatch).toHaveBeenCalledWith(push('/home'));
+        expect(dispatch).toHaveBeenCalledWith(push('/'));
       });
 
       it('puts the session', () => {

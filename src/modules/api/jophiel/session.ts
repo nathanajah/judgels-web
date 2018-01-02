@@ -5,7 +5,7 @@ export interface Session {
 }
 
 export function createSessionAPI() {
-  const baseURL = `${(window as any).env.JOPHIEL_URL}/session`;
+  const baseURL = `${(window as any).env.JOPHIEL_API_URL}/session`;
 
   return {
     logIn: (username: string, password: string): Promise<Session> => {

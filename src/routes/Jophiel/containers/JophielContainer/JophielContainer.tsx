@@ -4,6 +4,7 @@ import { Switch, withRouter } from 'react-router';
 import GuestRoute from '../../../../containers/GuestRoute/GuestRoute';
 import UserRoute from '../../../../containers/UserRoute/UserRoute';
 import ActivateContainer from '../../Activate/containers/ActivateContainer/ActivateContainer';
+import { Home } from '../../Home/components/Home/Home';
 import LoginContainer from '../../Login/containers/LoginContainer/LoginContainer';
 import RegisterContainer from '../../Register/containers/RegisterContainer/RegisterContainer';
 import ForgotPasswordContainer from '../../ForgotPassword/containers/ForgotPasswordContainer/ForgotPasswordContainer';
@@ -13,6 +14,7 @@ import AccountContainer from '../../Account/containers/AccountContainer/AccountC
 const JophielContainer = () => (
   <div>
     <Switch>
+      <UserRoute exact path="/" component={Home} />
       <GuestRoute exact path="/login" component={LoginContainer} />
       <GuestRoute exact path="/register" component={RegisterContainer} />
       <GuestRoute exact path="/activate/:emailCode" component={ActivateContainer} />

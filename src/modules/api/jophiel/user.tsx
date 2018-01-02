@@ -41,7 +41,7 @@ export interface PasswordResetData {
 }
 
 export function createUserAPI() {
-  const baseURL = `${(window as any).env.JOPHIEL_URL}/users`;
+  const baseURL = `${(window as any).env.JOPHIEL_API_URL}/users`;
 
   return {
     usernameExists: (username: string): Promise<boolean> => {
