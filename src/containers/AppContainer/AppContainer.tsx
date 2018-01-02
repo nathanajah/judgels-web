@@ -5,6 +5,8 @@ import DocumentTitle from 'react-document-title';
 
 import HeaderContainer from '../HeaderContainer/HeaderContainer';
 import JophielContainer from '../../routes/Jophiel/containers/JophielContainer/JophielContainer';
+import { Menubar } from '../../components/Menubar/Menubar';
+import BreadcrumbsContainer from '../BreadcrumbsContainer/BreadcrumbsContainer';
 import { Footer } from '../../components/Footer/Footer';
 import { webConfigActions as injectedWebConfigActions } from '../../routes/Jophiel/modules/webConfigActions';
 import { AppState } from '../../modules/store';
@@ -25,6 +27,8 @@ class AppContainer extends React.Component<AppContainerConnectedProps> {
       <DocumentTitle title={this.props.title}>
         <div>
           <HeaderContainer />
+          <Menubar />
+          <BreadcrumbsContainer />
           <JophielContainer />
           <Footer />
         </div>

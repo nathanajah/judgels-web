@@ -3,8 +3,6 @@ import * as React from 'react';
 import RegisterForm, { RegisterFormData } from '../RegisterForm/RegisterForm';
 import { Card } from '../../../../../components/Card/Card';
 
-import './Register.css';
-
 export interface RegisterProps {
   onRegister: (data: RegisterFormData) => Promise<void>;
   recaptchaSiteKey?: string;
