@@ -2,9 +2,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import { UserWidget, UserWidgetProps } from '../../../components/Header/UserWidget/UserWidget';
-import { AppState } from '../../../modules/store';
-import { logoutActions as injectedLogoutActions } from '../../../routes/Jophiel/Logout/modules/logoutActions';
+import { UserWidget, UserWidgetProps } from '../../components/UserWidget/UserWidget';
+import { AppState } from '../../modules/store';
+import { logoutActions as injectedLogoutActions } from '../../routes/Jophiel/Logout/modules/logoutActions';
 
 const UserWidgetContainer = (props: UserWidgetProps) => <UserWidget {...props} />;
 

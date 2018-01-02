@@ -5,8 +5,8 @@ import { push } from 'react-router-redux';
 import createMockStore, { MockStore } from 'redux-mock-store';
 
 import { createUserWidgetContainer } from './UserWidgetContainer';
-import { AppState } from '../../../modules/store';
-import { sessionState } from '../../../fixtures/state';
+import { AppState } from '../../modules/store';
+import { sessionState } from '../../fixtures/state';
 
 describe('UserWidgetContainer', () => {
   let logoutActions: jest.Mocked<any>;
