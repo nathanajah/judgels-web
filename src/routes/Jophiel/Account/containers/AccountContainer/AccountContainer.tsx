@@ -5,6 +5,7 @@ import { FullPageLayout } from '../../../../../layouts/FullPageLayout/FullPageLa
 import UserRoute from '../../../../../containers/UserRoute/UserRoute';
 import ProfileContainer from '../../../containers/ProfileContainer/ProfileContainer';
 import { selectUserJid } from '../../../../../modules/session/sessionSelectors';
+import ChangeAvatarContainer from '../../../containers/ChangeAvatarContainer/ChangeAvatarContainer';
 import ChangePasswordContainer from '../../routes/ChangePassword/containers/ChangePasswordContainer/ChangePasswordContainer';
 import ContentWithSidebarContainer, {
   ContentWithSidebarContainerItem,
@@ -28,6 +29,12 @@ const AccountContainer = (props: AccountContainerConnectedProps) => {
       title: 'Profile',
       routeComponent: UserRoute,
       component: () => <ProfileContainer userJid={props.userJid} />,
+    },
+    {
+      id: 'avatar',
+      title: 'Change Avatar',
+      routeComponent: UserRoute,
+      component: () => <ChangeAvatarContainer userJid={props.userJid} />,
     },
     {
       id: 'password',

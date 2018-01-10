@@ -1,5 +1,11 @@
 @import '../../styles/base';
 
+.widget-user__avatar {
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
 .widget-user__user {
   margin-right: 20px;
 }

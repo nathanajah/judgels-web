@@ -31,6 +31,7 @@ export class UserWidget extends React.Component<UserWidgetProps> {
 
     return (
       <div className="pt-navbar-group pt-align-right">
+        <img src={user.avatarUrl} className="widget-user__avatar" />
         <Popover className="widget-user__popover" content={menu} position={Position.BOTTOM} inline>
           <div className="widget-user__user">
             <span className="widget-user__user__username">{user.username}</span>{' '}

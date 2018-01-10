@@ -28,13 +28,12 @@ async function call(url: string, init: RequestInit): Promise<any> {
 
 async function request(method: string, url: string, token?: string, headers?: any, body?: any): Promise<any> {
   const authHeader = token ? { Authorization: `Bearer ${token}` } : {};
-  const bodyJson = body ? { body: JSON.stringify(body) } : {};
 
   const init: RequestInit = {
     method,
     mode: 'cors',
     headers: { ...headers, ...authHeader },
-    ...bodyJson,
+    body,
   };
 
   return call(url, init);
@@ -45,9 +44,16 @@ export async function get(url: string, token?: string): Promise<any> {
 }
 
 export async function post(url: string, token?: string, body?: any): Promise<any> {
-  return request('POST', url, token, { 'Content-Type': 'application/json' }, body);
+  return request('POST', url, token, { 'Content-Type': 'application/json' }, JSON.stringify(body));
 }
 
 export async function put(url: string, token?: string, body?: any): Promise<any> {
-  return request('PUT', url, token, { 'Content-Type': 'application/json' }, body);
+  return request('PUT', url, token, { 'Content-Type': 'application/json' }, JSON.stringify(body));
+}
+
+export async function postMultipart(url: string, token: string, file: File): Promise<any> {
+  const body = new FormData();
+  body.append('file', file);
+
+  return request('POST', url, token, {}, body);
 }

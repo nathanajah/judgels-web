@@ -1,8 +1,9 @@
-import { get, post, put } from '../http';
+import { get, post, postMultipart, put } from '../http';
 
 export interface User {
   jid: string;
   username: string;
+  avatarUrl?: string;
 }
 
 export interface UserProfile {
@@ -82,6 +83,10 @@ export function createUserAPI() {
 
     resetUserPassword: (passwordResetData: PasswordResetData): Promise<void> => {
       return post(`${baseURL}/reset-password`, undefined, passwordResetData);
+    },
+
+    updateUserAvatar: (token: string, userJid: string, file: File): Promise<void> => {
+      return postMultipart(`${baseURL}/${userJid}/avatar`, token, file);
     },
   };
 }
