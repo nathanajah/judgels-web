@@ -5,7 +5,7 @@ import GuestRoute from '../../../../containers/GuestRoute/GuestRoute';
 import UserRoute from '../../../../containers/UserRoute/UserRoute';
 import ActivateContainer from '../../Activate/containers/ActivateContainer/ActivateContainer';
 import { Home } from '../../Home/components/Home/Home';
-import LoginContainer from '../../Login/containers/LoginContainer/LoginContainer';
+import LoginContainer from '../../login/Login/Login';
 import LogoutContainer from '../../logout/Logout/Logout';
 import RegisterContainer from '../../Register/containers/RegisterContainer/RegisterContainer';
 import ForgotPasswordContainer from '../../ForgotPassword/containers/ForgotPasswordContainer/ForgotPasswordContainer';
