@@ -5,7 +5,7 @@ import { MemoryRouter, Route } from 'react-router';
 import { combineReducers, createStore } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
-import { createResetPasswordContainer } from './ResetPasswordContainer';
+import { createResetPasswordContainer } from './ResetPassword';
 
 describe('ResetPasswordContainer', () => {
   let resetPasswordActions: jest.Mocked<any>;
