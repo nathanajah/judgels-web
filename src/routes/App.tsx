@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import DocumentTitle from 'react-document-title';
 
-import HeaderContainer from '../HeaderContainer/HeaderContainer';
-import JophielContainer from '../../routes/jophiel/Jophiel/Jophiel';
-import { Menubar } from '../../components/Menubar/Menubar';
-import BreadcrumbsContainer from '../BreadcrumbsContainer/BreadcrumbsContainer';
-import { Footer } from '../../components/Footer/Footer';
-import { webConfigActions as injectedWebConfigActions } from '../../routes/jophiel/modules/webConfigActions';
-import { AppState } from '../../modules/store';
-import { selectDocumentTitle } from '../../modules/breadcrumbs/breadcrumbsSelectors';
+import HeaderContainer from '../containers/HeaderContainer/HeaderContainer';
+import JophielContainer from './jophiel/Jophiel';
+import { Menubar } from '../components/Menubar/Menubar';
+import BreadcrumbsContainer from '../containers/BreadcrumbsContainer/BreadcrumbsContainer';
+import { Footer } from '../components/Footer/Footer';
+import { webConfigActions as injectedWebConfigActions } from './jophiel/modules/webConfigActions';
+import { AppState } from '../modules/store';
+import { selectDocumentTitle } from '../modules/breadcrumbs/breadcrumbsSelectors';
 
 interface AppContainerConnectedProps {
   title: string;

@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Switch, withRouter } from 'react-router';
 
-import GuestRoute from '../../../containers/GuestRoute/GuestRoute';
-import UserRoute from '../../../containers/UserRoute/UserRoute';
-import { Home } from '../home/Home/Home';
-import LoginContainer from '../login/Login/Login';
-import LogoutContainer from '../logout/Logout/Logout';
-import RegisterContainer from '../register/Register/Register';
-import ActivateContainer from '../activate/Activate/Activate';
-import ForgotPasswordContainer from '../forgotPassword/ForgotPassword/ForgotPassword';
-import ResetPasswordContainer from '../resetPassword/ResetPassword/ResetPassword';
-import AccountContainer from '../account/Account/Account';
+import GuestRoute from '../../containers/GuestRoute/GuestRoute';
+import UserRoute from '../../containers/UserRoute/UserRoute';
+import { Home } from './home/Home/Home';
+import LoginContainer from './login/Login/Login';
+import LogoutContainer from './logout/Logout/Logout';
+import RegisterContainer from './register/Register/Register';
+import ActivateContainer from './activate/Activate/Activate';
+import ForgotPasswordContainer from './forgotPassword/ForgotPassword/ForgotPassword';
+import ResetPasswordContainer from './resetPassword/ResetPassword/ResetPassword';
+import AccountContainer from './account/Account';
 
 const JophielContainer = () => (
   <div>

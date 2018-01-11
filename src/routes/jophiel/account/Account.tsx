@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { FullPageLayout } from '../../../../layouts/FullPageLayout/FullPageLayout';
-import UserRoute from '../../../../containers/UserRoute/UserRoute';
-import ProfileContainer from '../../panels/profile/Profile/Profile';
-import { selectUserJid } from '../../../../modules/session/sessionSelectors';
-import ChangeAvatarContainer from '../../panels/avatar/ChangeAvatar/ChangeAvatar';
-import ChangePasswordContainer from '../routes/changePassword/ChangePassword/ChangePassword';
+import { FullPageLayout } from '../../../layouts/FullPageLayout/FullPageLayout';
+import UserRoute from '../../../containers/UserRoute/UserRoute';
+import ProfileContainer from '../panels/profile/Profile/Profile';
+import { selectUserJid } from '../../../modules/session/sessionSelectors';
+import ChangeAvatarContainer from '../panels/avatar/ChangeAvatar/ChangeAvatar';
+import ChangePasswordContainer from './routes/changePassword/ChangePassword/ChangePassword';
 import ContentWithSidebarContainer, {
   ContentWithSidebarContainerItem,
   ContentWithSidebarContainerProps,
-} from '../../../../containers/ContentWithSidebarContainer/ContentWithSidebarContainer';
-import { withBreadcrumb } from '../../../../containers/BreadcrumbsWrapper/BreadcrumbsWrapper';
+} from '../../../containers/ContentWithSidebarContainer/ContentWithSidebarContainer';
+import { withBreadcrumb } from '../../../containers/BreadcrumbsWrapper/BreadcrumbsWrapper';
 
 interface AccountContainerProps {
   userJid: string;
