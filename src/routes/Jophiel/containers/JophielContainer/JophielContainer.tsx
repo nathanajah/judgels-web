@@ -7,7 +7,7 @@ import ActivateContainer from '../../Activate/containers/ActivateContainer/Activ
 import { Home } from '../../home/Home/Home';
 import LoginContainer from '../../login/Login/Login';
 import LogoutContainer from '../../logout/Logout/Logout';
-import RegisterContainer from '../../Register/containers/RegisterContainer/RegisterContainer';
+import RegisterContainer from '../../register/Register/Register';
 import ForgotPasswordContainer from '../../ForgotPassword/containers/ForgotPasswordContainer/ForgotPasswordContainer';
 import ResetPasswordContainer from '../../ResetPassword/containers/ResetPasswordContainer/ResetPasswordContainer';
 import AccountContainer from '../../Account/containers/AccountContainer/AccountContainer';
