@@ -5,7 +5,7 @@ import { FullPageLayout } from '../../../../layouts/FullPageLayout/FullPageLayou
 import UserRoute from '../../../../containers/UserRoute/UserRoute';
 import ProfileContainer from '../../panels/profile/Profile/Profile';
 import { selectUserJid } from '../../../../modules/session/sessionSelectors';
-import ChangeAvatarContainer from '../../containers/ChangeAvatarContainer/ChangeAvatarContainer';
+import ChangeAvatarContainer from '../../panels/avatar/ChangeAvatar/ChangeAvatar';
 import ChangePasswordContainer from '../routes/changePassword/ChangePassword/ChangePassword';
 import ContentWithSidebarContainer, {
   ContentWithSidebarContainerItem,
