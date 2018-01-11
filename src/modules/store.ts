@@ -12,7 +12,7 @@ import { createWebAPI } from './api/jophiel/web';
 import { sessionReducer, SessionState } from './session/sessionReducer';
 import { toastActions } from './toast/toastActions';
 import { toastMiddleware } from './toast/toastMiddleware';
-import { jophielReducer, JophielState } from '../routes/Jophiel/modules/jophielReducer';
+import { jophielReducer, JophielState } from '../routes/jophiel/modules/jophielReducer';
 import { breadcrumbsReducer, BreadcrumbsState } from './breadcrumbs/breadcrumbsReducer';
 
 export interface AppState {
