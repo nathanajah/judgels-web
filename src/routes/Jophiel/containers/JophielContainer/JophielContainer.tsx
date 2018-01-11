@@ -3,11 +3,11 @@ import { Switch, withRouter } from 'react-router';
 
 import GuestRoute from '../../../../containers/GuestRoute/GuestRoute';
 import UserRoute from '../../../../containers/UserRoute/UserRoute';
-import ActivateContainer from '../../Activate/containers/ActivateContainer/ActivateContainer';
 import { Home } from '../../home/Home/Home';
 import LoginContainer from '../../login/Login/Login';
 import LogoutContainer from '../../logout/Logout/Logout';
 import RegisterContainer from '../../register/Register/Register';
+import ActivateContainer from '../../activate/Activate/Activate';
 import ForgotPasswordContainer from '../../ForgotPassword/containers/ForgotPasswordContainer/ForgotPasswordContainer';
 import ResetPasswordContainer from '../../ResetPassword/containers/ResetPasswordContainer/ResetPasswordContainer';
 import AccountContainer from '../../Account/containers/AccountContainer/AccountContainer';

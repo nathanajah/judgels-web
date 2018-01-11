@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { MemoryRouter, Route } from 'react-router';
 import createMockStore, { MockStore } from 'redux-mock-store';
 
-import { createActivateContainer } from './ActivateContainer';
-import { AppState } from '../../../../../modules/store';
+import { createActivateContainer } from './Activate';
+import { AppState } from '../../../../modules/store';
 
 describe('ActivateContainer', () => {
   let activateActions: jest.Mocked<any>;
