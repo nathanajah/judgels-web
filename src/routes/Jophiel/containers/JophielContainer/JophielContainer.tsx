@@ -10,7 +10,7 @@ import RegisterContainer from '../../register/Register/Register';
 import ActivateContainer from '../../activate/Activate/Activate';
 import ForgotPasswordContainer from '../../forgotPassword/ForgotPassword/ForgotPassword';
 import ResetPasswordContainer from '../../resetPassword/ResetPassword/ResetPassword';
-import AccountContainer from '../../Account/containers/AccountContainer/AccountContainer';
+import AccountContainer from '../../account/Account/Account';
 
 const JophielContainer = () => (
   <div>

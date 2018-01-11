@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { FullPageLayout } from '../../../../../layouts/FullPageLayout/FullPageLayout';
-import UserRoute from '../../../../../containers/UserRoute/UserRoute';
-import ProfileContainer from '../../../containers/ProfileContainer/ProfileContainer';
-import { selectUserJid } from '../../../../../modules/session/sessionSelectors';
-import ChangeAvatarContainer from '../../../containers/ChangeAvatarContainer/ChangeAvatarContainer';
-import ChangePasswordContainer from '../../routes/ChangePassword/containers/ChangePasswordContainer/ChangePasswordContainer';
+import { FullPageLayout } from '../../../../layouts/FullPageLayout/FullPageLayout';
+import UserRoute from '../../../../containers/UserRoute/UserRoute';
+import ProfileContainer from '../../containers/ProfileContainer/ProfileContainer';
+import { selectUserJid } from '../../../../modules/session/sessionSelectors';
+import ChangeAvatarContainer from '../../containers/ChangeAvatarContainer/ChangeAvatarContainer';
+import ChangePasswordContainer from '../routes/ChangePassword/containers/ChangePasswordContainer/ChangePasswordContainer';
 import ContentWithSidebarContainer, {
   ContentWithSidebarContainerItem,
   ContentWithSidebarContainerProps,
-} from '../../../../../containers/ContentWithSidebarContainer/ContentWithSidebarContainer';
-import { withBreadcrumb } from '../../../../../containers/BreadcrumbsWrapper/BreadcrumbsWrapper';
+} from '../../../../containers/ContentWithSidebarContainer/ContentWithSidebarContainer';
+import { withBreadcrumb } from '../../../../containers/BreadcrumbsWrapper/BreadcrumbsWrapper';
 
-interface AccountContainerConnectedProps {
+interface AccountContainerProps {
   userJid: string;
   location: {
     pathname: string;
@@ -22,7 +22,7 @@ interface AccountContainerConnectedProps {
     url: string;
   };
 }
-const AccountContainer = (props: AccountContainerConnectedProps) => {
+const AccountContainer = (props: AccountContainerProps) => {
   const sidebarItems: ContentWithSidebarContainerItem[] = [
     {
       id: 'profile',
@@ -57,7 +57,7 @@ const AccountContainer = (props: AccountContainerConnectedProps) => {
   );
 };
 
-function createAccountContainer() {
+export function createAccountContainer() {
   const mapStateToProps = state => ({
     userJid: selectUserJid(state),
   });
