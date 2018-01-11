@@ -8,7 +8,7 @@ import LoginContainer from '../../login/Login/Login';
 import LogoutContainer from '../../logout/Logout/Logout';
 import RegisterContainer from '../../register/Register/Register';
 import ActivateContainer from '../../activate/Activate/Activate';
-import ForgotPasswordContainer from '../../ForgotPassword/containers/ForgotPasswordContainer/ForgotPasswordContainer';
+import ForgotPasswordContainer from '../../forgotPassword/ForgotPassword/ForgotPassword';
 import ResetPasswordContainer from '../../ResetPassword/containers/ResetPasswordContainer/ResetPasswordContainer';
 import AccountContainer from '../../Account/containers/AccountContainer/AccountContainer';
 
