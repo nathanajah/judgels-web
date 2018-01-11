@@ -5,9 +5,9 @@ import { MemoryRouter } from 'react-router';
 import { combineReducers, createStore } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
-import { createProfileContainer } from './ProfileContainer';
-import { UserProfile } from '../../../../modules/api/jophiel/user';
-import { jophielReducer } from '../../modules/jophielReducer';
+import { createProfileContainer } from './Profile';
+import { UserProfile } from '../../../../../modules/api/jophiel/user';
+import { jophielReducer } from '../../../modules/jophielReducer';
 
 describe('ProfileContainer', () => {
   let profileActions: jest.Mocked<any>;
