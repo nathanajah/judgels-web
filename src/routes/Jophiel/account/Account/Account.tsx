@@ -6,7 +6,7 @@ import UserRoute from '../../../../containers/UserRoute/UserRoute';
 import ProfileContainer from '../../containers/ProfileContainer/ProfileContainer';
 import { selectUserJid } from '../../../../modules/session/sessionSelectors';
 import ChangeAvatarContainer from '../../containers/ChangeAvatarContainer/ChangeAvatarContainer';
-import ChangePasswordContainer from '../routes/ChangePassword/containers/ChangePasswordContainer/ChangePasswordContainer';
+import ChangePasswordContainer from '../routes/changePassword/ChangePassword/ChangePassword';
 import ContentWithSidebarContainer, {
   ContentWithSidebarContainerItem,
   ContentWithSidebarContainerProps,

@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router';
 import { combineReducers, createStore } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
-import { createChangePasswordContainer } from './ChangePasswordContainer';
+import { createChangePasswordContainer } from './ChangePassword';
 
 describe('ChangePasswordContainer', () => {
   let changePasswordActions: jest.Mocked<any>;
