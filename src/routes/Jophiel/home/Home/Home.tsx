@@ -1,7 +1,7 @@
 import { Card, Icon } from '@blueprintjs/core';
 import * as React from 'react';
 
-import { FullPageLayout } from '../../../../../layouts/FullPageLayout/FullPageLayout';
+import { FullPageLayout } from '../../../../layouts/FullPageLayout/FullPageLayout';
 
 const redirectToUriel = () => (location.href = (window as any).env.URIEL_URL);
 const redirectToJerahmeel = () => (location.href = (window as any).env.JERAHMEEL_URL);

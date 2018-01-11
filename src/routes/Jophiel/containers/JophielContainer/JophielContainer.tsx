@@ -4,7 +4,7 @@ import { Switch, withRouter } from 'react-router';
 import GuestRoute from '../../../../containers/GuestRoute/GuestRoute';
 import UserRoute from '../../../../containers/UserRoute/UserRoute';
 import ActivateContainer from '../../Activate/containers/ActivateContainer/ActivateContainer';
-import { Home } from '../../Home/components/Home/Home';
+import { Home } from '../../home/Home/Home';
 import LoginContainer from '../../login/Login/Login';
 import LogoutContainer from '../../logout/Logout/Logout';
 import RegisterContainer from '../../Register/containers/RegisterContainer/RegisterContainer';
