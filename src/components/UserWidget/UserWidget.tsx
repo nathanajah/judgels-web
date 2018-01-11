@@ -7,9 +7,7 @@ import { User } from '../../modules/api/jophiel/user';
 import './UserWidget.css';
 
 export interface UserWidgetProps {
-  user?: User;
-  onClickAccount: () => void;
-  onClickLogOut: () => void;
+  user: User | undefined;
 }
 
 export class UserWidget extends React.Component<UserWidgetProps> {
@@ -24,8 +22,8 @@ export class UserWidget extends React.Component<UserWidgetProps> {
   private renderForUser = (user: User) => {
     const menu = (
       <Menu className="widget-user__user__menu">
-        <MenuItem data-key="account" text="My account" onClick={this.props.onClickAccount} />
-        <MenuItem data-key="logout" text="Log out" onClick={this.props.onClickLogOut} />
+        <MenuItem text="My account" href="/account" />
+        <MenuItem text="Log out" href="/logout" />
       </Menu>
     );
 
