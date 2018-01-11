@@ -2,8 +2,8 @@ import { FormGroup } from '@blueprintjs/core';
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import { getIntent, getIntentClassName } from '../FormInputMeta';
-import { FormInputProps } from '../FormInputProps';
+import { getIntent, getIntentClassName } from '../meta';
+import { FormInputProps } from '../props';
 import { FormInputValidation } from '../FormInputValidation/FormInputValidation';
 
 export interface FormTextInputProps extends FormInputProps {

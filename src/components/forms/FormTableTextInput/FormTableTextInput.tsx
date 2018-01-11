@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import { getIntentClassName } from '../FormInputMeta';
+import { getIntentClassName } from '../meta';
 import { FormTableInput, FormTableInputProps } from '../FormTableInput/FormTableInput';
 
 export interface FormTableTextInputProps extends FormTableInputProps {

@@ -1,8 +1,8 @@
 import { FormGroup } from '@blueprintjs/core';
 import * as React from 'react';
 
-import { getIntent } from '../FormInputMeta';
-import { FormInputProps } from '../FormInputProps';
+import { getIntent } from '../meta';
+import { FormInputProps } from '../props';
 import { FormInputValidation } from '../FormInputValidation/FormInputValidation';
 
 import './FormTableInput.css';

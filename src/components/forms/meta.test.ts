@@ -1,6 +1,6 @@
 import { Intent } from '@blueprintjs/core';
 
-import { getIntent, getIntentClassName, isValid } from './FormInputMeta';
+import { getIntent, getIntentClassName, isValid } from './meta';
 
 describe('meta', () => {
   test('isValid()', () => {

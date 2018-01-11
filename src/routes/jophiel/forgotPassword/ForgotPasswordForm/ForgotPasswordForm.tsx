@@ -2,8 +2,8 @@ import { Button, Intent } from '@blueprintjs/core';
 import * as React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { FormTextInput } from '../../../../components/Form/FormTextInput/FormTextInput';
-import { EmailAddress, Required } from '../../../../components/Form/FormValidations';
+import { FormTextInput } from '../../../../components/forms/FormTextInput/FormTextInput';
+import { EmailAddress, Required } from '../../../../components/forms/validations';
 import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivider/HorizontalDivider';
 import { ActionButtons } from '../../../../components/ActionButtons/ActionButtons';
 

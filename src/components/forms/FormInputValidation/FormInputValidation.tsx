@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FormInputMeta, isValid } from '../FormInputMeta';
+import { FormInputMeta, isValid } from '../meta';
 
 export interface FormInputValidationProps {
   meta: FormInputMeta;

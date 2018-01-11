@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { UserProfile, userProfileGender } from '../../../../../modules/api/jophiel/user';
-import { FormTable, FormTableRow } from '../../../../../components/Form/FormTable/FormTable';
+import { FormTable, FormTableRow } from '../../../../../components/forms/FormTable/FormTable';
 import { HorizontalInnerDivider } from '../../../../../components/Divider/HorizontalInnerDivider/HorizontalInnerDivider';
 
 export interface ProfileTableProps {

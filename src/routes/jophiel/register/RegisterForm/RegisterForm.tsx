@@ -3,9 +3,9 @@ import * as React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 
-import { FormTextInput } from '../../../../components/Form/FormTextInput/FormTextInput';
-import { FormRecaptcha } from '../../../../components/Form/FormRecaptcha/FormRecaptcha';
-import { ConfirmPassword, EmailAddress, Required, Username } from '../../../../components/Form/FormValidations';
+import { FormTextInput } from '../../../../components/forms/FormTextInput/FormTextInput';
+import { FormRecaptcha } from '../../../../components/forms/FormRecaptcha/FormRecaptcha';
+import { ConfirmPassword, EmailAddress, Required, Username } from '../../../../components/forms/validations';
 import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivider/HorizontalDivider';
 
 import './RegisterForm.css';

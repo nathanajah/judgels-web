@@ -1,4 +1,4 @@
-import { ConfirmPassword, EmailAddress, Required, Username } from './FormValidations';
+import { ConfirmPassword, EmailAddress, Required, Username } from './validations';
 
 test('Required', () => {
   expect(Required(undefined)).toBeTruthy();

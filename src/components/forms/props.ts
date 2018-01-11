@@ -1,4 +1,4 @@
-import { FormInputMeta } from './FormInputMeta';
+import { FormInputMeta } from './meta';
 
 export interface FormInputProps {
   input: {
