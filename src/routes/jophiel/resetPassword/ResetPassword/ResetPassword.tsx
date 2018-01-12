@@ -13,7 +13,7 @@ export interface ResetPasswordProps {
 
 export const ResetPassword = (props: ResetPasswordProps) => (
   <SingleColumnLayout>
-    <Card title="Reset Password">
+    <Card title="Reset password">
       <ResetPasswordForm onSubmit={props.onResetPassword} />
     </Card>
   </SingleColumnLayout>

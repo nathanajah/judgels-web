@@ -11,7 +11,7 @@ export interface ChangePasswordProps {
 }
 
 export const ChangePassword = (props: ChangePasswordProps) => (
-  <Card title="Change Password" className="card-change-password">
+  <Card title="Change password" className="card-change-password">
     <ChangePasswordForm onSubmit={props.onChangePassword} />
   </Card>
 );

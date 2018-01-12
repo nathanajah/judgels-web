@@ -47,7 +47,7 @@ const passwordField = {
 
 const confirmPasswordField = {
   name: 'confirmPassword',
-  label: 'Confirm Password',
+  label: 'Confirm password',
   type: 'password',
   validate: [Required, ConfirmPassword],
 };

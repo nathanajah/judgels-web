@@ -19,8 +19,8 @@ export const ProfileTable = (props: ProfileTableProps) => {
       value: profile.gender && userProfileGender[profile.gender],
     },
     { key: 'nationality', title: 'Nationality', value: profile.nationality },
-    { key: 'homeAddress', title: 'Home Address', value: profile.homeAddress },
-    { key: 'shirtSize', title: 'Shirt Size', value: profile.shirtSize },
+    { key: 'homeAddress', title: 'Home address', value: profile.homeAddress },
+    { key: 'shirtSize', title: 'Shirt size', value: profile.shirtSize },
   ];
 
   const institutionRows: FormTableRow[] = [
@@ -28,7 +28,7 @@ export const ProfileTable = (props: ProfileTableProps) => {
     { key: 'country', title: 'Country', value: profile.country },
     {
       key: 'province',
-      title: 'Province/State',
+      title: 'Province/state',
       value: profile.province,
     },
     { key: 'city', title: 'City', value: profile.city },
@@ -36,12 +36,12 @@ export const ProfileTable = (props: ProfileTableProps) => {
 
   return (
     <div>
-      <h4>My Info</h4>
+      <h4>My info</h4>
       <FormTable rows={infoRows} />
 
       <HorizontalInnerDivider />
 
-      <h4>My Institution</h4>
+      <h4>My institution</h4>
       <FormTable rows={institutionRows} />
     </div>
   );

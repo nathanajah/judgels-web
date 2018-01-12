@@ -14,7 +14,7 @@ export interface LoginProps {
 
 export const Login = (props: LoginProps) => (
   <SingleColumnLayout>
-    <Card title="Log In" className="card-login">
+    <Card title="Log in" className="card-login">
       <LoginForm onSubmit={props.onLogIn} />
     </Card>
   </SingleColumnLayout>

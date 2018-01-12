@@ -31,12 +31,12 @@ const nationalityField = {
 
 const homeAddressField = {
   name: 'homeAddress',
-  label: 'Home Address',
+  label: 'Home address',
 };
 
 const shirtSizeField = {
   name: 'shirtSize',
-  label: 'Shirt Size',
+  label: 'Shirt size',
 };
 
 const institutionField = {
@@ -51,7 +51,7 @@ const countryField = {
 
 const provinceField = {
   name: 'province',
-  label: 'Province/State',
+  label: 'Province/state',
 };
 
 const cityField = {
@@ -74,7 +74,7 @@ const ProfileForm = (props: ProfileFormProps) => {
 
   return (
     <form onSubmit={props.handleSubmit}>
-      <h4>My Info</h4>
+      <h4>My info</h4>
       <table className="pt-table pt-striped">
         <tbody>
           <Field component={FormTableTextInput} {...nameField} />
@@ -104,7 +104,7 @@ const ProfileForm = (props: ProfileFormProps) => {
 
       <HorizontalInnerDivider />
 
-      <h4>My Institution (school/organization represented)</h4>
+      <h4>My institution (school/organization represented)</h4>
       <table className="pt-table pt-striped">
         <tbody>
           <Field component={FormTableTextInput} {...institutionField} />

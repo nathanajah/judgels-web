@@ -44,7 +44,7 @@ export const ChangeAvatarPanel = (props: ChangeAvatarPanelProps) => {
   );
 
   return (
-    <Card title="Change Avatar" className="card-change-avatar">
+    <Card title="Change avatar" className="card-change-avatar">
       <div className="card-change-avatar__content">
         {currentAvatar}
         {newAvatar}

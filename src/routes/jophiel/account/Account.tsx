@@ -21,20 +21,20 @@ export const Account = () => {
     },
     {
       id: 'avatar',
-      title: 'Change Avatar',
+      title: 'Change avatar',
       routeComponent: UserRoute,
       component: ChangeAvatarContainer,
     },
     {
       id: 'password',
-      title: 'Change Password',
+      title: 'Change password',
       routeComponent: UserRoute,
       component: ChangePasswordContainer,
     },
   ];
 
   const contentWithSidebarContainerProps: ContentWithSidebarContainerProps = {
-    title: 'My Account',
+    title: 'My account',
     items: sidebarItems,
     smallContent: true,
   };

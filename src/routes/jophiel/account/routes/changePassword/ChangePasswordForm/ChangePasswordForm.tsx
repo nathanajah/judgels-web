@@ -14,21 +14,21 @@ export interface ChangePasswordFormData {
 
 const oldPasswordField = {
   name: 'oldPassword',
-  label: 'Old Password',
+  label: 'Old password',
   type: 'password',
   validate: [Required],
 };
 
 const newPasswordField = {
   name: 'password',
-  label: 'New Password',
+  label: 'New password',
   type: 'password',
   validate: [Required],
 };
 
 const confirmNewPasswordField = {
   name: 'confirmPassword',
-  label: 'Confirm New Password',
+  label: 'Confirm new password',
   type: 'password',
   validate: [Required, ConfirmPassword],
 };

@@ -32,7 +32,7 @@ export class ForgotPassword extends React.Component<ForgotPasswordProps, ForgotP
     }
     return (
       <SingleColumnLayout>
-        <Card title="Forgot Password">{content}</Card>
+        <Card title="Forgot password">{content}</Card>
       </SingleColumnLayout>
     );
   }
