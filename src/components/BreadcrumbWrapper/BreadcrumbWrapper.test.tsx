@@ -5,10 +5,10 @@ import { MemoryRouter, Route } from 'react-router';
 import createMockStore, { MockStore } from 'redux-mock-store';
 
 import { AppState } from '../../modules/store';
-import { withBreadcrumb } from './BreadcrumbsWrapper';
+import { withBreadcrumb } from './BreadcrumbWrapper';
 import { AddBreadcrumb, DelBreadcrumb } from '../../modules/breadcrumbs/breadcrumbsReducer';
 
-describe('BreadcrumbsWrapper', () => {
+describe('BreadcrumbWrapper', () => {
   let store: MockStore<Partial<AppState>>;
   let wrapper: ReactWrapper<any, any>;
   let renderFn: jest.Mock<any>;

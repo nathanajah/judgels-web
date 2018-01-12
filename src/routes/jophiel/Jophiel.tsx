@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Switch, withRouter } from 'react-router';
 
-import GuestRoute from '../../containers/GuestRoute/GuestRoute';
-import UserRoute from '../../containers/UserRoute/UserRoute';
+import GuestRoute from '../../components/GuestRoute/GuestRoute';
+import UserRoute from '../../components/UserRoute/UserRoute';
 import { Home } from './home/Home/Home';
 import LoginContainer from './login/Login/Login';
 import LogoutContainer from './logout/Logout/Logout';

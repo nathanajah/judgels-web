@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import RegisterForm, { RegisterFormData } from '../RegisterForm/RegisterForm';
 import { Card } from '../../../../components/Card/Card';
-import { SingleColumnLayout } from '../../../../layouts/SingleColumnLayout/SingleColumnLayout';
+import { SingleColumnLayout } from '../../../../components/layouts/SingleColumnLayout/SingleColumnLayout';
 import { AppState } from '../../../../modules/store';
 import { selectRecaptchaSiteKey } from '../../modules/webConfigSelectors';
 import { UserRegistrationData } from '../../../../modules/api/jophiel/user';

@@ -6,7 +6,7 @@ import { MemoryRouter, Route } from 'react-router';
 import { push } from 'react-router-redux';
 import createMockStore, { MockStore } from 'redux-mock-store';
 
-import ContentWithSidebarContainer, { ContentWithSidebarContainerProps } from './ContentWithSidebarContainer';
+import ContentWithSidebarContainer, { ContentWithSidebarContainerProps } from './ContentWithSidebar';
 import { AppState } from '../../modules/store';
 
 describe('ContentWithSidebarContainer', () => {

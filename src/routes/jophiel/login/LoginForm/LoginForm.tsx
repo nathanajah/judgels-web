@@ -5,7 +5,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { FormTextInput } from '../../../../components/forms/FormTextInput/FormTextInput';
 import { Required } from '../../../../components/forms/validations';
-import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivider/HorizontalDivider';
+import { HorizontalDivider } from '../../../../components/HorizontalDivider/HorizontalDivider';
 
 import './LoginForm.css';
 

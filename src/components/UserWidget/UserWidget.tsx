@@ -1,13 +1,15 @@
 import { Icon, Menu, MenuItem, Popover, Position } from '@blueprintjs/core';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { User } from '../../modules/api/jophiel/user';
+import { AppState } from '../../modules/store';
 
 import './UserWidget.css';
 
 export interface UserWidgetProps {
-  user: User | undefined;
+  user?: User;
 }
 
 export class UserWidget extends React.Component<UserWidgetProps> {
@@ -57,3 +59,17 @@ export class UserWidget extends React.Component<UserWidgetProps> {
     );
   };
 }
+
+export function createUserWidgetContainer() {
+  const mapStateToProps = (state: AppState) => ({
+    user: state.session.value && state.session.value.user,
+  });
+
+  // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/19989
+  const UserWidgetWrapper = (props: UserWidgetProps) => <UserWidget {...props} />;
+
+  return connect(mapStateToProps)(UserWidgetWrapper);
+}
+
+const UserWidgetContainer = createUserWidgetContainer();
+export default UserWidgetContainer;

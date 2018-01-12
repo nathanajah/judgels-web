@@ -3,8 +3,8 @@ import Dropzone from 'react-dropzone';
 import { connect } from 'react-redux';
 
 import { Card } from '../../../../../components/Card/Card';
+import { withBreadcrumb } from '../../../../../components/BreadcrumbWrapper/BreadcrumbWrapper';
 import { AppState } from '../../../../../modules/store';
-import { withBreadcrumb } from '../../../../../containers/BreadcrumbsWrapper/BreadcrumbsWrapper';
 import { avatarActions as injectedAvatarActions } from '../../../modules/avatarActions';
 
 import './ChangeAvatar.css';

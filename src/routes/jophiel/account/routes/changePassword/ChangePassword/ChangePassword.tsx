@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ChangePasswordForm, { ChangePasswordFormData } from '../ChangePasswordForm/ChangePasswordForm';
 import { Card } from '../../../../../../components/Card/Card';
 import { changePasswordActions as injectedChangePasswordActions } from '../modules/changePasswordActions';
-import { withBreadcrumb } from '../../../../../../containers/BreadcrumbsWrapper/BreadcrumbsWrapper';
+import { withBreadcrumb } from '../../../../../../components/BreadcrumbWrapper/BreadcrumbWrapper';
 
 export interface ChangePasswordProps {
   onChangePassword: (data: ChangePasswordFormData) => Promise<void>;

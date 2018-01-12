@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import DocumentTitle from 'react-document-title';
 
-import HeaderContainer from '../containers/HeaderContainer/HeaderContainer';
+import HeaderContainer from '../components/Header/Header';
 import JophielContainer from './jophiel/Jophiel';
 import { Menubar } from '../components/Menubar/Menubar';
-import BreadcrumbsContainer from '../containers/BreadcrumbsContainer/BreadcrumbsContainer';
+import BreadcrumbsContainer from '../components/Breadcrumbs/Breadcrumbs';
 import { Footer } from '../components/Footer/Footer';
 import { webConfigActions as injectedWebConfigActions } from './jophiel/modules/webConfigActions';
 import { AppState } from '../modules/store';

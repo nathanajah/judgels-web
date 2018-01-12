@@ -4,7 +4,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { FormTextInput } from '../../../../../../components/forms/FormTextInput/FormTextInput';
 import { ConfirmPassword, Required } from '../../../../../../components/forms/validations';
-import { HorizontalDivider } from '../../../../../../components/Divider/HorizontalDivider/HorizontalDivider';
+import { HorizontalDivider } from '../../../../../../components/HorizontalDivider/HorizontalDivider';
 
 export interface ChangePasswordFormData {
   oldPassword: string;

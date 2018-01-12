@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import LoginForm, { LoginFormData } from '../LoginForm/LoginForm';
-import { SingleColumnLayout } from '../../../../layouts/SingleColumnLayout/SingleColumnLayout';
+import { SingleColumnLayout } from '../../../../components/layouts/SingleColumnLayout/SingleColumnLayout';
 import { Card } from '../../../../components/Card/Card';
 import { loginActions as injectedLoginActions } from '../modules/loginActions';
 

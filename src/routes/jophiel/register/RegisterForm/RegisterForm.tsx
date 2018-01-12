@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { FormTextInput } from '../../../../components/forms/FormTextInput/FormTextInput';
 import { FormRecaptcha } from '../../../../components/forms/FormRecaptcha/FormRecaptcha';
 import { ConfirmPassword, EmailAddress, Required, Username } from '../../../../components/forms/validations';
-import { HorizontalDivider } from '../../../../components/Divider/HorizontalDivider/HorizontalDivider';
+import { HorizontalDivider } from '../../../../components/HorizontalDivider/HorizontalDivider';
 
 import './RegisterForm.css';
 

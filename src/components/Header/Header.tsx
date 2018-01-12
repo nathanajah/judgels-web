@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import './Header.css';
+import UserWidgetContainer from '../UserWidget/UserWidget';
 
 const logo = require('../../assets/images/logo.png');
 
@@ -27,3 +28,6 @@ export const Header = (props: HeaderProps) => (
     </div>
   </nav>
 );
+
+const HeaderContainer = () => <Header userWidget={<UserWidgetContainer />} />;
+export default HeaderContainer;

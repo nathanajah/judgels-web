@@ -9,7 +9,7 @@ import { ProfileTable } from '../ProfileTable/ProfileTable';
 import { AppState } from '../../../../../modules/store';
 import { selectProfile } from '../../../modules/profileSelectors';
 import { profileActions as injectedProfileActions } from '../../../modules/profileActions';
-import { withBreadcrumb } from '../../../../../containers/BreadcrumbsWrapper/BreadcrumbsWrapper';
+import { withBreadcrumb } from '../../../../../components/BreadcrumbWrapper/BreadcrumbWrapper';
 
 import './Profile.css';
 

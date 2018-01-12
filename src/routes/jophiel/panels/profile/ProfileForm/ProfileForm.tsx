@@ -5,8 +5,8 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { FormTableTextInput } from '../../../../../components/forms/FormTableTextInput/FormTableTextInput';
 import { Required } from '../../../../../components/forms/validations';
-import { HorizontalDivider } from '../../../../../components/Divider/HorizontalDivider/HorizontalDivider';
-import { HorizontalInnerDivider } from '../../../../../components/Divider/HorizontalInnerDivider/HorizontalInnerDivider';
+import { HorizontalDivider } from '../../../../../components/HorizontalDivider/HorizontalDivider';
+import { HorizontalInnerDivider } from '../../../../../components/HorizontalInnerDivider/HorizontalInnerDivider';
 import { ActionButtons } from '../../../../../components/ActionButtons/ActionButtons';
 import { FormTableTextArea } from '../../../../../components/forms/FormTableTextArea/FormTableTextArea';
 import { FormTableSelect } from '../../../../../components/forms/FormTableSelect/FormTableSelect';
