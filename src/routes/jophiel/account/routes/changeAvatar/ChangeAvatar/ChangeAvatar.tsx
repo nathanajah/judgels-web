@@ -1,13 +1,22 @@
-import * as React from 'react';
+import { connect } from 'react-redux';
 
-import ChangeAvatarPanel from '../../../../panels/avatar/ChangeAvatar/ChangeAvatar';
 import { withBreadcrumb } from '../../../../../../components/BreadcrumbWrapper/BreadcrumbWrapper';
+import { AppState } from '../../../../../../modules/store';
+import { ChangeAvatarPanel } from '../../../../panels/avatar/ChangeAvatar/ChangeAvatar';
+import { avatarActions as injectedAvatarActions } from '../modules/avatarActions';
 
-interface ChangeAvatarProps {
-  userJid: string;
+export function createChangeAvatarContainer(avatarActions) {
+  const mapStateToProps = (state: AppState) => ({
+    avatarUrl: state.session.user && state.session.user.avatarUrl,
+  });
+
+  const mapDispatchToProps = dispatch => ({
+    onDropAccepted: (files: File[]) => dispatch(avatarActions.change(files[0])),
+    onDropRejected: (files: File[]) => dispatch(avatarActions.reject(files[0])),
+  });
+
+  return connect(mapStateToProps, mapDispatchToProps)(ChangeAvatarPanel);
 }
 
-export const ChangeAvatar = (props: ChangeAvatarProps) => <ChangeAvatarContainer userJid={props.userJid} />;
-
-const ChangeAvatarContainer = withBreadcrumb('Change avatar')(ChangeAvatarPanel);
-export default ChangeAvatarContainer;
+const AvatarContainer = withBreadcrumb('Change avatar')(createChangeAvatarContainer(injectedAvatarActions));
+export default AvatarContainer;

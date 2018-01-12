@@ -2,23 +2,19 @@ import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, Store } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
-import { createProfilePanel } from './Profile';
 import { UserProfile } from '../../../../../modules/api/jophiel/user';
-import { jophielReducer } from '../../../modules/jophielReducer';
+import { AppState } from '../../../../../modules/store';
+import { ProfilePanel } from './Profile';
 
 describe('ProfilePanel', () => {
-  let profileActions: jest.Mocked<any>;
+  let onUpdateProfile: jest.Mock<any>;
   let wrapper: ReactWrapper<any, any>;
 
   beforeEach(() => {
-    profileActions = {
-      get: jest.fn().mockReturnValue({ type: 'mock-get', then: fn => fn() }),
-      update: jest.fn().mockReturnValue({ type: 'mock-update', then: fn => fn() }),
-      clear: jest.fn().mockReturnValue({ type: 'mock-clear', then: fn => fn() }),
-    };
+    onUpdateProfile = jest.fn().mockReturnValue({ type: 'mock-update', then: fn => fn() });
 
     const profile: UserProfile = {
       name: 'My Name',
@@ -32,24 +28,18 @@ describe('ProfilePanel', () => {
       city: 'My City',
     };
 
-    const store = createStore(combineReducers({ form: formReducer, jophiel: jophielReducer }), {
-      jophiel: { profile: { values: { ['jid123']: profile } } },
-    });
-
-    const ProfileContainer = createProfilePanel(profileActions);
+    const store: Store<Partial<AppState>> = createStore(combineReducers({ form: formReducer }));
 
     wrapper = mount(
       <Provider store={store}>
         <MemoryRouter>
-          <ProfileContainer userJid="jid123" />
+          <ProfilePanel profile={profile} onUpdateProfile={onUpdateProfile} />
         </MemoryRouter>
       </Provider>
     );
   });
 
   it('has working profile form', async () => {
-    expect(profileActions.get).toHaveBeenCalledWith('jid123');
-
     expect(wrapper.find('[data-key="name"]').text()).toEqual('My Name');
     expect(wrapper.find('[data-key="gender"]').text()).toEqual('Male');
     expect(wrapper.find('[data-key="nationality"]').text()).toEqual('Indonesia');
@@ -94,7 +84,7 @@ describe('ProfilePanel', () => {
     const form = wrapper.find('form');
     form.simulate('submit');
 
-    expect(profileActions.update).toHaveBeenCalledWith('jid123', {
+    expect(onUpdateProfile).toHaveBeenCalledWith({
       name: 'My New Name',
       gender: 'FEMALE',
       nationality: 'Singapore',
@@ -105,10 +95,5 @@ describe('ProfilePanel', () => {
       province: 'My New Province',
       city: 'My New City',
     });
-
-    await new Promise(resolve => setImmediate(resolve));
-
-    wrapper.unmount();
-    expect(profileActions.clear).toHaveBeenCalledWith('jid123');
   });
 });

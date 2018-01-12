@@ -1,24 +1,21 @@
 import * as React from 'react';
 import Dropzone from 'react-dropzone';
-import { connect } from 'react-redux';
 
 import { Card } from '../../../../../components/Card/Card';
-import { AppState } from '../../../../../modules/store';
-import { avatarActions as injectedAvatarActions } from '../../../modules/avatarActions';
 
 import './ChangeAvatar.css';
 
-export interface ChangeAvatarProps {
-  currentAvatarUrl?: string;
+export interface ChangeAvatarPanelProps {
+  avatarUrl?: string;
   onDropAccepted: (files: File[]) => Promise<void>;
   onDropRejected: (files: File[]) => Promise<void>;
 }
 
-export const ChangeAvatar = (props: ChangeAvatarProps) => {
-  const currentAvatar = props.currentAvatarUrl && (
+export const ChangeAvatarPanel = (props: ChangeAvatarPanelProps) => {
+  const currentAvatar = props.avatarUrl && (
     <div className="card-change-avatar__panel">
       <h4>Current avatar</h4>
-      <img src={props.currentAvatarUrl} />
+      <img src={props.avatarUrl} />
     </div>
   );
 
@@ -46,24 +43,3 @@ export const ChangeAvatar = (props: ChangeAvatarProps) => {
     </Card>
   );
 };
-
-interface ChangeAvatarPanelProps {
-  userJid: string;
-}
-
-const ChangeAvatarContainer = (props: ChangeAvatarProps) => <ChangeAvatar {...props} />;
-
-export function createChangeAvatarPanel(avatarActions) {
-  const mapStateToProps = (state: AppState) => ({
-    currentAvatarUrl: state.session.value && state.session.value.user.avatarUrl,
-  });
-
-  const mapDispatchToProps = (dispatch, ownProps: ChangeAvatarPanelProps) => ({
-    onDropAccepted: (files: File[]) => dispatch(avatarActions.change(ownProps.userJid, files[0])),
-    onDropRejected: (files: File[]) => dispatch(avatarActions.reject(files[0])),
-  });
-
-  return connect(mapStateToProps, mapDispatchToProps)(ChangeAvatarContainer);
-}
-
-export default createChangeAvatarPanel(injectedAvatarActions);

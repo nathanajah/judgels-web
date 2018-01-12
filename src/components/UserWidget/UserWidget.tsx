@@ -62,7 +62,7 @@ export class UserWidget extends React.Component<UserWidgetProps> {
 
 export function createUserWidgetContainer() {
   const mapStateToProps = (state: AppState) => ({
-    user: state.session.value && state.session.value.user,
+    user: state.session.user,
   });
 
   // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/19989

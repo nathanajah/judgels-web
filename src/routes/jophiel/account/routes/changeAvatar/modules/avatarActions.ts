@@ -1,9 +1,10 @@
-import { selectToken } from '../../../modules/session/sessionSelectors';
+import { selectToken, selectUserJid } from '../../../../../../modules/session/sessionSelectors';
 
 export const avatarActions = {
-  change: (userJid: string, file: File) => {
+  change: (file: File) => {
     return async (dispatch, getState, { userAPI, toastActions }) => {
       const token = selectToken(getState());
+      const userJid = selectUserJid(getState());
       await userAPI.updateUserAvatar(token, userJid, file);
       toastActions.showSuccessToast('Avatar updated.');
     };

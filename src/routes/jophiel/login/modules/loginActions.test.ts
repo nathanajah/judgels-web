@@ -4,7 +4,7 @@ import { loginActions } from './loginActions';
 import { ForbiddenError } from '../../../../modules/api/error';
 import { User } from '../../../../modules/api/jophiel/user';
 import { Session } from '../../../../modules/api/jophiel/session';
-import { PutSession } from '../../../../modules/session/sessionReducer';
+import { PutToken, PutUser } from '../../../../modules/session/sessionReducer';
 
 describe('loginActions', () => {
   let dispatch: jest.Mock<any>;
@@ -66,16 +66,12 @@ describe('loginActions', () => {
 
       it('puts the session', () => {
         expect(dispatch).toHaveBeenCalledWith(
-          PutSession.create({
-            user: {
-              jid: 'jid123',
-              username: 'user',
-            },
-            session: {
-              token: 'token123',
-            },
+          PutUser.create({
+            jid: 'jid123',
+            username: 'user',
           })
         );
+        expect(dispatch).toHaveBeenCalledWith(PutToken.create('token123'));
       });
     });
 

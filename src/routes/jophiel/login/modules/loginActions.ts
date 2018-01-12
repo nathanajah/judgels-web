@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 
 import { ForbiddenError } from '../../../../modules/api/error';
-import { PutSession } from '../../../../modules/session/sessionReducer';
+import { PutToken, PutUser } from '../../../../modules/session/sessionReducer';
 
 export const loginActions = {
   logIn: (username: string, password: string) => {
@@ -19,7 +19,8 @@ export const loginActions = {
 
       const user = await userAPI.getMyself(session.token);
       toastActions.showToast(`Welcome, ${username}.`);
-      dispatch(PutSession.create({ user, session }));
+      dispatch(PutToken.create(session.token));
+      dispatch(PutUser.create(user));
       dispatch(push('/'));
     };
   },

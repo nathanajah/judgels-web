@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 
 import { FullPageLayout } from '../../../components/layouts/FullPageLayout/FullPageLayout';
 import UserRoute from '../../../components/UserRoute/UserRoute';
-import { selectUserJid } from '../../../modules/session/sessionSelectors';
 import ProfileContainer from './routes/profile/Profile/Profile';
 import ChangePasswordContainer from './routes/changePassword/ChangePassword/ChangePassword';
 import ChangeAvatarContainer from './routes/changeAvatar/ChangeAvatar/ChangeAvatar';
@@ -13,28 +11,19 @@ import ContentWithSidebarContainer, {
 } from '../../../components/ContentWithSidebar/ContentWithSidebar';
 import { withBreadcrumb } from '../../../components/BreadcrumbWrapper/BreadcrumbWrapper';
 
-interface AccountContainerProps {
-  userJid: string;
-  location: {
-    pathname: string;
-  };
-  match: {
-    url: string;
-  };
-}
-const AccountContainer = (props: AccountContainerProps) => {
+export const Account = () => {
   const sidebarItems: ContentWithSidebarContainerItem[] = [
     {
       id: 'profile',
       title: 'Profile',
       routeComponent: UserRoute,
-      component: () => <ProfileContainer userJid={props.userJid} />,
+      component: ProfileContainer,
     },
     {
       id: 'avatar',
       title: 'Change Avatar',
       routeComponent: UserRoute,
-      component: () => <ChangeAvatarContainer userJid={props.userJid} />,
+      component: ChangeAvatarContainer,
     },
     {
       id: 'password',
@@ -57,12 +46,5 @@ const AccountContainer = (props: AccountContainerProps) => {
   );
 };
 
-export function createAccountContainer() {
-  const mapStateToProps = state => ({
-    userJid: selectUserJid(state),
-  });
-
-  return connect(mapStateToProps)(AccountContainer);
-}
-
-export default withBreadcrumb('My account')(createAccountContainer());
+const AccountContainer = withBreadcrumb('My account')(Account);
+export default AccountContainer;

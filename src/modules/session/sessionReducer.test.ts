@@ -1,18 +1,22 @@
-import { DelSession, INITIAL_STATE, sessionReducer, SessionState, PutSession } from './sessionReducer';
+import { DelSession, INITIAL_STATE, sessionReducer, SessionState, PutToken, PutUser } from './sessionReducer';
 
 describe('sessionReducer', () => {
-  test('PUT', () => {
+  test('PUT_TOKEN', () => {
     const state = INITIAL_STATE;
-    const action = PutSession.create({
-      user: { jid: 'jid123', username: 'user' },
-      session: { token: 'token123' },
-    });
+    const action = PutToken.create('token123');
     const nextState: SessionState = {
       isLoggedIn: true,
-      value: {
-        user: { jid: 'jid123', username: 'user' },
-        session: { token: 'token123' },
-      },
+      token: 'token123',
+    };
+    expect(sessionReducer(state, action)).toEqual(nextState);
+  });
+
+  test('PUT_USER', () => {
+    const state = INITIAL_STATE;
+    const action = PutUser.create({ jid: 'jid123', username: 'user' });
+    const nextState: SessionState = {
+      isLoggedIn: false,
+      user: { jid: 'jid123', username: 'user' },
     };
     expect(sessionReducer(state, action)).toEqual(nextState);
   });
@@ -20,10 +24,8 @@ describe('sessionReducer', () => {
   test('DEL', () => {
     const state: SessionState = {
       isLoggedIn: true,
-      value: {
-        user: { jid: 'jid123', username: 'user' },
-        session: { token: 'token123' },
-      },
+      user: { jid: 'jid123', username: 'user' },
+      token: 'token123',
     };
     const action = DelSession.create();
     expect(sessionReducer(state, action)).toEqual(INITIAL_STATE);
@@ -32,10 +34,8 @@ describe('sessionReducer', () => {
   test('other actions', () => {
     const state: SessionState = {
       isLoggedIn: true,
-      value: {
-        user: { jid: 'jid123', username: 'user' },
-        session: { token: 'token123' },
-      },
+      user: { jid: 'jid123', username: 'user' },
+      token: 'token123',
     };
     expect(sessionReducer(state, { type: 'other' })).toEqual(state);
   });
