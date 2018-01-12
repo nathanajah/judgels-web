@@ -1,3 +1,4 @@
+import { APP_CONFIG } from '../../../conf';
 import { get } from '../http';
 
 export interface WebConfig {
@@ -10,7 +11,7 @@ export interface WebConfig {
 }
 
 export function createWebAPI() {
-  const baseURL = `${(window as any).env.JOPHIEL_API_URL}/web`;
+  const baseURL = `${APP_CONFIG.apiUrls.jophiel}/web`;
 
   return {
     getConfig: (): Promise<WebConfig> => {

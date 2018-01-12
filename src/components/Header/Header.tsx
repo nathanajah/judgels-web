@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import './Header.css';
+import { APP_CONFIG } from '../../conf';
 import UserWidgetContainer from '../UserWidget/UserWidget';
 
+import './Header.css';
 const logo = require('../../assets/images/logo.png');
 
 export interface HeaderProps {
@@ -19,9 +20,9 @@ export const Header = (props: HeaderProps) => (
             <img src={logo} className="header__logo" />
           </Link>
         </div>
-        <div className="pt-navbar-heading header__title">{(window as any).env.APP_NAME}</div>
+        <div className="pt-navbar-heading header__title">{APP_CONFIG.name}</div>
         <span className="pt-navbar-divider" />
-        <div className="header__subtitle">{(window as any).env.APP_SLOGAN}</div>
+        <div className="header__subtitle">{APP_CONFIG.slogan}</div>
       </div>
 
       {props.userWidget}

@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+import { APP_CONFIG } from '../../conf';
 import { AppState } from '../store';
 
 export const selectSortedBreadcrumbs = createSelector([(state: AppState) => state.breadcrumbs.values], values =>
@@ -7,7 +8,7 @@ export const selectSortedBreadcrumbs = createSelector([(state: AppState) => stat
 );
 
 export const selectDocumentTitle = createSelector([selectSortedBreadcrumbs], breadcrumbs => {
-  let title = (window as any).env.APP_NAME;
+  let title = APP_CONFIG.name;
   if (breadcrumbs.length) {
     title = `${breadcrumbs[breadcrumbs.length - 1].title} | ${title}`;
   }

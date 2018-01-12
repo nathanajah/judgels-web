@@ -1,3 +1,4 @@
+import { APP_CONFIG } from '../../../conf';
 import { post } from '../http';
 
 export interface Session {
@@ -5,7 +6,7 @@ export interface Session {
 }
 
 export function createSessionAPI() {
-  const baseURL = `${(window as any).env.JOPHIEL_API_URL}/session`;
+  const baseURL = `${APP_CONFIG.apiUrls.jophiel}/session`;
 
   return {
     logIn: (username: string, password: string): Promise<Session> => {

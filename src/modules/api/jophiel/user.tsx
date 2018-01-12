@@ -1,3 +1,4 @@
+import { APP_CONFIG } from '../../../conf';
 import { delete_, get, post, postMultipart, put } from '../http';
 
 export interface User {
@@ -42,7 +43,7 @@ export interface PasswordResetData {
 }
 
 export function createUserAPI() {
-  const baseURL = `${(window as any).env.JOPHIEL_API_URL}/users`;
+  const baseURL = `${APP_CONFIG.apiUrls.jophiel}/users`;
 
   return {
     usernameExists: (username: string): Promise<boolean> => {
