@@ -1,14 +1,12 @@
 import { profileActions } from './profileActions';
 import { UserProfile } from '../../../../../../modules/api/jophiel/user';
 import { AppState } from '../../../../../../modules/store';
-import { sessionState } from '../../../../../../fixtures/state';
+import { sessionState, token, userJid } from '../../../../../../fixtures/state';
 import { PutProfile } from '../../../../../../modules/session/sessionReducer';
 
 describe('profileActions', () => {
   let dispatch: jest.Mock<any>;
 
-  const userJid = 'jid123';
-  const token = 'token123';
   const getState = (): Partial<AppState> => ({ session: sessionState });
 
   let userAPI: jest.Mocked<any>;

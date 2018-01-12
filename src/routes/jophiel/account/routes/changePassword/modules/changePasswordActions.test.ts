@@ -3,7 +3,7 @@ import { push } from 'react-router-redux';
 import { changePasswordActions } from './changePasswordActions';
 import { BadRequestError } from '../../../../../../modules/api/error';
 import { AppState } from '../../../../../../modules/store';
-import { sessionState } from '../../../../../../fixtures/state';
+import { sessionState, token } from '../../../../../../fixtures/state';
 
 describe('changePasswordActions', () => {
   let dispatch: jest.Mock<any>;
@@ -36,7 +36,7 @@ describe('changePasswordActions', () => {
     it('tries to change password', async () => {
       await doChangePassword();
 
-      expect(userAPI.updateMyPassword).toHaveBeenCalledWith('token123', {
+      expect(userAPI.updateMyPassword).toHaveBeenCalledWith(token, {
         oldPassword: 'oldPass',
         newPassword: 'newPass',
       });

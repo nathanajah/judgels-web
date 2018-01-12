@@ -4,7 +4,7 @@ import { logoutActions } from './logoutActions';
 import { UnauthorizedError } from '../../../../modules/api/error';
 import { DelSession } from '../../../../modules/session/sessionReducer';
 import { AppState } from '../../../../modules/store';
-import { sessionState } from '../../../../fixtures/state';
+import { sessionState, token } from '../../../../fixtures/state';
 
 describe('logoutActions', () => {
   let dispatch: jest.Mock<any>;
@@ -32,7 +32,7 @@ describe('logoutActions', () => {
     it('calls API to log out', async () => {
       await doLogOut();
 
-      expect(sessionAPI.logOut).toHaveBeenCalledWith('token123');
+      expect(sessionAPI.logOut).toHaveBeenCalledWith(token);
     });
 
     describe('when the logout is successful', () => {

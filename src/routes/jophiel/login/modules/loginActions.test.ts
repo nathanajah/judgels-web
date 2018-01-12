@@ -5,6 +5,7 @@ import { ForbiddenError } from '../../../../modules/api/error';
 import { User } from '../../../../modules/api/jophiel/user';
 import { Session } from '../../../../modules/api/jophiel/session';
 import { PutToken, PutUser } from '../../../../modules/session/sessionReducer';
+import { token, user, userJid } from '../../../../fixtures/state';
 
 describe('loginActions', () => {
   let dispatch: jest.Mock<any>;
@@ -40,8 +41,8 @@ describe('loginActions', () => {
       });
 
     it('calls API to logs in', async () => {
-      sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
-      userAPI.getMyself.mockImplementation(() => Promise.resolve<any>({ jid: 'jid123' }));
+      sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token }));
+      userAPI.getMyself.mockImplementation(() => Promise.resolve<any>({ jid: userJid }));
 
       await doLogIn();
 
@@ -50,8 +51,8 @@ describe('loginActions', () => {
 
     describe('when the credentials is valid', () => {
       beforeEach(async () => {
-        sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token: 'token123' }));
-        userAPI.getMyself.mockImplementation(() => Promise.resolve<User>({ jid: 'jid123', username: 'user' }));
+        sessionAPI.logIn.mockImplementation(() => Promise.resolve<Session>({ token }));
+        userAPI.getMyself.mockImplementation(() => Promise.resolve<User>(user));
 
         await doLogIn();
       });
@@ -65,13 +66,8 @@ describe('loginActions', () => {
       });
 
       it('puts the session', () => {
-        expect(dispatch).toHaveBeenCalledWith(
-          PutUser.create({
-            jid: 'jid123',
-            username: 'user',
-          })
-        );
-        expect(dispatch).toHaveBeenCalledWith(PutToken.create('token123'));
+        expect(dispatch).toHaveBeenCalledWith(PutUser.create(user));
+        expect(dispatch).toHaveBeenCalledWith(PutToken.create(token));
       });
     });
 
