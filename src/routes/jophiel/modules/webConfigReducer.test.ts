@@ -5,14 +5,12 @@ describe('webConfigReducer', () => {
     const state = INITIAL_STATE;
     const action = PutWebConfig.create({
       userRegistration: {
-        enabled: true,
         useRecaptcha: true,
       },
     });
     const nextState: WebConfigState = {
       value: {
         userRegistration: {
-          enabled: true,
           useRecaptcha: true,
         },
       },
@@ -24,7 +22,6 @@ describe('webConfigReducer', () => {
     const state: WebConfigState = {
       value: {
         userRegistration: {
-          enabled: true,
           useRecaptcha: true,
         },
       },

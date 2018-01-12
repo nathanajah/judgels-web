@@ -5,7 +5,6 @@ export interface WebConfig {
     siteKey: string;
   };
   userRegistration: {
-    enabled: boolean;
     useRecaptcha: boolean;
   };
 }

@@ -17,6 +17,7 @@ describe('Register', () => {
 
   const render = () => {
     const props: RegisterProps = {
+      useRecaptcha: false,
       onRegister,
     };
 

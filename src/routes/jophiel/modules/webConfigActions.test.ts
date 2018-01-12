@@ -23,7 +23,6 @@ describe('webConfigActions', () => {
 
     const webConfig: WebConfig = {
       userRegistration: {
-        enabled: true,
         useRecaptcha: true,
       },
     };

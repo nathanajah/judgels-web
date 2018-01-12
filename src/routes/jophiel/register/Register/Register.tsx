@@ -5,12 +5,13 @@ import RegisterForm, { RegisterFormData } from '../RegisterForm/RegisterForm';
 import { Card } from '../../../../components/Card/Card';
 import { SingleColumnLayout } from '../../../../components/layouts/SingleColumnLayout/SingleColumnLayout';
 import { AppState } from '../../../../modules/store';
-import { selectRecaptchaSiteKey } from '../../modules/webConfigSelectors';
+import { selectRecaptchaSiteKey, selectUserRegistrationUseRecaptcha } from '../../modules/webConfigSelectors';
 import { UserRegistrationData } from '../../../../modules/api/jophiel/user';
 import { registerActions as injectedRegisterActions } from '../modules/registerActions';
 
 export interface RegisterProps {
   onRegister: (data: RegisterFormData) => Promise<void>;
+  useRecaptcha: boolean;
   recaptchaSiteKey?: string;
 }
 
@@ -40,10 +41,13 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
         </Card>
       );
     } else {
-      const recaptchaSiteKey = { recaptchaSiteKey: this.props.recaptchaSiteKey };
+      const registerFormProps = {
+        useRecaptcha: this.props.useRecaptcha,
+        recaptchaSiteKey: this.props.recaptchaSiteKey,
+      };
       content = (
         <Card title="Register" className="card-register">
-          <RegisterForm onSubmit={this.onRegister} {...recaptchaSiteKey} />
+          <RegisterForm onSubmit={this.onRegister} {...registerFormProps} />
         </Card>
       );
     }
@@ -64,6 +68,7 @@ export class Register extends React.Component<RegisterProps, RegisterState> {
 
 export function createRegisterContainer(registerActions) {
   const mapStateToProps = (state: AppState) => ({
+    useRecaptcha: selectUserRegistrationUseRecaptcha(state),
     recaptchaSiteKey: selectRecaptchaSiteKey(state),
   });
 

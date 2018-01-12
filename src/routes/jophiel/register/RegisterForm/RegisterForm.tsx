@@ -53,15 +53,16 @@ const confirmPasswordField = {
 };
 
 export interface RegisterFormProps extends InjectedFormProps<RegisterFormData> {
+  useRecaptcha: boolean;
   recaptchaSiteKey?: string;
 }
 
 const RegisterForm = (props: RegisterFormProps) => {
   let recaptchaChallengeField;
-  if (props.recaptchaSiteKey) {
+  if (props.useRecaptcha) {
     const recaptchaField = {
       name: 'recaptchaResponse',
-      siteKey: props.recaptchaSiteKey,
+      siteKey: props.recaptchaSiteKey!,
       validate: [Required],
     };
     recaptchaChallengeField = <Field component={FormRecaptcha} {...recaptchaField} />;
