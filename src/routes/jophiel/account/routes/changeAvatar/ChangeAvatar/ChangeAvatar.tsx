@@ -13,6 +13,7 @@ export function createChangeAvatarContainer(avatarActions) {
   const mapDispatchToProps = dispatch => ({
     onDropAccepted: (files: File[]) => dispatch(avatarActions.change(files[0])),
     onDropRejected: (files: File[]) => dispatch(avatarActions.reject(files[0])),
+    onRemoveAvatar: () => dispatch(avatarActions.remove()),
   });
 
   return connect(mapStateToProps, mapDispatchToProps)(ChangeAvatarPanel);

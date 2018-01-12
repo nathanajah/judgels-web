@@ -1,4 +1,4 @@
-import { get, post, postMultipart, put } from '../http';
+import { delete_, get, post, postMultipart, put } from '../http';
 
 export interface User {
   jid: string;
@@ -87,6 +87,10 @@ export function createUserAPI() {
 
     updateUserAvatar: (token: string, userJid: string, file: File): Promise<void> => {
       return postMultipart(`${baseURL}/${userJid}/avatar`, token, file);
+    },
+
+    deleteUserAvatar: (token: string, userJid: string): Promise<void> => {
+      return delete_(`${baseURL}/${userJid}/avatar`, token);
     },
   };
 }

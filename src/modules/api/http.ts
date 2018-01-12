@@ -1,4 +1,4 @@
-import { BadRequestError, ForbiddenError, RemoteError, UnauthorizedError } from './error';
+import { BadRequestError, ForbiddenError, NotFoundError, RemoteError, UnauthorizedError } from './error';
 
 async function call(url: string, init: RequestInit): Promise<any> {
   let response: Response;
@@ -16,6 +16,9 @@ async function call(url: string, init: RequestInit): Promise<any> {
   }
   if (response.status === 403) {
     throw new ForbiddenError();
+  }
+  if (response.status === 404) {
+    throw new NotFoundError();
   }
   if (response.status < 200 || response.status >= 300) {
     throw new RemoteError();
@@ -41,6 +44,10 @@ async function request(method: string, url: string, token?: string, headers?: an
 
 export async function get(url: string, token?: string): Promise<any> {
   return request('GET', url, token);
+}
+
+export async function delete_(url: string, token?: string): Promise<any> {
+  return request('DELETE', url, token);
 }
 
 export async function post(url: string, token?: string, body?: any): Promise<any> {
