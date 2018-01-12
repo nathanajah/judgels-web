@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 import { FullPageLayout } from '../../../components/layouts/FullPageLayout/FullPageLayout';
 import UserRoute from '../../../components/UserRoute/UserRoute';
-import ProfileContainer from '../panels/profile/Profile/Profile';
 import { selectUserJid } from '../../../modules/session/sessionSelectors';
-import ChangeAvatarContainer from '../panels/avatar/ChangeAvatar/ChangeAvatar';
+import ProfileContainer from './routes/profile/Profile/Profile';
 import ChangePasswordContainer from './routes/changePassword/ChangePassword/ChangePassword';
+import ChangeAvatarContainer from './routes/changeAvatar/ChangeAvatar/ChangeAvatar';
 import ContentWithSidebarContainer, {
   ContentWithSidebarContainerItem,
   ContentWithSidebarContainerProps,

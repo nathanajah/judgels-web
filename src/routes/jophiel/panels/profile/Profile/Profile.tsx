@@ -9,7 +9,6 @@ import { ProfileTable } from '../ProfileTable/ProfileTable';
 import { AppState } from '../../../../../modules/store';
 import { selectProfile } from '../../../modules/profileSelectors';
 import { profileActions as injectedProfileActions } from '../../../modules/profileActions';
-import { withBreadcrumb } from '../../../../../components/BreadcrumbWrapper/BreadcrumbWrapper';
 
 import './Profile.css';
 
@@ -63,18 +62,18 @@ export class Profile extends React.Component<ProfileProps, ProfileState> {
   };
 }
 
-interface ProfileContainerOwnProps {
+interface ProfilePanelProps {
   userJid: string;
 }
 
-interface ProfileContainerProps {
+interface ProfilePanelConnectedProps {
   profile: UserProfile;
   onGetProfile: () => Promise<void>;
   onClearProfile: () => Promise<void>;
   onUpdateProfile: (profile: UserProfile) => Promise<void>;
 }
 
-class ProfileContainer extends React.Component<ProfileContainerProps> {
+class ProfilePanel extends React.Component<ProfilePanelConnectedProps> {
   async componentDidMount() {
     await this.props.onGetProfile();
   }
@@ -88,18 +87,18 @@ class ProfileContainer extends React.Component<ProfileContainerProps> {
   }
 }
 
-export function createProfileContainer(profileActions) {
-  const mapStateToProps = (state: AppState, ownProps: ProfileContainerOwnProps) => ({
+export function createProfilePanel(profileActions) {
+  const mapStateToProps = (state: AppState, ownProps: ProfilePanelProps) => ({
     profile: selectProfile(state, ownProps.userJid),
   });
 
-  const mapDispatchToProps = (dispatch, ownProps: ProfileContainerOwnProps) => ({
+  const mapDispatchToProps = (dispatch, ownProps: ProfilePanelProps) => ({
     onGetProfile: () => dispatch(profileActions.get(ownProps.userJid)),
     onClearProfile: () => dispatch(profileActions.clear(ownProps.userJid)),
     onUpdateProfile: (profile: UserProfile) => dispatch(profileActions.update(ownProps.userJid, profile)),
   });
 
-  return connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
+  return connect(mapStateToProps, mapDispatchToProps)(ProfilePanel);
 }
 
-export default withBreadcrumb('Profile')(createProfileContainer(injectedProfileActions));
+export default createProfilePanel(injectedProfileActions);

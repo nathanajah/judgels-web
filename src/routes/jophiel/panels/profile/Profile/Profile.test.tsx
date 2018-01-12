@@ -5,11 +5,11 @@ import { MemoryRouter } from 'react-router';
 import { combineReducers, createStore } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
-import { createProfileContainer } from './Profile';
+import { createProfilePanel } from './Profile';
 import { UserProfile } from '../../../../../modules/api/jophiel/user';
 import { jophielReducer } from '../../../modules/jophielReducer';
 
-describe('ProfileContainer', () => {
+describe('ProfilePanel', () => {
   let profileActions: jest.Mocked<any>;
   let wrapper: ReactWrapper<any, any>;
 
@@ -36,7 +36,7 @@ describe('ProfileContainer', () => {
       jophiel: { profile: { values: { ['jid123']: profile } } },
     });
 
-    const ProfileContainer = createProfileContainer(profileActions);
+    const ProfileContainer = createProfilePanel(profileActions);
 
     wrapper = mount(
       <Provider store={store}>
