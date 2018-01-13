@@ -4,6 +4,6 @@ import * as Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
-(window as any).env = {
-  APP_NAME: 'Judgels',
+(window as any).conf = {
+  name: 'Judgels',
 };
