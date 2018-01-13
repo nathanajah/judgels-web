@@ -1,10 +1,12 @@
+sudo: false
 language: node_js
 node_js:
-  - 6
-
-sudo: false
+  - 8
 
 cache:
   directories:
     - node_modules
   yarn: true
+
+before_script:
+  - yarn lint
