@@ -8,3 +8,9 @@
   flex-direction: column;
   justify-content: center;
 }
+
+@media only screen and (max-width: 600px) {
+  .layout-single-col {
+    min-height: 350px;
+  }
+}
