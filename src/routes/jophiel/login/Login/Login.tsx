@@ -6,8 +6,6 @@ import { SingleColumnLayout } from '../../../../components/layouts/SingleColumnL
 import { Card } from '../../../../components/Card/Card';
 import { loginActions as injectedLoginActions } from '../modules/loginActions';
 
-import './Login.css';
-
 export interface LoginProps {
   onLogIn: (data: LoginFormData) => Promise<void>;
 }
