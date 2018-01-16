@@ -11,9 +11,8 @@
   font-size: 0.9 * $font-size;
 }
 
-.widget-user__burger {
+.widget-user__burger, .widget-user__menu-helper {
   display: none;
-  cursor: pointer;
 }
 
 .widget-user__menu a {
@@ -25,15 +24,12 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .widget-user__avatar, .widget-user__avatar-menu {
+  .widget-user__avatar, .widget-user__avatar-menu, .widget-user__link {
     display: none;
   }
 
-  .widget-user__link {
-    display: none;
-  }
-
-  .widget-user__burger {
+  .widget-user__burger, .widget-user__menu-helper {
     display: block;
+    cursor: pointer;
   }
 }
