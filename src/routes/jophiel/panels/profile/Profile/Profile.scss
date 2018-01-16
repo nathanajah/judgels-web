@@ -1,5 +1,13 @@
-.panel {
+.card-profile {
   td:first-of-type {
     width: 220px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .card-profile {
+    td:first-of-type {
+      width: 150px;
+    }
   }
 }
