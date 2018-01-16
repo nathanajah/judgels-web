@@ -1,4 +1,4 @@
-import { mount, ReactWrapper } from 'enzyme';
+import { mount } from 'enzyme';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter, Route } from 'react-router';
@@ -10,7 +10,6 @@ import { AppState } from '../../../../modules/store';
 describe('ActivateContainer', () => {
   let activateActions: jest.Mocked<any>;
   let store: MockStore<Partial<AppState>>;
-  let wrapper: ReactWrapper<any, any>;
 
   beforeEach(() => {
     activateActions = {
@@ -20,7 +19,7 @@ describe('ActivateContainer', () => {
     store = createMockStore<Partial<AppState>>()({});
     const ActivateContainer = createActivateContainer(activateActions);
 
-    wrapper = mount(
+    mount(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/activate/code123']}>
           <Route exact path="/activate/:emailCode" component={ActivateContainer} />

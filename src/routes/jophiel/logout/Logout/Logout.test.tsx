@@ -1,4 +1,4 @@
-import { mount, ReactWrapper } from 'enzyme';
+import { mount } from 'enzyme';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
@@ -8,7 +8,6 @@ import { createLogoutContainer } from './Logout';
 
 describe('LogoutContainer', () => {
   let logoutActions: jest.Mocked<any>;
-  let wrapper: ReactWrapper<any, any>;
 
   beforeEach(() => {
     logoutActions = {
@@ -18,7 +17,7 @@ describe('LogoutContainer', () => {
     const store = createMockStore()({});
     const LogoutContainer = createLogoutContainer(logoutActions);
 
-    wrapper = mount(
+    mount(
       <Provider store={store}>
         <MemoryRouter>
           <LogoutContainer />
