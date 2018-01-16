@@ -39,7 +39,7 @@ describe('UserWidget', () => {
     });
 
     it('shows the user widget', () => {
-      expect(wrapper.find('.widget-user__user').text()).toContain('user');
+      expect(wrapper.find('[data-key="username"]').text()).toContain('user');
     });
   });
 });

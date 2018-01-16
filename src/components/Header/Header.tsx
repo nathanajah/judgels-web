@@ -8,27 +8,31 @@ import './Header.css';
 const logo = require('../../assets/images/logo.png');
 
 export interface HeaderProps {
-  userWidget: JSX.Element;
+  userWidget: React.ComponentType<any>;
 }
 
-export const Header = (props: HeaderProps) => (
-  <nav className="pt-navbar header">
-    <div className="header__wrapper">
-      <div className="pt-navbar-group pt-align-left">
-        <div>
-          <Link to="/">
-            <img src={logo} className="header__logo" />
-          </Link>
+export const Header = (props: HeaderProps) => {
+  const UW = props.userWidget;
+
+  return (
+    <nav className="pt-navbar header">
+      <div className="header__wrapper">
+        <div className="pt-navbar-group pt-align-left">
+          <div>
+            <Link to="/">
+              <img src={logo} className="header__logo" />
+            </Link>
+          </div>
+          <div className="pt-navbar-heading header__title">{APP_CONFIG.name}</div>
+          <span className="pt-navbar-divider" />
+          <div className="header__subtitle">{APP_CONFIG.slogan}</div>
         </div>
-        <div className="pt-navbar-heading header__title">{APP_CONFIG.name}</div>
-        <span className="pt-navbar-divider" />
-        <div className="header__subtitle">{APP_CONFIG.slogan}</div>
+
+        {<UW />}
       </div>
+    </nav>
+  );
+};
 
-      {props.userWidget}
-    </div>
-  </nav>
-);
-
-const HeaderContainer = () => <Header userWidget={<UserWidgetContainer />} />;
+const HeaderContainer = () => <Header userWidget={UserWidgetContainer} />;
 export default HeaderContainer;

@@ -6,23 +6,34 @@
   border-radius: 50%;
 }
 
-.widget-user__user {
-  margin-right: 20px;
-}
-
-.widget-user__popover {
-  margin-right: 40px;
-}
-
 .widget-user__link {
   margin-right: 20px;
   font-size: 0.9 * $font-size;
 }
 
-.widget-user__user__menu a {
+.widget-user__burger {
+  display: none;
+  cursor: pointer;
+}
+
+.widget-user__menu a {
   color: $text-color !important;
 }
 
 .widget-user__user__username {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .widget-user__avatar, .widget-user__avatar-menu {
+    display: none;
+  }
+
+  .widget-user__link {
+    display: none;
+  }
+
+  .widget-user__burger {
+    display: block;
+  }
 }

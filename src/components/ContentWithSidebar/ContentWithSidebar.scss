@@ -7,6 +7,7 @@
 .content-with-sidebar__sidebar {
   width: 270px;
   margin-right: 25px;
+  margin-bottom: 15px;
 }
 
 .content-with-sidebar__content {
@@ -15,4 +16,10 @@
 
 .content-with-sidebar__content--small {
   max-width: 705px;
+}
+
+@media only screen and (max-width: 600px) {
+  .content-with-sidebar {
+    display: block;
+  }
 }

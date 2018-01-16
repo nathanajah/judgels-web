@@ -1,10 +1,11 @@
-import { Icon, Menu, MenuItem, Popover, Position } from '@blueprintjs/core';
+import { Icon, Menu, MenuDivider, MenuItem, Popover, Position } from '@blueprintjs/core';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { User } from '../../modules/api/jophiel/user';
 import { AppState } from '../../modules/store';
+import MenuItemLink from '../MenuItemLink/MenuItemLink';
 
 import './UserWidget.css';
 
@@ -23,21 +24,42 @@ export class UserWidget extends React.Component<UserWidgetProps> {
 
   private renderForUser = (user: User) => {
     const menu = (
-      <Menu className="widget-user__user__menu">
-        <MenuItem text="My account" href="/account" />
-        <MenuItem text="Log out" href="/logout" />
+      <Menu className="widget-user__menu">
+        <MenuItem iconName="user" text={user.username} disabled />
+        <MenuDivider />
+        <MenuItemLink text="My account" to="/account" />
+        <MenuItemLink text="Log out" to="/logout" />
       </Menu>
+    );
+
+    const popover = (
+      <Popover className="widget-user__avatar-menu" content={menu} position={Position.BOTTOM_RIGHT} inline>
+        <div>
+          <span data-key="username" className="widget-user__user__username">
+            {user.username}
+          </span>{' '}
+          <Icon iconName="pt-icon-chevron-down" />
+        </div>
+      </Popover>
+    );
+
+    const responsivePopover = (
+      <Popover
+        className="widget-user__burger"
+        content={menu}
+        position={Position.BOTTOM_RIGHT}
+        inline
+        useSmartArrowPositioning={false}
+      >
+        <Icon iconName="menu" iconSize={Icon.SIZE_LARGE} />
+      </Popover>
     );
 
     return (
       <div className="pt-navbar-group pt-align-right">
         <img src={user.avatarUrl} className="widget-user__avatar" />
-        <Popover className="widget-user__popover" content={menu} position={Position.BOTTOM} inline>
-          <div className="widget-user__user">
-            <span className="widget-user__user__username">{user.username}</span>{' '}
-            <Icon iconName="pt-icon-chevron-down" />
-          </div>
-        </Popover>
+        {popover}
+        {responsivePopover}
       </div>
     );
   };
@@ -55,7 +77,29 @@ export class UserWidget extends React.Component<UserWidgetProps> {
             Register
           </Link>
         </div>
+        {this.renderGuestResponsiveMenu()}
       </div>
+    );
+  };
+
+  private renderGuestResponsiveMenu = () => {
+    const menu = (
+      <Menu className="widget-user__menu">
+        <MenuItemLink text="Log in" to="/login" />
+        <MenuItemLink text="Register" to="/register" />
+      </Menu>
+    );
+
+    return (
+      <Popover
+        className="widget-user__burger"
+        content={menu}
+        position={Position.BOTTOM_RIGHT}
+        inline
+        useSmartArrowPositioning={false}
+      >
+        <Icon iconName="menu" iconSize={Icon.SIZE_LARGE} />
+      </Popover>
     );
   };
 }

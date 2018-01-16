@@ -42,3 +42,12 @@
   color: $primary-color !important;
   float: right;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .card-sidebar {
+    .pt-tab-list {
+      left: -20px;
+    }
+  }
+}

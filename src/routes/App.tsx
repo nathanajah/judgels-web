@@ -5,6 +5,7 @@ import DocumentTitle from 'react-document-title';
 
 import HeaderContainer from '../components/Header/Header';
 import JophielContainer from './jophiel/Jophiel';
+import { AppContent } from '../components/AppContent/AppContent';
 import { Menubar } from '../components/Menubar/Menubar';
 import BreadcrumbsContainer from '../components/Breadcrumbs/Breadcrumbs';
 import { Footer } from '../components/Footer/Footer';
@@ -28,9 +29,11 @@ class AppContainer extends React.Component<AppContainerConnectedProps> {
         <div>
           <HeaderContainer />
           <Menubar />
-          <BreadcrumbsContainer />
-          <JophielContainer />
-          <Footer />
+          <AppContent>
+            <BreadcrumbsContainer />
+            <JophielContainer />
+            <Footer />
+          </AppContent>
         </div>
       </DocumentTitle>
     );

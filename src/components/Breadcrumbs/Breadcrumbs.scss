@@ -9,11 +9,9 @@
 }
 
 .breadcrumbs__content {
-  width: 1140px;
+  max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
 
   a {
     font-size: $font-size-small !important;
