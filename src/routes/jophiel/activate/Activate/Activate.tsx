@@ -9,8 +9,6 @@ import { Card } from '../../../../components/Card/Card';
 import { HorizontalDivider } from '../../../../components/HorizontalDivider/HorizontalDivider';
 import { activateActions as injectedActivateActions } from '../modules/activateActions';
 
-import './Activate.css';
-
 interface ActivateProps {
   isLoading: boolean;
 }
