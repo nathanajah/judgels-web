@@ -86,7 +86,7 @@ export function createUserAPI() {
       return post(`${baseURL}/reset-password`, undefined, passwordResetData);
     },
 
-    updateUserAvatar: (token: string, userJid: string, file: File): Promise<void> => {
+    updateUserAvatar: (token: string, userJid: string, file: File): Promise<UserProfile> => {
       return postMultipart(`${baseURL}/${userJid}/avatar`, token, file);
     },
 

@@ -17,9 +17,9 @@ export const profileActions = {
     return async (dispatch, getState, { userAPI, toastActions }) => {
       const token = selectToken(getState());
       const userJid = selectUserJid(getState());
-      await userAPI.updateUserProfile(token, userJid, profile);
+      const newProfile = await userAPI.updateUserProfile(token, userJid, profile);
 
-      dispatch(PutProfile.create(profile));
+      dispatch(PutProfile.create(newProfile));
 
       toastActions.showSuccessToast('Profile updated.');
     };

@@ -50,8 +50,11 @@ describe('profileActions', () => {
     const doUpdate = async () => update(profile)(dispatch, getState, { userAPI, toastActions });
 
     const profile: UserProfile = { name: 'First Last' };
+    const newProfile: UserProfile = { name: 'Last First' };
 
     beforeEach(async () => {
+      userAPI.updateUserProfile.mockImplementation(() => newProfile);
+
       await doUpdate();
     });
 
@@ -60,7 +63,7 @@ describe('profileActions', () => {
     });
 
     it('puts the new profile', () => {
-      expect(dispatch).toHaveBeenCalledWith(PutProfile.create(profile));
+      expect(dispatch).toHaveBeenCalledWith(PutProfile.create(newProfile));
       expect(toastActions.showSuccessToast).toHaveBeenCalledWith('Profile updated.');
     });
   });
