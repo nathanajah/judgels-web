@@ -2,8 +2,8 @@ import { UnauthorizedError } from '../../../../modules/api/error';
 import { DelSession } from '../../../../modules/session/sessionReducer';
 import { selectToken } from '../../../../modules/session/sessionSelectors';
 
-export const logoutActions = {
-  logOut: (currentPath: string) => {
+export const serviceLogoutActions = {
+  logOut: (redirectUri: string) => {
     return async (dispatch, getState, { sessionAPI, legacySessionAPI }) => {
       try {
         await sessionAPI.logOut(selectToken(getState()));
@@ -14,7 +14,7 @@ export const logoutActions = {
       }
       dispatch(DelSession.create());
 
-      legacySessionAPI.postLogout(encodeURIComponent(currentPath));
+      legacySessionAPI.postLogout(redirectUri);
     };
   },
 };

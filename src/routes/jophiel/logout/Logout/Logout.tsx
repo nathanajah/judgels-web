@@ -19,7 +19,7 @@ class Logout extends React.Component<LogoutProps> {
 
 export function createLogoutContainer(logoutActions) {
   const mapDispatchToProps = dispatch => ({
-    onLogOut: () => dispatch(logoutActions.logOut()),
+    onLogOut: () => dispatch(logoutActions.logOut(window.location.href)),
   });
   return connect(undefined, mapDispatchToProps)(Logout);
 }

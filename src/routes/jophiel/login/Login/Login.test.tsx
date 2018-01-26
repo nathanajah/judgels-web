@@ -38,6 +38,6 @@ describe('LoginContainer', () => {
     const form = wrapper.find('form');
     form.simulate('submit');
 
-    expect(loginActions.logIn).toHaveBeenCalledWith('user', 'pass');
+    expect(loginActions.logIn).toHaveBeenCalled();
   });
 });

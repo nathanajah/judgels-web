@@ -1,5 +1,3 @@
-import { push } from 'react-router-redux';
-
 import { logoutActions } from './logoutActions';
 import { UnauthorizedError } from '../../../../modules/api/error';
 import { DelSession } from '../../../../modules/session/sessionReducer';
@@ -11,7 +9,7 @@ describe('logoutActions', () => {
   const getState = (): Partial<AppState> => ({ session: sessionState });
 
   let sessionAPI: jest.Mocked<any>;
-  let toastActions: jest.Mocked<any>;
+  let legacySessionAPI: jest.Mocked<any>;
 
   beforeEach(() => {
     dispatch = jest.fn();
@@ -19,15 +17,14 @@ describe('logoutActions', () => {
     sessionAPI = {
       logOut: jest.fn(),
     };
-    toastActions = {
-      showToast: jest.fn(),
-      showErrorToast: jest.fn(),
+    legacySessionAPI = {
+      postLogout: jest.fn(),
     };
   });
 
   describe('logOut()', () => {
     const { logOut } = logoutActions;
-    const doLogOut = async () => logOut()(dispatch, getState, { sessionAPI, toastActions });
+    const doLogOut = async () => logOut('path')(dispatch, getState, { sessionAPI, legacySessionAPI });
 
     it('calls API to log out', async () => {
       await doLogOut();
@@ -40,16 +37,12 @@ describe('logoutActions', () => {
         await doLogOut();
       });
 
-      it('succeeds with toast', () => {
-        expect(toastActions.showToast).toHaveBeenCalledWith('You have been logged out.');
-      });
-
       it('deletes the session', () => {
         expect(dispatch).toHaveBeenCalledWith(DelSession.create());
       });
 
-      it('redirects to root', () => {
-        expect(dispatch).toHaveBeenCalledWith(push('/'));
+      it('redirects to post logout url', () => {
+        expect(legacySessionAPI.postLogout).toHaveBeenCalledWith('path');
       });
     });
 
