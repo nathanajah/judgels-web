@@ -9,6 +9,6 @@ const LoadableComponent = Loadable({
 
 export default class Competition extends React.Component {
   render() {
-    return <LoadableComponent/>;
+    return <LoadableComponent />;
   }
 }

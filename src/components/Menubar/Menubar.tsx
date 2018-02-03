@@ -7,7 +7,7 @@ import { RouteComponentProps } from 'react-router';
 import './Menubar.css';
 
 const tabToPath = (id: string) => {
-  switch(id) {
+  switch (id) {
     case 'home':
       return '/';
     case 'competition':
@@ -15,30 +15,30 @@ const tabToPath = (id: string) => {
     default:
       return '/';
   }
-}
+};
 
-const navigateTo =  (history: History, id: string) => {
+const navigateTo = (history: History, id: string) => {
   const path = tabToPath(id);
   history.push({
-    pathname: path
+    pathname: path,
   });
-}
+};
 
 const pathToTab = (location: Location) => {
-  if (matchPath(location.pathname, {path: '/', exact: true})) {
+  if (matchPath(location.pathname, { path: '/', exact: true })) {
     return 'home';
-  } else if (matchPath(location.pathname, {path: '/competition'})) {
+  } else if (matchPath(location.pathname, { path: '/competition' })) {
     return 'competition';
   } else {
     return 'home';
   }
-}
+};
 
 class MenubarComponent extends React.Component<RouteComponentProps<{}>> {
   render() {
     const selectedTabId = pathToTab(this.props.location);
 
-    return  (
+    return (
       <div className="menubar">
         <div className="menubar__content">
           <Tabs2

@@ -34,8 +34,8 @@ class AppContainer extends React.Component<AppContainerConnectedProps> {
           <AppContent>
             <BreadcrumbsContainer />
             <Switch>
-              <Route path="/competition" component={Competition}/>
-              <Route component={JophielContainer}/>
+              <Route path="/competition" component={Competition} />
+              <Route component={JophielContainer} />
             </Switch>
             <LegacyJophielContainer />
             <Footer />

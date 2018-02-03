@@ -5,8 +5,8 @@ import { Spinner } from '@blueprintjs/core';
 
 const LoadingPage = () => (
   <SingleColumnLayout>
-    <Spinner className="loading-spinner"/>
+    <Spinner className="loading-spinner" />
   </SingleColumnLayout>
-)
+);
 
 export default LoadingPage;
