@@ -1,12 +1,11 @@
-import * as React from 'react';
-import { SingleColumnLayout } from '../layouts/SingleColumnLayout/SingleColumnLayout';
-import './LoadingPage.css';
 import { Spinner } from '@blueprintjs/core';
+import * as React from 'react';
 
-const LoadingPage = () => (
+import './LoadingPage.css';
+import { SingleColumnLayout } from '../layouts/SingleColumnLayout/SingleColumnLayout';
+
+export const LoadingPage = () => (
   <SingleColumnLayout>
     <Spinner className="loading-spinner" />
   </SingleColumnLayout>
 );
-
-export default LoadingPage;
