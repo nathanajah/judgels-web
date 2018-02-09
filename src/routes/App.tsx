@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Route, Switch } from 'react-router';
+import { Route, Switch, withRouter } from 'react-router';
 import DocumentTitle from 'react-document-title';
 
 import Competition from './competition/Competition';
 import HeaderContainer from '../components/Header/Header';
+import LabsContainer from './labs/Labs';
 import JophielContainer from './jophiel/Jophiel';
 import LegacyJophielContainer from './legacyJophiel/LegacyJophiel';
 import { AppContent } from '../components/AppContent/AppContent';
@@ -35,9 +36,10 @@ class AppContainer extends React.Component<AppContainerConnectedProps> {
             <BreadcrumbsContainer />
             <Switch>
               <Route path="/competition" component={Competition} />
+              <Route path="/labs" component={LabsContainer} />
               <Route component={JophielContainer} />
+              <Route component={LegacyJophielContainer} />
             </Switch>
-            <LegacyJophielContainer />
             <Footer />
           </AppContent>
         </div>
