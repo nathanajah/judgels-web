@@ -64,6 +64,7 @@ class AppContainer extends React.Component<AppContainerConnectedProps> {
               {routeDefs.map(item => <Route key={item.id} {...item.route} />)}{' '}
               <Route key={homeRoute.id} {...homeRoute.route} />
             </Switch>
+            <Route component={LegacyJophielContainer} />
             <Footer />
           </AppContent>
         </div>
