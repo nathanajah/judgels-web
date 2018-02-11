@@ -20,33 +20,32 @@ interface AppContainerConnectedProps {
   onGetWebConfig: () => Promise<void>;
 }
 
-const routeDefs = {
-  home: {
-    title: 'Home',
-    route: {
-      component: JophielContainer,
-    },
-  },
-  competition: {
+const routeDefs = [
+  {
+    id: 'competition',
     title: 'Competition',
     route: {
       path: '/competition',
       component: Competition,
     },
   },
-  labs: {
+  {
+    id: 'labs',
     title: 'Labs',
     route: {
       path: '/labs',
       component: LabsContainer,
     },
   },
+];
+
+const homeRoute = {
+  id: 'home',
+  title: 'Home',
+  route: {
+    component: JophielContainer,
+  },
 };
-
-const menubarRoutes = ['home', 'competition', 'labs'];
-
-// So that "home" is the default option"
-const contentRoutes = ['competition', 'labs', 'home'];
 
 class AppContainer extends React.Component<AppContainerConnectedProps> {
   async componentDidMount() {
@@ -58,10 +57,13 @@ class AppContainer extends React.Component<AppContainerConnectedProps> {
       <DocumentTitle title={this.props.title}>
         <div>
           <HeaderContainer />
-          <Menubar items={routeDefs} matchOrder={contentRoutes} displayOrder={menubarRoutes} />
+          <Menubar items={routeDefs} homeRoute={homeRoute} />
           <AppContent>
             <BreadcrumbsContainer />
-            <Switch>{contentRoutes.map(id => <Route key={id} {...routeDefs[id].route} />)}</Switch>
+            <Switch>
+              {routeDefs.map(item => <Route key={item.id} {...item.route} />)}{' '}
+              <Route key={homeRoute.id} {...homeRoute.route} />
+            </Switch>
             <Footer />
           </AppContent>
         </div>

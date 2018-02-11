@@ -8,13 +8,13 @@ import { RouteComponentProps, RouteProps } from 'react-router';
 import './Menubar.css';
 
 export interface MenubarItem {
+  id: string;
   title: string;
   route: RouteProps;
 }
 export interface MenubarProps {
-  items: { [id: string]: MenubarItem };
-  matchOrder: string[];
-  displayOrder: string[];
+  items: MenubarItem[];
+  homeRoute?: MenubarItem;
 }
 
 export interface MenubarConnectedProps {
@@ -22,38 +22,35 @@ export interface MenubarConnectedProps {
 }
 
 class MenubarContainer extends React.Component<RouteComponentProps<{}> & MenubarProps & MenubarConnectedProps> {
-  constructor() {
-    super();
-    this.onTabChange = this.onTabChange.bind(this);
-  }
-
-  getActiveItemID() {
-    const { items, location, matchOrder, displayOrder } = this.props;
-    const matchedIDs = matchOrder.filter(id => matchPath(location.pathname, items[id].route) !== null);
-    if (matchedIDs.length === 0) {
-      return displayOrder[0];
+  getActiveItemId() {
+    const { items, location, homeRoute, match } = this.props;
+    const relativePath = location.pathname.replace(match.path, '');
+    const matchingItem = items.find(item => matchPath(relativePath, item.route) !== null);
+    if (matchingItem) {
+      return matchingItem.id;
+    } else if (homeRoute) {
+      return homeRoute.id;
     } else {
-      return matchedIDs[0];
+      return items[0].id;
     }
   }
 
-  onTabChange(newTabID) {
-    const item = this.props.items[newTabID];
-    const path = item.route.path ? item.route.path : '/';
-    this.props.onNavigate(path);
-  }
-
   render() {
-    const selectedTabId = this.getActiveItemID();
+    const selectedTabId = this.getActiveItemId();
+    const homeRoute = this.props.homeRoute;
 
     return (
       <div className="menubar">
         <div className="menubar__content">
           <Tabs2 id="menubar" renderActiveTabPanelOnly selectedTabId={selectedTabId} onChange={this.onTabChange}>
-            {this.props.displayOrder.map(id => {
-              const item = this.props.items[id];
+            {homeRoute ? (
+              <Tab2 key={homeRoute.id} id={homeRoute.id}>
+                {homeRoute.title}
+              </Tab2>
+            ) : null}
+            {this.props.items.map(item => {
               return (
-                <Tab2 key={id} id={id}>
+                <Tab2 key={item.id} id={item.id}>
                   {item.title}
                 </Tab2>
               );
@@ -63,6 +60,21 @@ class MenubarContainer extends React.Component<RouteComponentProps<{}> & Menubar
       </div>
     );
   }
+
+  private onTabChange = newTabId => {
+    const { homeRoute, items, match } = this.props;
+    let newTabItem;
+    if (homeRoute && homeRoute.id === newTabId) {
+      newTabItem = homeRoute;
+    } else {
+      newTabItem = items.find(item => item.id === newTabId);
+    }
+    if (!newTabItem) {
+      return;
+    }
+    const path = match.path + (newTabItem.route.path ? newTabItem.route.path : '/');
+    this.props.onNavigate(path);
+  };
 }
 
 function createMenubarContainer() {
