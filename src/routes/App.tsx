@@ -6,6 +6,7 @@ import DocumentTitle from 'react-document-title';
 import Competition from './competition/Competition';
 import HeaderContainer from '../components/Header/Header';
 import LabsContainer from './labs/Labs';
+import LegacyJophielContainer from './legacyJophiel/LegacyJophiel';
 import JophielContainer from './jophiel/Jophiel';
 import { AppContent } from '../components/AppContent/AppContent';
 import Menubar from '../components/Menubar/Menubar';
@@ -27,14 +28,6 @@ const routeDefs = [
     route: {
       path: '/competition',
       component: Competition,
-    },
-  },
-  {
-    id: 'labs',
-    title: 'Labs',
-    route: {
-      path: '/labs',
-      component: LabsContainer,
     },
   },
 ];
@@ -62,6 +55,7 @@ class AppContainer extends React.Component<AppContainerConnectedProps> {
             <BreadcrumbsContainer />
             <Switch>
               {routeDefs.map(item => <Route key={item.id} {...item.route} />)}{' '}
+              <Route key="labs" path="/labs" component={LabsContainer}/>
               <Route key={homeRoute.id} {...homeRoute.route} />
             </Switch>
             <Route component={LegacyJophielContainer} />

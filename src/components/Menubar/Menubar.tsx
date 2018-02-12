@@ -1,9 +1,9 @@
 import { Tab2, Tabs2 } from '@blueprintjs/core';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { RouteComponentProps, RouteProps } from 'react-router';
 import { withRouter, matchPath } from 'react-router-dom';
 import { push } from 'react-router-redux';
-import { connect } from 'react-redux';
-import * as React from 'react';
-import { RouteComponentProps, RouteProps } from 'react-router';
 
 import './Menubar.css';
 
@@ -12,6 +12,7 @@ export interface MenubarItem {
   title: string;
   route: RouteProps;
 }
+
 export interface MenubarProps {
   items: MenubarItem[];
   homeRoute?: MenubarItem;
@@ -22,19 +23,6 @@ export interface MenubarConnectedProps {
 }
 
 class MenubarContainer extends React.Component<RouteComponentProps<{}> & MenubarProps & MenubarConnectedProps> {
-  getActiveItemId() {
-    const { items, location, homeRoute, match } = this.props;
-    const relativePath = location.pathname.replace(match.path, '');
-    const matchingItem = items.find(item => matchPath(relativePath, item.route) !== null);
-    if (matchingItem) {
-      return matchingItem.id;
-    } else if (homeRoute) {
-      return homeRoute.id;
-    } else {
-      return items[0].id;
-    }
-  }
-
   render() {
     const selectedTabId = this.getActiveItemId();
     const homeRoute = this.props.homeRoute;
@@ -61,6 +49,19 @@ class MenubarContainer extends React.Component<RouteComponentProps<{}> & Menubar
     );
   }
 
+  private getActiveItemId = () => {
+    const { items, location, homeRoute, match } = this.props;
+    const relativePath = location.pathname.replace(match.path, '');
+    const matchingItem = items.find(item => matchPath(relativePath, item.route) !== null);
+    if (matchingItem) {
+      return matchingItem.id;
+    } else if (homeRoute) {
+      return homeRoute.id;
+    } else {
+      return items[0].id;
+    }
+  };
+
   private onTabChange = newTabId => {
     const { homeRoute, items, match } = this.props;
     let newTabItem;
@@ -72,7 +73,7 @@ class MenubarContainer extends React.Component<RouteComponentProps<{}> & Menubar
     if (!newTabItem) {
       return;
     }
-    const path = match.path + (newTabItem.route.path ? newTabItem.route.path : '/');
+    const path = (match.path === '/' ? '' : match.path) + (newTabItem.route.path ? newTabItem.route.path : '/');
     this.props.onNavigate(path);
   };
 }
