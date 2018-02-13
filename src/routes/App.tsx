@@ -55,7 +55,7 @@ class AppContainer extends React.Component<AppContainerConnectedProps> {
             <BreadcrumbsContainer />
             <Switch>
               {routeDefs.map(item => <Route key={item.id} {...item.route} />)}{' '}
-              <Route key="labs" path="/labs" component={LabsContainer}/>
+              <Route key="labs" path="/labs" component={LabsContainer} />
               <Route key={homeRoute.id} {...homeRoute.route} />
             </Switch>
             <Route component={LegacyJophielContainer} />
